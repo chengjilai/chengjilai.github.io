@@ -1,9 +1,9 @@
 @font-face {
-  font-family: Alegreya;
-  src: url(fonts/Alegreya-Regular.otf);
+  font-family: NewComputerModern;
+  src: url(fonts/NewCM08-Regular.otf);
 }
 body {
-  font-family: Alegreya;
+  font-family: NewComputerModern;
 }
 h1 {
   font-size: 35px;

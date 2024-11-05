@@ -749,7 +749,7 @@ CSS.paintWorklet.addModule(url);`])]),
       onClick() {
         const current = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--accent-hue').trim()) || 210;
         const next = (current + 60) % 360;
-        document.documentElement.style.setProperty('--accent-hue', next);
+        document.documentElement.attributeStyleMap.set('--accent-hue', new CSSUnparsedValue([String(next)]));
       },
     });
 
@@ -773,9 +773,8 @@ CSS.paintWorklet.addModule(url);`])]),
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          // Nav shadow grows with scroll
-          nav.style.setProperty('--nav-blur', 4 + Math.min(scrollY / 40, 12) + 'px');
-          nav.style.setProperty('--nav-spread', Math.min(scrollY / 160, 4) + 'px');
+          nav.attributeStyleMap.set('--nav-blur', new CSSUnparsedValue([String(4 + Math.min(scrollY / 40, 12)) + 'px']));
+          nav.attributeStyleMap.set('--nav-spread', new CSSUnparsedValue([String(Math.min(scrollY / 160, 4)) + 'px']));
           ticking = false;
         });
         ticking = true;

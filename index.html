@@ -522,7 +522,7 @@ registerPaint('gradient-border', GradientBorderPainter);
     function createBlogPost() {
       const meta = $('div', {className: 'post-meta'}, [
         $('span', {}, [' ', document.createTextNode('2026.04.28')]),
-        $('span', {}, ['⏱ ', document.createTextNode('~12 min read')]),
+        $('span', {}, ['⏱ ', document.createTextNode('~10 min read')]),
         $('span', {}, ['🏷 ', document.createTextNode('Web APIs')]),
       ]);
 
@@ -535,7 +535,7 @@ registerPaint('gradient-border', GradientBorderPainter);
           $('strong', {}, ['CSS Object Model (CSSOM)']),
           ', and ',
           $('strong', {}, ['CSS Houdini ']),
-        ], 'APIs'),
+          'APIs.'],),
 
         $('h3', {textContent: '1. DOM '}),
         $('p', {}, [

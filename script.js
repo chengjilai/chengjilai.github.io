@@ -380,7 +380,7 @@ const hero = $('section', {id: 'home', className: 'hero', style: {
     '--grid-opacity': '0.25',
     background: 'paint(grid-bg)',
   }}, [
-  $('p', {className: 'subtitle fade-in', textContent: ' ', style: {fontSize: '1.1rem', fontWeight: '400', letterSpacing: '2px', textTransform: 'uppercase', color: 'hsl(var(--accent-hue), 40%, 55%)', marginBottom: '0.5rem'}}),
+  $('p', {className: 'subtitle fade-in', style: {fontSize: '1.1rem', fontWeight: '400', letterSpacing: '2px', textTransform: 'uppercase', color: 'hsl(var(--accent-hue), 40%, 55%)', marginBottom: '0.5rem'}}),
   $('h1', {className: 'title fade-in', textContent: 'Jilai Cheng', style: {
     fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
     fontWeight: '800',
@@ -392,7 +392,7 @@ const hero = $('section', {id: 'home', className: 'hero', style: {
     WebkitTextFillColor: 'transparent',
     animation: 'gradient-shift 4s ease-in-out infinite',
   }}),
-  $('p', {className: 'tagline fade-in', textContent: ' ', style: {fontSize: '1.15rem', color: 'hsl(var(--accent-hue), 15%, 65%)', maxWidth: '540px', margin: '1.5rem auto 0'}}),
+  $('p', {className: 'tagline fade-in', style: {fontSize: '1.15rem', color: 'hsl(var(--accent-hue), 15%, 65%)', maxWidth: '540px', margin: '1.5rem auto 0'}}),
   $('div', {className: 'scroll-indicator fade-in', style: {position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', color: 'hsl(var(--accent-hue), 30%, 40%)', fontSize: '0.75rem', animation: 'bounce 2s ease infinite'}}, [
     $('span', {textContent: 'Scroll'}),
     $('div', {className: 'arrow', style: {width: '24px', height: '24px', borderRight: '2px solid hsl(var(--accent-hue), 30%, 40%)', borderBottom: '2px solid hsl(var(--accent-hue), 30%, 40%)', transform: 'rotate(45deg)'}}),
@@ -403,11 +403,15 @@ const blogSection = $('section', {id: 'blog'}, [
   createBlogPost(),
 ]);
 
+function dotsLayer() {
+  return $('div', {className: 'dots-layer', style: {position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', '--dot-color': 'hsla(var(--accent-hue), 40%, 50%, 0.1)', '--dot-spacing': '20', '--dot-radius': '1.5', background: 'paint(dots-bg)', pointerEvents: 'none', zIndex: '0'}});
+}
+
 function createBlogPost() {
   const meta = $('div', {className: 'post-meta', style: {display: 'flex', gap: '1.5rem', fontSize: '0.85rem', color: 'hsl(var(--accent-hue), 20%, 50%)', marginBottom: '1rem'}}, [
-    $('span', {}, [' ', document.createTextNode('2026.04.28')]),
-    $('span', {}, ['⏱ ', document.createTextNode('~10 min read')]),
-    $('span', {}, ['🏷 ', document.createTextNode('Web APIs')]),
+    $('span', {}, ['2026.04.28']),
+    $('span', {}, ['⏱ ~10 min read']),
+    $('span', {}, ['🏷 Web APIs']),
   ]);
 
   const body = $('div', {className: 'post-body', style: {color: 'hsl(var(--accent-hue), 12%, 75%)', fontSize: '0.95rem', lineHeight: '1.75'}}, [
@@ -598,7 +602,7 @@ CSS.paintWorklet.addModule(url);`])]),
   ]);
 
   return $('article', {className: 'blog-post fade-in'}, [
-    $('div', {className: 'dots-layer', style: {position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', '--dot-color': 'hsla(var(--accent-hue), 40%, 50%, 0.1)', '--dot-spacing': '20', '--dot-radius': '1.5', background: 'paint(dots-bg)', pointerEvents: 'none', zIndex: '0'}}),
+    dotsLayer(),
     meta,
     $('h2', {className: 'post-title', textContent: 'Building a Webpage', style: {fontSize: '1.6rem', fontWeight: '700', marginBottom: '1rem', lineHeight: '1.3', color: 'hsl(var(--accent-hue), 30%, 92%)'}}),
     body,
@@ -609,10 +613,7 @@ CSS.paintWorklet.addModule(url);`])]),
 const aboutSection = $('section', {id: 'about'}, [
   $('h2', {className: 'section-title fade-in', textContent: 'About'}),
   $('div', {className: 'blog-post fade-in'}, [
-    $('div', {className: 'dots-layer', style: {position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', '--dot-color': 'hsla(var(--accent-hue), 40%, 50%, 0.1)', '--dot-spacing': '20', '--dot-radius': '1.5', background: 'paint(dots-bg)', pointerEvents: 'none', zIndex: '0'}}),
-    $('p', {style: {position: 'relative', zIndex: 1, color: 'hsl(var(--accent-hue), 12%, 75%)', lineHeight: 1.75}}, [
-      ' ',
-    ]),
+    dotsLayer(),
     $('p', {style: {position: 'relative', zIndex: 1, color: 'hsl(var(--accent-hue), 12%, 75%)', lineHeight: 1.75, marginTop: '0.5rem'}}, [
       'The source code for this page lives at ',
       $('a', {href: 'https://github.com/chengjilai/chengjilai.github.io', textContent: 'github.com/chengjilai/chengjilai.github.io'}),

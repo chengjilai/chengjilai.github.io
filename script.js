@@ -268,6 +268,11 @@ const rules = [
     padding: 0;
     border-radius: 0;
   }`,
+  `.post-body .tk-keyword { color: hsl(var(--accent-hue), 60%, 62%); font-weight: 500; }`,
+  `.post-body .tk-string { color: hsl(calc(var(--accent-hue) + 90), 50%, 50%); }`,
+  `.post-body .tk-comment { color: hsl(var(--accent-hue), 5%, 30%); font-style: italic; }`,
+  `.post-body .tk-number { color: hsl(calc(var(--accent-hue) + 50), 55%, 55%); }`,
+  `.post-body .tk-builtin { color: hsl(calc(var(--accent-hue) - 40), 55%, 60%); }`,
   `.post-body ul, .post-body ol {
     margin: 0.75rem 0 1rem 1.5rem;
   }`,
@@ -346,6 +351,102 @@ const rules = [
     .post-body pre { font-size: 0.78rem; padding: 1rem; }
   }`,
 ];
+
+const KEYWORDS = new Set([
+  'const', 'let', 'var', 'if', 'else', 'return', 'function', 'class',
+  'static', 'get', 'set', 'new', 'this', 'for', 'of', 'while', 'do',
+  'break', 'continue', 'switch', 'case', 'default', 'try', 'catch',
+  'finally', 'throw', 'delete', 'typeof', 'void', 'instanceof', 'in',
+  'async', 'await', 'yield', 'extends', 'import', 'export', 'from',
+  'as', 'super', 'true', 'false', 'null', 'undefined', 'debugger',
+  'with',
+]);
+
+const BUILTINS = new Set([
+  'CSS', 'document', 'console', 'Math', 'Blob', 'URL', 'CSSStyleSheet',
+  'CSSTransformValue', 'CSSTranslate', 'CSSRotate', 'CSSUnparsedValue',
+  'JSON', 'Array', 'Object', 'String', 'Number', 'Boolean', 'Promise',
+  'Set', 'Map', 'Date', 'RegExp', 'Error', 'window', 'navigator',
+  'requestAnimationFrame', 'addEventListener', 'getComputedStyle',
+  'fetch', 'parseInt', 'parseFloat', 'setTimeout', 'setInterval',
+  'clearTimeout', 'NaN', 'Infinity', 'isNaN', 'isFinite',
+  'CSSKeywordValue', 'CSSUnitValue', 'CSSMathValue', 'CSSNumericValue',
+  'CSSImageValue', 'PaintWorklet',
+]);
+
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function highlightCode(code) {
+  const out = [];
+  let i = 0;
+  const len = code.length;
+
+  function push(token, cls) {
+    out.push('<span class="', cls, '">', escapeHtml(token), '</span>');
+  }
+
+  while (i < len) {
+    const ch = code[i];
+
+    if (ch === '/' && code[i + 1] === '/') {
+      let j = i + 2;
+      while (j < len && code[j] !== '\n') j++;
+      push(code.slice(i, j), 'tk-comment');
+      i = j;
+      continue;
+    }
+
+    if (ch === '/' && code[i + 1] === '*') {
+      let j = i + 2;
+      while (j < len - 1 && !(code[j] === '*' && code[j + 1] === '/')) j++;
+      j += 2;
+      push(code.slice(i, j), 'tk-comment');
+      i = j;
+      continue;
+    }
+
+    if (ch === '"' || ch === "'" || ch === '`') {
+      const quote = ch;
+      let j = i + 1;
+      while (j < len) {
+        if (code[j] === '\\') { j += 2; continue; }
+        if (code[j] === quote) { j++; break; }
+        j++;
+      }
+      push(code.slice(i, j), 'tk-string');
+      i = j;
+      continue;
+    }
+
+    if (/\d/.test(ch) || (ch === '-' && i + 1 < len && /\d/.test(code[i + 1]) && (i === 0 || /[^\w$]/.test(code[i - 1])))) {
+      let j = i + 1;
+      while (j < len && /[\w.]/.test(code[j])) j++;
+      push(code.slice(i, j), 'tk-number');
+      i = j;
+      continue;
+    }
+
+    if (/[a-zA-Z_$]/.test(ch)) {
+      let j = i + 1;
+      while (j < len && /[\w$]/.test(code[j])) j++;
+      const word = code.slice(i, j);
+      const cls = KEYWORDS.has(word) ? 'tk-keyword'
+                : BUILTINS.has(word) ? 'tk-builtin'
+                : null;
+      if (cls) push(word, cls);
+      else out.push(escapeHtml(word));
+      i = j;
+      continue;
+    }
+
+    out.push(escapeHtml(ch));
+    i++;
+  }
+
+  return out.join('');
+}
 
 rules.forEach(r => sheet.insertRule(r));
 
@@ -478,7 +579,7 @@ function createBlogPost() {
       'This API lets you register custom CSS properties with a specific syntax, inheritance behavior, and ',
       'initial value. The browser can then animate and validate these properties natively.',
     ]),
-    $('pre', {}, [$('code', {}, [
+    $('pre', {}, [$('code', {className: 'language-js', innerHTML: highlightCode(
       `CSS.registerProperty({
   name: '--gradient-angle',
   syntax: '<angle>',
@@ -491,7 +592,7 @@ CSS.registerProperty({
   syntax: '<number>',
   inherits: true,
   initialValue: '210',
-});`])]),
+});`)}),]),
     $('p', {}, [
       'Because ',
       $('code', {textContent: '--gradient-angle'}),
@@ -515,7 +616,7 @@ CSS.registerProperty({
       $('code', {textContent: 'el.style.left = "10px"'}),
       ' (which requires string parsing), you can write:',
     ]),
-    $('pre', {}, [$('code', {}, [
+    $('pre', {}, [$('code', {className: 'language-js', innerHTML: highlightCode(
       `// Old way (string-based)
 el.style.left = '10px';
 el.style.transform = 'translateX(50px) rotate(45deg)';
@@ -525,7 +626,7 @@ el.attributeStyleMap.set('left', CSS.px(10));
 el.attributeStyleMap.set('transform', new CSSTransformValue([
   new CSSTranslate(CSS.px(50), CSS.px(0)),
   new CSSRotate(CSS.deg(45)),
-]));`])]),
+]));`)}),]),
     $('p', {}, [
       'This is not just syntactic sugar — the Typed OM avoids string serialization/parsing overhead, enables ',
       'direct mathematical operations on CSS values, and allows the browser to optimize style computations. ',
@@ -551,7 +652,7 @@ el.attributeStyleMap.set('transform', new CSSTransformValue([
       'To keep this a single file with zero network dependencies, the worklet code is stored in a JavaScript string ',
       'and loaded via a blob URL:',
     ]),
-    $('pre', {}, [$('code', {}, [
+    $('pre', {}, [$('code', {className: 'language-js', innerHTML: highlightCode(
       `const paintCode = \`
 class GridPainter {
   static get inputProperties() { return ['--grid-color', '--grid-size']; }
@@ -561,7 +662,7 @@ registerPaint('grid-bg', GridPainter);
 \`;
 const blob = new Blob([paintCode], { type: 'text/javascript' });
 const url = URL.createObjectURL(blob);
-CSS.paintWorklet.addModule(url);`])]),
+CSS.paintWorklet.addModule(url);`)}),]),
     $('p', {}, [
       'Three custom painters are registered on this page:',
     ]),

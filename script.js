@@ -511,8 +511,6 @@ function dotsLayer() {
 function createBlogPost() {
   const meta = $('div', {className: 'post-meta', style: {display: 'flex', gap: '1.5rem', fontSize: '0.85rem', color: 'hsl(var(--accent-hue), 20%, 50%)', marginBottom: '1rem'}}, [
     $('span', {}, ['2026.04.28']),
-    $('span', {}, ['⏱ ~10 min read']),
-    $('span', {}, ['🏷 Web APIs']),
   ]);
 
   const body = $('div', {className: 'post-body', style: {color: 'hsl(var(--accent-hue), 12%, 75%)', fontSize: '0.95rem', lineHeight: '1.75'}}, [

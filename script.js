@@ -1,80 +1,80 @@
-"use strict"
-const meta = document.createElement('meta');
-meta.name = 'viewport';
-meta.content = 'width=device-width, initial-scale=1.0';
+"use strict";
+const meta = document.createElement("meta");
+meta.name = "viewport";
+meta.content = "width=device-width, initial-scale=1.0";
 document.head.appendChild(meta);
-const title = document.createElement('title');
-title.textContent = 'Jilai Cheng';
+const title = document.createElement("title");
+title.textContent = "Jilai Cheng";
 document.head.appendChild(title);
-document.documentElement.style.scrollBehavior = 'smooth';
-document.documentElement.style.fontSize = '16px';
+document.documentElement.style.scrollBehavior = "smooth";
+document.documentElement.style.fontSize = "16px";
 Object.assign(document.body.style, {
   fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
-  background: 'hsl(var(--accent-hue), 30%, 8%)',
-  color: 'hsl(var(--accent-hue), 15%, 88%)',
-  minHeight: '100vh',
-  overflowX: 'hidden',
-  lineHeight: '1.6',
+  background: "hsl(var(--accent-hue), 30%, 8%)",
+  color: "hsl(var(--accent-hue), 15%, 88%)",
+  minHeight: "100vh",
+  overflowX: "hidden",
+  lineHeight: "1.6",
 });
 CSS.registerProperty({
-  name: '--gradient-angle',
-  syntax: '<angle>',
+  name: "--gradient-angle",
+  syntax: "<angle>",
   inherits: false,
-  initialValue: '0deg',
+  initialValue: "0deg",
 });
 CSS.registerProperty({
-  name: '--accent-hue',
-  syntax: '<number>',
+  name: "--accent-hue",
+  syntax: "<number>",
   inherits: true,
-  initialValue: '210',
+  initialValue: "210",
 });
 CSS.registerProperty({
-  name: '--text-glow',
-  syntax: '<color>',
+  name: "--text-glow",
+  syntax: "<color>",
   inherits: false,
-  initialValue: 'transparent',
+  initialValue: "transparent",
 });
 CSS.registerProperty({
-  name: '--card-shadow-spread',
-  syntax: '<length>',
+  name: "--card-shadow-spread",
+  syntax: "<length>",
   inherits: false,
-  initialValue: '0px',
+  initialValue: "0px",
 });
 CSS.registerProperty({
-  name: '--nav-blur',
-  syntax: '<length>',
+  name: "--nav-blur",
+  syntax: "<length>",
   inherits: false,
-  initialValue: '4px',
+  initialValue: "4px",
 });
 CSS.registerProperty({
-  name: '--nav-spread',
-  syntax: '<length>',
+  name: "--nav-spread",
+  syntax: "<length>",
   inherits: false,
-  initialValue: '0px',
+  initialValue: "0px",
 });
 CSS.registerProperty({
-  name: '--border-width',
-  syntax: '<length>',
+  name: "--border-width",
+  syntax: "<length>",
   inherits: false,
-  initialValue: '2px',
+  initialValue: "2px",
 });
 CSS.registerProperty({
-  name: '--border-color-1',
-  syntax: '<color>',
+  name: "--border-color-1",
+  syntax: "<color>",
   inherits: false,
-  initialValue: 'transparent',
+  initialValue: "transparent",
 });
 CSS.registerProperty({
-  name: '--border-color-2',
-  syntax: '<color>',
+  name: "--border-color-2",
+  syntax: "<color>",
   inherits: false,
-  initialValue: 'transparent',
+  initialValue: "transparent",
 });
 CSS.registerProperty({
-  name: '--border-angle',
-  syntax: '<angle>',
+  name: "--border-angle",
+  syntax: "<angle>",
   inherits: false,
-  initialValue: '0deg',
+  initialValue: "0deg",
 });
 const paintCode = `
 class GridPainter {
@@ -155,7 +155,7 @@ registerPaint('grid-bg', GridPainter);
 registerPaint('dots-bg', DotsPainter);
 registerPaint('gradient-border', GradientBorderPainter);
 `;
-const workletBlob = new Blob([paintCode], {type: 'text/javascript'});
+const workletBlob = new Blob([paintCode], { type: "text/javascript" });
 const workletUrl = URL.createObjectURL(workletBlob);
 
 const sheet = new CSSStyleSheet();
@@ -377,29 +377,103 @@ const rules = [
 ];
 
 const KEYWORDS = new Set([
-  'const', 'let', 'var', 'if', 'else', 'return', 'function', 'class',
-  'static', 'get', 'set', 'new', 'this', 'for', 'of', 'while', 'do',
-  'break', 'continue', 'switch', 'case', 'default', 'try', 'catch',
-  'finally', 'throw', 'delete', 'typeof', 'void', 'instanceof', 'in',
-  'async', 'await', 'yield', 'extends', 'import', 'export', 'from',
-  'as', 'super', 'true', 'false', 'null', 'undefined', 'debugger',
-  'with',
+  "const",
+  "let",
+  "var",
+  "if",
+  "else",
+  "return",
+  "function",
+  "class",
+  "static",
+  "get",
+  "set",
+  "new",
+  "this",
+  "for",
+  "of",
+  "while",
+  "do",
+  "break",
+  "continue",
+  "switch",
+  "case",
+  "default",
+  "try",
+  "catch",
+  "finally",
+  "throw",
+  "delete",
+  "typeof",
+  "void",
+  "instanceof",
+  "in",
+  "async",
+  "await",
+  "yield",
+  "extends",
+  "import",
+  "export",
+  "from",
+  "as",
+  "super",
+  "true",
+  "false",
+  "null",
+  "undefined",
+  "debugger",
+  "with",
 ]);
 
 const BUILTINS = new Set([
-  'CSS', 'document', 'console', 'Math', 'Blob', 'URL', 'CSSStyleSheet',
-  'CSSTransformValue', 'CSSTranslate', 'CSSRotate', 'CSSUnparsedValue',
-  'JSON', 'Array', 'Object', 'String', 'Number', 'Boolean', 'Promise',
-  'Set', 'Map', 'Date', 'RegExp', 'Error', 'window', 'navigator',
-  'requestAnimationFrame', 'addEventListener', 'getComputedStyle',
-  'fetch', 'parseInt', 'parseFloat', 'setTimeout', 'setInterval',
-  'clearTimeout', 'NaN', 'Infinity', 'isNaN', 'isFinite',
-  'CSSKeywordValue', 'CSSUnitValue', 'CSSMathValue', 'CSSNumericValue',
-  'CSSImageValue', 'PaintWorklet',
+  "CSS",
+  "document",
+  "console",
+  "Math",
+  "Blob",
+  "URL",
+  "CSSStyleSheet",
+  "CSSTransformValue",
+  "CSSTranslate",
+  "CSSRotate",
+  "CSSUnparsedValue",
+  "JSON",
+  "Array",
+  "Object",
+  "String",
+  "Number",
+  "Boolean",
+  "Promise",
+  "Set",
+  "Map",
+  "Date",
+  "RegExp",
+  "Error",
+  "window",
+  "navigator",
+  "requestAnimationFrame",
+  "addEventListener",
+  "getComputedStyle",
+  "fetch",
+  "parseInt",
+  "parseFloat",
+  "setTimeout",
+  "setInterval",
+  "clearTimeout",
+  "NaN",
+  "Infinity",
+  "isNaN",
+  "isFinite",
+  "CSSKeywordValue",
+  "CSSUnitValue",
+  "CSSMathValue",
+  "CSSNumericValue",
+  "CSSImageValue",
+  "PaintWorklet",
 ]);
 
 function escapeHtml(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
 function highlightCode(code) {
@@ -408,46 +482,56 @@ function highlightCode(code) {
   const len = code.length;
 
   function push(token, cls) {
-    out.push('<span class="', cls, '">', escapeHtml(token), '</span>');
+    out.push('<span class="', cls, '">', escapeHtml(token), "</span>");
   }
 
   while (i < len) {
     const ch = code[i];
 
-    if (ch === '/' && code[i + 1] === '/') {
+    if (ch === "/" && code[i + 1] === "/") {
       let j = i + 2;
-      while (j < len && code[j] !== '\n') j++;
-      push(code.slice(i, j), 'tk-comment');
+      while (j < len && code[j] !== "\n") j++;
+      push(code.slice(i, j), "tk-comment");
       i = j;
       continue;
     }
 
-    if (ch === '/' && code[i + 1] === '*') {
+    if (ch === "/" && code[i + 1] === "*") {
       let j = i + 2;
-      while (j < len - 1 && !(code[j] === '*' && code[j + 1] === '/')) j++;
+      while (j < len - 1 && !(code[j] === "*" && code[j + 1] === "/")) j++;
       j += 2;
-      push(code.slice(i, j), 'tk-comment');
+      push(code.slice(i, j), "tk-comment");
       i = j;
       continue;
     }
 
-    if (ch === '"' || ch === "'" || ch === '`') {
+    if (ch === '"' || ch === "'" || ch === "`") {
       const quote = ch;
       let j = i + 1;
       while (j < len) {
-        if (code[j] === '\\') { j += 2; continue; }
-        if (code[j] === quote) { j++; break; }
+        if (code[j] === "\\") {
+          j += 2;
+          continue;
+        }
+        if (code[j] === quote) {
+          j++;
+          break;
+        }
         j++;
       }
-      push(code.slice(i, j), 'tk-string');
+      push(code.slice(i, j), "tk-string");
       i = j;
       continue;
     }
 
-    if (/\d/.test(ch) || (ch === '-' && i + 1 < len && /\d/.test(code[i + 1]) && (i === 0 || /[^\w$]/.test(code[i - 1])))) {
+    if (
+      /\d/.test(ch) ||
+      (ch === "-" && i + 1 < len && /\d/.test(code[i + 1]) &&
+        (i === 0 || /[^\w$]/.test(code[i - 1])))
+    ) {
       let j = i + 1;
       while (j < len && /[\w.]/.test(code[j])) j++;
-      push(code.slice(i, j), 'tk-number');
+      push(code.slice(i, j), "tk-number");
       i = j;
       continue;
     }
@@ -456,9 +540,11 @@ function highlightCode(code) {
       let j = i + 1;
       while (j < len && /[\w$]/.test(code[j])) j++;
       const word = code.slice(i, j);
-      const cls = KEYWORDS.has(word) ? 'tk-keyword'
-                : BUILTINS.has(word) ? 'tk-builtin'
-                : null;
+      const cls = KEYWORDS.has(word)
+        ? "tk-keyword"
+        : BUILTINS.has(word)
+        ? "tk-builtin"
+        : null;
       if (cls) push(word, cls);
       else out.push(escapeHtml(word));
       i = j;
@@ -469,140 +555,280 @@ function highlightCode(code) {
     i++;
   }
 
-  return out.join('');
+  return out.join("");
 }
 
-rules.forEach(r => sheet.insertRule(r));
+rules.forEach((r) => sheet.insertRule(r));
 
 const $ = (tag, attrs = {}, children = []) => {
   const el = document.createElement(tag);
   Object.entries(attrs).forEach(([k, v]) => {
-    if (k === 'className') el.className = v;
-    else if (k === 'innerHTML') el.innerHTML = v;
-    else if (k === 'textContent') el.textContent = v;
-    else if (k.startsWith('on')) el.addEventListener(k.slice(2).toLowerCase(), v);
-    else if (k === 'style' && typeof v === 'object') Object.assign(el.style, v);
-    else el.setAttribute(k, v);
+    if (k === "className") el.className = v;
+    else if (k === "innerHTML") el.innerHTML = v;
+    else if (k === "textContent") el.textContent = v;
+    else if (k.startsWith("on")) {
+      el.addEventListener(k.slice(2).toLowerCase(), v);
+    } else if (k === "style" && typeof v === "object") {
+      Object.assign(el.style, v);
+    } else el.setAttribute(k, v);
   });
-  children.forEach(c => {
-    if (typeof c === 'string') el.appendChild(document.createTextNode(c));
+  children.forEach((c) => {
+    if (typeof c === "string") el.appendChild(document.createTextNode(c));
     else el.appendChild(c);
   });
   return el;
 };
-const nav = $('nav', {}, [
-  $('div', {className: 'nav-brand', textContent: 'Jilai Cheng', style: {fontWeight: '700', fontSize: '1.25rem', letterSpacing: '-0.3px', color: 'hsl(var(--accent-hue), 70%, 75%)'}}),
-  $('ul', {className: 'nav-links', style: {display: 'flex', gap: '2rem', listStyle: 'none'}}, [
-    $('li', {}, [$('a', {href: '#home', textContent: 'Home'})]),
-    $('li', {}, [$('a', {href: '#blog', textContent: 'Blog'})]),
-    $('li', {}, [$('a', {href: '#about', textContent: 'About'})]),
+const nav = $("nav", {}, [
+  $("div", {
+    className: "nav-brand",
+    textContent: "Jilai Cheng",
+    style: {
+      fontWeight: "700",
+      fontSize: "1.25rem",
+      letterSpacing: "-0.3px",
+      color: "hsl(var(--accent-hue), 70%, 75%)",
+    },
+  }),
+  $("ul", {
+    className: "nav-links",
+    style: { display: "flex", gap: "2rem", listStyle: "none" },
+  }, [
+    $("li", {}, [$("a", { href: "#home", textContent: "Home" })]),
+    $("li", {}, [$("a", { href: "#blog", textContent: "Blog" })]),
+    $("li", {}, [$("a", { href: "#about", textContent: "About" })]),
   ]),
 ]);
 
-const hero = $('section', {id: 'home', className: 'hero', style: {
-    '--grid-color': 'hsl(var(--accent-hue), 40%, 25%)',
-    '--grid-size': '50',
-    '--grid-opacity': '0.25',
-    background: 'paint(grid-bg)',
-  }}, [
-  $('p', {className: 'subtitle fade-in', style: {fontSize: '1.1rem', fontWeight: '400', letterSpacing: '2px', textTransform: 'uppercase', color: 'hsl(var(--accent-hue), 40%, 55%)', marginBottom: '0.5rem'}}),
-  $('h1', {className: 'title fade-in', textContent: 'Jilai Cheng', style: {
-    fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-    fontWeight: '800',
-    letterSpacing: '-1px',
-    background: 'linear-gradient(135deg, hsl(var(--accent-hue), 80%, 70%), hsl(calc(var(--accent-hue) + 40), 70%, 55%), hsl(var(--accent-hue), 60%, 70%))',
-    backgroundSize: '200% 200%',
-    WebkitBackgroundClip: 'text',
-    backgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    animation: 'gradient-shift 4s ease-in-out infinite',
-  }}),
-  $('p', {className: 'tagline fade-in', style: {fontSize: '1.15rem', color: 'hsl(var(--accent-hue), 15%, 65%)', maxWidth: '540px', margin: '1.5rem auto 0'}}),
-  $('div', {className: 'scroll-indicator fade-in', style: {position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', color: 'hsl(var(--accent-hue), 30%, 40%)', fontSize: '0.75rem', animation: 'bounce 2s ease infinite'}}, [
-    $('span', {textContent: 'Scroll'}),
-    $('div', {className: 'arrow', style: {width: '24px', height: '24px', borderRight: '2px solid hsl(var(--accent-hue), 30%, 40%)', borderBottom: '2px solid hsl(var(--accent-hue), 30%, 40%)', transform: 'rotate(45deg)'}}),
+const hero = $("section", {
+  id: "home",
+  className: "hero",
+  style: {
+    "--grid-color": "hsl(var(--accent-hue), 40%, 25%)",
+    "--grid-size": "50",
+    "--grid-opacity": "0.25",
+    background: "paint(grid-bg)",
+  },
+}, [
+  $("p", {
+    className: "subtitle fade-in",
+    style: {
+      fontSize: "1.1rem",
+      fontWeight: "400",
+      letterSpacing: "2px",
+      textTransform: "uppercase",
+      color: "hsl(var(--accent-hue), 40%, 55%)",
+      marginBottom: "0.5rem",
+    },
+  }),
+  $("h1", {
+    className: "title fade-in",
+    textContent: "Jilai Cheng",
+    style: {
+      fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+      fontWeight: "800",
+      letterSpacing: "-1px",
+      background:
+        "linear-gradient(135deg, hsl(var(--accent-hue), 80%, 70%), hsl(calc(var(--accent-hue) + 40), 70%, 55%), hsl(var(--accent-hue), 60%, 70%))",
+      backgroundSize: "200% 200%",
+      WebkitBackgroundClip: "text",
+      backgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      animation: "gradient-shift 4s ease-in-out infinite",
+    },
+  }),
+  $("p", {
+    className: "tagline fade-in",
+    style: {
+      fontSize: "1.15rem",
+      color: "hsl(var(--accent-hue), 15%, 65%)",
+      maxWidth: "540px",
+      margin: "1.5rem auto 0",
+    },
+  }),
+  $("div", {
+    className: "scroll-indicator fade-in",
+    style: {
+      position: "absolute",
+      bottom: "2rem",
+      left: "50%",
+      transform: "translateX(-50%)",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "0.5rem",
+      color: "hsl(var(--accent-hue), 30%, 40%)",
+      fontSize: "0.75rem",
+      animation: "bounce 2s ease infinite",
+    },
+  }, [
+    $("span", { textContent: "Scroll" }),
+    $("div", {
+      className: "arrow",
+      style: {
+        width: "24px",
+        height: "24px",
+        borderRight: "2px solid hsl(var(--accent-hue), 30%, 40%)",
+        borderBottom: "2px solid hsl(var(--accent-hue), 30%, 40%)",
+        transform: "rotate(45deg)",
+      },
+    }),
   ]),
 ]);
-const blogSection = $('section', {id: 'blog'}, [
-  $('h2', {className: 'section-title fade-in', textContent: 'Blog'}),
+const blogSection = $("section", { id: "blog" }, [
+  $("h2", { className: "section-title fade-in", textContent: "Blog" }),
   createBlogPost(),
 ]);
 
 function dotsLayer() {
-  return $('div', {className: 'dots-layer', style: {position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', '--dot-color': 'hsla(var(--accent-hue), 40%, 50%, 0.1)', '--dot-spacing': '20', '--dot-radius': '1.5', background: 'paint(dots-bg)', pointerEvents: 'none', zIndex: '0'}});
+  return $("div", {
+    className: "dots-layer",
+    style: {
+      position: "absolute",
+      top: "0",
+      left: "0",
+      width: "100%",
+      height: "100%",
+      "--dot-color": "hsla(var(--accent-hue), 40%, 50%, 0.1)",
+      "--dot-spacing": "20",
+      "--dot-radius": "1.5",
+      background: "paint(dots-bg)",
+      pointerEvents: "none",
+      zIndex: "0",
+    },
+  });
 }
 
 function createBlogPost() {
-  const meta = $('div', {className: 'post-meta', style: {display: 'flex', gap: '1.5rem', fontSize: '0.85rem', color: 'hsl(var(--accent-hue), 20%, 50%)', marginBottom: '1rem'}}, [
-    $('span', {}, ['2026.04.28']),
+  const meta = $("div", {
+    className: "post-meta",
+    style: {
+      display: "flex",
+      gap: "1.5rem",
+      fontSize: "0.85rem",
+      color: "hsl(var(--accent-hue), 20%, 50%)",
+      marginBottom: "1rem",
+    },
+  }, [
+    $("span", {}, ["2026.04.28"]),
   ]);
 
-  const body = $('div', {className: 'post-body', style: {color: 'hsl(var(--accent-hue), 12%, 75%)', fontSize: '0.95rem', lineHeight: '1.75'}}, [
-    $('p', {}, [
-      'This is my first blog, it documents the process of ',
-      'building this webpage with the ',
-      $('strong', {}, ['Document Object Model (DOM)']),
-      ', ',
-      $('strong', {}, ['CSS Object Model (CSSOM)']),
-      ', and ',
-      $('strong', {}, ['CSS Houdini ']),
-      'APIs.'],),
-
-    $('h3', {textContent: '1. DOM '}),
-    $('p', {}, [
-      'The Document Object Model (DOM) is the tree representation of a document. Every node in the ',
-      'tree is accessible and manipulable. For this page, I use:',
-    ]),
-    $('ul', {}, [
-      $('li', {}, [$('code', {textContent: 'document.createElement(tag)'}), ' — creates element nodes']),
-      $('li', {}, [$('code', {textContent: 'el.appendChild(child)'}), ' — inserts child nodes into the tree']),
-      $('li', {}, [$('code', {textContent: 'el.setAttribute(name, value)'}), ' / ', $('code', {textContent: 'el.className'}), ' — sets attributes']),
-      $('li', {}, [$('code', {textContent: 'el.textContent'}), ' / ', $('code', {textContent: 'el.innerHTML'}), ' — injects text']),
-      $('li', {}, [$('code', {textContent: 'el.addEventListener(event, fn)'}), ' — attaches event handlers']),
-      $('li', {}, [$('code', {textContent: 'el.classList.add/remove/toggle()'}), ' — manages CSS classes']),
-    ]),
-    $('p', {}, [
-      'A small helper function ',
-      $('code', {textContent: '$(tag, attrs, children)'}),
-      ' wraps these calls. Navigation, hero, ',
-      'blog content, footer is appended to ',
-      $('code', {textContent: 'document.body'}),
-      ' as its children.',
+  const body = $("div", {
+    className: "post-body",
+    style: {
+      color: "hsl(var(--accent-hue), 12%, 75%)",
+      fontSize: "0.95rem",
+      lineHeight: "1.75",
+    },
+  }, [
+    $("p", {}, [
+      "This is my first blog, it documents the process of ",
+      "building this webpage with the ",
+      $("strong", {}, ["Document Object Model (DOM)"]),
+      ", ",
+      $("strong", {}, ["CSS Object Model (CSSOM)"]),
+      ", and ",
+      $("strong", {}, ["CSS Houdini "]),
+      "APIs.",
     ]),
 
-    $('h3', {textContent: '2. CSSOM'}),
-    $('ul', {}, [
-      $('li', {}, [$('code', {textContent: 'new CSSStyleSheet()'}), ' — creates a constructable stylesheet']),
-      $('li', {}, [$('code', {textContent: 'sheet.insertRule(ruleText, index)'}), ' — inserts a CSS rule ']),
-      $('li', {}, [$('code', {textContent: 'sheet.replaceSync(cssText)'}), ' — replaces the entire stylesheet contents']),
-      $('li', {}, [$('code', {textContent: 'document.adoptedStyleSheets = [sheet]'}), ' — adopts the stylesheet into the document ']),
+    $("h3", { textContent: "1. DOM " }),
+    $("p", {}, [
+      "The Document Object Model (DOM) is the tree representation of a document. Every node in the ",
+      "tree is accessible and manipulable. For this page, I use:",
     ]),
-    $('p', {}, [
-      'Style rules, such as resetting and responsive media queries should be defined as ',
-      'string and passed through ',
-      $('code', {textContent: 'sheet.insertRule()'}),
-      '. It says that the style rules are mutable at runtime: you could swap color schemes, ',
-      'adjust typography, or toggle the entire layouts. ',
+    $("ul", {}, [
+      $("li", {}, [
+        $("code", { textContent: "document.createElement(tag)" }),
+        " — creates element nodes",
+      ]),
+      $("li", {}, [
+        $("code", { textContent: "el.appendChild(child)" }),
+        " — inserts child nodes into the tree",
+      ]),
+      $("li", {}, [
+        $("code", { textContent: "el.setAttribute(name, value)" }),
+        " / ",
+        $("code", { textContent: "el.className" }),
+        " — sets attributes",
+      ]),
+      $("li", {}, [
+        $("code", { textContent: "el.textContent" }),
+        " / ",
+        $("code", { textContent: "el.innerHTML" }),
+        " — injects text",
+      ]),
+      $("li", {}, [
+        $("code", { textContent: "el.addEventListener(event, fn)" }),
+        " — attaches event handlers",
+      ]),
+      $("li", {}, [
+        $("code", { textContent: "el.classList.add/remove/toggle()" }),
+        " — manages CSS classes",
+      ]),
     ]),
-    $('div', {className: 'api-highlight'}, [
-      $('p', {}, ['CSS style rules are injected via ', $('code', {textContent: 'CSSStyleSheet.insertRule()'}), ' on a stylesheet attached through ', $('code', {textContent: 'document.adoptedStyleSheets'}), '.']),
+    $("p", {}, [
+      "A small helper function ",
+      $("code", { textContent: "$(tag, attrs, children)" }),
+      " wraps these calls. Navigation, hero, ",
+      "blog content, footer is appended to ",
+      $("code", { textContent: "document.body" }),
+      " as its children.",
+    ]),
+
+    $("h3", { textContent: "2. CSSOM" }),
+    $("ul", {}, [
+      $("li", {}, [
+        $("code", { textContent: "new CSSStyleSheet()" }),
+        " — creates a constructable stylesheet",
+      ]),
+      $("li", {}, [
+        $("code", { textContent: "sheet.insertRule(ruleText, index)" }),
+        " — inserts a CSS rule ",
+      ]),
+      $("li", {}, [
+        $("code", { textContent: "sheet.replaceSync(cssText)" }),
+        " — replaces the entire stylesheet contents",
+      ]),
+      $("li", {}, [
+        $("code", { textContent: "document.adoptedStyleSheets = [sheet]" }),
+        " — adopts the stylesheet into the document ",
+      ]),
+    ]),
+    $("p", {}, [
+      "Style rules, such as resetting and responsive media queries should be defined as ",
+      "string and passed through ",
+      $("code", { textContent: "sheet.insertRule()" }),
+      ". It says that the style rules are mutable at runtime: you could swap color schemes, ",
+      "adjust typography, or toggle the entire layouts. ",
+    ]),
+    $("div", { className: "api-highlight" }, [
+      $("p", {}, [
+        "CSS style rules are injected via ",
+        $("code", { textContent: "CSSStyleSheet.insertRule()" }),
+        " on a stylesheet attached through ",
+        $("code", { textContent: "document.adoptedStyleSheets" }),
+        ".",
+      ]),
     ]),
 
     // ── Houdini deep dive ──
-    $('h3', {textContent: '3. CSS Houdini'}),
-    $('p', {}, [
-      'CSS Houdini is a collection of low-level APIs that expose the browser\'s CSS rendering engine ',
-      '. It allows you to hook into the styling and layout pipeline',
-      '. On this page, three Houdini APIs are used:',
+    $("h3", { textContent: "3. CSS Houdini" }),
+    $("p", {}, [
+      "CSS Houdini is a collection of low-level APIs that expose the browser's CSS rendering engine ",
+      ". It allows you to hook into the styling and layout pipeline",
+      ". On this page, three Houdini APIs are used:",
     ]),
 
-    $('h3', {textContent: '3a. CSS Properties and Values API'}),
-    $('p', {}, [
-      'This API lets you register custom CSS properties with a specific syntax, inheritance behavior, and ',
-      'initial value. The browser can then animate and validate these properties natively.',
+    $("h3", { textContent: "3a. CSS Properties and Values API" }),
+    $("p", {}, [
+      "This API lets you register custom CSS properties with a specific syntax, inheritance behavior, and ",
+      "initial value. The browser can then animate and validate these properties natively.",
     ]),
-    $('pre', {}, [$('code', {className: 'language-js', innerHTML: highlightCode(
-      `CSS.registerProperty({
+    $("pre", {}, [
+      $("code", {
+        className: "language-js",
+        innerHTML: highlightCode(
+          `CSS.registerProperty({
   name: '--gradient-angle',
   syntax: '<angle>',
   inherits: false,
@@ -614,32 +840,41 @@ CSS.registerProperty({
   syntax: '<number>',
   inherits: true,
   initialValue: '210',
-});`)}),]),
-    $('p', {}, [
-      'Because ',
-      $('code', {textContent: '--gradient-angle'}),
-      ' is typed as ',
-      $('code', {textContent: '<angle>'}),
-      ', the browser knows how to interpolate it. This means CSS transitions and animations on custom ',
-      'properties work out of the box. The ',
-      $('code', {textContent: '--accent-hue'}),
-      ' property drives the site-wide color palette — changing its value shifts every accent color on the page.',
+});`,
+        ),
+      }),
     ]),
-    $('div', {className: 'api-highlight'}, [
-      $('div', {className: 'label', textContent: 'API Used'}),
-      $('p', {}, [$('code', {textContent: 'CSS.registerProperty()'}), ' — registers 6 custom properties (--gradient-angle, --accent-hue, --text-glow, --card-shadow-spread, --nav-blur, --nav-spread) with typed syntax.']),
+    $("p", {}, [
+      "Because ",
+      $("code", { textContent: "--gradient-angle" }),
+      " is typed as ",
+      $("code", { textContent: "<angle>" }),
+      ", the browser knows how to interpolate it. This means CSS transitions and animations on custom ",
+      "properties work out of the box. The ",
+      $("code", { textContent: "--accent-hue" }),
+      " property drives the site-wide color palette — changing its value shifts every accent color on the page.",
+    ]),
+    $("div", { className: "api-highlight" }, [
+      $("div", { className: "label", textContent: "API Used" }),
+      $("p", {}, [
+        $("code", { textContent: "CSS.registerProperty()" }),
+        " — registers 6 custom properties (--gradient-angle, --accent-hue, --text-glow, --card-shadow-spread, --nav-blur, --nav-spread) with typed syntax.",
+      ]),
     ]),
 
-    $('h3', {textContent: '3b. CSS Typed OM'}),
-    $('p', {}, [
-      'The Typed OM replaces the old string-based ',
-      $('code', {textContent: 'el.style'}),
-      ' interface with typed CSS values. Instead of setting ',
-      $('code', {textContent: 'el.style.left = "10px"'}),
-      ' (which requires string parsing), you can write:',
+    $("h3", { textContent: "3b. CSS Typed OM" }),
+    $("p", {}, [
+      "The Typed OM replaces the old string-based ",
+      $("code", { textContent: "el.style" }),
+      " interface with typed CSS values. Instead of setting ",
+      $("code", { textContent: 'el.style.left = "10px"' }),
+      " (which requires string parsing), you can write:",
     ]),
-    $('pre', {}, [$('code', {className: 'language-js', innerHTML: highlightCode(
-      `// Old way (string-based)
+    $("pre", {}, [
+      $("code", {
+        className: "language-js",
+        innerHTML: highlightCode(
+          `// Old way (string-based)
 el.style.left = '10px';
 el.style.transform = 'translateX(50px) rotate(45deg)';
 
@@ -648,34 +883,47 @@ el.attributeStyleMap.set('left', CSS.px(10));
 el.attributeStyleMap.set('transform', new CSSTransformValue([
   new CSSTranslate(CSS.px(50), CSS.px(0)),
   new CSSRotate(CSS.deg(45)),
-]));`)}),]),
-    $('p', {}, [
-      'This is not just syntactic sugar — the Typed OM avoids string serialization/parsing overhead, enables ',
-      'direct mathematical operations on CSS values, and allows the browser to optimize style computations. ',
-      'The navigation bar on this page uses Typed OM for its scroll-aware styling.',
+]));`,
+        ),
+      }),
     ]),
-    $('div', {className: 'api-highlight'}, [
-      $('div', {className: 'label', textContent: 'API Used'}),
-      $('p', {}, [$('code', {textContent: 'el.attributeStyleMap.set()'}), ', ', $('code', {textContent: 'CSS.px()'}), ', ', $('code', {textContent: 'CSS.deg()'}), ' — used for scroll-driven nav bar effects and dynamic positioning.']),
+    $("p", {}, [
+      "This is not just syntactic sugar — the Typed OM avoids string serialization/parsing overhead, enables ",
+      "direct mathematical operations on CSS values, and allows the browser to optimize style computations. ",
+      "The navigation bar on this page uses Typed OM for its scroll-aware styling.",
+    ]),
+    $("div", { className: "api-highlight" }, [
+      $("div", { className: "label", textContent: "API Used" }),
+      $("p", {}, [
+        $("code", { textContent: "el.attributeStyleMap.set()" }),
+        ", ",
+        $("code", { textContent: "CSS.px()" }),
+        ", ",
+        $("code", { textContent: "CSS.deg()" }),
+        " used for scroll-driven nav bar effects and dynamic positioning.",
+      ]),
     ]),
 
-    $('h3', {textContent: '3c. CSS Paint API '}),
-    $('p', {}, [
-      'The Paint API lets you define custom image generators in JavaScript that can be used anywhere CSS expects an ',
-      'image — ',
-      $('code', {textContent: 'background-image'}),
-      ', ',
-      $('code', {textContent: 'border-image'}),
-      ', ',
-      $('code', {textContent: 'mask-image'}),
-      ', etc. The worklet runs on a separate thread (the paint thread), so it doesn\'t block the main thread.',
+    $("h3", { textContent: "3c. CSS Paint API " }),
+    $("p", {}, [
+      "The Paint API lets you define custom image generators in JavaScript that can be used anywhere CSS expects an ",
+      "image — ",
+      $("code", { textContent: "background-image" }),
+      ", ",
+      $("code", { textContent: "border-image" }),
+      ", ",
+      $("code", { textContent: "mask-image" }),
+      ", etc. The worklet runs on a separate thread (the paint thread), so it doesn't block the main thread.",
     ]),
-    $('p', {}, [
-      'To keep this a single file with zero network dependencies, the worklet code is stored in a JavaScript string ',
-      'and loaded via a blob URL:',
+    $("p", {}, [
+      "To keep this a single file with zero network dependencies, the worklet code is stored in a JavaScript string ",
+      "and loaded via a blob URL:",
     ]),
-    $('pre', {}, [$('code', {className: 'language-js', innerHTML: highlightCode(
-      `const paintCode = \`
+    $("pre", {}, [
+      $("code", {
+        className: "language-js",
+        innerHTML: highlightCode(
+          `const paintCode = \`
 class GridPainter {
   static get inputProperties() { return ['--grid-color', '--grid-size']; }
   paint(ctx, size, props) { /* ... draw grid ... */ }
@@ -684,98 +932,155 @@ registerPaint('grid-bg', GridPainter);
 \`;
 const blob = new Blob([paintCode], { type: 'text/javascript' });
 const url = URL.createObjectURL(blob);
-CSS.paintWorklet.addModule(url);`)}),]),
-    $('p', {}, [
-      'Three custom painters are registered on this page:',
+CSS.paintWorklet.addModule(url);`,
+        ),
+      }),
     ]),
-    $('ul', {}, [
-      $('li', {}, [$('strong', {textContent: 'grid-bg'}), ' — draws a configurable grid pattern (used for the hero section background)']),
-      $('li', {}, [$('strong', {textContent: 'dots-bg'}), ' — draws a dotted pattern (used behind blog post cards)']),
-      $('li', {}, [$('strong', {textContent: 'gradient-border'}), ' — draws animated gradient borders around elements']),
+    $("p", {}, [
+      "Three custom painters are registered on this page:",
     ]),
-    $('p', {}, [
-      'Each painter reads its configuration from custom CSS properties (parameters passed via ',
-      $('code', {textContent: 'inputProperties'}),
-      '), making them fully themeable through CSS variables.',
+    $("ul", {}, [
+      $("li", {}, [
+        $("strong", { textContent: "grid-bg" }),
+        " — draws a configurable grid pattern (used for the hero section background)",
+      ]),
+      $("li", {}, [
+        $("strong", { textContent: "dots-bg" }),
+        " — draws a dotted pattern (used behind blog post cards)",
+      ]),
+      $("li", {}, [
+        $("strong", { textContent: "gradient-border" }),
+        " — draws animated gradient borders around elements",
+      ]),
     ]),
-    $('div', {className: 'api-highlight'}, [
-      $('div', {className: 'label', textContent: 'API Used'}),
-      $('p', {}, [$('code', {textContent: 'CSS.paintWorklet.addModule(url)'}), ' via blob URL — registers 3 paint worklets (grid-bg, dots-bg, gradient-border) applied to hero backgrounds and card borders.']),
+    $("p", {}, [
+      "Each painter reads its configuration from custom CSS properties (parameters passed via ",
+      $("code", { textContent: "inputProperties" }),
+      "), making them fully themeable through CSS variables.",
     ]),
-
-    // ── Summary ──
-    $('h3', {textContent: '4. Bringing It Together'}),
-    $('div', {className: 'gradient-card', style: {
-      '--border-width': '2',
-      '--border-color-1': 'hsl(var(--accent-hue), 60%, 50%)',
-      '--border-color-2': 'hsl(calc(var(--accent-hue) + 30), 70%, 55%)',
-      '--border-angle': '135',
-      backgroundColor: 'hsla(var(--accent-hue), 30%, 8%, 0.95)',
-      backgroundImage: 'paint(gradient-border)',
-      borderRadius: '12px',
-      padding: '1.5rem',
-      margin: '1.25rem 0',
-    }}, [
-      $('p', {}, [
-        'The DOM builds the structure, the CSSOM defines ',
-        'the styling, and Houdini extends the rendering engine with custom paint work and typed properties. ',
+    $("div", { className: "api-highlight" }, [
+      $("div", { className: "label", textContent: "API Used" }),
+      $("p", {}, [
+        $("code", { textContent: "CSS.paintWorklet.addModule(url)" }),
+        " via blob URL — registers 3 paint worklets (grid-bg, dots-bg, gradient-border) applied to hero backgrounds and card borders.",
       ]),
     ]),
 
+    // ── Summary ──
+    $("h3", { textContent: "4. Bringing It Together" }),
+    $("div", {
+      className: "gradient-card",
+      style: {
+        "--border-width": "2",
+        "--border-color-1": "hsl(var(--accent-hue), 60%, 50%)",
+        "--border-color-2": "hsl(calc(var(--accent-hue) + 30), 70%, 55%)",
+        "--border-angle": "135",
+        backgroundColor: "hsla(var(--accent-hue), 30%, 8%, 0.95)",
+        backgroundImage: "paint(gradient-border)",
+        borderRadius: "12px",
+        padding: "1.5rem",
+        margin: "1.25rem 0",
+      },
+    }, [
+      $("p", {}, [
+        "The DOM builds the structure, the CSSOM defines ",
+        "the styling, and Houdini extends the rendering engine with custom paint work and typed properties. ",
+      ]),
+    ]),
   ]);
 
-  return $('article', {className: 'blog-post fade-in'}, [
+  return $("article", { className: "blog-post fade-in" }, [
     dotsLayer(),
     meta,
-    $('h2', {className: 'post-title', textContent: 'Building a Webpage', style: {fontSize: '1.6rem', fontWeight: '700', marginBottom: '1rem', lineHeight: '1.3', color: 'hsl(var(--accent-hue), 30%, 92%)'}}),
+    $("h2", {
+      className: "post-title",
+      textContent: "Building a Webpage",
+      style: {
+        fontSize: "1.6rem",
+        fontWeight: "700",
+        marginBottom: "1rem",
+        lineHeight: "1.3",
+        color: "hsl(var(--accent-hue), 30%, 92%)",
+      },
+    }),
     body,
   ]);
 }
 
 // ── About Section ────────────────────────────
-const aboutSection = $('section', {id: 'about'}, [
-  $('h2', {className: 'section-title fade-in', textContent: 'About'}),
-  $('div', {className: 'blog-post fade-in'}, [
+const aboutSection = $("section", { id: "about" }, [
+  $("h2", { className: "section-title fade-in", textContent: "About" }),
+  $("div", { className: "blog-post fade-in" }, [
     dotsLayer(),
-    $('p', {style: {position: 'relative', zIndex: 1, color: 'hsl(var(--accent-hue), 12%, 75%)', lineHeight: 1.75, marginTop: '0.5rem'}}, [
-      'The source code for this page lives at ',
-      $('a', {href: 'https://github.com/chengjilai/chengjilai.github.io', textContent: 'github.com/chengjilai/chengjilai.github.io'}),
-      '.',
+    $("p", {
+      style: {
+        position: "relative",
+        zIndex: 1,
+        color: "hsl(var(--accent-hue), 12%, 75%)",
+        lineHeight: 1.75,
+        marginTop: "0.5rem",
+      },
+    }, [
+      "The source code for this page lives at ",
+      $("a", {
+        href: "https://github.com/chengjilai/chengjilai.github.io",
+        textContent: "github.com/chengjilai/chengjilai.github.io",
+      }),
+      ".",
     ]),
   ]),
 ]);
 
-const themeBtn = $('button', {
-  textContent: 'Shift Hue',
+const themeBtn = $("button", {
+  textContent: "Shift Hue",
   style: {
-    background: 'hsla(var(--accent-hue), 40%, 25%, 0.5)',
-    color: 'hsl(var(--accent-hue), 20%, 80%)',
-    border: '1px solid hsla(var(--accent-hue), 40%, 35%, 0.5)',
-    borderRadius: '8px',
-    padding: '0.5rem 1rem',
-    cursor: 'pointer',
-    fontSize: '0.85rem',
+    background: "hsla(var(--accent-hue), 40%, 25%, 0.5)",
+    color: "hsl(var(--accent-hue), 20%, 80%)",
+    border: "1px solid hsla(var(--accent-hue), 40%, 35%, 0.5)",
+    borderRadius: "8px",
+    padding: "0.5rem 1rem",
+    cursor: "pointer",
+    fontSize: "0.85rem",
     fontWeight: 500,
-    transition: 'all 0.2s',
+    transition: "all 0.2s",
   },
   onMouseEnter() {
-    this.style.background = 'hsla(var(--accent-hue), 40%, 35%, 0.6)';
+    this.style.background = "hsla(var(--accent-hue), 40%, 35%, 0.6)";
   },
   onMouseLeave() {
-    this.style.background = 'hsla(var(--accent-hue), 40%, 25%, 0.5)';
+    this.style.background = "hsla(var(--accent-hue), 40%, 25%, 0.5)";
   },
   onClick() {
-    const current = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--accent-hue').trim()) || 210;
+    const current =
+      parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--accent-hue",
+        ).trim(),
+      ) || 210;
     const next = (current + 60) % 360;
-    document.documentElement.attributeStyleMap.set('--accent-hue', new CSSUnparsedValue([String(next)]));
+    document.documentElement.attributeStyleMap.set(
+      "--accent-hue",
+      new CSSUnparsedValue([String(next)]),
+    );
   },
 });
 
-const footer = $('footer', {style: {textAlign: 'center', padding: '3rem 2rem', borderTop: '1px solid hsla(var(--accent-hue), 40%, 25%, 0.3)', color: 'hsl(var(--accent-hue), 20%, 40%)', fontSize: '0.85rem'}}, [
-  $('p', {}, ['\u00A9 2026 Jilai Cheng']),
-  $('p', {style: {marginTop: '0.5rem', fontSize: '0.8rem'}}, [
-    'Source on ',
-    $('a', {href: 'https://github.com/chengjilai/chengjilai.github.io', textContent: 'GitHub'}),
+const footer = $("footer", {
+  style: {
+    textAlign: "center",
+    padding: "3rem 2rem",
+    borderTop: "1px solid hsla(var(--accent-hue), 40%, 25%, 0.3)",
+    color: "hsl(var(--accent-hue), 20%, 40%)",
+    fontSize: "0.85rem",
+  },
+}, [
+  $("p", {}, ["\u00A9 2026 Jilai Cheng"]),
+  $("p", { style: { marginTop: "0.5rem", fontSize: "0.8rem" } }, [
+    "Source on ",
+    $("a", {
+      href: "https://github.com/chengjilai/chengjilai.github.io",
+      textContent: "GitHub",
+    }),
   ]),
   themeBtn,
 ]);
@@ -787,11 +1092,17 @@ document.body.appendChild(aboutSection);
 document.body.appendChild(footer);
 
 let ticking = false;
-addEventListener('scroll', () => {
+addEventListener("scroll", () => {
   if (!ticking) {
     requestAnimationFrame(() => {
-      nav.attributeStyleMap.set('--nav-blur', new CSSUnparsedValue([String(4 + Math.min(scrollY / 40, 12)) + 'px']));
-      nav.attributeStyleMap.set('--nav-spread', new CSSUnparsedValue([String(Math.min(scrollY / 160, 4)) + 'px']));
+      nav.attributeStyleMap.set(
+        "--nav-blur",
+        new CSSUnparsedValue([String(4 + Math.min(scrollY / 40, 12)) + "px"]),
+      );
+      nav.attributeStyleMap.set(
+        "--nav-spread",
+        new CSSUnparsedValue([String(Math.min(scrollY / 160, 4)) + "px"]),
+      );
       ticking = false;
     });
     ticking = true;

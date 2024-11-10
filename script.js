@@ -52,6 +52,30 @@ CSS.registerProperty({
   inherits: false,
   initialValue: '0px',
 });
+CSS.registerProperty({
+  name: '--border-width',
+  syntax: '<length>',
+  inherits: false,
+  initialValue: '2px',
+});
+CSS.registerProperty({
+  name: '--border-color-1',
+  syntax: '<color>',
+  inherits: false,
+  initialValue: 'transparent',
+});
+CSS.registerProperty({
+  name: '--border-color-2',
+  syntax: '<color>',
+  inherits: false,
+  initialValue: 'transparent',
+});
+CSS.registerProperty({
+  name: '--border-angle',
+  syntax: '<angle>',
+  inherits: false,
+  initialValue: '0deg',
+});
 const paintCode = `
 class GridPainter {
   static get inputProperties() {

@@ -858,7 +858,7 @@ CSS.registerProperty({
       $("div", { className: "label", textContent: "API Used" }),
       $("p", {}, [
         $("code", { textContent: "CSS.registerProperty()" }),
-        " — registers 6 custom properties (--gradient-angle, --accent-hue, --text-glow, --card-shadow-spread, --nav-blur, --nav-spread) with typed syntax.",
+        " registers 6 custom properties (--gradient-angle, --accent-hue, --text-glow, --card-shadow-spread, --nav-blur, --nav-spread) with typed syntax.",
       ]),
     ]),
 
@@ -1051,12 +1051,11 @@ const themeBtn = $("button", {
     this.style.background = "hsla(var(--accent-hue), 40%, 25%, 0.5)";
   },
   onClick() {
-    const current =
-      parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue(
-          "--accent-hue",
-        ).trim(),
-      ) || 210;
+    const current = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--accent-hue",
+      ).trim(),
+    ) || 210;
     const next = (current + 60) % 360;
     document.documentElement.attributeStyleMap.set(
       "--accent-hue",

@@ -10,8 +10,8 @@ document.documentElement.style.scrollBehavior = "smooth";
 document.documentElement.style.fontSize = "16px";
 Object.assign(document.body.style, {
   fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
-  background: "hsl(var(--accent-hue), 30%, 8%)",
-  color: "hsl(var(--accent-hue), 15%, 88%)",
+  background: "hsl(var(--accent-hue), 20%, 97%)",
+  color: "hsl(var(--accent-hue), 12%, 18%)",
   minHeight: "100vh",
   overflowX: "hidden",
   lineHeight: "1.6",
@@ -179,10 +179,10 @@ const rules = [
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: hsla(var(--accent-hue), 30%, 6%, 0.85);
+    background: hsla(var(--accent-hue), 10%, 97%, 0.92);
     backdrop-filter: blur(12px) saturate(150%);
-    border-bottom: 1px solid hsla(var(--accent-hue), 40%, 30%, 0.3);
-    box-shadow: 0 2px var(--nav-blur) var(--nav-spread) hsla(210, 30%, 10%, 0.25);
+    border-bottom: 1px solid hsla(var(--accent-hue), 15%, 85%, 0.6);
+    box-shadow: 0 2px var(--nav-blur) var(--nav-spread) hsla(210, 5%, 0%, 0.08);
     padding: 0 2rem;
     display: flex;
     align-items: center;
@@ -190,7 +190,7 @@ const rules = [
     height: 56px;
   }`,
   `.nav-links a {
-    color: hsl(var(--accent-hue), 20%, 70%);
+    color: hsl(var(--accent-hue), 15%, 35%);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
@@ -198,7 +198,7 @@ const rules = [
     letter-spacing: 0.2px;
   }`,
   `.nav-links a:hover {
-    color: hsl(var(--accent-hue), 70%, 70%);
+    color: hsl(var(--accent-hue), 65%, 45%);
   }`,
 
   // Hero
@@ -224,7 +224,7 @@ const rules = [
     font-weight: 700;
     letter-spacing: -0.5px;
     margin-bottom: 2.5rem;
-    color: hsl(var(--accent-hue), 30%, 90%);
+    color: hsl(var(--accent-hue), 15%, 20%);
     position: relative;
     display: inline-block;
   }`,
@@ -236,23 +236,24 @@ const rules = [
     width: 48px;
     height: 3px;
     border-radius: 2px;
-    background: hsl(var(--accent-hue), 60%, 55%);
+    background: hsl(var(--accent-hue), 65%, 50%);
   }`,
 
   // Blog post
   `.blog-post {
     padding: 2rem;
     border-radius: 16px;
-    border: 1px solid hsla(var(--accent-hue), 40%, 30%, 0.35);
+    border: 1px solid hsla(var(--accent-hue), 10%, 85%, 0.8);
     margin-bottom: 2rem;
     position: relative;
     transition: transform 0.25s, box-shadow 0.25s;
     overflow: hidden;
+    background: #fff;
   }`,
   `.blog-post:hover {
     transform: translateY(-2px);
     --card-shadow-spread: 8px;
-    box-shadow: 0 4px 24px hsla(var(--accent-hue), 50%, 10%, 0.5);
+    box-shadow: 0 4px 24px hsla(210, 10%, 0%, 0.1);
   }`,
   `.blog-post > * { position: relative; z-index: 1; }`,
   `.post-meta span {
@@ -264,21 +265,22 @@ const rules = [
     font-size: 1.2rem;
     font-weight: 600;
     margin: 1.8rem 0 0.8rem;
-    color: hsl(var(--accent-hue), 40%, 80%);
+    color: hsl(var(--accent-hue), 30%, 22%);
   }`,
   `.post-body p {
     margin-bottom: 1rem;
   }`,
   `.post-body code {
-    background: hsla(var(--accent-hue), 40%, 20%, 0.45);
+    background: hsla(var(--accent-hue), 20%, 85%, 0.6);
     padding: 0.15em 0.4em;
     border-radius: 4px;
     font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
     font-size: 0.88em;
+    color: hsl(var(--accent-hue), 30%, 25%);
   }`,
   `.post-body pre {
-    background: hsl(var(--accent-hue), 30%, 10%);
-    border: 1px solid hsla(var(--accent-hue), 40%, 25%, 0.5);
+    background: hsl(var(--accent-hue), 10%, 95%);
+    border: 1px solid hsla(var(--accent-hue), 10%, 82%, 0.6);
     border-radius: 10px;
     padding: 1.25rem;
     overflow-x: auto;
@@ -291,12 +293,13 @@ const rules = [
     background: none;
     padding: 0;
     border-radius: 0;
+    color: inherit;
   }`,
-  `.post-body .tk-keyword { color: hsl(var(--accent-hue), 60%, 62%); font-weight: 500; }`,
-  `.post-body .tk-string { color: hsl(calc(var(--accent-hue) + 90), 50%, 50%); }`,
-  `.post-body .tk-comment { color: hsl(var(--accent-hue), 5%, 30%); font-style: italic; }`,
-  `.post-body .tk-number { color: hsl(calc(var(--accent-hue) + 50), 55%, 55%); }`,
-  `.post-body .tk-builtin { color: hsl(calc(var(--accent-hue) - 40), 55%, 60%); }`,
+  `.post-body .tk-keyword { color: hsl(var(--accent-hue), 75%, 35%); font-weight: 500; }`,
+  `.post-body .tk-string { color: hsl(calc(var(--accent-hue) + 90), 55%, 30%); }`,
+  `.post-body .tk-comment { color: hsl(var(--accent-hue), 5%, 50%); font-style: italic; }`,
+  `.post-body .tk-number { color: hsl(calc(var(--accent-hue) + 50), 65%, 35%); }`,
+  `.post-body .tk-builtin { color: hsl(calc(var(--accent-hue) - 40), 50%, 38%); }`,
   `.post-body ul, .post-body ol {
     margin: 0.75rem 0 1rem 1.5rem;
   }`,
@@ -304,43 +307,22 @@ const rules = [
     margin-bottom: 0.4rem;
   }`,
   `.post-body a {
-    color: hsl(var(--accent-hue), 65%, 60%);
+    color: hsl(var(--accent-hue), 70%, 42%);
     text-decoration: none;
-    border-bottom: 1px solid hsla(var(--accent-hue), 65%, 60%, 0.3);
+    border-bottom: 1px solid hsla(var(--accent-hue), 70%, 42%, 0.3);
     transition: border-color 0.2s;
   }`,
   `.post-body a:hover {
-    border-color: hsl(var(--accent-hue), 65%, 70%);
-  }`,
-
-  // API highlight box
-  `.api-highlight {
-    background: hsla(var(--accent-hue), 60%, 30%, 0.15);
-    border-left: 3px solid hsl(var(--accent-hue), 55%, 50%);
-    border-radius: 0 8px 8px 0;
-    padding: 1rem 1.25rem;
-    margin: 1.25rem 0;
-  }`,
-  `.api-highlight .label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: hsl(var(--accent-hue), 50%, 60%);
-    margin-bottom: 0.35rem;
-  }`,
-  `.api-highlight p {
-    font-size: 0.9rem;
-    margin: 0;
+    border-color: hsl(var(--accent-hue), 70%, 35%);
   }`,
 
   // Footer
   `footer a {
-    color: hsl(var(--accent-hue), 40%, 55%);
+    color: hsl(var(--accent-hue), 50%, 42%);
     text-decoration: none;
   }`,
   `footer a:hover {
-    color: hsl(var(--accent-hue), 50%, 65%);
+    color: hsl(var(--accent-hue), 50%, 32%);
   }`,
 
   // Keyframes
@@ -586,7 +568,7 @@ const nav = $("nav", {}, [
       fontWeight: "700",
       fontSize: "1.25rem",
       letterSpacing: "-0.3px",
-      color: "hsl(var(--accent-hue), 70%, 75%)",
+      color: "hsl(var(--accent-hue), 55%, 35%)",
     },
   }),
   $("ul", {
@@ -603,9 +585,9 @@ const hero = $("section", {
   id: "home",
   className: "hero",
   style: {
-    "--grid-color": "hsl(var(--accent-hue), 40%, 25%)",
+    "--grid-color": "hsl(var(--accent-hue), 15%, 82%)",
     "--grid-size": "50",
-    "--grid-opacity": "0.25",
+    "--grid-opacity": "0.35",
     background: "paint(grid-bg)",
   },
 }, [
@@ -616,7 +598,7 @@ const hero = $("section", {
       fontWeight: "400",
       letterSpacing: "2px",
       textTransform: "uppercase",
-      color: "hsl(var(--accent-hue), 40%, 55%)",
+      color: "hsl(var(--accent-hue), 35%, 42%)",
       marginBottom: "0.5rem",
     },
   }),
@@ -628,7 +610,7 @@ const hero = $("section", {
       fontWeight: "800",
       letterSpacing: "-1px",
       background:
-        "linear-gradient(135deg, hsl(var(--accent-hue), 80%, 70%), hsl(calc(var(--accent-hue) + 40), 70%, 55%), hsl(var(--accent-hue), 60%, 70%))",
+        "linear-gradient(135deg, hsl(var(--accent-hue), 80%, 48%), hsl(calc(var(--accent-hue) + 70), 75%, 45%), hsl(calc(var(--accent-hue) - 30), 70%, 48%))",
       backgroundSize: "200% 200%",
       WebkitBackgroundClip: "text",
       backgroundClip: "text",
@@ -640,7 +622,7 @@ const hero = $("section", {
     className: "tagline fade-in",
     style: {
       fontSize: "1.15rem",
-      color: "hsl(var(--accent-hue), 15%, 65%)",
+      color: "hsl(var(--accent-hue), 10%, 42%)",
       maxWidth: "540px",
       margin: "1.5rem auto 0",
     },
@@ -656,7 +638,7 @@ const hero = $("section", {
       flexDirection: "column",
       alignItems: "center",
       gap: "0.5rem",
-      color: "hsl(var(--accent-hue), 30%, 40%)",
+      color: "hsl(var(--accent-hue), 20%, 60%)",
       fontSize: "0.75rem",
       animation: "bounce 2s ease infinite",
     },
@@ -667,8 +649,8 @@ const hero = $("section", {
       style: {
         width: "24px",
         height: "24px",
-        borderRight: "2px solid hsl(var(--accent-hue), 30%, 40%)",
-        borderBottom: "2px solid hsl(var(--accent-hue), 30%, 40%)",
+        borderRight: "2px solid hsl(var(--accent-hue), 20%, 60%)",
+        borderBottom: "2px solid hsl(var(--accent-hue), 20%, 60%)",
         transform: "rotate(45deg)",
       },
     }),
@@ -688,7 +670,7 @@ function dotsLayer() {
       left: "0",
       width: "100%",
       height: "100%",
-      "--dot-color": "hsla(var(--accent-hue), 40%, 50%, 0.1)",
+      "--dot-color": "hsla(var(--accent-hue), 15%, 75%, 0.15)",
       "--dot-spacing": "20",
       "--dot-radius": "1.5",
       background: "paint(dots-bg)",
@@ -705,7 +687,7 @@ function createBlogPost() {
       display: "flex",
       gap: "1.5rem",
       fontSize: "0.85rem",
-      color: "hsl(var(--accent-hue), 20%, 50%)",
+      color: "hsl(var(--accent-hue), 8%, 48%)",
       marginBottom: "1rem",
     },
   }, [
@@ -715,7 +697,7 @@ function createBlogPost() {
   const body = $("div", {
     className: "post-body",
     style: {
-      color: "hsl(var(--accent-hue), 12%, 75%)",
+      color: "hsl(var(--accent-hue), 10%, 24%)",
       fontSize: "0.95rem",
       lineHeight: "1.75",
     },
@@ -801,15 +783,6 @@ function createBlogPost() {
       ". It says that the style rules are mutable at runtime: you could swap color schemes, ",
       "adjust typography, or toggle the entire layouts. ",
     ]),
-    $("div", { className: "api-highlight" }, [
-      $("p", {}, [
-        "CSS style rules are injected via ",
-        $("code", { textContent: "CSSStyleSheet.insertRule()" }),
-        " on a stylesheet attached through ",
-        $("code", { textContent: "document.adoptedStyleSheets" }),
-        ".",
-      ]),
-    ]),
 
     // ── Houdini deep dive ──
     $("h3", { textContent: "3. CSS Houdini" }),
@@ -854,13 +827,6 @@ CSS.registerProperty({
       $("code", { textContent: "--accent-hue" }),
       " property drives the site-wide color palette changing its value shifts every accent color on the page.",
     ]),
-    $("div", { className: "api-highlight" }, [
-      $("div", { className: "label", textContent: "API Used" }),
-      $("p", {}, [
-        $("code", { textContent: "CSS.registerProperty()" }),
-        " registers 6 custom properties (--gradient-angle, --accent-hue, --text-glow, --card-shadow-spread, --nav-blur, --nav-spread) with typed syntax.",
-      ]),
-    ]),
 
     $("h3", { textContent: "3b. CSS Typed OM" }),
     $("p", {}, [
@@ -891,17 +857,6 @@ el.attributeStyleMap.set('transform', new CSSTransformValue([
       "This is not just syntactic sugar the Typed OM avoids string serialization/parsing overhead, enables ",
       "direct mathematical operations on CSS values, and allows the browser to optimize style computations. ",
       "The navigation bar on this page uses Typed OM for its scroll-aware styling.",
-    ]),
-    $("div", { className: "api-highlight" }, [
-      $("div", { className: "label", textContent: "API Used" }),
-      $("p", {}, [
-        $("code", { textContent: "el.attributeStyleMap.set()" }),
-        ", ",
-        $("code", { textContent: "CSS.px()" }),
-        ", ",
-        $("code", { textContent: "CSS.deg()" }),
-        " used for scroll-driven nav bar effects and dynamic positioning.",
-      ]),
     ]),
 
     $("h3", { textContent: "3c. CSS Paint API " }),
@@ -958,13 +913,6 @@ CSS.paintWorklet.addModule(url);`,
       $("code", { textContent: "inputProperties" }),
       "), making them fully themeable through CSS variables.",
     ]),
-    $("div", { className: "api-highlight" }, [
-      $("div", { className: "label", textContent: "API Used" }),
-      $("p", {}, [
-        $("code", { textContent: "CSS.paintWorklet.addModule(url)" }),
-        " via blob URL registers 3 paint worklets (grid-bg, dots-bg, gradient-border) applied to hero backgrounds and card borders.",
-      ]),
-    ]),
 
     // ── Summary ──
     $("h3", { textContent: "4. Bringing It Together" }),
@@ -975,7 +923,7 @@ CSS.paintWorklet.addModule(url);`,
         "--border-color-1": "hsl(var(--accent-hue), 60%, 50%)",
         "--border-color-2": "hsl(calc(var(--accent-hue) + 30), 70%, 55%)",
         "--border-angle": "135",
-        backgroundColor: "hsla(var(--accent-hue), 30%, 8%, 0.95)",
+        backgroundColor: "hsla(var(--accent-hue), 5%, 97%, 0.95)",
         backgroundImage: "paint(gradient-border)",
         borderRadius: "12px",
         padding: "1.5rem",
@@ -1000,7 +948,7 @@ CSS.paintWorklet.addModule(url);`,
         fontWeight: "700",
         marginBottom: "1rem",
         lineHeight: "1.3",
-        color: "hsl(var(--accent-hue), 30%, 92%)",
+        color: "hsl(var(--accent-hue), 15%, 15%)",
       },
     }),
     body,
@@ -1016,7 +964,7 @@ const aboutSection = $("section", { id: "about" }, [
       style: {
         position: "relative",
         zIndex: 1,
-        color: "hsl(var(--accent-hue), 12%, 75%)",
+        color: "hsl(var(--accent-hue), 10%, 24%)",
         lineHeight: 1.75,
         marginTop: "0.5rem",
       },
@@ -1034,9 +982,9 @@ const aboutSection = $("section", { id: "about" }, [
 const themeBtn = $("button", {
   textContent: "Shift Hue",
   style: {
-    background: "hsla(var(--accent-hue), 40%, 25%, 0.5)",
-    color: "hsl(var(--accent-hue), 20%, 80%)",
-    border: "1px solid hsla(var(--accent-hue), 40%, 35%, 0.5)",
+    background: "hsla(var(--accent-hue), 15%, 92%, 0.8)",
+    color: "hsl(var(--accent-hue), 20%, 32%)",
+    border: "1px solid hsla(var(--accent-hue), 15%, 78%, 0.8)",
     borderRadius: "8px",
     padding: "0.5rem 1rem",
     cursor: "pointer",
@@ -1045,10 +993,10 @@ const themeBtn = $("button", {
     transition: "all 0.2s",
   },
   onMouseEnter() {
-    this.style.background = "hsla(var(--accent-hue), 40%, 35%, 0.6)";
+    this.style.background = "hsla(var(--accent-hue), 20%, 82%, 0.9)";
   },
   onMouseLeave() {
-    this.style.background = "hsla(var(--accent-hue), 40%, 25%, 0.5)";
+    this.style.background = "hsla(var(--accent-hue), 15%, 92%, 0.8)";
   },
   onClick() {
     const current = parseInt(
@@ -1068,8 +1016,8 @@ const footer = $("footer", {
   style: {
     textAlign: "center",
     padding: "3rem 2rem",
-    borderTop: "1px solid hsla(var(--accent-hue), 40%, 25%, 0.3)",
-    color: "hsl(var(--accent-hue), 20%, 40%)",
+    borderTop: "1px solid hsla(var(--accent-hue), 15%, 82%, 0.5)",
+    color: "hsl(var(--accent-hue), 10%, 45%)",
     fontSize: "0.85rem",
   },
 }, [

@@ -739,31 +739,31 @@ function createBlogPost() {
     $("ul", {}, [
       $("li", {}, [
         $("code", { textContent: "document.createElement(tag)" }),
-        " — creates element nodes",
+        " creates element nodes",
       ]),
       $("li", {}, [
         $("code", { textContent: "el.appendChild(child)" }),
-        " — inserts child nodes into the tree",
+        " inserts child nodes into the tree",
       ]),
       $("li", {}, [
         $("code", { textContent: "el.setAttribute(name, value)" }),
         " / ",
         $("code", { textContent: "el.className" }),
-        " — sets attributes",
+        " sets attributes",
       ]),
       $("li", {}, [
         $("code", { textContent: "el.textContent" }),
         " / ",
         $("code", { textContent: "el.innerHTML" }),
-        " — injects text",
+        " injects text",
       ]),
       $("li", {}, [
         $("code", { textContent: "el.addEventListener(event, fn)" }),
-        " — attaches event handlers",
+        " attaches event handlers",
       ]),
       $("li", {}, [
         $("code", { textContent: "el.classList.add/remove/toggle()" }),
-        " — manages CSS classes",
+        " manages CSS classes",
       ]),
     ]),
     $("p", {}, [
@@ -779,19 +779,19 @@ function createBlogPost() {
     $("ul", {}, [
       $("li", {}, [
         $("code", { textContent: "new CSSStyleSheet()" }),
-        " — creates a constructable stylesheet",
+        " creates a constructable stylesheet",
       ]),
       $("li", {}, [
         $("code", { textContent: "sheet.insertRule(ruleText, index)" }),
-        " — inserts a CSS rule ",
+        " inserts a CSS rule ",
       ]),
       $("li", {}, [
         $("code", { textContent: "sheet.replaceSync(cssText)" }),
-        " — replaces the entire stylesheet contents",
+        " replaces the entire stylesheet contents",
       ]),
       $("li", {}, [
         $("code", { textContent: "document.adoptedStyleSheets = [sheet]" }),
-        " — adopts the stylesheet into the document ",
+        " adopts the stylesheet into the document ",
       ]),
     ]),
     $("p", {}, [
@@ -852,7 +852,7 @@ CSS.registerProperty({
       ", the browser knows how to interpolate it. This means CSS transitions and animations on custom ",
       "properties work out of the box. The ",
       $("code", { textContent: "--accent-hue" }),
-      " property drives the site-wide color palette — changing its value shifts every accent color on the page.",
+      " property drives the site-wide color palette changing its value shifts every accent color on the page.",
     ]),
     $("div", { className: "api-highlight" }, [
       $("div", { className: "label", textContent: "API Used" }),
@@ -888,7 +888,7 @@ el.attributeStyleMap.set('transform', new CSSTransformValue([
       }),
     ]),
     $("p", {}, [
-      "This is not just syntactic sugar — the Typed OM avoids string serialization/parsing overhead, enables ",
+      "This is not just syntactic sugar the Typed OM avoids string serialization/parsing overhead, enables ",
       "direct mathematical operations on CSS values, and allows the browser to optimize style computations. ",
       "The navigation bar on this page uses Typed OM for its scroll-aware styling.",
     ]),
@@ -907,7 +907,7 @@ el.attributeStyleMap.set('transform', new CSSTransformValue([
     $("h3", { textContent: "3c. CSS Paint API " }),
     $("p", {}, [
       "The Paint API lets you define custom image generators in JavaScript that can be used anywhere CSS expects an ",
-      "image — ",
+      "image ",
       $("code", { textContent: "background-image" }),
       ", ",
       $("code", { textContent: "border-image" }),
@@ -942,15 +942,15 @@ CSS.paintWorklet.addModule(url);`,
     $("ul", {}, [
       $("li", {}, [
         $("strong", { textContent: "grid-bg" }),
-        " — draws a configurable grid pattern (used for the hero section background)",
+        " draws a configurable grid pattern (used for the hero section background)",
       ]),
       $("li", {}, [
         $("strong", { textContent: "dots-bg" }),
-        " — draws a dotted pattern (used behind blog post cards)",
+        " draws a dotted pattern (used behind blog post cards)",
       ]),
       $("li", {}, [
         $("strong", { textContent: "gradient-border" }),
-        " — draws animated gradient borders around elements",
+        " draws animated gradient borders around elements",
       ]),
     ]),
     $("p", {}, [
@@ -962,7 +962,7 @@ CSS.paintWorklet.addModule(url);`,
       $("div", { className: "label", textContent: "API Used" }),
       $("p", {}, [
         $("code", { textContent: "CSS.paintWorklet.addModule(url)" }),
-        " via blob URL — registers 3 paint worklets (grid-bg, dots-bg, gradient-border) applied to hero backgrounds and card borders.",
+        " via blob URL registers 3 paint worklets (grid-bg, dots-bg, gradient-border) applied to hero backgrounds and card borders.",
       ]),
     ]),
 

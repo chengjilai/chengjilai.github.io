@@ -1,994 +1,272 @@
 "use strict";
+
+// ---------------------------------------------------------------
+// Head: created by JS, not by HTML.
+// index.html is one script tag; nothing else exists until here.
+// ---------------------------------------------------------------
 const meta = document.createElement("meta");
 meta.name = "viewport";
-meta.content = "width=device-width, initial-scale=1.0";
+meta.content = "width=device-width, initial-scale=1";
 document.head.appendChild(meta);
+
 const title = document.createElement("title");
 title.textContent = "Jilai Cheng";
 document.head.appendChild(title);
-document.documentElement.style.scrollBehavior = "smooth";
-document.documentElement.style.fontSize = "16px";
-Object.assign(document.body.style, {
-  fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
-  background: "hsl(var(--accent-hue), 20%, 97%)",
-  color: "hsl(var(--accent-hue), 12%, 18%)",
-  minHeight: "100vh",
-  overflowX: "hidden",
-  lineHeight: "1.6",
-});
-CSS.registerProperty({
-  name: "--gradient-angle",
-  syntax: "<angle>",
-  inherits: false,
-  initialValue: "0deg",
-});
-CSS.registerProperty({
-  name: "--accent-hue",
-  syntax: "<number>",
-  inherits: true,
-  initialValue: "210",
-});
-CSS.registerProperty({
-  name: "--text-glow",
-  syntax: "<color>",
-  inherits: false,
-  initialValue: "transparent",
-});
-CSS.registerProperty({
-  name: "--card-shadow-spread",
-  syntax: "<length>",
-  inherits: false,
-  initialValue: "0px",
-});
-CSS.registerProperty({
-  name: "--nav-blur",
-  syntax: "<length>",
-  inherits: false,
-  initialValue: "4px",
-});
-CSS.registerProperty({
-  name: "--nav-spread",
-  syntax: "<length>",
-  inherits: false,
-  initialValue: "0px",
-});
-CSS.registerProperty({
-  name: "--border-width",
-  syntax: "<length>",
-  inherits: false,
-  initialValue: "2px",
-});
-CSS.registerProperty({
-  name: "--border-color-1",
-  syntax: "<color>",
-  inherits: false,
-  initialValue: "transparent",
-});
-CSS.registerProperty({
-  name: "--border-color-2",
-  syntax: "<color>",
-  inherits: false,
-  initialValue: "transparent",
-});
-CSS.registerProperty({
-  name: "--border-angle",
-  syntax: "<angle>",
-  inherits: false,
-  initialValue: "0deg",
-});
-const paintCode = `
-class GridPainter {
-  static get inputProperties() {
-    return ['--grid-color', '--grid-size', '--grid-opacity'];
-  }
-  paint(ctx, size, props) {
-    const color = props.get('--grid-color').toString().trim();
-    const gridSize = parseFloat(props.get('--grid-size').toString()) || 40;
-    const opacity = parseFloat(props.get('--grid-opacity').toString()) || 0.2;
-    ctx.strokeStyle = color;
-    ctx.globalAlpha = opacity;
-    ctx.lineWidth = 1;
-    for (let x = 0; x < size.width; x += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, size.height);
-      ctx.stroke();
-    }
-    for (let y = 0; y < size.height; y += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(size.width, y);
-      ctx.stroke();
-    }
-  }
-}
 
-
-class GradientBorderPainter {
-  static get inputProperties() {
-    return ['--border-width', '--border-color-1', '--border-color-2', '--border-angle'];
-  }
-  paint(ctx, size, props) {
-    const w = parseFloat(props.get('--border-width').toString()) || 2;
-    const c1 = props.get('--border-color-1').toString().trim();
-    const c2 = props.get('--border-color-2').toString().trim();
-    const angle = parseFloat(props.get('--border-angle').toString()) || 0;
-    const radians = (angle * Math.PI) / 180;
-    const dx = Math.cos(radians);
-    const dy = Math.sin(radians);
-    const diag = Math.hypot(size.width, size.height);
-    const grad = ctx.createLinearGradient(
-      size.width / 2 - dx * diag / 2,
-      size.height / 2 - dy * diag / 2,
-      size.width / 2 + dx * diag / 2,
-      size.height / 2 + dy * diag / 2
-    );
-    grad.addColorStop(0, c1);
-    grad.addColorStop(1, c2);
-    ctx.lineWidth = w;
-    ctx.strokeStyle = grad;
-    ctx.beginPath();
-    ctx.roundRect(w / 2, w / 2, size.width - w, size.height - w, 12);
-    ctx.stroke();
-  }
-}
-
-registerPaint('grid-bg', GridPainter);
-
-registerPaint('gradient-border', GradientBorderPainter);
-`;
-const workletBlob = new Blob([paintCode], { type: "text/javascript" });
-const workletUrl = URL.createObjectURL(workletBlob);
-
+// ---------------------------------------------------------------
+// One stylesheet, no <style> tag, no CSS file.
+// ---------------------------------------------------------------
 const sheet = new CSSStyleSheet();
+sheet.replaceSync(`
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1f2328;
+    background: #fff;
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  nav {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  nav .brand { font-weight: 700; font-size: 1.1rem; color: inherit; text-decoration: none; }
+  nav .links { display: flex; gap: 1.4rem; list-style: none; }
+  nav a { color: inherit; text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+
+  section { padding: 3rem 0; }
+
+  h1 { font-size: 2.1rem; line-height: 1.25; }
+  h2 { font-size: 1.5rem; margin: 0 0 1rem; }
+  h3 { font-size: 1.1rem; margin: 1.6rem 0 0.5rem; }
+
+  p, ul, ol { margin: 0.6rem 0 1rem; }
+  ul, ol { padding-left: 1.4rem; }
+  li { margin-bottom: 0.3rem; }
+
+  a { color: #0969da; }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.88em;
+    background: #f3f4f6;
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+  }
+  pre {
+    background: #f6f8fa;
+    border: 1px solid #e4e7eb;
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    overflow-x: auto;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  pre code { background: none; padding: 0; }
+
+  .post-meta { color: #666; font-size: 0.85rem; margin-bottom: 0.75rem; }
+  article { margin-bottom: 2rem; }
+
+  footer {
+    border-top: 1px solid #e2e2e2;
+    padding: 1.6rem 0 3rem;
+    color: #666;
+    font-size: 0.88rem;
+  }
+
+  @media (max-width: 480px) {
+    nav { flex-direction: column; gap: 0.4rem; }
+  }
+`);
 document.adoptedStyleSheets = [sheet];
 
-const rules = [
-  // Reset & Base
-  `*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }`,
-  `::selection {
-    background: hsl(var(--accent-hue), 70%, 50%);
-    color: #fff;
-  }`,
-
-  // Navigation
-  `nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: hsla(var(--accent-hue), 10%, 97%, 0.92);
-    backdrop-filter: blur(12px) saturate(150%);
-    border-bottom: 1px solid hsla(var(--accent-hue), 15%, 85%, 0.6);
-    box-shadow: 0 2px var(--nav-blur) var(--nav-spread) hsla(210, 5%, 0%, 0.08);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 56px;
-  }`,
-  `.nav-links a {
-    color: hsl(var(--accent-hue), 15%, 35%);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.2s;
-    letter-spacing: 0.2px;
-  }`,
-  `.nav-links a:hover {
-    color: hsl(var(--accent-hue), 65%, 45%);
-  }`,
-
-  // Hero
-  `.hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    position: relative;
-  }`,
-
-  // Sections
-  `section {
-    padding: 5rem 2rem;
-    max-width: 860px;
-    margin: 0 auto;
-  }`,
-  `.section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 2.5rem;
-    color: hsl(var(--accent-hue), 15%, 20%);
-    position: relative;
-    display: inline-block;
-  }`,
-  `.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 48px;
-    height: 3px;
-    border-radius: 2px;
-    background: hsl(var(--accent-hue), 65%, 50%);
-  }`,
-
-  // Blog post
-  `.blog-post {
-    padding: 2rem;
-    border-radius: 16px;
-    border: 1px solid hsla(var(--accent-hue), 10%, 85%, 0.8);
-    margin-bottom: 2rem;
-    position: relative;
-    transition: transform 0.25s, box-shadow 0.25s;
-    overflow: hidden;
-    background: #fff;
-  }`,
-  `.blog-post:hover {
-    transform: translateY(-2px);
-    --card-shadow-spread: 8px;
-    box-shadow: 0 4px 24px hsla(210, 10%, 0%, 0.1);
-  }`,
-  `.blog-post > * { position: relative; z-index: 1; }`,
-  `.post-meta span {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-  }`,
-  `.post-body h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 1.8rem 0 0.8rem;
-    color: hsl(var(--accent-hue), 30%, 22%);
-  }`,
-  `.post-body p {
-    margin-bottom: 1rem;
-  }`,
-  `.post-body code {
-    background: hsla(var(--accent-hue), 20%, 85%, 0.6);
-    padding: 0.15em 0.4em;
-    border-radius: 4px;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
-    font-size: 0.88em;
-    color: hsl(var(--accent-hue), 30%, 25%);
-  }`,
-  `.post-body pre {
-    background: hsl(var(--accent-hue), 10%, 95%);
-    border: 1px solid hsla(var(--accent-hue), 10%, 82%, 0.6);
-    border-radius: 10px;
-    padding: 1.25rem;
-    overflow-x: auto;
-    margin: 1rem 0;
-    font-size: 0.85rem;
-    line-height: 1.55;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
-  }`,
-  `.post-body pre code {
-    background: none;
-    padding: 0;
-    border-radius: 0;
-    color: inherit;
-  }`,
-  `.post-body .tk-keyword { color: hsl(var(--accent-hue), 75%, 35%); font-weight: 500; }`,
-  `.post-body .tk-string { color: hsl(calc(var(--accent-hue) + 90), 55%, 30%); }`,
-  `.post-body .tk-comment { color: hsl(var(--accent-hue), 5%, 50%); font-style: italic; }`,
-  `.post-body .tk-number { color: hsl(calc(var(--accent-hue) + 50), 65%, 35%); }`,
-  `.post-body .tk-builtin { color: hsl(calc(var(--accent-hue) - 40), 50%, 38%); }`,
-  `.post-body ul, .post-body ol {
-    margin: 0.75rem 0 1rem 1.5rem;
-  }`,
-  `.post-body li {
-    margin-bottom: 0.4rem;
-  }`,
-  `.post-body a {
-    color: hsl(var(--accent-hue), 70%, 42%);
-    text-decoration: none;
-    border-bottom: 1px solid hsla(var(--accent-hue), 70%, 42%, 0.3);
-    transition: border-color 0.2s;
-  }`,
-  `.post-body a:hover {
-    border-color: hsl(var(--accent-hue), 70%, 35%);
-  }`,
-
-  // Footer
-  `footer a {
-    color: hsl(var(--accent-hue), 50%, 42%);
-    text-decoration: none;
-  }`,
-  `footer a:hover {
-    color: hsl(var(--accent-hue), 50%, 32%);
-  }`,
-
-  // Keyframes
-  `@keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }`,
-  `@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-    40% { transform: translateX(-50%) translateY(-8px); }
-    60% { transform: translateX(-50%) translateY(-4px); }
-  }`,
-  `@keyframes fade-in {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }`,
-  `.fade-in {
-    animation: fade-in 0.6s ease forwards;
-    opacity: 0;
-  }`,
-  `.fade-in:nth-child(1) { animation-delay: 0.05s; }`,
-  `.fade-in:nth-child(2) { animation-delay: 0.15s; }`,
-  `.fade-in:nth-child(3) { animation-delay: 0.25s; }`,
-  `.fade-in:nth-child(4) { animation-delay: 0.35s; }`,
-  `.fade-in:nth-child(5) { animation-delay: 0.45s; }`,
-
-  // Responsive
-  `@media (max-width: 640px) {
-    nav { padding: 0 1rem; }
-    section { padding: 3rem 1rem; }
-    .hero { padding: 1.5rem; }
-    .post-body pre { font-size: 0.78rem; padding: 1rem; }
-  }`,
-];
-
-const KEYWORDS = new Set([
-  "const",
-  "let",
-  "var",
-  "if",
-  "else",
-  "return",
-  "function",
-  "class",
-  "static",
-  "get",
-  "set",
-  "new",
-  "this",
-  "for",
-  "of",
-  "while",
-  "do",
-  "break",
-  "continue",
-  "switch",
-  "case",
-  "default",
-  "try",
-  "catch",
-  "finally",
-  "throw",
-  "delete",
-  "typeof",
-  "void",
-  "instanceof",
-  "in",
-  "async",
-  "await",
-  "yield",
-  "extends",
-  "import",
-  "export",
-  "from",
-  "as",
-  "super",
-  "true",
-  "false",
-  "null",
-  "undefined",
-  "debugger",
-  "with",
-]);
-
-const BUILTINS = new Set([
-  "CSS",
-  "document",
-  "console",
-  "Math",
-  "Blob",
-  "URL",
-  "CSSStyleSheet",
-  "CSSTransformValue",
-  "CSSTranslate",
-  "CSSRotate",
-  "CSSUnparsedValue",
-  "JSON",
-  "Array",
-  "Object",
-  "String",
-  "Number",
-  "Boolean",
-  "Promise",
-  "Set",
-  "Map",
-  "Date",
-  "RegExp",
-  "Error",
-  "window",
-  "navigator",
-  "requestAnimationFrame",
-  "addEventListener",
-  "getComputedStyle",
-  "fetch",
-  "parseInt",
-  "parseFloat",
-  "setTimeout",
-  "setInterval",
-  "clearTimeout",
-  "NaN",
-  "Infinity",
-  "isNaN",
-  "isFinite",
-  "CSSKeywordValue",
-  "CSSUnitValue",
-  "CSSMathValue",
-  "CSSNumericValue",
-  "CSSImageValue",
-  "PaintWorklet",
-]);
-
-function escapeHtml(s) {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-function highlightCode(code) {
-  const out = [];
-  let i = 0;
-  const len = code.length;
-
-  function push(token, cls) {
-    out.push('<span class="', cls, '">', escapeHtml(token), "</span>");
-  }
-
-  while (i < len) {
-    const ch = code[i];
-
-    if (ch === "/" && code[i + 1] === "/") {
-      let j = i + 2;
-      while (j < len && code[j] !== "\n") j++;
-      push(code.slice(i, j), "tk-comment");
-      i = j;
-      continue;
-    }
-
-    if (ch === "/" && code[i + 1] === "*") {
-      let j = i + 2;
-      while (j < len - 1 && !(code[j] === "*" && code[j + 1] === "/")) j++;
-      j += 2;
-      push(code.slice(i, j), "tk-comment");
-      i = j;
-      continue;
-    }
-
-    if (ch === '"' || ch === "'" || ch === "`") {
-      const quote = ch;
-      let j = i + 1;
-      while (j < len) {
-        if (code[j] === "\\") {
-          j += 2;
-          continue;
-        }
-        if (code[j] === quote) {
-          j++;
-          break;
-        }
-        j++;
-      }
-      push(code.slice(i, j), "tk-string");
-      i = j;
-      continue;
-    }
-
-    if (
-      /\d/.test(ch) ||
-      (ch === "-" && i + 1 < len && /\d/.test(code[i + 1]) &&
-        (i === 0 || /[^\w$]/.test(code[i - 1])))
-    ) {
-      let j = i + 1;
-      while (j < len && /[\w.]/.test(code[j])) j++;
-      push(code.slice(i, j), "tk-number");
-      i = j;
-      continue;
-    }
-
-    if (/[a-zA-Z_$]/.test(ch)) {
-      let j = i + 1;
-      while (j < len && /[\w$]/.test(code[j])) j++;
-      const word = code.slice(i, j);
-      const cls = KEYWORDS.has(word)
-        ? "tk-keyword"
-        : BUILTINS.has(word)
-        ? "tk-builtin"
-        : null;
-      if (cls) push(word, cls);
-      else out.push(escapeHtml(word));
-      i = j;
-      continue;
-    }
-
-    out.push(escapeHtml(ch));
-    i++;
-  }
-
-  return out.join("");
-}
-
-rules.forEach((r) => sheet.insertRule(r));
-
-const $ = (tag, attrs = {}, children = []) => {
+// ---------------------------------------------------------------
+// DOM helper: describe a subtree instead of a long list of
+// createElement / appendChild calls.
+// ---------------------------------------------------------------
+function $(tag, attrs = {}, children = []) {
   const el = document.createElement(tag);
-  Object.entries(attrs).forEach(([k, v]) => {
+  for (const [k, v] of Object.entries(attrs)) {
     if (k === "className") el.className = v;
-    else if (k === "innerHTML") el.innerHTML = v;
+    else if (k === "style") Object.assign(el.style, v);
     else if (k === "textContent") el.textContent = v;
-    else if (k.startsWith("on")) {
-      el.addEventListener(k.slice(2).toLowerCase(), v);
-    } else if (k === "style" && typeof v === "object") {
-      Object.assign(el.style, v);
-    } else el.setAttribute(k, v);
-  });
-  children.forEach((c) => {
-    if (typeof c === "string") el.appendChild(document.createTextNode(c));
-    else el.appendChild(c);
-  });
+    else el.setAttribute(k, v);
+  }
+  for (const c of children) {
+    el.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+  }
   return el;
-};
+}
+
+// ---------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------
 const nav = $("nav", {}, [
-  $("div", {
-    className: "nav-brand",
-    textContent: "Jilai Cheng",
-    style: {
-      fontWeight: "700",
-      fontSize: "1.25rem",
-      letterSpacing: "-0.3px",
-      color: "hsl(var(--accent-hue), 55%, 35%)",
-    },
-  }),
-  $("ul", {
-    className: "nav-links",
-    style: { display: "flex", gap: "2rem", listStyle: "none" },
-  }, [
-    $("li", {}, [$("a", { href: "#home", textContent: "Home" })]),
+  $("a", { className: "brand", href: "#top", textContent: "Jilai Cheng" }),
+  $("ul", { className: "links" }, [
     $("li", {}, [$("a", { href: "#blog", textContent: "Blog" })]),
     $("li", {}, [$("a", { href: "#about", textContent: "About" })]),
   ]),
 ]);
 
-const hero = $("section", {
-  id: "home",
-  className: "hero",
-  style: {
-    "--grid-color": "hsl(var(--accent-hue), 15%, 82%)",
-    "--grid-size": "50",
-    "--grid-opacity": "0.35",
-    background: "paint(grid-bg)",
-  },
-}, [
-  $("p", {
-    className: "subtitle fade-in",
-    style: {
-      fontSize: "1.1rem",
-      fontWeight: "400",
-      letterSpacing: "2px",
-      textTransform: "uppercase",
-      color: "hsl(var(--accent-hue), 35%, 42%)",
-      marginBottom: "0.5rem",
-    },
-  }),
-  $("h1", {
-    className: "title fade-in",
-    textContent: "Jilai Cheng",
-    style: {
-      fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-      fontWeight: "800",
-      letterSpacing: "-1px",
-      background:
-        "linear-gradient(135deg, hsl(var(--accent-hue), 80%, 48%), hsl(calc(var(--accent-hue) + 70), 75%, 45%), hsl(calc(var(--accent-hue) - 30), 70%, 48%))",
-      backgroundSize: "200% 200%",
-      WebkitBackgroundClip: "text",
-      backgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      animation: "gradient-shift 4s ease-in-out infinite",
-    },
-  }),
-  $("p", {
-    className: "tagline fade-in",
-    style: {
-      fontSize: "1.15rem",
-      color: "hsl(var(--accent-hue), 10%, 42%)",
-      maxWidth: "540px",
-      margin: "1.5rem auto 0",
-    },
-  }),
-  $("div", {
-    className: "scroll-indicator fade-in",
-    style: {
-      position: "absolute",
-      bottom: "2rem",
-      left: "50%",
-      transform: "translateX(-50%)",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      gap: "0.5rem",
-      color: "hsl(var(--accent-hue), 20%, 60%)",
-      fontSize: "0.75rem",
-      animation: "bounce 2s ease infinite",
-    },
-  }, [
-    $("span", { textContent: "Scroll" }),
-    $("div", {
-      className: "arrow",
-      style: {
-        width: "24px",
-        height: "24px",
-        borderRight: "2px solid hsl(var(--accent-hue), 20%, 60%)",
-        borderBottom: "2px solid hsl(var(--accent-hue), 20%, 60%)",
-        transform: "rotate(45deg)",
-      },
-    }),
-  ]),
-]);
-const blogSection = $("section", { id: "blog" }, [
-  $("h2", { className: "section-title fade-in", textContent: "Blog" }),
-  createBlogPost(),
+const hero = $("section", { id: "top" }, [
+  $("h1", { textContent: "Jilai Cheng" }),
+  $("p", { textContent: "Notes on NixOS, Guix, Emacs, and Linux audio." }),
 ]);
 
-
-
-function createBlogPost() {
-  const meta = $("div", {
-    className: "post-meta",
-    style: {
-      display: "flex",
-      gap: "1.5rem",
-      fontSize: "0.85rem",
-      color: "hsl(var(--accent-hue), 8%, 48%)",
-      marginBottom: "1rem",
-    },
-  }, [
-    $("span", {}, ["2026.04.28"]),
-  ]);
-
-  const body = $("div", {
-    className: "post-body",
-    style: {
-      color: "hsl(var(--accent-hue), 10%, 24%)",
-      fontSize: "0.95rem",
-      lineHeight: "1.75",
-    },
-  }, [
+const post = $("article", {}, [
+  $("p", { className: "post-meta", textContent: "2026.08.12" }),
+  $("h2", { textContent: "This page is built entirely with JavaScript" }),
+  $("div", {}, [
     $("p", {}, [
-      "This is my first blog, it documents the process of ",
-      "building this webpage with the ",
-      $("strong", {}, ["Document Object Model (DOM)"]),
-      ", ",
-      $("strong", {}, ["CSS Object Model (CSSOM)"]),
-      ", and ",
-      $("strong", {}, ["CSS Houdini "]),
-      "APIs.",
+      "index.html is a single script tag. Everything else — the ",
+      $("code", { textContent: "<title>" }),
+      ", the viewport meta, the whole DOM, and every style rule — is created by ",
+      $("code", { textContent: "script.js" }),
+      " at runtime. No frameworks, no build step, no network requests.",
     ]),
 
-    $("h3", { textContent: "1. DOM " }),
+    $("h3", { textContent: "DOM" }),
     $("p", {}, [
-      "The Document Object Model (DOM) is the tree representation of a document. Every node in the ",
-      "tree is accessible and manipulable. For this page, I use:",
+      "The DOM is the tree of element nodes behind a document; every node can be read and changed from JavaScript. The page is built with these calls:",
     ]),
     $("ul", {}, [
       $("li", {}, [
         $("code", { textContent: "document.createElement(tag)" }),
-        " creates element nodes",
+        " — new element node",
       ]),
       $("li", {}, [
         $("code", { textContent: "el.appendChild(child)" }),
-        " inserts child nodes into the tree",
-      ]),
-      $("li", {}, [
-        $("code", { textContent: "el.setAttribute(name, value)" }),
-        " / ",
-        $("code", { textContent: "el.className" }),
-        " sets attributes",
+        " — insert into the tree",
       ]),
       $("li", {}, [
         $("code", { textContent: "el.textContent" }),
         " / ",
-        $("code", { textContent: "el.innerHTML" }),
-        " injects text",
+        $("code", { textContent: "el.setAttribute(name, value)" }),
+        " — content and attributes",
       ]),
       $("li", {}, [
-        $("code", { textContent: "el.addEventListener(event, fn)" }),
-        " attaches event handlers",
-      ]),
-      $("li", {}, [
-        $("code", { textContent: "el.classList.add/remove/toggle()" }),
-        " manages CSS classes",
+        $("code", { textContent: "el.addEventListener(type, fn)" }),
+        " — events",
       ]),
     ]),
     $("p", {}, [
-      "A small helper function ",
+      "A small helper, ",
       $("code", { textContent: "$(tag, attrs, children)" }),
-      " wraps these calls. Navigation, hero, ",
-      "blog content, footer is appended to ",
-      $("code", { textContent: "document.body" }),
-      " as its children.",
-    ]),
-
-    $("h3", { textContent: "2. CSSOM" }),
-    $("ul", {}, [
-      $("li", {}, [
-        $("code", { textContent: "new CSSStyleSheet()" }),
-        " creates a constructable stylesheet",
-      ]),
-      $("li", {}, [
-        $("code", { textContent: "sheet.insertRule(ruleText, index)" }),
-        " inserts a CSS rule ",
-      ]),
-      $("li", {}, [
-        $("code", { textContent: "sheet.replaceSync(cssText)" }),
-        " replaces the entire stylesheet contents",
-      ]),
-      $("li", {}, [
-        $("code", { textContent: "document.adoptedStyleSheets = [sheet]" }),
-        " adopts the stylesheet into the document ",
-      ]),
-    ]),
-    $("p", {}, [
-      "Style rules, such as resetting and responsive media queries should be defined as ",
-      "string and passed through ",
-      $("code", { textContent: "sheet.insertRule()" }),
-      ". It says that the style rules are mutable at runtime: you could swap color schemes, ",
-      "adjust typography, or toggle the entire layouts. ",
-    ]),
-
-    // ── Houdini deep dive ──
-    $("h3", { textContent: "3. CSS Houdini" }),
-    $("p", {}, [
-      "CSS Houdini is a collection of low-level APIs that expose the browser's CSS rendering engine ",
-      ". It allows you to hook into the styling and layout pipeline",
-      ". On this page, three Houdini APIs are used:",
-    ]),
-
-    $("h3", { textContent: "3a. CSS Properties and Values API" }),
-    $("p", {}, [
-      "This API lets you register custom CSS properties with a specific syntax, inheritance behavior, and ",
-      "initial value. The browser can then animate and validate these properties natively.",
+      ", wraps these so the page is described declaratively:",
     ]),
     $("pre", {}, [
       $("code", {
-        className: "language-js",
-        innerHTML: highlightCode(
-          `CSS.registerProperty({
-  name: '--gradient-angle',
-  syntax: '<angle>',
-  inherits: false,
-  initialValue: '0deg',
-});
-
-CSS.registerProperty({
-  name: '--accent-hue',
-  syntax: '<number>',
-  inherits: true,
-  initialValue: '210',
-});`,
-        ),
+        textContent:
+          'const $ = (tag, attrs = {}, children = []) => {\n' +
+          '  const el = document.createElement(tag);\n' +
+          '  // ...apply attrs, append children...\n' +
+          '  return el;\n' +
+          '};\n' +
+          '\n' +
+          '$("section", { id: "blog" }, [\n' +
+          '  $("h2", { textContent: "Blog" }),\n' +
+          '  post,\n' +
+          ']);',
       }),
     ]),
-    $("p", {}, [
-      "Because ",
-      $("code", { textContent: "--gradient-angle" }),
-      " is typed as ",
-      $("code", { textContent: "<angle>" }),
-      ", the browser knows how to interpolate it. This means CSS transitions and animations on custom ",
-      "properties work out of the box. The ",
-      $("code", { textContent: "--accent-hue" }),
-      " property drives the site-wide color palette changing its value shifts every accent color on the page.",
-    ]),
 
-    $("h3", { textContent: "3b. CSS Typed OM" }),
+    $("h3", { textContent: "CSSOM — constructable stylesheets" }),
     $("p", {}, [
-      "The Typed OM replaces the old string-based ",
-      $("code", { textContent: "el.style" }),
-      " interface with typed CSS values. Instead of setting ",
-      $("code", { textContent: 'el.style.left = "10px"' }),
-      " (which requires string parsing), you can write:",
+      "Styles normally come from ",
+      $("code", { textContent: "<style>" }),
+      " or ",
+      $("code", { textContent: "<link>" }),
+      ". A constructable ",
+      $("code", { textContent: "CSSStyleSheet" }),
+      " does the same job with neither: rules are strings inserted at runtime, and the sheet is adopted by the document.",
     ]),
     $("pre", {}, [
       $("code", {
-        className: "language-js",
-        innerHTML: highlightCode(
-          `// Old way (string-based)
-el.style.left = '10px';
-el.style.transform = 'translateX(50px) rotate(45deg)';
-
-// Typed OM (numeric, type-safe)
-el.attributeStyleMap.set('left', CSS.px(10));
-el.attributeStyleMap.set('transform', new CSSTransformValue([
-  new CSSTranslate(CSS.px(50), CSS.px(0)),
-  new CSSRotate(CSS.deg(45)),
-]));`,
-        ),
+        textContent:
+          "const sheet = new CSSStyleSheet();\n" +
+          "sheet.replaceSync(`...css rules...`);\n" +
+          "document.adoptedStyleSheets = [sheet];",
       }),
-    ]),
-    $("p", {}, [
-      "This is not just syntactic sugar the Typed OM avoids string serialization/parsing overhead, enables ",
-      "direct mathematical operations on CSS values, and allows the browser to optimize style computations. ",
-      "The navigation bar on this page uses Typed OM for its scroll-aware styling.",
-    ]),
-
-    $("h3", { textContent: "3c. CSS Paint API " }),
-    $("p", {}, [
-      "The Paint API lets you define custom image generators in JavaScript that can be used anywhere CSS expects an ",
-      "image ",
-      $("code", { textContent: "background-image" }),
-      ", ",
-      $("code", { textContent: "border-image" }),
-      ", ",
-      $("code", { textContent: "mask-image" }),
-      ", etc. The worklet runs on a separate thread (the paint thread), so it doesn't block the main thread.",
-    ]),
-    $("p", {}, [
-      "To keep this a single file with zero network dependencies, the worklet code is stored in a JavaScript string ",
-      "and loaded via a blob URL:",
-    ]),
-    $("pre", {}, [
-      $("code", {
-        className: "language-js",
-        innerHTML: highlightCode(
-          `const paintCode = \`
-class GridPainter {
-  static get inputProperties() { return ['--grid-color', '--grid-size']; }
-  paint(ctx, size, props) { /* ... draw grid ... */ }
-}
-registerPaint('grid-bg', GridPainter);
-\`;
-const blob = new Blob([paintCode], { type: 'text/javascript' });
-const url = URL.createObjectURL(blob);
-CSS.paintWorklet.addModule(url);`,
-        ),
-      }),
-    ]),
-    $("p", {}, [
-      "Two custom painters are registered on this page:",
     ]),
     $("ul", {}, [
       $("li", {}, [
-        $("strong", { textContent: "grid-bg" }),
-        " draws a configurable grid pattern (used for the hero section background)",
+        $("code", { textContent: "insertRule(rule)" }),
+        " — add one rule; throws SyntaxError if it does not parse (a bad selector, for example)",
       ]),
       $("li", {}, [
-        $("strong", { textContent: "gradient-border" }),
-        " draws animated gradient borders around elements",
+        $("code", { textContent: "replaceSync(css)" }),
+        " — replace the whole sheet in one call; ",
+        $("code", { textContent: "replace()" }),
+        " is the async variant",
+      ]),
+      $("li", {}, [
+        "a constructed sheet can be adopted by shadow roots too — one parse, shared everywhere",
       ]),
     ]),
-    $("p", {}, [
-      "Each painter reads its configuration from custom CSS properties (parameters passed via ",
-      $("code", { textContent: "inputProperties" }),
-      "), making them fully themeable through CSS variables.",
-    ]),
 
-    // ── Summary ──
-    $("h3", { textContent: "4. Bringing It Together" }),
-    $("div", {
-      className: "gradient-card",
-      style: {
-        "--border-width": "2",
-        "--border-color-1": "hsl(var(--accent-hue), 60%, 50%)",
-        "--border-color-2": "hsl(calc(var(--accent-hue) + 30), 70%, 55%)",
-        "--border-angle": "135",
-        backgroundColor: "hsla(var(--accent-hue), 5%, 97%, 0.95)",
-        backgroundImage: "paint(gradient-border)",
-        borderRadius: "12px",
-        padding: "1.5rem",
-        margin: "1.25rem 0",
-      },
-    }, [
-      $("p", {}, [
-        "The DOM builds the structure, the CSSOM defines ",
-        "the styling, and Houdini extends the rendering engine with custom paint work and typed properties. ",
+    $("h3", { textContent: "Lessons" }),
+    $("ul", {}, [
+      $("li", {}, [
+        "Without JavaScript the page is blank: there is no content and no style until ",
+        $("code", { textContent: "script.js" }),
+        " runs. Fine for a personal page, wrong for anything that must survive JS failures.",
       ]),
-    ]),
-  ]);
-
-  return $("article", { className: "blog-post fade-in" }, [
-    meta,
-    $("h2", {
-      className: "post-title",
-      textContent: "Building a Webpage",
-      style: {
-        fontSize: "1.6rem",
-        fontWeight: "700",
-        marginBottom: "1rem",
-        lineHeight: "1.3",
-        color: "hsl(var(--accent-hue), 15%, 15%)",
-      },
-    }),
-    body,
-  ]);
-}
-
-// ── About Section ────────────────────────────
-const aboutSection = $("section", { id: "about" }, [
-  $("h2", { className: "section-title fade-in", textContent: "About" }),
-  $("div", { className: "blog-post fade-in" }, [
-    $("p", {
-      style: {
-        position: "relative",
-        zIndex: 1,
-        color: "hsl(var(--accent-hue), 10%, 24%)",
-        lineHeight: 1.75,
-        marginTop: "0.5rem",
-      },
-    }, [
-      "The source code for this page lives at ",
-      $("a", {
-        href: "https://github.com/chengjilai/chengjilai.github.io",
-        textContent: "github.com/chengjilai/chengjilai.github.io",
-      }),
-      ".",
+      $("li", {}, [
+        $("code", { textContent: "replaceSync()" }),
+        " / ",
+        $("code", { textContent: "replace()" }),
+        " only work on sheets you constructed. Calling them on a sheet that came from ",
+        $("code", { textContent: "<style>" }),
+        " or ",
+        $("code", { textContent: "<link>" }),
+        " throws NotAllowedError.",
+      ]),
+      $("li", {}, [
+        $("code", { textContent: "replaceSync()" }),
+        " strips ",
+        $("code", { textContent: "@import" }),
+        " rules, so a constructed sheet cannot pull in external stylesheets. Everything must be inline.",
+      ]),
+      $("li", {}, [
+        $("code", { textContent: "adoptedStyleSheets" }),
+        " only accepts sheets constructed in the same document — a sheet from another document throws NotAllowedError.",
+      ]),
+      $("li", {}, [
+        "Historically the list was frozen (assign a new array); recent browsers allow mutating it in place.",
+      ]),
     ]),
   ]),
 ]);
 
-const themeBtn = $("button", {
-  textContent: "Shift Hue",
-  style: {
-    background: "hsla(var(--accent-hue), 15%, 92%, 0.8)",
-    color: "hsl(var(--accent-hue), 20%, 32%)",
-    border: "1px solid hsla(var(--accent-hue), 15%, 78%, 0.8)",
-    borderRadius: "8px",
-    padding: "0.5rem 1rem",
-    cursor: "pointer",
-    fontSize: "0.85rem",
-    fontWeight: 500,
-    transition: "all 0.2s",
-  },
-  onMouseEnter() {
-    this.style.background = "hsla(var(--accent-hue), 20%, 82%, 0.9)";
-  },
-  onMouseLeave() {
-    this.style.background = "hsla(var(--accent-hue), 15%, 92%, 0.8)";
-  },
-  onClick() {
-    const current = parseInt(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        "--accent-hue",
-      ).trim(),
-    ) || 210;
-    const next = (current + 60) % 360;
-    document.documentElement.attributeStyleMap.set(
-      "--accent-hue",
-      new CSSUnparsedValue([String(next)]),
-    );
-  },
-});
+const blogSection = $("section", { id: "blog" }, [
+  $("h2", { textContent: "Blog" }),
+  post,
+]);
 
-const footer = $("footer", {
-  style: {
-    textAlign: "center",
-    padding: "3rem 2rem",
-    borderTop: "1px solid hsla(var(--accent-hue), 15%, 82%, 0.5)",
-    color: "hsl(var(--accent-hue), 10%, 45%)",
-    fontSize: "0.85rem",
-  },
-}, [
-  $("p", {}, ["\u00A9 2026 Jilai Cheng"]),
-  $("p", { style: { marginTop: "0.5rem", fontSize: "0.8rem" } }, [
-    "Source on ",
+const aboutSection = $("section", { id: "about" }, [
+  $("h2", { textContent: "About" }),
+  $("p", {}, [
+    "This blog collects notes on system administration and audio debugging. The page itself is built with the DOM and CSSOM APIs described in the post above. Source on ",
     $("a", {
       href: "https://github.com/chengjilai/chengjilai.github.io",
       textContent: "GitHub",
     }),
+    ".",
   ]),
-  themeBtn,
+]);
+
+const footer = $("footer", {}, [
+  $("p", { textContent: "© 2026 Jilai Cheng" }),
 ]);
 
 document.body.appendChild(nav);
@@ -996,23 +274,3 @@ document.body.appendChild(hero);
 document.body.appendChild(blogSection);
 document.body.appendChild(aboutSection);
 document.body.appendChild(footer);
-
-let ticking = false;
-addEventListener("scroll", () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      nav.attributeStyleMap.set(
-        "--nav-blur",
-        new CSSUnparsedValue([String(4 + Math.min(scrollY / 40, 12)) + "px"]),
-      );
-      nav.attributeStyleMap.set(
-        "--nav-spread",
-        new CSSUnparsedValue([String(Math.min(scrollY / 160, 4)) + "px"]),
-      );
-      ticking = false;
-    });
-    ticking = true;
-  }
-});
-
-CSS.paintWorklet.addModule(workletUrl);

@@ -103,24 +103,6 @@ class GridPainter {
   }
 }
 
-class DotsPainter {
-  static get inputProperties() {
-    return ['--dot-color', '--dot-spacing', '--dot-radius'];
-  }
-  paint(ctx, size, props) {
-    const color = props.get('--dot-color').toString().trim();
-    const spacing = parseFloat(props.get('--dot-spacing').toString()) || 24;
-    const radius = parseFloat(props.get('--dot-radius').toString()) || 1.5;
-    ctx.fillStyle = color;
-    for (let y = spacing; y < size.height; y += spacing) {
-      for (let x = spacing; x < size.width; x += spacing) {
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-  }
-}
 
 class GradientBorderPainter {
   static get inputProperties() {
@@ -152,7 +134,7 @@ class GradientBorderPainter {
 }
 
 registerPaint('grid-bg', GridPainter);
-registerPaint('dots-bg', DotsPainter);
+
 registerPaint('gradient-border', GradientBorderPainter);
 `;
 const workletBlob = new Blob([paintCode], { type: "text/javascript" });
@@ -661,24 +643,7 @@ const blogSection = $("section", { id: "blog" }, [
   createBlogPost(),
 ]);
 
-function dotsLayer() {
-  return $("div", {
-    className: "dots-layer",
-    style: {
-      position: "absolute",
-      top: "0",
-      left: "0",
-      width: "100%",
-      height: "100%",
-      "--dot-color": "hsla(var(--accent-hue), 15%, 75%, 0.15)",
-      "--dot-spacing": "20",
-      "--dot-radius": "1.5",
-      background: "paint(dots-bg)",
-      pointerEvents: "none",
-      zIndex: "0",
-    },
-  });
-}
+
 
 function createBlogPost() {
   const meta = $("div", {
@@ -892,16 +857,12 @@ CSS.paintWorklet.addModule(url);`,
       }),
     ]),
     $("p", {}, [
-      "Three custom painters are registered on this page:",
+      "Two custom painters are registered on this page:",
     ]),
     $("ul", {}, [
       $("li", {}, [
         $("strong", { textContent: "grid-bg" }),
         " draws a configurable grid pattern (used for the hero section background)",
-      ]),
-      $("li", {}, [
-        $("strong", { textContent: "dots-bg" }),
-        " draws a dotted pattern (used behind blog post cards)",
       ]),
       $("li", {}, [
         $("strong", { textContent: "gradient-border" }),
@@ -938,7 +899,6 @@ CSS.paintWorklet.addModule(url);`,
   ]);
 
   return $("article", { className: "blog-post fade-in" }, [
-    dotsLayer(),
     meta,
     $("h2", {
       className: "post-title",
@@ -959,7 +919,6 @@ CSS.paintWorklet.addModule(url);`,
 const aboutSection = $("section", { id: "about" }, [
   $("h2", { className: "section-title fade-in", textContent: "About" }),
   $("div", { className: "blog-post fade-in" }, [
-    dotsLayer(),
     $("p", {
       style: {
         position: "relative",

@@ -15,16 +15,44 @@ document.head.appendChild(title);
 
 // ---------------------------------------------------------------
 // One stylesheet, no <style> tag, no CSS file.
-// Short on purpose: browser defaults are fine for a text page,
-// so this only overrides what actually needs overriding.
+// Browser defaults do the layout; colors are variables so one
+// prefers-color-scheme query covers dark mode.
 // ---------------------------------------------------------------
 const sheet = new CSSStyleSheet();
 sheet.replaceSync(`
+  :root {
+    color-scheme: light dark;
+    --bg: #fff;
+    --text: #1f2328;
+    --muted: #666;
+    --border: #e2e2e2;
+    --code-bg: #f3f4f6;
+    --pre-bg: #f6f8fa;
+    --link: #0969da;
+    --dot-color: hsla(0, 0%, 0%, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --border: #30363d;
+      --code-bg: #161b22;
+      --pre-bg: #161b22;
+      --link: #58a6ff;
+      --dot-color: hsla(0, 0%, 100%, 0.06);
+    }
+  }
+
   body {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     line-height: 1.7;
+    color: var(--text);
+    background-color: var(--bg);
+    background-image: paint(dots);
+    --dot-size: 28;
     max-width: 44rem;
-    margin: 2rem auto;
+    margin: 0 auto;
     padding: 0 1.25rem;
   }
 
@@ -33,57 +61,57 @@ sheet.replaceSync(`
     align-items: baseline;
     justify-content: space-between;
     padding: 1.2rem 0;
-    border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid var(--border);
   }
   nav .brand { font-weight: 700; text-decoration: none; color: inherit; }
   nav .links { display: flex; gap: 1.4rem; list-style: none; margin: 0; padding: 0; }
   nav a { color: inherit; text-decoration: none; }
   nav a:hover { text-decoration: underline; }
 
-  section { padding: 2.5rem 0; }
+  main { padding: 2.5rem 0; }
+  section { padding: 0 0 2.5rem; }
+
+  a { color: var(--link); }
 
   code {
-    background: #f3f4f6;
+    background: var(--code-bg);
     padding: 0.1em 0.35em;
     border-radius: 4px;
     font-size: 0.88em;
   }
   pre {
-    background: #f6f8fa;
+    background: var(--pre-bg);
     border-radius: 8px;
     padding: 0.9rem 1rem;
     overflow-x: auto;
   }
   pre code { background: none; padding: 0; }
 
-  .post-meta { color: #666; font-size: 0.85rem; margin: 0 0 0.5rem; }
+  .post-meta { color: var(--muted); font-size: 0.85rem; margin: 0 0 1.5rem; }
 
   footer {
-    border-top: 1px solid #e2e2e2;
+    border-top: 1px solid var(--border);
     padding: 1.4rem 0 3rem;
-    color: #666;
+    color: var(--muted);
     font-size: 0.88rem;
-  }
-
-  #top {
-    background: paint(dots);
-    --dot-size: 24;
-    --dot-color: hsla(0, 0%, 0%, 0.07);
+    display: flex;
+    justify-content: space-between;
   }
 `);
 document.adoptedStyleSheets = [sheet];
 
 // ---------------------------------------------------------------
-// Houdini Paint API: one tiny worklet that draws the dot pattern
-// behind the hero. Chromium-only; browsers without CSS.paintWorklet
-// ignore the paint() background and the page just has no dots.
+// Houdini Paint API: one tiny worklet that draws the faint dot
+// pattern behind the whole page. Chromium-only; browsers without
+// CSS.paintWorklet ignore the paint() background-image, so the
+// page just has a plain background.
 // ---------------------------------------------------------------
 if ("paintWorklet" in CSS) {
   CSS.paintWorklet.addModule(URL.createObjectURL(new Blob([`
 class Dots {
   static get inputProperties() { return ["--dot-size", "--dot-color"]; }
   paint(ctx, size, props) {
-    const step = parseFloat(props.get("--dot-size").toString()) || 24;
+    const step = parseFloat(props.get("--dot-size").toString()) || 28;
     const color = props.get("--dot-color").toString().trim();
     ctx.fillStyle = color;
     for (let x = step / 2; x < size.width; x += step) {
@@ -128,14 +156,9 @@ const nav = $("nav", {}, [
   ]),
 ]);
 
-const hero = $("section", { id: "top" }, [
-  $("h1", { textContent: "Jilai Cheng" }),
-  $("p", { textContent: "Notes on NixOS, Guix, Emacs, and Linux audio." }),
-]);
-
-const post = $("article", {}, [
+const post = $("article", { id: "blog" }, [
+  $("h1", { textContent: "This page is built entirely with JavaScript" }),
   $("p", { className: "post-meta", textContent: "2026.08.12" }),
-  $("h2", { textContent: "This page is built entirely with JavaScript" }),
   $("div", {}, [
     $("p", {}, [
       "index.html is a single script tag. Everything else — the ",
@@ -183,9 +206,9 @@ const post = $("article", {}, [
           '  return el;\n' +
           '};\n' +
           '\n' +
-          '$("section", { id: "blog" }, [\n' +
-          '  $("h2", { textContent: "Blog" }),\n' +
-          '  post,\n' +
+          '$("article", { id: "blog" }, [\n' +
+          '  $("h1", { textContent: "...title..." }),\n' +
+          '  body,\n' +
           ']);',
       }),
     ]),
@@ -224,12 +247,14 @@ const post = $("article", {}, [
       ]),
     ]),
     $("p", {}, [
-      "The stylesheet is short on purpose: browser defaults are fine for a text page, so the sheet only overrides what actually needs overriding — there is no reset.",
+      "Colors are CSS variables, and one ",
+      $("code", { textContent: "prefers-color-scheme" }),
+      " media query swaps them for dark mode — no second file, no JavaScript. The stylesheet stays short on purpose: browser defaults handle the rest, there is no reset.",
     ]),
 
     $("h3", { textContent: "CSS Paint API — one worklet" }),
     $("p", {}, [
-      "Houdini is a group of APIs that expose parts of the browser's CSS engine to JavaScript. I use one piece of it: a paint worklet that draws the faint dot pattern behind the hero heading. It is a plain class with a ",
+      "Houdini is a group of APIs that expose parts of the browser's CSS engine to JavaScript. I use one piece of it: a paint worklet that draws the faint dot pattern behind this page. It is a plain class with a ",
       $("code", { textContent: "paint(ctx, size, props)" }),
       " method, named with ",
       $("code", { textContent: "registerPaint()" }),
@@ -259,13 +284,15 @@ const post = $("article", {}, [
       }),
     ]),
     $("p", {}, [
-      "The stylesheet then uses it as a background image, with ",
+      "The stylesheet then uses it as the body's ",
+      $("code", { textContent: "background-image" }),
+      ", with ",
       $("code", { textContent: "--dot-size" }),
       " and ",
       $("code", { textContent: "--dot-color" }),
       " as parameters. Paint runs on its own thread, so it cannot block the page. Chrome and Edge run it; Firefox and Safari do not, and there the ",
       $("code", { textContent: "paint()" }),
-      " background is silently dropped — which is fine, the page just has no dots.",
+      " background is silently dropped — which is fine, the page just has a plain background.",
     ]),
 
     $("h3", { textContent: "Lessons" }),
@@ -304,12 +331,7 @@ const post = $("article", {}, [
   ]),
 ]);
 
-const blogSection = $("section", { id: "blog" }, [
-  $("h2", { textContent: "Blog" }),
-  post,
-]);
-
-const aboutSection = $("section", { id: "about" }, [
+const about = $("section", { id: "about" }, [
   $("h2", { textContent: "About" }),
   $("p", {}, [
     "This blog collects notes on system administration and audio debugging. The page itself is built with the DOM, CSSOM, and Houdini APIs described in the post above. Source on ",
@@ -321,12 +343,13 @@ const aboutSection = $("section", { id: "about" }, [
   ]),
 ]);
 
+const main = $("main", { id: "top" }, [post, about]);
+
 const footer = $("footer", {}, [
   $("p", { textContent: "© 2026 Jilai Cheng" }),
+  $("a", { href: "#top", textContent: "top" }),
 ]);
 
 document.body.appendChild(nav);
-document.body.appendChild(hero);
-document.body.appendChild(blogSection);
-document.body.appendChild(aboutSection);
+document.body.appendChild(main);
 document.body.appendChild(footer);

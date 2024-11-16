@@ -165,6 +165,9 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "<head>" }),
   " elements on its own; everything else comes from script.js.",
 ]));
+document.body.appendChild($("p", {}, [
+  "Without JavaScript there is no page: nothing exists until script.js runs.",
+]));
 
 // 2. DOM
 document.body.appendChild($("h2", { textContent: "2. DOM" }));
@@ -327,35 +330,6 @@ document.body.appendChild($("p", {}, [
   "element it paints. Chromium only: Chrome and Edge run worklets (Chrome 65+); ",
   "Firefox and Safari do not. Browsers without support drop the paint() value, so ",
   "the background is plain and the page still works.",
-]));
-
-// Lessons
-document.body.appendChild($("h2", { textContent: "Lessons" }));
-document.body.appendChild($("ul", {}, [
-  $("li", {}, [
-    "No JavaScript, no page: there is no content and no style until script.js runs.",
-  ]),
-  $("li", {}, [
-    $("code", { textContent: "replaceSync()" }),
-    " and ",
-    $("code", { textContent: "replace()" }),
-    " throw NotAllowedError unless the sheet came from the ",
-    $("code", { textContent: "CSSStyleSheet()" }),
-    " constructor.",
-  ]),
-  $("li", {}, [
-    $("code", { textContent: "replaceSync()" }),
-    " strips ",
-    $("code", { textContent: "@import" }),
-    "; a constructed sheet cannot load external CSS.",
-  ]),
-  $("li", {}, [
-    $("code", { textContent: "adoptedStyleSheets" }),
-    " only accepts sheets constructed in the same document; it was a frozen array in older browsers, so assign a new array.",
-  ]),
-  $("li", {}, [
-    "Paint worklets are Chromium-only. The paint() background is ignored elsewhere, which keeps the page usable without the API.",
-  ]),
 ]));
 
 document.body.appendChild($("p", {}, [

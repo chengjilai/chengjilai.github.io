@@ -24,25 +24,43 @@ const sheet = new CSSStyleSheet();
 sheet.replaceSync(`
   :root {
     color-scheme: light dark;
-    --bg: #fff;
-    --fg: #1f2328;
-    --muted: #555;
-    --border: #e2e2e2;
-    --code-bg: #f3f4f6;
-    --pre-bg: #f6f8fa;
-    --link: #0969da;
-    --dot: hsla(0, 0%, 0%, 0.07);
+
+    /* xterm 8-color palette */
+    --black: #000000;
+    --red: #CD0000;
+    --green: #00CD00;
+    --yellow: #CDCD00;
+    --blue: #0000CD;
+    --magenta: #CD00CD;
+    --cyan: #00CDCD;
+    --white: #E5E5E5;
+    --br-black: #7F7F7F;
+    --br-white: #FFFFFF;
+    --br-cyan: #00FFFF;
+
+    --bg: #FFFFFF;
+    --fg: #000000;
+    --heading: #000000;
+    --link: #0000CD;
+    --border: #7F7F7F;
+    --code-bg: #E5E5E5;
+    --code-fg: #000000;
+    --pre-bg: #E5E5E5;
+    --pre-fg: #000000;
+    --dot: hsla(0, 0%, 0%, 0.1);
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0d1117;
-      --fg: #e6edf3;
-      --muted: #8b949e;
-      --border: #30363d;
-      --code-bg: #161b22;
-      --pre-bg: #161b22;
-      --link: #58a6ff;
-      --dot: hsla(0, 0%, 100%, 0.07);
+      --bg: #000000;
+      --fg: #E5E5E5;
+      --heading: #FFFFFF;
+      --link: #00FFFF;
+      --border: #7F7F7F;
+      --code-bg: #E5E5E5;
+      --code-fg: #000000;
+      --pre-bg: #000000;
+      --pre-fg: #E5E5E5;
+      --dot: hsla(0, 0%, 100%, 0.1);
     }
   }
 
@@ -59,23 +77,27 @@ sheet.replaceSync(`
     padding: 2.5rem 1.25rem 4rem;
   }
 
+  h1, h2 { color: var(--heading); }
+  h2 { margin-top: 2.2rem; }
+
   a { color: var(--link); }
 
   code {
     background: var(--code-bg);
+    color: var(--code-fg);
     padding: 0.1em 0.35em;
     border-radius: 4px;
     font-size: 0.88em;
   }
   pre {
     background: var(--pre-bg);
+    color: var(--pre-fg);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 0.9rem 1rem;
     overflow-x: auto;
   }
-  pre code { background: none; padding: 0; }
-
-  h2 { margin-top: 2.2rem; }
+  pre code { background: none; color: var(--pre-fg); padding: 0; }
 `);
 document.adoptedStyleSheets = [sheet];
 

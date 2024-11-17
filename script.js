@@ -40,33 +40,25 @@ sheet.replaceSync(`
 
     --bg: #FFFFFF;
     --fg: #000000;
-    --heading: #000000;
     --link: #0000CD;
     --border: #7F7F7F;
     --code-bg: #E5E5E5;
     --code-fg: #000000;
-    --pre-bg: #E5E5E5;
-    --pre-fg: #000000;
     --dot: hsla(0, 0%, 0%, 0.1);
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #000000;
       --fg: #E5E5E5;
-      --heading: #FFFFFF;
       --link: #00FFFF;
       --border: #7F7F7F;
       --code-bg: #E5E5E5;
       --code-fg: #000000;
-      --pre-bg: #000000;
-      --pre-fg: #E5E5E5;
       --dot: hsla(0, 0%, 100%, 0.1);
     }
   }
 
   body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.6;
     color: var(--fg);
     background-color: var(--bg);
     background-image: paint(dots);
@@ -74,30 +66,20 @@ sheet.replaceSync(`
     --dot-color: var(--dot);
     max-width: 44rem;
     margin: 0 auto;
-    padding: 2.5rem 1.25rem 4rem;
+    padding: 0 1.25rem;
   }
-
-  h1, h2 { color: var(--heading); }
-  h2 { margin-top: 2.2rem; }
 
   a { color: var(--link); }
 
   code {
     background: var(--code-bg);
     color: var(--code-fg);
-    padding: 0.1em 0.35em;
-    border-radius: 4px;
-    font-size: 0.88em;
   }
   pre {
-    background: var(--pre-bg);
-    color: var(--pre-fg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.9rem 1rem;
     overflow-x: auto;
+    border: 1px solid var(--border);
   }
-  pre code { background: none; color: var(--pre-fg); padding: 0; }
+  pre code { background: none; color: inherit; }
 `);
 document.adoptedStyleSheets = [sheet];
 

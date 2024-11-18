@@ -24,26 +24,9 @@ const sheet = new CSSStyleSheet();
 sheet.replaceSync(`
   :root {
     color-scheme: light dark;
-
-    /* xterm 8-color palette */
-    --black: #000000;
-    --red: #CD0000;
-    --green: #00CD00;
-    --yellow: #CDCD00;
-    --blue: #0000CD;
-    --magenta: #CD00CD;
-    --cyan: #00CDCD;
-    --white: #E5E5E5;
-    --br-black: #7F7F7F;
-    --br-white: #FFFFFF;
-    --br-cyan: #00FFFF;
-
     --bg: #FFFFFF;
     --fg: #000000;
     --link: #0000CD;
-    --border: #7F7F7F;
-    --code-bg: #E5E5E5;
-    --code-fg: #000000;
     --dot: hsla(0, 0%, 0%, 0.1);
   }
   @media (prefers-color-scheme: dark) {
@@ -51,9 +34,6 @@ sheet.replaceSync(`
       --bg: #000000;
       --fg: #E5E5E5;
       --link: #00FFFF;
-      --border: #7F7F7F;
-      --code-bg: #E5E5E5;
-      --code-fg: #000000;
       --dot: hsla(0, 0%, 100%, 0.1);
     }
   }
@@ -71,14 +51,8 @@ sheet.replaceSync(`
 
   a { color: var(--link); }
 
-  code {
-    background: var(--code-bg);
-    color: var(--code-fg);
-  }
-  pre {
-    overflow-x: auto;
-    border: 1px solid var(--border);
-  }
+  code { background: #E5E5E5; color: #000000; }
+  pre { overflow-x: auto; border: 1px solid #7F7F7F; }
   pre code { background: none; color: inherit; }
 `);
 document.adoptedStyleSheets = [sheet];

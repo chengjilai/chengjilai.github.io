@@ -27,14 +27,14 @@ sheet.replaceSync(`
     --bg: #FFFFFF;
     --fg: #000000;
     --link: #0000CD;
-    --dot: hsla(0, 0%, 0%, 0.1);
+    --dot: hsla(0, 0%, 0%, 0.3);
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #000000;
       --fg: #E5E5E5;
       --link: #00FFFF;
-      --dot: hsla(0, 0%, 100%, 0.1);
+      --dot: hsla(0, 0%, 100%, 0.3);
     }
   }
 
@@ -42,7 +42,7 @@ sheet.replaceSync(`
     color: var(--fg);
     background-color: var(--bg);
     background-image: paint(dots);
-    --dot-size: 28;
+    --dot-size: 24;
     --dot-color: var(--dot);
     max-width: 44rem;
     margin: 0 auto;
@@ -70,13 +70,13 @@ class Dots {
   }
 
   paint(ctx, size, props) {
-    const step = parseFloat(props.get("--dot-size").toString()) || 28;
+    const step = parseFloat(props.get("--dot-size").toString()) || 24;
     const color = props.get("--dot-color").toString().trim();
     ctx.fillStyle = color;
     for (let x = step / 2; x < size.width; x += step) {
       for (let y = step / 2; y < size.height; y += step) {
         ctx.beginPath();
-        ctx.arc(x, y, 1.5, 0, 2 * Math.PI);
+        ctx.arc(x, y, 2, 0, 2 * Math.PI);
         ctx.fill();
       }
     }
@@ -298,7 +298,7 @@ document.body.appendChild($("pre", {}, [
     textContent:
       "body {\n" +
       "  background-image: paint(dots);\n" +
-      "  --dot-size: 28;\n" +
+      "  --dot-size: 24;\n" +
       "  --dot-color: var(--dot);\n" +
       "}",
   }),

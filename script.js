@@ -27,29 +27,29 @@ sheet.replaceSync(`
     --bg: #FFFFFF;
     --fg: #000000;
     --link: #0000CD;
-    --dot: hsla(240, 100%, 40%, 0.35);
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #000000;
       --fg: #E5E5E5;
       --link: #00FFFF;
-      --dot: hsla(180, 100%, 50%, 0.35);
     }
   }
 
   body {
     color: var(--fg);
     background-color: var(--bg);
-    background-image: paint(dots);
-    --dot-size: 24;
-    --dot-color: var(--dot);
     max-width: 44rem;
     margin: 0 auto;
     padding: 0 1.25rem;
   }
 
   a { color: var(--link); }
+
+  h2 {
+    background-image: paint(rule);
+    --rule-color: var(--link);
+  }
 
   code { background: #E5E5E5; color: #000000; }
   pre { overflow-x: auto; border: 1px solid #7F7F7F; }
@@ -64,26 +64,21 @@ document.adoptedStyleSheets = [sheet];
 // paint() background-image and keep the plain background.
 // ---------------------------------------------------------------
 const WORKLET_SRC = `
-class Dots {
+class Rule {
   static get inputProperties() {
-    return ["--dot-size", "--dot-color"];
+    return ["--rule-color"];
   }
 
   paint(ctx, size, props) {
-    const step = parseFloat(props.get("--dot-size").toString()) || 24;
-    const color = props.get("--dot-color").toString().trim();
+    const color = props.get("--rule-color").toString().trim();
     ctx.fillStyle = color;
-    for (let x = step / 2; x < size.width; x += step) {
-      for (let y = step / 2; y < size.height; y += step) {
-        ctx.beginPath();
-        ctx.arc(x, y, 2, 0, 2 * Math.PI);
-        ctx.fill();
-      }
-    }
+    // terminal double rule along the bottom edge of the element
+    ctx.fillRect(0, size.height - 5, size.width, 1);
+    ctx.fillRect(0, size.height - 2, size.width, 1);
   }
 }
 
-registerPaint("dots", Dots);
+registerPaint("rule", Rule);
 `;
 
 if ("paintWorklet" in CSS) {
@@ -269,8 +264,8 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("h2", { textContent: "4. CSS Paint API: one worklet" }));
 document.body.appendChild($("p", {}, [
   "Houdini is a set of APIs that expose parts of the browser's CSS engine to ",
-  "JavaScript. This page uses one piece: a paint worklet that draws the dot ",
-  "pattern behind the page. A worklet is a class with a ",
+  "JavaScript. This page uses one piece: a paint worklet that draws the double ",
+  "rule under each section heading. A worklet is a class with a ",
   $("code", { textContent: "paint(ctx, size, props)" }),
   " method:",
 ]));
@@ -291,23 +286,22 @@ document.body.appendChild($("pre", {}, [
   }),
 ]));
 document.body.appendChild($("p", {}, [
-  "The stylesheet applies it to the body:",
+  "The stylesheet applies it to headings:",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
     textContent:
-      "body {\n" +
-      "  background-image: paint(dots);\n" +
-      "  --dot-size: 24;\n" +
-      "  --dot-color: var(--dot);\n" +
+      "h2 {\n" +
+      "  background-image: paint(rule);\n" +
+      "  --rule-color: var(--link);\n" +
       "}",
   }),
 ]));
 document.body.appendChild($("p", {}, [
-  "Paint runs on its own thread and reads the two custom properties from the ",
-  "element it paints. Chromium only: Chrome and Edge run worklets (Chrome 65+); ",
-  "Firefox and Safari do not. Browsers without support drop the paint() value, so ",
-  "the background is plain and the page still works.",
+  "Paint runs on its own thread and reads the color from a custom property on ",
+  "the element it paints. Chromium only: Chrome and Edge run worklets (Chrome ",
+  "65+); Firefox and Safari do not. Browsers without support drop the paint() ",
+  "value, so headings just have no rule and the page still works.",
 ]));
 
 document.body.appendChild($("p", {}, [

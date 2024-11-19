@@ -27,14 +27,14 @@ sheet.replaceSync(`
     --bg: #FFFFFF;
     --fg: #000000;
     --link: #0000CD;
-    --dot: hsla(0, 0%, 0%, 0.3);
+    --dot: hsla(240, 100%, 40%, 0.35);
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #000000;
       --fg: #E5E5E5;
       --link: #00FFFF;
-      --dot: hsla(0, 0%, 100%, 0.3);
+      --dot: hsla(180, 100%, 50%, 0.35);
     }
   }
 

@@ -23,17 +23,10 @@ document.head.appendChild(title);
 const sheet = new CSSStyleSheet();
 sheet.replaceSync(`
   :root {
-    color-scheme: light dark;
-    --bg: #FFFFFF;
-    --fg: #000000;
-    --link: #0000CD;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #000000;
-      --fg: #E5E5E5;
-      --link: #00FFFF;
-    }
+    color-scheme: dark;
+    --bg: #000000;
+    --fg: #E5E5E5;
+    --link: #00FFFF;
   }
 
   body {
@@ -253,11 +246,6 @@ document.body.appendChild($("ul", {}, [
   $("li", {}, [
     "One sheet can be adopted by a document and by shadow roots; it is parsed once.",
   ]),
-]));
-document.body.appendChild($("p", {}, [
-  "Colors on this page are CSS variables; one ",
-  $("code", { textContent: "prefers-color-scheme" }),
-  " media query switches them for dark mode.",
 ]));
 
 // 4. CSS Paint API

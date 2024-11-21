@@ -1,117 +1,25 @@
 "use strict";
 
-// ---------------------------------------------------------------
-// Head, created by JS. index.html has no head element at all.
-// ---------------------------------------------------------------
-const charset = document.createElement("meta");
-charset.charset = "utf-8";
-document.head.appendChild(charset);
-
-const viewport = document.createElement("meta");
-viewport.name = "viewport";
-viewport.content = "width=device-width, initial-scale=1";
-document.head.appendChild(viewport);
-
+// Title, per page. common.js sets up the head and stylesheet.
 const title = document.createElement("title");
-title.textContent = "Jilai Cheng";
+title.textContent = "Building this page with DOM, CSSOM, and Houdini";
 document.head.appendChild(title);
 
-// ---------------------------------------------------------------
-// Stylesheet. No <style> tag, no CSS file: one constructable
-// CSSStyleSheet, adopted by the document.
-// ---------------------------------------------------------------
-const sheet = new CSSStyleSheet();
-sheet.replaceSync(`
-  :root {
-    color-scheme: dark;
-    --bg: #000000;
-    --fg: #E5E5E5;
-    --link: #00FFFF;
-  }
-
-  body {
-    color: var(--fg);
-    background-color: var(--bg);
-    max-width: 44rem;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-  }
-
-  a { color: var(--link); }
-
-  h2 {
-    background-image: paint(rule);
-    --rule-color: var(--link);
-  }
-
-  code { background: #E5E5E5; color: #000000; }
-  pre { overflow-x: auto; border: 1px solid #7F7F7F; }
-  pre code { background: none; color: inherit; }
-`);
-document.adoptedStyleSheets = [sheet];
-
-// ---------------------------------------------------------------
-// Paint worklet. The source is a plain string, so the same constant
-// is used both by the runtime (blob URL) and by the post below.
-// Chromium only; browsers without CSS.paintWorklet drop the
-// paint() background-image and keep the plain background.
-// ---------------------------------------------------------------
-const WORKLET_SRC = `
-class Rule {
-  static get inputProperties() {
-    return ["--rule-color"];
-  }
-
-  paint(ctx, size, props) {
-    const color = props.get("--rule-color").toString().trim();
-    ctx.fillStyle = color;
-    // terminal double rule along the bottom edge of the element
-    ctx.fillRect(0, size.height - 5, size.width, 1);
-    ctx.fillRect(0, size.height - 2, size.width, 1);
-  }
-}
-
-registerPaint("rule", Rule);
-`;
-
-if ("paintWorklet" in CSS) {
-  const url = URL.createObjectURL(new Blob([WORKLET_SRC], { type: "text/javascript" }));
-  CSS.paintWorklet.addModule(url);
-}
-
-// ---------------------------------------------------------------
-// DOM helper. Wraps createElement/appendChild so each element of
-// the page is one call, in document order.
-// ---------------------------------------------------------------
-function $(tag, attrs = {}, children = []) {
-  const el = document.createElement(tag);
-  for (const [k, v] of Object.entries(attrs)) {
-    if (k === "className") el.className = v;
-    else if (k === "textContent") el.textContent = v;
-    else el.setAttribute(k, v);
-  }
-  for (const child of children) {
-    el.appendChild(typeof child === "string" ? document.createTextNode(child) : child);
-  }
-  return el;
-}
-
-// ---------------------------------------------------------------
-// The page. One appendChild per element, in document order.
-// ---------------------------------------------------------------
+// The post. One appendChild per element, in document order.
 document.body.appendChild($("h1", {
   textContent: "Building this page with DOM, CSSOM, and Houdini",
 }));
 
 document.body.appendChild($("p", {}, [
-  "index.html is one script tag. script.js creates the head, the DOM, and the ",
-  "stylesheet at runtime - no HTML content, no CSS file, no framework, no build ",
-  "step, nothing fetched over the network. This post documents how the page is ",
-  "built, with the code that actually runs.",
+  "Every page on this site is two script tags. common.js creates the head and ",
+  "the stylesheet; a per-page script builds the content. There is no HTML ",
+  "content, no CSS file, no framework, no build step, and nothing is fetched ",
+  "over the network. This post documents how it works, with the code that ",
+  "actually runs.",
 ]));
 
-// 1. index.html
-document.body.appendChild($("h2", { textContent: "1. index.html" }));
+// 1. This page
+document.body.appendChild($("h2", { textContent: "1. This page" }));
 document.body.appendChild($("p", {}, ["The whole document:"]));
 document.body.appendChild($("pre", {}, [
   $("code", {
@@ -119,7 +27,8 @@ document.body.appendChild($("pre", {}, [
       "<!DOCTYPE html>\n" +
       "\n" +
       "<body>\n" +
-      "  <script src=\"script.js\"></script>\n" +
+      "  <script src=\"../common.js\"></script>\n" +
+      "  <script src=\"building-this-page.js\"></script>\n" +
       "</body>\n" +
       "</html>",
   }),
@@ -129,10 +38,11 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "<html>" }),
   " and ",
   $("code", { textContent: "<head>" }),
-  " elements on its own; everything else comes from script.js.",
+  " elements on its own. common.js sets up the head, the stylesheet, and the ",
+  "paint worklet; building-this-page.js appends this post.",
 ]));
 document.body.appendChild($("p", {}, [
-  "Without JavaScript there is no page: nothing exists until script.js runs.",
+  "Without JavaScript there is no page: nothing exists until the scripts run.",
 ]));
 
 // 2. DOM
@@ -261,8 +171,8 @@ document.body.appendChild($("pre", {}, [
   $("code", { textContent: WORKLET_SRC }),
 ]));
 document.body.appendChild($("p", {}, [
-  "The source is a string inside script.js and loads from a blob URL, so there is ",
-  "no second file:",
+  "The source is a string inside common.js and loads from a blob URL, so there ",
+  "is no second file:",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {

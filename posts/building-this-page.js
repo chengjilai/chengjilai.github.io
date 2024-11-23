@@ -23,7 +23,7 @@ document.body.appendChild($("h2", { textContent: "1. This page" }));
 document.body.appendChild($("p", {}, ["The whole document:"]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "<!DOCTYPE html>\n" +
       "\n" +
       "<body>\n" +
@@ -31,7 +31,7 @@ document.body.appendChild($("pre", {}, [
       "  <script src=\"building-this-page.js\"></script>\n" +
       "</body>\n" +
       "</html>",
-  }),
+  "html")}),
 ]));
 document.body.appendChild($("p", {}, [
   "The HTML parser creates the missing ",
@@ -77,7 +77,7 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "function $(tag, attrs = {}, children = []) {\n" +
       "  const el = document.createElement(tag);\n" +
       "  for (const [k, v] of Object.entries(attrs)) {\n" +
@@ -90,18 +90,18 @@ document.body.appendChild($("pre", {}, [
       "  }\n" +
       "  return el;\n" +
       "}",
-  }),
+  "js")}),
 ]));
 document.body.appendChild($("p", {}, [
   "Each element is one call, for example the title of this post:",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       'document.body.appendChild($("h1", {\n' +
       '  textContent: "Building this page with DOM, CSSOM, and Houdini",\n' +
       "}));",
-  }),
+  "js")}),
 ]));
 
 // 3. CSSOM
@@ -117,11 +117,11 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "const sheet = new CSSStyleSheet();\n" +
       "sheet.replaceSync(cssText);\n" +
       "document.adoptedStyleSheets = [sheet];",
-  }),
+  "js")}),
 ]));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
@@ -168,7 +168,7 @@ document.body.appendChild($("p", {}, [
   " method:",
 ]));
 document.body.appendChild($("pre", {}, [
-  $("code", { textContent: WORKLET_SRC }),
+  $("code", { innerHTML: highlight( WORKLET_SRC , "js")}),
 ]));
 document.body.appendChild($("p", {}, [
   "The source is a string inside common.js and loads from a blob URL, so there ",
@@ -176,24 +176,24 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       'if ("paintWorklet" in CSS) {\n' +
       '  const url = URL.createObjectURL(new Blob([workletSrc], { type: "text/javascript" }));\n' +
       "  CSS.paintWorklet.addModule(url);\n" +
       "}",
-  }),
+  "js")}),
 ]));
 document.body.appendChild($("p", {}, [
   "The stylesheet applies it to headings:",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "h2 {\n" +
       "  background-image: paint(rule);\n" +
       "  --rule-color: var(--link);\n" +
       "}",
-  }),
+  "css")}),
 ]));
 document.body.appendChild($("p", {}, [
   "Paint runs on its own thread and reads the color from a custom property on ",

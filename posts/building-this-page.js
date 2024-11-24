@@ -83,6 +83,7 @@ document.body.appendChild($("pre", {}, [
       "  for (const [k, v] of Object.entries(attrs)) {\n" +
       "    if (k === \"className\") el.className = v;\n" +
       "    else if (k === \"textContent\") el.textContent = v;\n" +
+      "    else if (k === \"innerHTML\") el.innerHTML = v;\n" +
       "    else el.setAttribute(k, v);\n" +
       "  }\n" +
       "  for (const child of children) {\n" +
@@ -200,6 +201,33 @@ document.body.appendChild($("p", {}, [
   "the element it paints. Chromium only: Chrome and Edge run worklets (Chrome ",
   "65+); Firefox and Safari do not. Browsers without support drop the paint() ",
   "value, so headings just have no rule and the page still works.",
+]));
+
+// 5. Syntax highlighting
+document.body.appendChild($("h2", { textContent: "5. Syntax highlighting" }));
+document.body.appendChild($("p", {}, [
+  "Every code block on this site is colored by a zero-dependency tokenizer in ",
+  "common.js. Each language is a list of (class, regex) rules, and highlight() ",
+  "takes the earliest match at each position, so rule order never matters:",
+]));
+document.body.appendChild($("pre", {}, [
+  $("code", {
+    innerHTML: highlight(
+      'const LANGS = {\n' +
+      '  js: [\n' +
+      '    ["comment", /\\/\\/[^\\n]*|\\/\\*[\\s\\S]*?\\*\\//],\n' +
+      '    ["keyword", /\\b(?:const|let|if|return|function)\\b/],\n' +
+      '  ],\n' +
+      '};',
+    "js"),
+  }),
+]));
+document.body.appendChild($("p", {}, [
+  "Tokens are wrapped in spans colored from the terminal palette: cyan ",
+  "keywords, green strings, gray comments, yellow numbers, magenta builtins. ",
+  "Each token is HTML-escaped on the way out, which is why the document dump in ",
+  "section 1 renders as text and not as markup. This very post is highlighted ",
+  "by it.",
 ]));
 
 document.body.appendChild($("p", {}, [

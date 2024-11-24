@@ -131,8 +131,9 @@ const LANGS = {
   ],
   html: [
     ["comment", /<!--[\s\S]*?-->/],
+    ["tag", /<!DOCTYPE[^>]*>|<\/?[a-zA-Z][a-zA-Z0-9]*/],
+    ["builtin", /[a-zA-Z-]+(?==)/],
     ["string", /"[^"]*"|'[^']*'/],
-    ["tag", /<\/?[a-zA-Z!][^>]*>/],
   ],
 };
 

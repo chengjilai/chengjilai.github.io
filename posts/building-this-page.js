@@ -54,21 +54,21 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
     $("code", { textContent: "document.createElement(tag)" }),
-    " - new element node",
+    ": new element node",
   ]),
   $("li", {}, [
     $("code", { textContent: "el.appendChild(child)" }),
-    " - insert into the tree",
+    ": insert into the tree",
   ]),
   $("li", {}, [
     $("code", { textContent: "el.textContent" }),
     " and ",
     $("code", { textContent: "el.setAttribute(name, value)" }),
-    " - content and attributes",
+    ": content and attributes",
   ]),
   $("li", {}, [
     $("code", { textContent: "el.addEventListener(type, fn)" }),
-    " - events",
+    ": events",
   ]),
 ]));
 document.body.appendChild($("p", {}, [

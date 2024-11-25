@@ -1,6 +1,5 @@
 "use strict";
 
-// Title, per page. common.js sets up the head and stylesheet.
 const title = document.createElement("title");
 title.textContent = "Building this page with DOM, CSSOM, and Houdini";
 document.head.appendChild(title);
@@ -226,8 +225,8 @@ document.body.appendChild($("p", {}, [
   "Tokens are wrapped in spans colored from the terminal palette: cyan ",
   "keywords, green strings, gray comments, yellow numbers, magenta builtins. ",
   "Each token is HTML-escaped on the way out, which is why the document dump in ",
-  "section 1 renders as text and not as markup. This very post is highlighted ",
-  "by it.",
+  "section 1 renders as text and not as markup. This post is highlighted by ",
+  "it.",
 ]));
 
 document.body.appendChild($("p", {}, [

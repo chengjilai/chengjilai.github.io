@@ -99,7 +99,7 @@ const LANGS = {
     ["comment", /#[^\n]*/],
     ["string", /"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'/],
     ["number", /\b\d+(?:\.\d+)?\b/],
-    ["keyword", /\b(?:if|then|else|elif|fi|for|in|do|done|case|esac|while|until|return|function|echo|printf|pkill|pgrep|grep|sed|cat|ls|cd|sudo|modprobe|ffmpeg|bash|sh)\b/],
+    ["keyword", /\b(?:if|then|else|elif|fi|for|in|do|done|case|esac|while|until|return|function|echo|printf|pkill|pgrep|ps|readlink|grep|sed|cat|ls|cd|sudo|modprobe|ffmpeg|bash|sh)\b/],
   ],
   elisp: [
     ["comment", /;[^\n]*/],
@@ -128,6 +128,12 @@ const LANGS = {
     ["number", /(?<![A-Za-z0-9_])-?\d[\d.]*(?:px|rem|em|%)?/],
     ["builtin", /\b(?:background|color|border|margin|padding|font|display|max-width|font-family|line-height)\b|--[a-z-]+/],
     ["keyword", /\b(?:var|paint|inherit|none|solid|auto|block|calc)\b/],
+  ],
+  nix: [
+    ["comment", /#[^\n]*/],
+    ["string", /''[\s\S]*?''|"(?:[^"\\\n]|\\.)*"/],
+    ["number", /\b\d+\b/],
+    ["keyword", /\b(?:import|inherit|in|let|if|then|else|with|rec|assert|builtins|listToAttrs|map|nixosSystem|nixosConfiguration|system|pkgs|lib|config)\b/],
   ],
   html: [
     ["comment", /<!--[\s\S]*?-->/],

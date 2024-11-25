@@ -182,3 +182,35 @@ function $(tag, attrs = {}, children = []) {
   }
   return el;
 }
+
+// ---------------------------------------------------------------
+// References: the worth-reading sources cited across the posts.
+// The index page renders this list; keep it in sync when a post
+// cites a major source (verified URLs only).
+// ---------------------------------------------------------------
+const REFERENCES = [
+  ["Guix manual: Getting Started with the System", "https://guix.gnu.org/manual/devel/en/html_node/Getting-Started-with-the-System.html"],
+  ["Guix manual: Unattended Upgrades", "https://guix.gnu.org/manual/stable/en/html_node/Unattended-Upgrades.html"],
+  ["Guix source: shepherd-service-upgrade (compares services by provision)", "https://codeberg.org/guix/guix/src/branch/master/gnu/services/shepherd.scm"],
+  ["Guix source: NetworkManager and dhcpcd both provide networking", "https://codeberg.org/guix/guix/src/branch/master/gnu/services/networking.scm"],
+  ["wpa_supplicant: file-backed passwords (ext_password_file.c)", "https://w1.fi/cgit/hostap/plain/src/utils/ext_password_file.c"],
+  ["NixOS wpa_supplicant module (authProtocols default)", "https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/networking/wpa_supplicant.nix"],
+  ["Campus WPA2-Enterprise official Linux guide", "https://net.sjtu.edu.cn/info/1215/2712.htm"],
+  ["kmscon: default TERM is vt220 (src/misc/pty.c)", "https://github.com/kmscon/kmscon/blob/master/src/misc/pty.c"],
+  ["kmscon NEWS: blink support", "https://github.com/kmscon/kmscon/blob/master/NEWS.md"],
+  ["GNU Emacs startup.el (default.el load and the startup-screen wrap)", "https://github.com/emacs-mirror/emacs/blob/master/lisp/startup.el"],
+  ["OpenSSH sshd(8): known_hosts keys are stored per host name", "https://man.openbsd.org/sshd"],
+  ["obs-studio eq-filter.c (fixed crossover frequencies)", "https://github.com/obsproject/obs-studio/blob/master/plugins/obs-filters/eq-filter.c"],
+  ["Linux HDA userspace ioctls (include/sound/hda_hwdep.h)", "https://github.com/torvalds/linux/blob/master/include/sound/hda_hwdep.h"],
+  ["thesofproject/sof-bin (SOF firmware)", "https://github.com/thesofproject/sof-bin"],
+  ["pi: RPC mode protocol", "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/rpc.md"],
+];
+
+// Append the references list to a post page. Each post calls this before
+// its Source footer.
+function appendReferences() {
+  document.body.appendChild($("h2", { textContent: "References" }));
+  document.body.appendChild($("ul", {}, REFERENCES.map(([text, url]) =>
+    $("li", {}, [$("a", { href: url, textContent: text })])
+  )));
+}

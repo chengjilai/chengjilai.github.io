@@ -229,6 +229,8 @@ document.body.appendChild($("p", {}, [
   "it.",
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", {

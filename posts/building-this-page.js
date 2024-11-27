@@ -14,7 +14,7 @@ document.body.appendChild($("p", {}, [
   "the stylesheet; a per-page script builds the content. There is no HTML ",
   "content, no CSS file, no framework, no build step, and nothing is fetched ",
   "over the network. This post documents how it works, with the code that ",
-  "actually runs.",
+  "runs.",
 ]));
 
 // 1. This page

@@ -199,7 +199,7 @@ document.body.appendChild($("p", {}, [
   "Paint runs on its own thread and reads the color from a custom property on ",
   "the element it paints. Chromium only: Chrome and Edge run worklets (Chrome ",
   "65+); Firefox and Safari do not. Browsers without support drop the paint() ",
-  "value, so headings just have no rule and the page still works.",
+  "value, so headings have no rule and the page still works.",
 ]));
 
 // 5. Syntax highlighting

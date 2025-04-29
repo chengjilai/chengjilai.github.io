@@ -107,6 +107,8 @@ document.body.appendChild($("p", {}, [
   " to a hub host when client isolation blocks laptop-to-laptop traffic.",
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", {

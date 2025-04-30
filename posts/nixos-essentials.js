@@ -7,7 +7,7 @@ document.head.appendChild(title);
 document.body.appendChild($("h1", { textContent: "NixOS debugging essentials" }));
 
 document.body.appendChild($("p", {}, [
-  "The flake layout, what switch actually does, and how the machine gets its ",
+  "The flake layout, what switch does, and how the machine gets its ",
   "name. All of it is declared, none of it is remembered.",
 ]));
 
@@ -47,7 +47,7 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "uname -r" }),
   " stays old). Activation runs synchronously, and ",
   $("code", { textContent: "readlink /run/current-system" }),
-  " shows the live generation. Verify what actually runs (" ,
+  " shows the live generation. Verify what runs (" ,
   $("code", { textContent: "ps" }),
   " start time) against config changes; a stale instance explains \"my ",
   "change did nothing\".",

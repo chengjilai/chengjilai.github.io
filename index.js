@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/escape-key.html", textContent: "The escape key: five layers" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/nixos-essentials.html", textContent: "NixOS debugging essentials" }),
   ]),
   $("li", {}, [

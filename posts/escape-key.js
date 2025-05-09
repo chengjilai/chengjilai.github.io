@@ -42,6 +42,15 @@ document.body.appendChild($("p", {}, [
   " so a lone escape becomes the escape event. C-h k on the key shows which ",
   "event Emacs actually received.",
 ]));
+document.body.appendChild($("p", {}, [
+  "In a graphical frame the Escape key arrives as the escape event, and a ",
+  "key translation rewrites it to ESC. This is a known annoyance with an open ",
+  "enhancement request: evil issue #1780, \"Support separating M- and ",
+  "<escape> in graphical frames\", proposes ",
+  $("code", { textContent: "(define-key local-function-key-map (kbd \"<escape>\") nil)" }),
+  ", which reserves ESC for Meta and leaves <escape> to the key. In a ",
+  "terminal the two cannot be distinguished at all.",
+]));
 
 // 2. A terminal collapses Meta and Escape into one byte
 document.body.appendChild($("h2", {
@@ -54,7 +63,9 @@ document.body.appendChild($("p", {}, [
   "used as a prefix for typing Meta characters on keyboards lacking a Meta ",
   "key.\" Internally M-a is ESC a, and its binding lives in ",
   $("code", { textContent: "esc-map" }),
-  " (keymaps.texi).",
+  " (keymaps.texi). The FAQ says it plainly: \"Emacs converts M-a internally ",
+  "into ESC a anyway (depending on the value of meta-prefix-char)\" (efaq, \"No ",
+  "Meta key\").",
 ]));
 document.body.appendChild($("p", {}, [
   "So M-x and ESC x are the same bytes, and Emacs cannot tell them apart when ",
@@ -64,7 +75,9 @@ document.body.appendChild($("p", {}, [
   "distinguish these, Evil uses input-decode-map.\" evil-esc-mode waits ",
   $("code", { textContent: "evil-esc-delay" }),
   " (0.01 s): if no further key arrives, the event is escape; if one does, it ",
-  "is the ESC prefix (M-x, M-a, ...).",
+  "is the ESC prefix (M-x, M-a, ...). The translation code evil uses is ",
+  "credited in its source to Stefan Monnier's discussion in GNU Emacs bug ",
+  "#13793.",
 ]));
 document.body.appendChild($("p", {}, [
   "Consequence: \"Escape = C-g everywhere\" and \"Meta = Windows key\" cannot ",
@@ -127,7 +140,11 @@ document.body.appendChild($("pre", {}, [
 ]));
 document.body.appendChild($("p", {}, [
   "So during a selection, C-g cancels the selection first instead of aborting. ",
-  "Binding Escape to the same function gives exact C-g parity.",
+  "Binding Escape to the same function gives exact C-g parity. There is a ",
+  "ready-made escape-flavored quit: ESC ESC ESC runs keyboard-escape-quit ",
+  "(global-map, bindings.el), whose docstring describes the same dance - it ",
+  "\"can clear out a prefix argument or a region, can get out of the minibuffer ",
+  "or other recursive edit.\"",
 ]));
 
 // 5. Vim-like prompts are possible

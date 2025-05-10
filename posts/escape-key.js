@@ -45,7 +45,9 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("p", {}, [
   "In a graphical frame the Escape key arrives as the escape event, and a ",
   "key translation rewrites it to ESC. This is a known annoyance with an open ",
-  "enhancement request: evil issue #1780, \"Support separating M- and ",
+  "enhancement request: evil issue ",
+  $("a", { href: "https://github.com/emacs-evil/evil/issues/1780", textContent: "#1780" }),
+  ", \"Support separating M- and ",
   "<escape> in graphical frames\", proposes ",
   $("code", { textContent: "(define-key local-function-key-map (kbd \"<escape>\") nil)" }),
   ", which reserves ESC for Meta and leaves <escape> to the key. In a ",
@@ -77,7 +79,8 @@ document.body.appendChild($("p", {}, [
   " (0.01 s): if no further key arrives, the event is escape; if one does, it ",
   "is the ESC prefix (M-x, M-a, ...). The translation code evil uses is ",
   "credited in its source to Stefan Monnier's discussion in GNU Emacs bug ",
-  "#13793.",
+  $("a", { href: "https://debbugs.gnu.org/13793", textContent: "#13793" }),
+  ".",
 ]));
 document.body.appendChild($("p", {}, [
   "Consequence: \"Escape = C-g everywhere\" and \"Meta = Windows key\" cannot ",

@@ -34,7 +34,9 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("p", {}, [
   "evil makes the split explicit. It binds ",
   $("code", { textContent: "[escape]" }),
-  " in its state maps (evil-maps.el), and evil-esc-mode - switched on when ",
+  " in its state maps ",
+  $("a", { href: "https://github.com/emacs-evil/evil/blob/master/evil-maps.el", textContent: "(evil-maps.el)" }),
+  ", and evil-esc-mode - switched on when ",
   "evil-mode starts - rewrites the ",
   $("code", { textContent: "\\e" }),
   " entry of ",
@@ -61,18 +63,25 @@ document.body.appendChild($("h2", {
 document.body.appendChild($("p", {}, [
   "On a terminal there is no Meta key. Emacs encodes Meta as ESC followed by ",
   "the key: \"You can also type Meta characters using two-character sequences ",
-  "starting with ESC\" (commands.texi), and the glossary calls ESC \"a character ",
+  "starting with ESC\" ",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/doc/emacs/commands.texi", textContent: "(commands.texi)" }),
+  ", and the glossary calls ESC \"a character ",
   "used as a prefix for typing Meta characters on keyboards lacking a Meta ",
   "key.\" Internally M-a is ESC a, and its binding lives in ",
   $("code", { textContent: "esc-map" }),
-  " (keymaps.texi). The FAQ says it plainly: \"Emacs converts M-a internally ",
-  "into ESC a anyway (depending on the value of meta-prefix-char)\" (efaq, \"No ",
-  "Meta key\").",
+  " ",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/doc/lispref/keymaps.texi", textContent: "(keymaps.texi)" }),
+  ". The FAQ says it plainly: \"Emacs converts M-a internally ",
+  "into ESC a anyway (depending on the value of meta-prefix-char)\" ",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/doc/misc/efaq.texi", textContent: "(efaq, \"No Meta key\")" }),
+  ".",
 ]));
 document.body.appendChild($("p", {}, [
   "So M-x and ESC x are the same bytes, and Emacs cannot tell them apart when ",
   "a letter follows. Only a lone ESC can be its own event. evil's docstring ",
-  "states the problem verbatim (evil-intercept-esc): \"In the terminal, escape ",
+  "states the problem verbatim ",
+  $("a", { href: "https://github.com/emacs-evil/evil/blob/master/evil-vars.el", textContent: "(evil-intercept-esc)" }),
+  ": \"In the terminal, escape ",
   "and a meta key sequence both generate the same event. In order to ",
   "distinguish these, Evil uses input-decode-map.\" evil-esc-mode waits ",
   $("code", { textContent: "evil-esc-delay" }),
@@ -92,7 +101,9 @@ document.body.appendChild($("h2", { textContent: "3. evil claims the escape key"
 document.body.appendChild($("p", {}, [
   "evil binds ",
   $("code", { textContent: "[escape]" }),
-  " in every state (evil-maps.el):",
+  " in every state ",
+  $("a", { href: "https://github.com/emacs-evil/evil/blob/master/evil-maps.el", textContent: "(evil-maps.el)" }),
+  ":",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
@@ -112,7 +123,9 @@ document.body.appendChild($("p", {}, [
   "Your own escape binding can therefore silently do nothing. evil's state maps ",
   "are registered in evil-mode-map-alist, which evil pushes onto ",
   $("code", { textContent: "emulation-mode-map-alists" }),
-  " (evil-core.el); the Lisp manual says the active keymaps there \"are used ",
+  " ",
+  $("a", { href: "https://github.com/emacs-evil/evil/blob/master/evil-core.el", textContent: "(evil-core.el)" }),
+  "; the Lisp manual says the active keymaps there \"are used ",
   "before minor-mode-map-alist.\" evil's keys win over every minor-mode ",
   "binding.",
 ]));
@@ -156,14 +169,20 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "(setq evil-want-minibuffer t)" }),
   " - \"Whether to enable Evil in minibuffer(s)\" - makes evil initialize in ",
   "the minibuffer; evil-initialize skips minibuffers unless this is set. The ",
-  "minibuffer starts in evil insert state (evil-core.el sets ",
+  "minibuffer starts in evil insert state (",
+  $("a", { href: "https://github.com/emacs-evil/evil/blob/master/evil-core.el", textContent: "evil-core.el" }),
+  " sets ",
   $("code", { textContent: "evil-default-state" }),
   " to insert there), so typing works as usual. Escape enters normal state; i ",
   "returns to insert.",
 ]));
 document.body.appendChild($("p", {}, [
-  "Normal state's q is already taken (evil-record-macro). Bind your own: put q ",
-  "on abort-minibuffers (a C subr, src/minibuf.c) in the minibuffer's evil maps ",
+  "Normal state's q is already taken ",
+  $("a", { href: "https://github.com/emacs-evil/evil/blob/master/evil-commands.el", textContent: "(evil-record-macro)" }),
+  ". Bind your own: put q ",
+  "on abort-minibuffers (a C subr, ",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/src/minibuf.c", textContent: "src/minibuf.c" }),
+  ") in the minibuffer's evil maps ",
   "with evil-define-key. Result: Escape -> normal, i -> insert, q -> quit, no ",
   "Control needed.",
 ]));

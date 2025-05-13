@@ -25,7 +25,7 @@ document.body.appendChild($("p", {}, [
   "names in the Lisp manual: NUL, RET, TAB, LFD, ESC, SPC, DEL. The physical ",
   "Escape key produces a function-key event instead: the symbol ",
   $("code", { textContent: "escape" }),
-  ". Function keys are symbols, control characters are integers - the manual's ",
+  ". Function keys are symbols, control characters are integers; the manual's ",
   "own example is tab versus C-i (integer 9 versus symbol tab). The two forms ",
   "are not equal, so a binding on ",
   $("code", { textContent: "(kbd \"ESC\")" }),
@@ -36,8 +36,8 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "[escape]" }),
   " in its state maps ",
   $("a", { href: "https://github.com/emacs-evil/evil/blob/master/evil-maps.el", textContent: "(evil-maps.el)" }),
-  ", and evil-esc-mode - switched on when ",
-  "evil-mode starts - rewrites the ",
+  ", and evil-esc-mode, switched on when ",
+  "evil-mode starts, rewrites the ",
   $("code", { textContent: "\\e" }),
   " entry of ",
   $("code", { textContent: "input-decode-map" }),
@@ -115,7 +115,7 @@ document.body.appendChild($("pre", {}, [
   "elisp")}),
 ]));
 document.body.appendChild($("p", {}, [
-  "Normal state's binding is evil-force-normal-state - \"Switch to normal state ",
+  "Normal state's binding is evil-force-normal-state: \"Switch to normal state ",
   "without recording current command.\" Already in normal mode, so it does ",
   "nothing visible. The other states leave for normal, exit visual, or abort.",
 ]));
@@ -158,7 +158,9 @@ document.body.appendChild($("p", {}, [
   "So during a selection, C-g cancels the selection first instead of aborting. ",
   "Binding Escape to the same function gives exact C-g parity. There is a ",
   "ready-made escape-flavored quit: ESC ESC ESC runs keyboard-escape-quit ",
-  "(global-map, bindings.el), whose docstring describes the same dance - it ",
+  "(global-map, ",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/lisp/bindings.el", textContent: "bindings.el" }),
+  "), whose docstring describes the same dance: it ",
   "\"can clear out a prefix argument or a region, can get out of the minibuffer ",
   "or other recursive edit.\"",
 ]));
@@ -167,7 +169,7 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("h2", { textContent: "5. Vim-like prompts are possible" }));
 document.body.appendChild($("p", {}, [
   $("code", { textContent: "(setq evil-want-minibuffer t)" }),
-  " - \"Whether to enable Evil in minibuffer(s)\" - makes evil initialize in ",
+  ", whose docstring is \"Whether to enable Evil in minibuffer(s)\", makes evil initialize in ",
   "the minibuffer; evil-initialize skips minibuffers unless this is set. The ",
   "minibuffer starts in evil insert state (",
   $("a", { href: "https://github.com/emacs-evil/evil/blob/master/evil-core.el", textContent: "evil-core.el" }),
@@ -183,8 +185,8 @@ document.body.appendChild($("p", {}, [
   "on abort-minibuffers (a C subr, ",
   $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/src/minibuf.c", textContent: "src/minibuf.c" }),
   ") in the minibuffer's evil maps ",
-  "with evil-define-key. Result: Escape -> normal, i -> insert, q -> quit, no ",
-  "Control needed.",
+  "with evil-define-key. Result: Escape enters normal state, i enters ",
+  "insert, q quits, and no Control is needed.",
 ]));
 
 document.body.appendChild($("p", {}, [

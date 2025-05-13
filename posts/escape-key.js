@@ -107,12 +107,12 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "(define-key evil-normal-state-map [escape] 'evil-force-normal-state)\n" +
       "(define-key evil-insert-state-map [escape] 'evil-normal-state)\n" +
       "(define-key evil-visual-state-map [escape] 'evil-exit-visual-state)\n" +
       "(define-key evil-command-line-map [escape] #'abort-recursive-edit)",
-  }),
+  "elisp")}),
 ]));
 document.body.appendChild($("p", {}, [
   "Normal state's binding is evil-force-normal-state - \"Switch to normal state ",
@@ -141,7 +141,7 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "(define-key minibuffer-local-map \"\\C-g\" 'minibuffer-keyboard-quit)\n" +
       "\n" +
       "(defun minibuffer-keyboard-quit ()\n" +
@@ -152,7 +152,7 @@ document.body.appendChild($("pre", {}, [
       "  (if (and delete-selection-mode (region-active-p))\n" +
       "      (setq deactivate-mark t)\n" +
       "    (abort-minibuffers)))",
-  }),
+  "elisp")}),
 ]));
 document.body.appendChild($("p", {}, [
   "So during a selection, C-g cancels the selection first instead of aborting. ",

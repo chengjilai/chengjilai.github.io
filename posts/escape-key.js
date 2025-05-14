@@ -189,6 +189,8 @@ document.body.appendChild($("p", {}, [
   "insert, q quits, and no Control is needed.",
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", {

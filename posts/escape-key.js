@@ -156,7 +156,7 @@ document.body.appendChild($("pre", {}, [
 ]));
 document.body.appendChild($("p", {}, [
   "So during a selection, C-g cancels the selection first instead of aborting. ",
-  "Binding Escape to the same function gives exact C-g parity. There is a ",
+  "Binding Escape to the same function gives C-g parity. There is a ",
   "ready-made escape-flavored quit: ESC ESC ESC runs keyboard-escape-quit ",
   "(global-map, ",
   $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/lisp/bindings.el", textContent: "bindings.el" }),

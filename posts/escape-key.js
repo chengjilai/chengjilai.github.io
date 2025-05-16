@@ -2,12 +2,12 @@
 
 // Title, per page. common.js sets up the head and stylesheet.
 const title = document.createElement("title");
-title.textContent = "The escape key: five layers worth knowing";
+title.textContent = "The escape key: five layers";
 document.head.appendChild(title);
 
 // The post. One appendChild per element, in document order.
 document.body.appendChild($("h1", {
-  textContent: "The escape key: five layers worth knowing",
+  textContent: "The escape key: five layers",
 }));
 
 document.body.appendChild($("p", {}, [
@@ -42,7 +42,7 @@ document.body.appendChild($("p", {}, [
   " entry of ",
   $("code", { textContent: "input-decode-map" }),
   " so a lone escape becomes the escape event. C-h k on the key shows which ",
-  "event Emacs actually received.",
+  "event Emacs received.",
 ]));
 document.body.appendChild($("p", {}, [
   "In a graphical frame the Escape key arrives as the escape event, and a ",

@@ -13,7 +13,7 @@ document.body.appendChild($("h1", {
 document.body.appendChild($("p", {}, [
   "Goal: make Escape cancel like C-g, make the Windows key Meta, and leave ",
   "Alt dead. Each attempt failed for a different reason, and each reason is a ",
-  "documented layer of Emacs input handling. The five layers, with the source.",
+  "documented layer of Emacs input handling.",
 ]));
 
 // 1. Character vs key event

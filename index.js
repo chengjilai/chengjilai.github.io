@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/emacs-colors.html", textContent: "Emacs face colors on terminals" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/escape-key.html", textContent: "The escape key: five layers" }),
   ]),
   $("li", {}, [

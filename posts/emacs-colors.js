@@ -146,7 +146,9 @@ document.body.appendChild($("p", {}, [
   " returns 16-bit components, and xterm stores each 8-bit value as ",
   $("code", { textContent: "value*257" }),
   " (xterm-rgb-convert-to-16bit), so dividing by 257 recovers the byte. One ",
-  "hex palette works everywhere - the solarized theme issue #175 found the ",
+  "hex palette works everywhere - the solarized theme issue ",
+  $("a", { href: "https://github.com/sellout/emacs-color-theme-solarized/issues/175", textContent: "#175" }),
+  " found the ",
   "same fix.",
 ]));
 

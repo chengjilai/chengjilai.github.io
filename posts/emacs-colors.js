@@ -47,7 +47,11 @@ document.body.appendChild($("p", {}, [
 // 2. Emacs builds a color table per mode
 document.body.appendChild($("h2", { textContent: "2. Emacs builds a color table per mode" }));
 document.body.appendChild($("p", {}, [
-  "Emacs registers colors from that count (term/tty-colors.el, term/xterm.el):",
+  "Emacs registers colors from that count (",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/lisp/term/tty-colors.el", textContent: "term/tty-colors.el" }),
+  ", ",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/lisp/term/xterm.el", textContent: "term/xterm.el" }),
+  "):",
 ]));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
@@ -79,7 +83,9 @@ document.body.appendChild($("h2", {
 document.body.appendChild($("p", {}, [
   "A face spec is a list of alternatives, each a display condition plus ",
   "attributes; the first alternative whose condition matches wins ",
-  "(face-spec-choose, faces.el). Conditions include:",
+  "(face-spec-choose, ",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/lisp/faces.el", textContent: "faces.el" }),
+  "). Conditions include:",
 ]));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
@@ -107,7 +113,9 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("p", {}, [
   "defface sets the default spec but does nothing if the face already has one ",
-  "(lispref). To override a built-in face per display, set an override spec:",
+  "(",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/doc/lispref/display.texi", textContent: "lispref" }),
+  "). To override a built-in face per display, set an override spec:",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
@@ -132,7 +140,9 @@ document.body.appendChild($("p", {}, [
   "256-color mode - ",
   $("code", { textContent: ":background \"color-252\"" }),
   " - resolves to nothing, and every face application logs \"Unable to load ",
-  "color\" (xfaces.c). The theme is not broken; the name is not in the table.",
+  "color\" ",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/src/xfaces.c", textContent: "(xfaces.c)" }),
+  ". The theme is not broken; the name is not in the table.",
 ]));
 document.body.appendChild($("p", {}, [
   "The portable vocabulary is hex: ",
@@ -141,11 +151,15 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "#RGB" }),
   " and ",
   $("code", { textContent: "#RRGGBB" }),
-  ", display-independent; xfaces.c). To convert a 256-color name once: ",
+  ", display-independent; ",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/src/xfaces.c", textContent: "xfaces.c" }),
+  "). To convert a 256-color name once: ",
   $("code", { textContent: "(tty-color-desc \"color-252\")" }),
   " returns 16-bit components, and xterm stores each 8-bit value as ",
   $("code", { textContent: "value*257" }),
-  " (xterm-rgb-convert-to-16bit), so dividing by 257 recovers the byte. One ",
+  " ",
+  $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/lisp/term/xterm.el", textContent: "(xterm-rgb-convert-to-16bit)" }),
+  ", so dividing by 257 recovers the byte. One ",
   "hex palette works everywhere - the solarized theme issue ",
   $("a", { href: "https://github.com/sellout/emacs-color-theme-solarized/issues/175", textContent: "#175" }),
   " found the ",

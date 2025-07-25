@@ -33,15 +33,18 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "colors#0x100" }),
   "). A third mode skips terminfo: ",
   $("code", { textContent: "COLORTERM=truecolor" }),
-  " makes Emacs emit 24-bit escape sequences directly - term.c switches to ",
+  " makes Emacs emit 24-bit escape sequences directly; term.c switches to ",
   $("code", { textContent: "38;2;..." }),
   " and ",
   $("code", { textContent: "48;2;..." }),
   " and 16777216 cells.",
 ]));
 document.body.appendChild($("p", {}, [
-  "kmscon sets COLORTERM, and its default value is truecolor (pty.c, ",
-  "terminal.c).",
+  "kmscon sets COLORTERM, and its default value is truecolor (",
+  $("a", { href: "https://github.com/kmscon/kmscon/blob/master/src/misc/pty.c", textContent: "pty.c" }),
+  ", ",
+  $("a", { href: "https://github.com/kmscon/kmscon/blob/master/src/terminal.c", textContent: "terminal.c" }),
+  ").",
 ]));
 
 // 2. Emacs builds a color table per mode
@@ -90,11 +93,11 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
     $("code", { textContent: "(type tty)" }),
-    " - matches when there is no window system",
+    ": matches when there is no window system",
   ]),
   $("li", {}, [
     $("code", { textContent: "(min-colors n)" }),
-    " - matches when ",
+    ": matches when ",
     $("code", { textContent: "(display-color-cells)" }),
     " is at least n",
   ]),
@@ -130,6 +133,14 @@ document.body.appendChild($("p", {}, [
   "face-spec-set's default spec type is the override spec, which takes ",
   "precedence over everything else.",
 ]));
+document.body.appendChild($("p", {}, [
+  "Which setter works: defface refuses to redefine a face that already has a ",
+  "spec; custom-set-faces accepts display conditions, but only when the spec ",
+  "is properly nested (its docs defer to defface's spec format, and ",
+  "face-spec-set-match-display does (car display) on each alternative, so a ",
+  "bare (type tty) display fails with \"Wrong type argument: listp\"); ",
+  "face-spec-set with an explicit spec type is the reliable path.",
+]));
 
 // 4. The truecolor trap
 document.body.appendChild($("h2", { textContent: "4. The truecolor trap" }));
@@ -137,9 +148,9 @@ document.body.appendChild($("p", {}, [
   "With ",
   $("code", { textContent: "COLORTERM=truecolor" }),
   " the table holds named colors, not color-N. A face spec written for ",
-  "256-color mode - ",
+  "256-color mode, ",
   $("code", { textContent: ":background \"color-252\"" }),
-  " - resolves to nothing, and every face application logs \"Unable to load ",
+  ", resolves to nothing, and every face application logs \"Unable to load ",
   "color\" ",
   $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/src/xfaces.c", textContent: "(xfaces.c)" }),
   ". The theme is not broken; the name is not in the table.",
@@ -160,7 +171,7 @@ document.body.appendChild($("p", {}, [
   " ",
   $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/lisp/term/xterm.el", textContent: "(xterm-rgb-convert-to-16bit)" }),
   ", so dividing by 257 recovers the byte. One ",
-  "hex palette works everywhere - the solarized theme issue ",
+  "hex palette works everywhere; the solarized theme issue ",
   $("a", { href: "https://github.com/sellout/emacs-color-theme-solarized/issues/175", textContent: "#175" }),
   " found the ",
   "same fix.",

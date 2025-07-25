@@ -119,12 +119,12 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "(face-spec-set 'hl-line\n" +
       "               '((((class color) (min-colors 256)) (:background \"#262626\"))\n" +
       "                 (((type tty)) (:background \"cyan\")))\n" +
       "               'face-override-spec)",
-  }),
+  "elisp")}),
 ]));
 document.body.appendChild($("p", {}, [
   "face-spec-set's default spec type is the override spec, which takes ",

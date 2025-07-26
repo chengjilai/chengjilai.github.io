@@ -177,6 +177,8 @@ document.body.appendChild($("p", {}, [
   "same fix.",
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", {

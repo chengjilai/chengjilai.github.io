@@ -14,7 +14,7 @@ document.body.appendChild($("p", {}, [
   "Goal: one theme that works on the kernel console, on kmscon, and in a GUI. ",
   "The terminal advertises its colors in three different ways; Emacs builds a ",
   "different color table for each; a face spec can pick an alternative per ",
-  "display. Two traps follow, both documented in the source.",
+  "display. Two traps follow.",
 ]));
 
 // 1. The terminal advertises colors three ways

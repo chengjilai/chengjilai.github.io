@@ -8,7 +8,7 @@ document.body.appendChild($("h1", { textContent: "Shipping your Emacs config as 
 
 document.body.appendChild($("p", {}, [
   "An Emacs config that lives in the system repo, pinned per generation, ",
-  "edited like any other system file - no ~/.emacs.d to maintain.",
+  "edited like any other system file, with no ~/.emacs.d to maintain.",
 ]));
 
 // 1. How
@@ -18,10 +18,10 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "config/emacs/init.el" }),
   " as ",
   $("code", { textContent: "share/emacs/site-lisp/default.el" }),
-  " in the profile (chengjilai/guixos config.scm). Emacs loads default.el when ",
-  "no personal init exists - the load order is documented in startup.el: ",
-  "site-start, early-init-file, user-init-file, then default.el (step 4). No ",
-  "--init-file, no home dotfile, nothing ad-hoc.",
+  " in the profile. Emacs loads default.el when no personal init exists: ",
+  "the load order is documented in startup.el: site-start, early-init-file, ",
+  "user-init-file, then default.el (step 4). No --init-file, no home dotfile, ",
+  "nothing ad-hoc.",
 ]));
 
 // 2. Two walls, both documented
@@ -31,7 +31,7 @@ document.body.appendChild($("ol", {}, [
     "The welcome screen. startup.el wraps the load verbatim: ",
     $("code", { textContent: "(let ((inhibit-startup-screen nil)) (load \"default\" 'noerror 'nomessage))" }),
     " with the comment \"Prevent default.el from changing the value of ",
-    "inhibit-startup-screen\" - a setting from the default file is swallowed. ",
+    "inhibit-startup-screen\"; a setting from the default file is swallowed. ",
     "The sanctioned escape: set it in after-init-hook, which runs after the ",
     "wrap.",
   ]),
@@ -48,7 +48,7 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "(server-start)" }),
   " to the config. Then ",
   $("code", { textContent: "emacsclient -e" }),
-  " evaluates anything in the live session - and a blocking ",
+  " evaluates anything in the live session, and a blocking ",
   $("code", { textContent: "(while (not done) (accept-process-output))" }),
   " makes it a synchronous RPC: send, wait for the callback, read the answer. ",
   "That is how an external agent drives the real Emacs instead of spawning ",
@@ -58,8 +58,6 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", { href: "https://github.com/chengjilai/chengjilai.github.io", textContent: "github.com/chengjilai/chengjilai.github.io" }),
-  " - ",
-  $("a", { href: "https://github.com/chengjilai/guixos", textContent: "guixos" }),
-  " - ",
+  ", ",
   $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/lisp/startup.el", textContent: "lisp/startup.el" }),
 ]));

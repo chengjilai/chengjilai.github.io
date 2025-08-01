@@ -20,12 +20,12 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "share/emacs/site-lisp/default.el" }),
   " in the profile. Emacs loads default.el when no personal init exists: ",
   "the load order is documented in startup.el: site-start, early-init-file, ",
-  "user-init-file, then default.el (step 4). No --init-file, no home dotfile, ",
+  "user-init-file, then default.el. No --init-file, no home dotfile, ",
   "nothing ad-hoc.",
 ]));
 
-// 2. Two walls, both documented
-document.body.appendChild($("h2", { textContent: "2. Two walls, both documented" }));
+// 2. Two constraints, both documented
+document.body.appendChild($("h2", { textContent: "2. Two constraints, both documented" }));
 document.body.appendChild($("ol", {}, [
   $("li", {}, [
     "The welcome screen. startup.el wraps the load verbatim: ",

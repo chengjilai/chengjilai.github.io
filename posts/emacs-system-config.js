@@ -24,8 +24,8 @@ document.body.appendChild($("p", {}, [
   "nothing ad-hoc.",
 ]));
 
-// 2. Two constraints, both documented
-document.body.appendChild($("h2", { textContent: "2. Two constraints, both documented" }));
+// 2. Two constraints
+document.body.appendChild($("h2", { textContent: "2. Two constraints" }));
 document.body.appendChild($("ol", {}, [
   $("li", {}, [
     "The welcome screen. startup.el wraps the load verbatim: ",

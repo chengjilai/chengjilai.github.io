@@ -20,8 +20,7 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "share/emacs/site-lisp/default.el" }),
   " in the profile. Emacs loads default.el when no personal init exists: ",
   "the load order is documented in startup.el: site-start, early-init-file, ",
-  "user-init-file, then default.el. No --init-file, no home dotfile, ",
-  "nothing ad-hoc.",
+  "user-init-file, then default.el. No --init-file, no home dotfile.",
 ]));
 
 // 2. Two constraints
@@ -36,8 +35,8 @@ document.body.appendChild($("ol", {}, [
     "startup screen.\" ",
     $("a", { href: "https://github.com/emacs-mirror/emacs/blob/master/lisp/startup.el", textContent: "(startup.el)" }),
     ". Emacs treats the init file as a trust boundary; a setting from a ",
-    "system-shipped default file is swallowed. The sanctioned escape: set it ",
-    "in after-init-hook, which runs after the wrap.",
+    "system-shipped default file is swallowed. The escape: set it in ",
+    "after-init-hook, which runs after the wrap.",
   ]),
   $("li", {}, [
     "Changes need a rebuild. The running Emacs holds the old store file; ",
@@ -55,8 +54,7 @@ document.body.appendChild($("p", {}, [
   " evaluates anything in the live session, and a blocking ",
   $("code", { textContent: "(while (not done) (accept-process-output))" }),
   " makes it a synchronous RPC: send, wait for the callback, read the answer. ",
-  "That is how an external agent drives the real Emacs instead of spawning ",
-  "throwaways.",
+  "An external agent drives the running Emacs this way.",
 ]));
 
 document.body.appendChild($("p", {}, [

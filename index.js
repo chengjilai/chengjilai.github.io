@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/wifi-eap.html", textContent: "What happens when a laptop joins a campus/enterprise Wi-Fi" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/emacs-system-config.html", textContent: "Shipping your Emacs config as part of the OS" }),
   ]),
   $("li", {}, [

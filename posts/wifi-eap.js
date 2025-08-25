@@ -7,10 +7,10 @@ document.head.appendChild(title);
 document.body.appendChild($("h1", { textContent: "What happens when a laptop joins a campus/enterprise Wi-Fi" }));
 
 document.body.appendChild($("p", {}, [
-  "A failure that looks like \"wifi is broken\" actually lives in exactly one \n",
-  "layer of a four-layer stack: the driver owns the radio, wpa_supplicant \n",
-  "scans and runs EAP, systemd-networkd does DHCP, systemd-resolved does \n",
-  "DNS. Two silent killers hide in wpa_supplicant's defaults.",
+  "A failure that looks like \"wifi is broken\" lives in exactly one layer ",
+  "of a four-layer stack: the driver owns the radio, wpa_supplicant scans ",
+  "and runs EAP, systemd-networkd does DHCP, systemd-resolved does DNS. Two ",
+  "wpa_supplicant defaults break the connection silently.",
 ]));
 
 // 1. Layers, each its own program
@@ -67,9 +67,9 @@ document.body.appendChild($("p", {}, [
   "- it hangs indefinitely. This is the real meaning of \"restarting the \n",
   "service fixed it\": the restart cleared the hang, not the cause. The \n",
   "password had been wrong for days; each boot failed, hung, and only a \n",
-  "manual restart gave it a fresh try. Defaults that disable whole feature ",
-  "classes (key_mgmt) and interactive prompts in headless services are the ",
-  "two silent killers.",
+  "manual restart gave it a fresh try. Defaults that disable whole feature \n",
+  "classes (key_mgmt) and interactive prompts in headless services are the \n",
+  "two traps.",
 ]));
 
 // 5. The password mechanism: ext backend

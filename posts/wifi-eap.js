@@ -36,12 +36,32 @@ document.body.appendChild($("p", {}, [
   "). A TLS tunnel is built. Inside the tunnel, MSCHAPv2 exchanges the \n",
   "username and a hash of the password. The server's error 691 / \n",
   "Authentication failed means it rejected the CREDENTIALS, usually the \n",
-  "password bytes, not the network. \"The right length but wrong\" is the ",
+  "password bytes, not the network. \"The right length but wrong\" is the \n",
   "classic enterprise-EAP failure signature; the verdict line (691) points ",
-  "at credentials, not radio. The campus config also pins ",
-  $("code", { textContent: "phase1=\"peaplabel=0\"" }),
-  " and ",
-  $("code", { textContent: "scan_ssid=1" }),
+  "at credentials, not radio.",
+]));
+document.body.appendChild($("pre", {}, [
+  $("code", { innerHTML: highlight(
+    "network={\n" +
+    "  ssid=\"<campus>\"\n" +
+    "  scan_ssid=1\n" +
+    "  key_mgmt=WPA-EAP\n" +
+    "  eap=PEAP\n" +
+    "  identity=\"<user>\"\n" +
+    "  password=\"<password>\"\n" +
+    "  ca_cert=\"/etc/ssl/certs/ca-certificates.crt\"\n" +
+    "  phase1=\"peaplabel=0\"\n" +
+    "  phase2=\"auth=MSCHAPV2\"\n" +
+    "  altsubject_match=\"DNS:radius.example.edu\"\n" +
+    "}", "shell") }),
+]));
+document.body.appendChild($("p", {}, [
+  "The campus network's official Linux guide ",
+  $("a", { href: "https://net.sjtu.edu.cn/info/1215/2712.htm", textContent: "pins exactly these options" }),
+  ": scan_ssid=1, key_mgmt=WPA-EAP, phase1=\"peaplabel=0\" (its recommended ",
+  "config A), and altsubject_match. altsubject_match needs the CA bundle, ",
+  "whose path differs per distro; the guide shows the debian/ubuntu and ",
+  "redhat paths.",
 ]));
 
 // 3. Trap 1: the default key_mgmt disables your network
@@ -75,11 +95,15 @@ document.body.appendChild($("p", {}, [
 // 5. The password mechanism: ext backend
 document.body.appendChild($("h2", { textContent: "5. The password mechanism: ext backend" }));
 document.body.appendChild($("p", {}, [
-  "The password comes from a file via ext_password_backend=file:... and the \n",
-  "config says password=ext:<name>. The backend parses name=value lines, \n",
-  "taking everything after the first =. This is where the secret pipeline \n",
-  "(see the declarative-secrets post) meets the protocol: a subtly wrong \n",
-  "file = a subtly wrong MSCHAPv2 hash = error 691, every time.",
+  "The password comes from a file: ",
+  $("code", { textContent: "ext_password_backend=file:/path/to/passwords" }),
+  " and ",
+  $("code", { textContent: "password=ext:<name>" }),
+  ". The backend reads name=value lines and takes everything after the first ",
+  "= ",
+  $("a", { href: "https://w1.fi/cgit/hostap/plain/src/utils/ext_password_file.c", textContent: "(src/utils/ext_password_file.c)" }),
+  ". A wrong byte in the value is a wrong MSCHAPv2 hash, and the server ",
+  "answers error 691.",
 ]));
 
 // 6. Debug logging

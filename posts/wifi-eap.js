@@ -56,8 +56,9 @@ document.body.appendChild($("pre", {}, [
     "}", "shell") }),
 ]));
 document.body.appendChild($("p", {}, [
-  "The campus network's official Linux guide ",
-  $("a", { href: "https://net.sjtu.edu.cn/info/1215/2712.htm", textContent: "pins exactly these options" }),
+  "The campus network's official Linux guide (",
+  $("a", { href: "https://net.sjtu.edu.cn/info/1215/2712.htm", textContent: "net.sjtu.edu.cn/info/1215/2712.htm" }),
+  ") pins exactly these options ",
   ": scan_ssid=1, key_mgmt=WPA-EAP, phase1=\"peaplabel=0\" (its recommended ",
   "config A), and altsubject_match. altsubject_match needs the CA bundle, ",
   "whose path differs per distro; the guide shows the debian/ubuntu and ",

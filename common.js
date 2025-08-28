@@ -193,9 +193,10 @@ function appendReferences() {
   const refs = [];
   const walk = (el) => {
     if (!el) return;
-    if (el.tag === "a" && el.attrs && el.attrs.href) {
-      const href = el.attrs.href;
-      if (/^https?:\/\//.test(href) &&
+    const tag = el.tag || (el.tagName || "").toLowerCase();
+    if (tag === "a") {
+      const href = el.attrs ? el.attrs.href : el.getAttribute("href");
+      if (href && /^https?:\/\//.test(href) &&
           !href.startsWith("https://github.com/chengjilai/chengjilai.github.io") &&
           !seen.has(href)) {
         seen.add(href);
@@ -203,9 +204,10 @@ function appendReferences() {
         refs.push([label, href]);
       }
     }
-    for (const c of el.children || []) walk(c);
+    const kids = el.children;
+    if (kids) { for (let i = 0; i < kids.length; i++) walk(kids[i]); }
   };
-  for (const root of document.body.children) walk(root);
+  for (let i = 0; i < document.body.children.length; i++) walk(document.body.children[i]);
   if (refs.length === 0) return;
   document.body.appendChild($("aside", {}, [
     $("h2", { textContent: "References" }),

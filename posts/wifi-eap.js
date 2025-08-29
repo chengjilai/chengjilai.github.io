@@ -7,9 +7,9 @@ document.head.appendChild(title);
 document.body.appendChild($("h1", { textContent: "What happens when a laptop joins a campus/enterprise Wi-Fi" }));
 
 document.body.appendChild($("p", {}, [
-  "A failure that looks like \"wifi is broken\" lives in exactly one layer ",
-  "of a four-layer stack: the driver owns the radio, wpa_supplicant scans ",
-  "and runs EAP, systemd-networkd does DHCP, systemd-resolved does DNS. Two ",
+  "A failure that looks like \"wifi is broken\" lives in one layer of a ",
+  "four-layer stack: the driver owns the radio, wpa_supplicant scans and ",
+  "runs EAP, systemd-networkd does DHCP, systemd-resolved does DNS. Two ",
   "wpa_supplicant defaults break the connection silently.",
 ]));
 
@@ -58,7 +58,7 @@ document.body.appendChild($("pre", {}, [
 document.body.appendChild($("p", {}, [
   "The campus network's official Linux guide (",
   $("a", { href: "https://net.sjtu.edu.cn/info/1215/2712.htm", textContent: "net.sjtu.edu.cn/info/1215/2712.htm" }),
-  ") pins exactly these options ",
+  ") pins these options ",
   ": scan_ssid=1, key_mgmt=WPA-EAP, phase1=\"peaplabel=0\" (its recommended ",
   "config A), and altsubject_match. altsubject_match needs the CA bundle, ",
   "whose path differs per distro; the guide shows the debian/ubuntu and ",
@@ -114,7 +114,6 @@ document.body.appendChild($("p", {}, [
   "walkthrough; it also floods the journal, so it belongs in a temporary \n",
   "override, not the permanent config. Remove it once the problem is solved.",
 ]));
-
 
 appendReferences();
 

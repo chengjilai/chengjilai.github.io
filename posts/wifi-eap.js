@@ -13,8 +13,8 @@ document.body.appendChild($("p", {}, [
   "wpa_supplicant defaults break the connection silently.",
 ]));
 
-// 1. Layers, each its own program
-document.body.appendChild($("h2", { textContent: "1. Layers, each its own program" }));
+// 1. Four programs, one per layer
+document.body.appendChild($("h2", { textContent: "1. Four programs, one per layer" }));
 document.body.appendChild($("pre", {}, [
   $("code", { innerHTML: highlight(
     "journalctl -u wpa_supplicant -b   # association + EAP exchange\n" +

@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/ssh-hosts.html", textContent: "SSH, keys, and hostnames across machines" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/wifi-eap.html", textContent: "What happens when a laptop joins a campus/enterprise Wi-Fi" }),
   ]),
   $("li", {}, [

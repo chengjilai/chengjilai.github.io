@@ -30,6 +30,12 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "ssh-keyscan -p <port> <host> >> ~/.ssh/known_hosts" }),
   ".",
 ]));
+document.body.appendChild($("p", {}, [
+  "Two systems sharing one hostname collide in known_hosts, where the host ",
+  "key is stored per name ",
+  $("a", { href: "https://man.openbsd.org/sshd", textContent: "(sshd(8))" }),
+  ", and in mDNS. Distinct nickname hostnames avoid both.",
+]));
 
 // 2. The hostname keeps reverting (DHCP option 12)
 document.body.appendChild($("h2", { textContent: "2. The hostname keeps reverting (DHCP option 12)" }));

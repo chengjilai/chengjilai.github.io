@@ -8,8 +8,7 @@ document.body.appendChild($("h1", { textContent: "SSH, keys, and hostnames acros
 
 document.body.appendChild($("p", {}, [
   "Three systems on two laptops, one jump host, and a network that renames ",
-  "your computers behind your back. All of it declared, none of it ",
-  "hand-edited.",
+  "your computers. All of it declared, none of it hand-edited.",
 ]));
 
 // 1. Topology and keys

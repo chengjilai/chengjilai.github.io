@@ -52,9 +52,9 @@ document.body.appendChild($("pre", {}, [
 document.body.appendChild($("p", {}, [
   "Then ",
   $("code", { textContent: "herd restart NetworkManager" }),
-  " (NixOS: restart the service). Note that restarting NetworkManager ",
-  "drops Wi-Fi, which drops the SSH session you are using. Plan for it. On ",
-  "Guix the declared name is set by a one-shot shepherd service ",
+  " (NixOS: restart the service). Restarting NetworkManager drops Wi-Fi, ",
+  "which drops the SSH session you are using. Plan for it. On Guix the ",
+  "declared name is set by a one-shot shepherd service ",
   $("code", { textContent: "host-name" }),
   " (",
   $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/services/base.scm", textContent: "gnu/services/base.scm" }),

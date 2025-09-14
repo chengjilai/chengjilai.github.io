@@ -53,7 +53,7 @@ document.body.appendChild($("p", {}, [
   "Then ",
   $("code", { textContent: "herd restart NetworkManager" }),
   " (NixOS: restart the service). Restarting NetworkManager drops Wi-Fi, ",
-  "which drops the SSH session you are using. Plan for it. On Guix the ",
+  "which drops the SSH session you are using. On Guix the ",
   "declared name is set by a one-shot shepherd service ",
   $("code", { textContent: "host-name" }),
   " (",

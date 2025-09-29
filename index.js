@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/guix-reconfigure.html", textContent: "guix system reconfigure: what it does and does not do" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/ssh-hosts.html", textContent: "SSH, keys, and hostnames across machines" }),
   ]),
   $("li", {}, [

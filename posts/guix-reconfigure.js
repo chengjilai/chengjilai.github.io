@@ -79,10 +79,10 @@ document.body.appendChild($("pre", {}, [
     "sudo herd restart networking   # stops NM, starts dhcpcd", "shell") }),
 ]));
 document.body.appendChild($("p", {}, [
-  "A wifi-only machine is one disconnect away from lost: no ethernet, SSH ",
-  "over the same wifi, and the interface handoff cannot be tested over SSH ",
-  "at all (NM must yield the radio first). Recovery is a previous generation ",
-  "from the boot menu or ",
+  "A wifi-only machine has no ethernet fallback; SSH runs over the same ",
+  "wifi, and the interface handoff cannot be tested over SSH at all (NM ",
+  "must yield the radio first). Recovery is a previous generation from the ",
+  "boot menu or ",
   $("code", { textContent: "guix system roll-back" }),
   " (then reboot; the network only changes at boot).",
 ]));

@@ -67,7 +67,7 @@ document.body.appendChild($("p", {}, [
   " vs ",
   $("code", { textContent: "(shepherd-provision (list-of-symbols '(networking)))" }),
   "), so reconfigure found the provision already running and never loaded ",
-  "dhcpcd. The reconfigure output even prints the hint (",
+  "dhcpcd. The reconfigure output prints the hint (",
   $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/guix/scripts/system.scm", textContent: "guix/scripts/system.scm" }),
   "): ",
   $("code", { textContent: "\"To complete the upgrade, run 'herd restart SERVICE' to stop,\"" }),

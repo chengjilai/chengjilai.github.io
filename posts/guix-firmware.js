@@ -60,16 +60,18 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("p", {}, [
   "Intel's SOF firmware (",
   $("code", { textContent: "intel/sof/" }),
-  ") is not in the guix tree at all - there is no sof-bin package - so you ",
+  ") is not in the guix tree at all - there is no sof-firmware package - so you ",
   "package it yourself and add it to the list.",
 ]));
 
 // 3. The fix
 document.body.appendChild($("h2", { textContent: "3. The fix" }));
 document.body.appendChild($("p", {}, [
-  "Write a small trivial-build-system package for sof-bin (git-fetch from ",
-  "the release tag), and add it - plus wireless-regdb, whose regulatory.db ",
-  "is also missing from the defaults and which exists as a guix package ",
+  "Write a small trivial-build-system package for the SOF firmware ",
+  $("a", { href: "https://github.com/chengjilai/guixos", textContent: "(sof-firmware.scm, chengjilai/guixos)" }),
+  ", git-fetch from the release tag, and add it - plus wireless-regdb, whose ",
+  "regulatory.db is also missing from the defaults and which exists as a guix ",
+  "package ",
   "(gnu/packages/linux.scm) - to ",
   $("code", { textContent: "(firmware ...)" }),
   ".",

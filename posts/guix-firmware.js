@@ -27,17 +27,21 @@ document.body.appendChild($("p", {}, [
   " field defaults to ",
   $("code", { textContent: "%base-firmware" }),
   ": three wifi firmwares - ath9k-htc-ar7010, ath9k-htc-ar9271, openfwwf ",
-  "(gnu/system.scm). The firmware service merges the list with ",
+  $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/system.scm", textContent: "(gnu/system.scm)" }),
+  ". The firmware service merges the list with ",
   $("code", { textContent: "directory-union \"firmware\"" }),
   ", and an activation snippet calls activate-firmware on the union's ",
   $("code", { textContent: "/lib/firmware" }),
-  " (gnu/services.scm).",
-]));
+  " ",
+  $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/services.scm", textContent: "(gnu/services.scm)" }),
+  ".",]));
 document.body.appendChild($("p", {}, [
   "activate-firmware writes that store path to ",
   $("code", { textContent: "/sys/module/firmware_class/parameters/path" }),
   " - the comment says it \"allows Linux to handle firmware loading directly ",
-  "by itself\" (gnu/build/activation.scm). The kernel looks for blobs there: ",
+  "by itself\" ",
+  $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/build/activation.scm", textContent: "(gnu/build/activation.scm)" }),
+  ". The kernel looks for blobs there: ",
   "not in the initrd, not on ",
   $("code", { textContent: "/lib/firmware" }),
   ". The path is writable at runtime, which is what makes the no-reboot fix ",
@@ -55,8 +59,9 @@ document.body.appendChild($("p", {}, [
   ", \"No such file or directory\"), and the card never appears. The exact ",
   "dmesg line is built in the kernel: ",
   $("code", { textContent: "dev_err(..., \"error: %s failed err: %d\", __func__, ret)" }),
-  " in sof_probe_work (sound/soc/sof/core.c).",
-]));
+  " in sof_probe_work ",
+  $("a", { href: "https://github.com/torvalds/linux/blob/master/sound/soc/sof/core.c", textContent: "(sound/soc/sof/core.c)" }),
+  ".",]));
 document.body.appendChild($("p", {}, [
   "Intel's SOF firmware (",
   $("code", { textContent: "intel/sof/" }),
@@ -69,10 +74,12 @@ document.body.appendChild($("h2", { textContent: "3. The fix" }));
 document.body.appendChild($("p", {}, [
   "Write a small trivial-build-system package that git-fetches the upstream ",
   $("a", { href: "https://github.com/thesofproject/sof-bin", textContent: "sof-bin" }),
-  " repo (thesofproject/sof-bin) at a release tag; the local module is ",
-  $("a", { href: "https://github.com/chengjilai/guixos", textContent: "sof-firmware.scm (chengjilai/guixos)" }),
+  " repo at a release tag; the local module is ",
+  $("a", { href: "https://github.com/chengjilai/guixos", textContent: "sof-firmware.scm, chengjilai/guixos" }),
   ". Add it - plus wireless-regdb, whose regulatory.db is also missing from ",
-  "the defaults and which exists as a guix package (gnu/packages/linux.scm) - ",
+  "the defaults and which exists as a guix package ",
+  $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/packages/linux.scm", textContent: "(gnu/packages/linux.scm)" }),
+  " - ",
   "to ",
   $("code", { textContent: "(firmware ...)" }),
   ".",

@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/guix-mirrors.html", textContent: "Faster substitutes and package management from China" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/guix-firmware.html", textContent: "Guix firmware: why a machine can silently lose its sound card" }),
   ]),
   $("li", {}, [

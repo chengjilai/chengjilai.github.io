@@ -80,6 +80,8 @@ document.body.appendChild($("ul", {}, [
   ]),
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", { href: "https://github.com/chengjilai/chengjilai.github.io", textContent: "github.com/chengjilai/chengjilai.github.io" }),

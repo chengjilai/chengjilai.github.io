@@ -26,7 +26,7 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "(firmware (list ...))" }),
   " field defaults to ",
   $("code", { textContent: "%base-firmware" }),
-  ": three wifi firmwares - ath9k-htc-ar7010, ath9k-htc-ar9271, openfwwf ",
+  ": three wifi firmwares, ath9k-htc-ar7010, ath9k-htc-ar9271, openfwwf ",
   $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/system.scm", textContent: "(gnu/system.scm)" }),
   ". The firmware service merges the list with ",
   $("code", { textContent: "directory-union \"firmware\"" }),
@@ -38,7 +38,7 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("p", {}, [
   "activate-firmware writes that store path to ",
   $("code", { textContent: "/sys/module/firmware_class/parameters/path" }),
-  " - the comment says it \"allows Linux to handle firmware loading directly ",
+  ". The comment says it \"allows Linux to handle firmware loading directly ",
   "by itself\" ",
   $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/build/activation.scm", textContent: "(gnu/build/activation.scm)" }),
   ". The kernel looks for blobs there: ",
@@ -65,7 +65,7 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("p", {}, [
   "Intel's SOF firmware (",
   $("code", { textContent: "intel/sof/" }),
-  ") is not in the guix tree at all - there is no SOF firmware package - so you ",
+  ") is not in the guix tree at all: there is no SOF firmware package, so you ",
   "package it yourself and add it to the list.",
 ]));
 
@@ -74,14 +74,12 @@ document.body.appendChild($("h2", { textContent: "3. The fix" }));
 document.body.appendChild($("p", {}, [
   "Write a small trivial-build-system package that git-fetches the upstream ",
   $("a", { href: "https://github.com/thesofproject/sof-bin", textContent: "sof-bin" }),
-  " repo at a release tag; the local module is ",
-  $("a", { href: "https://github.com/chengjilai/guixos", textContent: "sof-firmware.scm, chengjilai/guixos" }),
-  ". Add it - plus wireless-regdb, whose regulatory.db is also missing from ",
-  "the defaults and which exists as a guix package ",
-  $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/packages/linux.scm", textContent: "(gnu/packages/linux.scm)" }),
-  " - ",
-  "to ",
+  " repo at a release tag; a local sof-firmware module wraps it. Add it, ",
+  "plus wireless-regdb, to ",
   $("code", { textContent: "(firmware ...)" }),
+  ". wireless-regdb's regulatory.db is also missing from the defaults, ",
+  "and the package exists in the guix tree ",
+  $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/packages/linux.scm", textContent: "(gnu/packages/linux.scm)" }),
   ".",
 ]));
 document.body.appendChild($("p", {}, [
@@ -94,7 +92,7 @@ document.body.appendChild($("p", {}, [
   "immediately.",
 ]));
 document.body.appendChild($("p", {}, [
-  "Silent hardware: check dmesg for the missing-firmware tell - the driver ",
+  "Silent hardware: check dmesg for the missing-firmware tell; the driver ",
   "names the file it wants. Firmware on Guix is a build-time list, not a ",
   "filesystem convention, and the sysfs path being runtime-writable is what ",
   "makes the fix apply without a reboot.",

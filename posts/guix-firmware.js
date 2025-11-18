@@ -92,7 +92,7 @@ document.body.appendChild($("p", {}, [
   "immediately.",
 ]));
 document.body.appendChild($("p", {}, [
-  "Silent hardware: check dmesg for the missing-firmware tell; the driver ",
+  "Silent hardware: check dmesg for the missing-firmware sign; the driver ",
   "names the file it wants. Firmware on Guix is a build-time list, not a ",
   "filesystem convention, and the sysfs path being runtime-writable is what ",
   "makes the fix apply without a reboot.",

@@ -1,6 +1,5 @@
 "use strict";
 
-// Title, per page. common.js sets up the head and stylesheet.
 const title = document.createElement("title");
 title.textContent = "Guix firmware: why a machine can silently lose its sound card";
 document.head.appendChild(title);
@@ -16,7 +15,7 @@ document.body.appendChild($("p", {}, [
   " empty, dmesg showing ",
   $("code", { textContent: "sof_probe_work failed err: -2" }),
   " for the Intel audio DSP. The machine had not broken; the firmware was ",
-  "never there.",
+  "absent.",
 ]));
 
 // 1. The mechanism

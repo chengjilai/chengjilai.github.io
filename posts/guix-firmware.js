@@ -97,6 +97,8 @@ document.body.appendChild($("p", {}, [
   "makes the fix apply without a reboot.",
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", {

@@ -1,5 +1,6 @@
 "use strict";
 
+// Title, per page. common.js sets up the head and stylesheet.
 const title = document.createElement("title");
 title.textContent = "Guix firmware: why a machine can silently lose its sound card";
 document.head.appendChild(title);
@@ -55,7 +56,7 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "-ENOENT" }),
   " (",
   $("code", { textContent: "-2" }),
-  ", \"No such file or directory\"), and the card never appears. The exact ",
+  ", \"No such file or directory\"), and the card never appears. The ",
   "dmesg line is built in the kernel: ",
   $("code", { textContent: "dev_err(..., \"error: %s failed err: %d\", __func__, ret)" }),
   " in sof_probe_work ",

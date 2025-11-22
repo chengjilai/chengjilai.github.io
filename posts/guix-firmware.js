@@ -65,7 +65,7 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("p", {}, [
   "Intel's SOF firmware (",
   $("code", { textContent: "intel/sof/" }),
-  ") is not in the guix tree at all: there is no SOF firmware package, so you ",
+  ") is not in the guix tree at all: there is no SOF firmware package; ",
   "package it yourself and add it to the list.",
 ]));
 

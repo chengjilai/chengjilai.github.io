@@ -25,9 +25,9 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       'ffmpeg -y -f pulse -i "<source>.monitor" -t 10 -ac 1 -ar 48000 hum.wav',
-  }),
+  "shell")}),
 ]));
 document.body.appendChild($("p", {}, [
   "PulseAudio names a source's monitor with a ",
@@ -46,7 +46,7 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "def goertzel(x, sr, freq, chunk=4096):\n" +
       "    k = round(freq * chunk / sr)\n" +
       "    omega = 2*math.pi*k/chunk\n" +
@@ -56,7 +56,7 @@ document.body.appendChild($("pre", {}, [
       "        s0 = v + coeff*s1 - s2\n" +
       "        s2, s1 = s1, s0\n" +
       "    return math.sqrt(s1*s1 + s2*s2 - coeff*s1*s2) / chunk",
-  }),
+  "python")}),
 ]));
 document.body.appendChild($("p", {}, [
   "Sweep 40..260 Hz in 1 Hz steps over the signal decimated by 4 (12 kHz, so ",

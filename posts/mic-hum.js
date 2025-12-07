@@ -13,7 +13,7 @@ document.body.appendChild($("h1", {
 document.body.appendChild($("p", {}, [
   "A microphone picks up mains hum. The right fix depends on what the noise ",
   "is: tonal hum at 50 Hz (China mains) with odd harmonics wants an EQ cut; ",
-  "broadband hiss wants suppression. A 10-second recording decides - measure ",
+  "broadband hiss wants suppression. A 10-second recording decides; measure ",
   "before fixing.",
 ]));
 
@@ -32,17 +32,16 @@ document.body.appendChild($("pre", {}, [
 document.body.appendChild($("p", {}, [
   "PulseAudio names a source's monitor with a ",
   $("code", { textContent: ".monitor" }),
-  " suffix; ffmpeg's pulse input accepts the source name directly (verified ",
-  "against ffmpeg's own option list: sample rate and channel count are input ",
-  "options).",
+  " suffix; ffmpeg's pulse input accepts the source name directly (sample ",
+  "rate and channel count are input options).",
 ]));
 
 // 2. Analyze without numpy
 document.body.appendChild($("h2", { textContent: "2. Analyze without numpy" }));
 document.body.appendChild($("p", {}, [
   "No numpy on the machine. The Goertzel algorithm computes one frequency bin ",
-  "at a time with a constant-coefficient recurrence - enough to sweep the ",
-  "frequencies of interest. This is the function that ran:",
+  "at a time with a constant-coefficient recurrence, enough to sweep the ",
+  "frequencies of interest. This is the function:",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
@@ -62,7 +61,7 @@ document.body.appendChild($("p", {}, [
   "Sweep 40..260 Hz in 1 Hz steps over the signal decimated by 4 (12 kHz, so ",
   "one bin is about 3 Hz wide) and take the top peaks. On a synthetic 50 Hz ",
   "+ 150 Hz signal the same code finds both. The recording measured 50 Hz and ",
-  "its 150 Hz harmonic on a broadband floor around -39 dBFS - mains hum plus ",
+  "its 150 Hz harmonic on a broadband floor around -39 dBFS: mains hum plus ",
   "harmonics, not hiss, so the fix is EQ, not suppression alone.",
 ]));
 
@@ -77,9 +76,9 @@ document.body.appendChild($("ul", {}, [
     " (Speex): a suppression-level slider from -60 to 0 dB ",
     "(",
     $("a", { href: "https://github.com/obsproject/obs-studio/blob/master/plugins/obs-filters/noise-suppress-filter.c", textContent: "noise-suppress-filter.c" }),
-    "; the session used -50). RNNoise, the other ",
+    "; a value of -50 works). RNNoise, the other ",
     "method, is a compile-time option (LIBRNNOISE_ENABLED), and the nixpkgs ",
-    "OBS build does not link librnnoise - no rnnoise in its buildInputs - so ",
+    "OBS build does not link librnnoise; no rnnoise in its buildInputs, so ",
     "only Speex exists there.",
   ]),
   $("li", {}, [
@@ -91,9 +90,9 @@ document.body.appendChild($("ul", {}, [
   ]),
   $("li", {}, [
     $("strong", { textContent: "3-Band Equalizer" }),
-    ": the crossover frequencies are fixed in the source - 800 Hz and 5 kHz ",
+    ": the crossover frequencies are fixed in the source: 800 Hz and 5 kHz ",
     $("a", { href: "https://github.com/obsproject/obs-studio/blob/master/plugins/obs-filters/eq-filter.c", textContent: "(eq-filter.c)" }),
-    " - only the three gains adjust. Cutting the low band's gain ",
+    ". Only the three gains adjust. Cutting the low band's gain ",
     "attenuates everything below 800 Hz: the 50 Hz hum goes, and the bass with ",
     "it.",
   ]),

@@ -13,15 +13,13 @@ document.body.appendChild($("h1", {
 document.body.appendChild($("p", {}, [
   "A microphone picks up mains hum. The right fix depends on what the noise ",
   "is: tonal hum at 50 Hz (China mains) with odd harmonics wants an EQ cut; ",
-  "broadband hiss wants suppression. A 10-second recording decides; measure ",
-  "before fixing.",
+  "broadband hiss wants suppression. A 10-second recording decides.",
 ]));
 
 // 1. Capture the raw signal
 document.body.appendChild($("h2", { textContent: "1. Capture the raw signal" }));
 document.body.appendChild($("p", {}, [
-  "Record the monitor of the exact source, not through an app, so no filter ",
-  "contaminates the evidence:",
+  "Record the source's monitor.",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
@@ -39,9 +37,9 @@ document.body.appendChild($("p", {}, [
 // 2. Analyze without numpy
 document.body.appendChild($("h2", { textContent: "2. Analyze without numpy" }));
 document.body.appendChild($("p", {}, [
-  "No numpy on the machine. The Goertzel algorithm computes one frequency bin ",
-  "at a time with a constant-coefficient recurrence, enough to sweep the ",
-  "frequencies of interest. This is the function:",
+  "The Goertzel algorithm computes one frequency bin at a time with a ",
+  "constant-coefficient recurrence, enough to sweep the frequencies of ",
+  "interest. This is the function:",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {

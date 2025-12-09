@@ -96,6 +96,8 @@ document.body.appendChild($("ul", {}, [
   ]),
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", {

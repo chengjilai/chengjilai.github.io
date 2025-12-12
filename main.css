@@ -1,0 +1,13 @@
+@font-face {
+  font-family: Alegreya;
+  src: url(fonts/Alegreya-Regular.otf);
+}
+body {
+  font-family: Alegreya;
+}
+p {
+  font-size: 35px;
+}
+small {
+  font-size: 15px;
+}

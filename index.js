@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/hda-codec.html", textContent: "HDA codec debugging from userspace" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/mic-hum.html", textContent: "Mic hum: diagnose with a 10-second recording" }),
   ]),
   $("li", {}, [

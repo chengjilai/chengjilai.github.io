@@ -116,7 +116,9 @@ document.body.appendChild($("p", {}, [
   "together; unplugged, total silence; the Speaker mixer controls do nothing.",
 ]));
 document.body.appendChild($("p", {}, [
-  "The fix is a daemon (github.com/chengjilai/huawei-sn6140-speaker-guard): ",
+  "The fix is a daemon ",
+  $("a", { href: "https://github.com/chengjilai/huawei-sn6140-speaker-guard", textContent: "(github.com/chengjilai/huawei-sn6140-speaker-guard)" }),
+  ": ",
   "read ",
   $("code", { textContent: "GET_PIN_SENSE" }),
   " on 0x16; headphones plugged, set EAPD on 0x17 to 0 (amp off); unplugged, ",

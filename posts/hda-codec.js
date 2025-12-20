@@ -122,8 +122,13 @@ document.body.appendChild($("p", {}, [
   "read ",
   $("code", { textContent: "GET_PIN_SENSE" }),
   " on 0x16; headphones plugged, set EAPD on 0x17 to 0 (amp off); unplugged, ",
-  "to 2 (amp on). The verbs are idempotent and re-applied every 0.5 s, so ",
-  "suspend/resume and profile switches correct themselves.",
+  "to 2 (amp on). The verb recipe comes from ",
+  $("a", { href: "https://github.com/Smoren/huawei-ubuntu-sound-fix", textContent: "Smoren/huawei-ubuntu-sound-fix" }),
+  " (hardware analysis of the same MateBook family), with the kernel-side ",
+  "discussion in ",
+  $("a", { href: "https://github.com/thesofproject/linux/issues/3350", textContent: "thesofproject/linux#3350" }),
+  ". The verbs are idempotent and re-applied every 0.5 s, so suspend/resume ",
+  "and profile switches correct themselves.",
 ]));
 
 document.body.appendChild($("p", {}, [

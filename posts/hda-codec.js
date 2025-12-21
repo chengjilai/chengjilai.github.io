@@ -36,7 +36,8 @@ document.body.appendChild($("p", {}, [
   "No alsa-utils on the machine, but ",
   $("code", { textContent: "libasound.so.2" }),
   " is present. ctypes can call the mixer API directly (documented in the ",
-  "ALSA C library reference): ",
+  $("a", { href: "https://www.alsa-project.org/alsa-doc/alsa-lib/group___mixer.html", textContent: "ALSA C library reference" }),
+  "): ",
   $("code", { textContent: "snd_mixer_open" }),
   ", attach ",
   $("code", { textContent: "hw:N" }),
@@ -65,12 +66,18 @@ document.body.appendChild($("p", {}, [
   " (present on this machine), which accepts a verb and returns the codec's ",
   "response. It is single-open: the kernel sets ",
   $("code", { textContent: "exclusive" }),
-  ", and a second opener gets EBUSY (sound/core/hwdep.c, ",
+  ", and a second opener gets EBUSY (",
+  $("a", { href: "https://github.com/torvalds/linux/blob/master/sound/core/hwdep.c", textContent: "sound/core/hwdep.c" }),
+  ", ",
   $("code", { textContent: "hwdep->exclusive = 1" }),
-  " in sound/hda/common/hwdep.c) - a guard daemon may hold it.",
+  " in ",
+  $("a", { href: "https://github.com/torvalds/linux/blob/master/sound/hda/common/hwdep.c", textContent: "sound/hda/common/hwdep.c" }),
+  ") - a guard daemon may hold it.",
 ]));
 document.body.appendChild($("p", {}, [
-  "The current ioctl (include/sound/hda_hwdep.h): ",
+  "The current ioctl ",
+  $("a", { href: "https://github.com/torvalds/linux/blob/master/include/sound/hda_hwdep.h", textContent: "(include/sound/hda_hwdep.h)" }),
+  ": ",
   $("code", { textContent: "HDA_IOCTL_VERB_WRITE = _IOWR('H', 0x11, struct hda_verb_ioctl)" }),
   " with ",
   $("code", { textContent: "{ u32 verb; u32 res; }" }),
@@ -79,7 +86,9 @@ document.body.appendChild($("p", {}, [
   "documents Linux 6.16+ for the new one, with a legacy fallback.",
 ]));
 document.body.appendChild($("p", {}, [
-  "The verbs used here (include/sound/hda_verbs.h):",
+  "The verbs used here ",
+  $("a", { href: "https://github.com/torvalds/linux/blob/master/include/sound/hda_verbs.h", textContent: "(include/sound/hda_verbs.h)" }),
+  ":",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
@@ -117,9 +126,8 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("p", {}, [
   "The fix is a daemon ",
-  $("a", { href: "https://github.com/chengjilai/huawei-sn6140-speaker-guard", textContent: "(github.com/chengjilai/huawei-sn6140-speaker-guard)" }),
-  ": ",
-  "read ",
+  $("a", { href: "https://github.com/chengjilai/huawei-sn6140-speaker-guard", textContent: "github.com/chengjilai/huawei-sn6140-speaker-guard" }),
+  " that reads ",
   $("code", { textContent: "GET_PIN_SENSE" }),
   " on 0x16; headphones plugged, set EAPD on 0x17 to 0 (amp off); unplugged, ",
   "to 2 (amp on). The verb recipe comes from ",

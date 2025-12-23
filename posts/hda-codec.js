@@ -20,7 +20,7 @@ document.body.appendChild($("p", {}, [
 // 1. Read the codec
 document.body.appendChild($("h2", { textContent: "1. Read the codec" }));
 document.body.appendChild($("pre", {}, [
-  $("code", { textContent: "cat /proc/asound/cardN/codec#0" }),
+  $("code", { innerHTML: highlight( "cat /proc/asound/cardN/codec#0" , "shell")}),
 ]));
 document.body.appendChild($("p", {}, [
   "Prints the codec's widgets: DACs, pin complexes, amps, EAPD, connections. ",
@@ -57,8 +57,8 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent: "#define HDA_VERB(nid,verb,param) ((nid)<<24 | (verb)<<8 | (param))",
-  }),
+    innerHTML: highlight( "#define HDA_VERB(nid,verb,param) ((nid)<<24 | (verb)<<8 | (param))",
+  "c")}),
 ]));
 document.body.appendChild($("p", {}, [
   "The codec also exposes an hwdep device, ",
@@ -92,13 +92,13 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "AC_VERB_PARAMETERS          0xf00   # param 0 = vendor id\n" +
       "AC_VERB_GET_PIN_SENSE       0xf09   # presence bit = 1 << 31\n" +
       "AC_VERB_GET_EAPD_BTLENABLE  0xf0c\n" +
       "AC_VERB_SET_EAPD_BTLENABLE  0x70c\n" +
       "AC_VERB_SET_CONNECT_SEL     0x701",
-  }),
+  "c")}),
 ]));
 
 // 4. The SN6140 quirk (Huawei MateBook)

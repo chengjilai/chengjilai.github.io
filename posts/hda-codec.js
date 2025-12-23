@@ -24,7 +24,7 @@ document.body.appendChild($("pre", {}, [
 ]));
 document.body.appendChild($("p", {}, [
   "Prints the codec's widgets: DACs, pin complexes, amps, EAPD, connections. ",
-  "Present on this machine: ",
+  "Here: ",
   $("code", { textContent: "/proc/asound/card1/codec#0" }),
   " shows an ATI R6xx HDMI codec. The dump is a snapshot; re-read it after ",
   "toggling a control to confirm it is live.",
@@ -63,8 +63,8 @@ document.body.appendChild($("pre", {}, [
 document.body.appendChild($("p", {}, [
   "The codec also exposes an hwdep device, ",
   $("code", { textContent: "/dev/snd/hwC<N>D0" }),
-  " (present on this machine), which accepts a verb and returns the codec's ",
-  "response. It is single-open: the kernel sets ",
+  ", which accepts a verb and returns the codec's response. It is ",
+  "single-open: the kernel sets ",
   $("code", { textContent: "exclusive" }),
   ", and a second opener gets EBUSY (",
   $("a", { href: "https://github.com/torvalds/linux/blob/master/sound/core/hwdep.c", textContent: "sound/core/hwdep.c" }),
@@ -72,7 +72,7 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "hwdep->exclusive = 1" }),
   " in ",
   $("a", { href: "https://github.com/torvalds/linux/blob/master/sound/hda/common/hwdep.c", textContent: "sound/hda/common/hwdep.c" }),
-  ") - a guard daemon may hold it.",
+  "). A guard daemon may hold it.",
 ]));
 document.body.appendChild($("p", {}, [
   "The current ioctl ",
@@ -81,7 +81,7 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "HDA_IOCTL_VERB_WRITE = _IOWR('H', 0x11, struct hda_verb_ioctl)" }),
   " with ",
   $("code", { textContent: "{ u32 verb; u32 res; }" }),
-  " - ioctl number 0xC0084811. The daemon in section 4 probes two ioctl ",
+  ", ioctl number 0xC0084811. The daemon in section 4 probes two ioctl ",
   "variants at startup and uses whichever the kernel accepts; its README ",
   "documents Linux 6.16+ for the new one, with a legacy fallback.",
 ]));
@@ -101,11 +101,11 @@ document.body.appendChild($("pre", {}, [
   "c")}),
 ]));
 
-// 4. The SN6140 quirk (Huawei MateBook)
-document.body.appendChild($("h2", { textContent: "4. The SN6140 quirk (Huawei MateBook)" }));
+// 4. The SN6140 quirk
+document.body.appendChild($("h2", { textContent: "4. The SN6140 quirk" }));
 document.body.appendChild($("p", {}, [
-  "The Conexant SN6140 on the MateBook is wired so the internal speaker ",
-  "follows the headphone pin:",
+  "The Conexant SN6140 is wired so the internal speaker follows the ",
+  "headphone pin:",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
@@ -132,7 +132,7 @@ document.body.appendChild($("p", {}, [
   " on 0x16; headphones plugged, set EAPD on 0x17 to 0 (amp off); unplugged, ",
   "to 2 (amp on). The verb recipe comes from ",
   $("a", { href: "https://github.com/Smoren/huawei-ubuntu-sound-fix", textContent: "Smoren/huawei-ubuntu-sound-fix" }),
-  " (hardware analysis of the same MateBook family), with the kernel-side ",
+  " (hardware analysis of the same laptop family), with the kernel-side ",
   "discussion in ",
   $("a", { href: "https://github.com/thesofproject/linux/issues/3350", textContent: "thesofproject/linux#3350" }),
   ". The verbs are idempotent and re-applied every 0.5 s, so suspend/resume ",

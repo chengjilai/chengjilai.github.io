@@ -139,6 +139,8 @@ document.body.appendChild($("p", {}, [
   "and profile switches correct themselves.",
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", {

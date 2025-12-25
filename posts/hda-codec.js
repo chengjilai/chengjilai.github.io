@@ -24,7 +24,6 @@ document.body.appendChild($("pre", {}, [
 ]));
 document.body.appendChild($("p", {}, [
   "Prints the codec's widgets: DACs, pin complexes, amps, EAPD, connections. ",
-  "Here: ",
   $("code", { textContent: "/proc/asound/card1/codec#0" }),
   " shows an ATI R6xx HDMI codec. The dump is a snapshot; re-read it after ",
   "toggling a control to confirm it is live.",
@@ -33,7 +32,7 @@ document.body.appendChild($("p", {}, [
 // 2. Drive controls without alsa-utils
 document.body.appendChild($("h2", { textContent: "2. Drive controls without alsa-utils" }));
 document.body.appendChild($("p", {}, [
-  "No alsa-utils on the machine, but ",
+  "No alsa-utils installed, but ",
   $("code", { textContent: "libasound.so.2" }),
   " is present. ctypes can call the mixer API directly (documented in the ",
   $("a", { href: "https://www.alsa-project.org/alsa-doc/alsa-lib/group___mixer.html", textContent: "ALSA C library reference" }),

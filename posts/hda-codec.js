@@ -29,12 +29,10 @@ document.body.appendChild($("p", {}, [
   "toggling a control to confirm it is live.",
 ]));
 
-// 2. Drive controls without alsa-utils
-document.body.appendChild($("h2", { textContent: "2. Drive controls without alsa-utils" }));
+// 2. Drive controls via ctypes
+document.body.appendChild($("h2", { textContent: "2. Drive controls via ctypes" }));
 document.body.appendChild($("p", {}, [
-  "No alsa-utils installed, but ",
-  $("code", { textContent: "libasound.so.2" }),
-  " is present. ctypes can call the mixer API directly (documented in the ",
+  "ctypes can call the mixer API directly (documented in the ",
   $("a", { href: "https://www.alsa-project.org/alsa-doc/alsa-lib/group___mixer.html", textContent: "ALSA C library reference" }),
   "): ",
   $("code", { textContent: "snd_mixer_open" }),

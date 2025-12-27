@@ -13,8 +13,8 @@ document.body.appendChild($("h1", {
 document.body.appendChild($("p", {}, [
   "A laptop speaker kept playing together with the headphones, and the mixer ",
   "controls did nothing. Fixing it meant reading the HD-audio codec and ",
-  "driving it directly with HDA verbs. Linux exposes the codec at three ",
-  "levels, and the deepest one bypasses the kernel's quirk tables entirely.",
+  "driving it with HDA verbs. Linux exposes the codec at three levels; the ",
+  "third bypasses the kernel's quirk tables.",
 ]));
 
 // 1. Read the codec

@@ -7,9 +7,10 @@ document.head.appendChild(title);
 document.body.appendChild($("h1", { textContent: "kmscon as the console" }));
 
 document.body.appendChild($("p", {}, [
-  "The kernel console could not render bright backgrounds distinctly on this ",
-  "panel. kmscon - a KMS/DRM terminal emulator - replaced it: 256 colors, ",
-  "pango fonts, proper rendering. Two gotchas followed, both in the source.",
+  "The kernel console could not render bright backgrounds distinctly on the ",
+  "laptop panel. kmscon, a KMS/DRM terminal emulator, replaced it: 256 ",
+  "colors, pango fonts, proper rendering. Two gotchas followed, both in the ",
+  "source.",
 ]));
 
 // 1. Why
@@ -19,7 +20,9 @@ document.body.appendChild($("p", {}, [
   "kmscon is a terminal emulator on KMS/DRM: 256 colors, pango fonts, proper ",
   "rendering. On Guix it is a built-in service type (" ,
   $("code", { textContent: "kmscon-service-type" }),
-  ", gnu/services/base.scm); on NixOS it would need a custom unit.",
+  ", ",
+  $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/services/base.scm", textContent: "gnu/services/base.scm" }),
+  "); on NixOS it would need a custom unit.",
 ]));
 
 // 2. Guix setup
@@ -34,7 +37,7 @@ document.body.appendChild($("pre", {}, [
 ]));
 document.body.appendChild($("p", {}, [
   "Base mingetty must be removed (delete + re-add tty2-6). modify-services ",
-  "cannot add service expressions and delete removes re-adds - filter ",
+  "cannot add service expressions and delete removes re-adds; filter ",
   "%base-services instead:",
 ]));
 document.body.appendChild($("pre", {}, [
@@ -48,33 +51,35 @@ document.body.appendChild($("h2", { textContent: "3. TERM: the service cannot pa
 document.body.appendChild($("p", {}, [
   "The guix service builds a fixed command line (" ,
   $("code", { textContent: "--login --vt --no-switchvt --font-engine --font-size [--xkb-*] [--hwaccel]" }),
-  "; verified in gnu/services/base.scm) - there is no way to pass " ,
+  "; " ,
+  $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/services/base.scm", textContent: "gnu/services/base.scm" }),
+  "). There is no way to pass " ,
   $("code", { textContent: "-t" }),
-  " or set TERM. The fix on this machine was a custom shepherd service that ",
-  "exports TERM=xterm-256color (chengjilai/guixos commit \"kmscon exports ",
-  "TERM=xterm-256color (custom shepherd service)\"), so Emacs gets a TERM ",
-  "whose terminfo it knows.",
+  " or set TERM. The fix is a custom shepherd service that exports ",
+  "TERM=xterm-256color, so Emacs gets a TERM whose terminfo it knows.",
 ]));
 
 // 4. The hard-coded cursor blink
 document.body.appendChild($("h2", { textContent: "4. The hard-coded cursor blink" }));
 document.body.appendChild($("p", {}, [
-  "kmscon 10.0.1 blinked the cursor by design - a 500 ms timer; no config ",
+  "kmscon 10.0.1 blinked the cursor by design: a 500 ms timer; no config ",
   "option, and DECSCUSR and DEC private mode 12 were unimplemented. The fix: ",
   "patch the renderer to drop the blink and build a patched package (" ,
   $("code", { textContent: "inherit kmscon" }),
-  " plus a substitute* phase; guixos commit \"patch kmscon - steady cursor\"). ",
-  "Upstream later added a real " ,
+  " plus a substitute* phase). Upstream later added a real " ,
   $("code", { textContent: "--blink" }),
-  " option (commit 7ae1c81, \"conf: Add a blink option\"; NEWS \"terminal: Add ",
-  "blink support\", PR #432) - check upstream before patching.",
+  " option: ",
+  $("a", { href: "https://github.com/kmscon/kmscon/commit/7ae1c81", textContent: "commit 7ae1c81" }),
+  " \"conf: Add a blink option\" (the project's NEWS file lists it as ",
+  $("a", { href: "https://github.com/kmscon/kmscon/blob/master/NEWS.md", textContent: "NEWS.md" }),
+  ": \"terminal: Add blink support\"; ",
+  $("a", { href: "https://github.com/kmscon/kmscon/pull/432", textContent: "PR #432" }),
+  "). Check upstream before patching.",
 ]));
 
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", { href: "https://github.com/chengjilai/chengjilai.github.io", textContent: "github.com/chengjilai/chengjilai.github.io" }),
-  " - ",
-  $("a", { href: "https://github.com/chengjilai/guixos", textContent: "guixos" }),
-  " - ",
+  ", ",
   $("a", { href: "https://github.com/kmscon/kmscon", textContent: "kmscon" }),
 ]));

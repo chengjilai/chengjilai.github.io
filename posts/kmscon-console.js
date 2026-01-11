@@ -49,14 +49,20 @@ document.body.appendChild($("pre", {}, [
 // 3. TERM: the service cannot pass -t
 document.body.appendChild($("h2", { textContent: "3. TERM: the service cannot pass -t" }));
 document.body.appendChild($("p", {}, [
-  "The guix service builds a fixed command line (" ,
+  "kmscon's own default TERM is vt220 ",
+  $("a", { href: "https://github.com/kmscon/kmscon/blob/master/src/misc/pty.c", textContent: "(src/misc/pty.c)" }),
+  ": ",
+  $("code", { textContent: "if (!term) term = \"vt220\"" }),
+  ". That is fine for the shell, not for a 256-color Emacs, which needs a ",
+  "TERM whose terminfo it knows. The guix service builds a fixed command ",
+  "line (" ,
   $("code", { textContent: "--login --vt --no-switchvt --font-engine --font-size [--xkb-*] [--hwaccel]" }),
   "; " ,
   $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/services/base.scm", textContent: "gnu/services/base.scm" }),
-  "). There is no way to pass " ,
+  ") with no way to pass " ,
   $("code", { textContent: "-t" }),
   " or set TERM. The fix is a custom shepherd service that exports ",
-  "TERM=xterm-256color, so Emacs gets a TERM whose terminfo it knows.",
+  "TERM=xterm-256color.",
 ]));
 
 // 4. The hard-coded cursor blink
@@ -66,7 +72,10 @@ document.body.appendChild($("p", {}, [
   "option, and DECSCUSR and DEC private mode 12 were unimplemented. The fix: ",
   "patch the renderer to drop the blink and build a patched package (" ,
   $("code", { textContent: "inherit kmscon" }),
-  " plus a substitute* phase). Upstream later added a real " ,
+  " plus a substitute* phase). SGR-5 text blink is handled separately in ",
+  "the renderers ",
+  $("a", { href: "https://github.com/kmscon/kmscon/blob/master/src/render/text.c", textContent: "(src/render/text.c)" }),
+  ", so it survives the patch. Upstream later added a real " ,
   $("code", { textContent: "--blink" }),
   " option: ",
   $("a", { href: "https://github.com/kmscon/kmscon/commit/7ae1c81", textContent: "commit 7ae1c81" }),

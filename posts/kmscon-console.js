@@ -9,8 +9,7 @@ document.body.appendChild($("h1", { textContent: "kmscon as the console" }));
 document.body.appendChild($("p", {}, [
   "The kernel console could not render bright backgrounds distinctly on the ",
   "laptop panel. kmscon, a KMS/DRM terminal emulator, replaced it: 256 ",
-  "colors, pango fonts, proper rendering. Two gotchas followed, both in the ",
-  "source.",
+  "colors, pango fonts, proper rendering. Two gotchas followed.",
 ]));
 
 // 1. Why

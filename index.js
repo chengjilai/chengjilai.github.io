@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/guix-pr.html", textContent: "How to submit a change to Guix (2026)" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/kmscon-console.html", textContent: "kmscon as the console" }),
   ]),
   $("li", {}, [

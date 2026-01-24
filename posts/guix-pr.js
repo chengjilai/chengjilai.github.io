@@ -9,7 +9,7 @@ document.body.appendChild($("h1", { textContent: "How to submit a change to Guix
 document.body.appendChild($("p", {}, [
   "Since 2026-01-01 Guix accepts pull requests on codeberg.org/guix/guix; the ",
   "email route (guix-patches@gnu.org) is retired. The GitHub mirror is ",
-  "read-only - GitHub PRs are not the channel.",
+  "read-only; GitHub PRs are not the channel.",
 ]));
 
 // 1. Two submission methods
@@ -43,21 +43,21 @@ document.body.appendChild($("ul", {}, [
   ]),
   $("li", {}, [
     "Bump checklist: pick a commit that builds AND passes its tests (a later ",
-    "commit added a flaky test - check); version via ",
+    "commit added a flaky test; check); version via ",
     $("code", { textContent: "(git-version \"10.0.1\" \"2\" \"commit\")" }),
     "; get the git-fetch sha256 from a build's \"actual hash\" error",
   ]),
 ]));
 
-// 3. Lessons from a real PR (kmscon --blink bump, #10473)
-document.body.appendChild($("h2", { textContent: "3. Lessons from a real PR (kmscon --blink bump, #10473)" }));
+// 3. A real PR: the kmscon --blink bump (#10473)
+document.body.appendChild($("h2", { textContent: "3. A real PR: the kmscon --blink bump (#10473)" }));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
     "Check upstream first: the \"missing\" option may already exist in a newer ",
-    "commit - the real gap was Guix packaging an old release",
+    "commit; the real gap was Guix packaging an old release",
   ]),
   $("li", {}, [
-    "GitHub blocked locally - SWH fallback - request SWH ingestion for recent ",
+    "GitHub blocked locally; SWH is the fallback. Request SWH ingestion for recent ",
     "commits",
   ]),
   $("li", {}, [
@@ -65,15 +65,17 @@ document.body.appendChild($("ul", {}, [
     "keep the real origin URL in the PR",
   ]),
   $("li", {}, [
-    "An open kmscon PR (#487, \"Add cursor style support\") already covered the ",
-    "DECSCUSR angle - avoid duplicating open work; the careful check is part ",
-    "of the contribution",
+    "A kmscon PR (",
+    $("a", { href: "https://github.com/kmscon/kmscon/pull/487", textContent: "#487" }),
+    ", \"Add cursor style support\") already covered the DECSCUSR angle; ",
+    "check for existing open work before duplicating it; the careful check is ",
+    "part of the contribution",
   ]),
 ]));
 
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", { href: "https://github.com/chengjilai/chengjilai.github.io", textContent: "github.com/chengjilai/chengjilai.github.io" }),
-  " - ",
+  ", ",
   $("a", { href: "https://codeberg.org/guix/guix/pulls/10473", textContent: "PR #10473" }),
 ]));

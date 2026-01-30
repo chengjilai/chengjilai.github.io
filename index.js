@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/ssh-home-resolution.html", textContent: "ssh resolves ~ from the passwd database, not $HOME" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/guix-pr.html", textContent: "How to submit a change to Guix (2026)" }),
   ]),
   $("li", {}, [

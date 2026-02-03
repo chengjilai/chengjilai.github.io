@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/exact-config-keys.html", textContent: "Exact config key names and silent ignores" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/ssh-home-resolution.html", textContent: "ssh resolves ~ from the passwd database, not $HOME" }),
   ]),
   $("li", {}, [

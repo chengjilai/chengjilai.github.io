@@ -31,7 +31,7 @@ document.body.appendChild($("pre", {}, [
     "Protocols: -LLMNR +mDNS -DNSOverTLS DNSSEC=no/unsupported", "shell") }),
 ]));
 document.body.appendChild($("p", {}, [
-  "LLMNR flipped off; mDNS stayed on. The asymmetry is the tell.",
+  "LLMNR flipped off; mDNS stayed on. The asymmetry is the clue.",
 ]));
 
 // 2. Why
@@ -75,8 +75,8 @@ document.body.appendChild($("ul", {}, [
   ]),
 ]));
 document.body.appendChild($("p", {}, [
-  "In the config here, restartIfChanged = false on the resolved and networkd ",
-  "services protects live sessions, and wait-online stays enabled; see the ",
+  "In the config here, restartIfChanged = false on the resolved and networkd \n",
+  "services protects live sessions, and wait-online stays enabled; see the \n",
   "systemd builtins post.",
 ]));
 

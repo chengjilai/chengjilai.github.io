@@ -68,16 +68,15 @@ document.body.appendChild($("ul", {}, [
     "race",
   ]),
   $("li", {}, [
-    "Daemons with restartIfChanged = false (set here to protect live \n",
-    "sessions, the wifi, the SSH you are using) are NOT restarted by a \n",
-    "switch; restart them yourself after a config change, or your \"fix\" \n",
-    "never loads",
+    "Daemons with restartIfChanged = false (set to protect live sessions, \n",
+    "the wifi, the SSH you are using) are NOT restarted by a switch; restart \n",
+    "them yourself after a config change, or your \"fix\" never loads",
   ]),
 ]));
 document.body.appendChild($("p", {}, [
-  "In the config here, restartIfChanged = false on the resolved and networkd \n",
-  "services protects live sessions, and wait-online stays enabled; see the \n",
-  "systemd builtins post.",
+  "restartIfChanged = false on the resolved and networkd services protects \n",
+  "live sessions, and wait-online stays enabled; see the systemd builtins \n",
+  "post.",
 ]));
 
 appendReferences();

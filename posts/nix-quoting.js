@@ -81,7 +81,7 @@ document.body.appendChild($("p", {}, [
   "Every ExecStart and writeShellScript body uses ''...''. If you ever see a \n",
   "Nix file with \"bash -c '...'\" and inner quotes, that is a bug waiting to \n",
   "break the parse; convert it to an indented string. Rule of thumb: shell ",
-  "in Nix, use an indented string. Period.",
+  "in Nix, use an indented string.",
 ]));
 
 

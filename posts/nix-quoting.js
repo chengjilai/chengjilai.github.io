@@ -61,7 +61,7 @@ document.body.appendChild($("ul", {}, [
   ]),
   $("li", {}, [
     "Indented: only ${ and $' start interpolation. $d, $(...), $ok stay \n",
-    "literal, exactly what a shell script wants. The only escape needed: \n",
+    "literal, what a shell script wants. The only escape needed: \n",
     "write ''' if the content itself contains ''",
   ]),
 ]));
@@ -83,7 +83,6 @@ document.body.appendChild($("p", {}, [
   "break the parse; convert it to an indented string. Rule of thumb: shell ",
   "in Nix, use an indented string.",
 ]));
-
 
 appendReferences();
 

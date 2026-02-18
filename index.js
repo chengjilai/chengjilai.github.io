@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/hash-seed.html", textContent: "Python set iteration order is seed-dependent" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/nix-quoting.html", textContent: "Nix strings inside strings" }),
   ]),
   $("li", {}, [

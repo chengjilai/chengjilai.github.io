@@ -57,7 +57,7 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("h2", { textContent: "3. How $ behaves in each string kind" }));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
-    "Double-quoted: ${var} interpolates; you escape quotes and \\$ by hand",
+    "Double-quoted: ${var} interpolates; escape quotes and \\$ by hand",
   ]),
   $("li", {}, [
     "Indented: only ${ and $' start interpolation. $d, $(...), $ok stay \n",
@@ -78,10 +78,10 @@ document.body.appendChild($("p", {}, [
 // 4. The repo convention
 document.body.appendChild($("h2", { textContent: "4. The repo convention" }));
 document.body.appendChild($("p", {}, [
-  "Every ExecStart and writeShellScript body uses ''...''. If you ever see a \n",
-  "Nix file with \"bash -c '...'\" and inner quotes, that is a bug waiting to \n",
-  "break the parse; convert it to an indented string. Rule of thumb: shell ",
-  "in Nix, use an indented string.",
+  "Every ExecStart and writeShellScript body uses ''...''. A Nix file with ",
+  "\"bash -c '...'\" and inner quotes is a bug waiting to break the parse; ",
+  "convert it to an indented string. Rule of thumb: shell in Nix, use an ",
+  "indented string.",
 ]));
 
 appendReferences();

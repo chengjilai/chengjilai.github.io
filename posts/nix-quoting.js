@@ -10,8 +10,7 @@ document.body.appendChild($("p", {}, [
   "A systemd unit needed to run a bash loop. The natural first attempt put \n",
   "the whole one-liner in a double-quoted Nix string and blew up the parse; \n",
   "the fix is Nix's indented string, which holds any quotes with no \n",
-  "escaping. Every ExecStart and writeShellScript body in this repo uses \n",
-  "indented strings.",
+  "escaping.",
 ]));
 
 // 1. The failure that started it
@@ -75,10 +74,10 @@ document.body.appendChild($("p", {}, [
   "using cut -d= -f2- instead of bash parameter expansion.",
 ]));
 
-// 4. The repo convention
-document.body.appendChild($("h2", { textContent: "4. The repo convention" }));
+// 4. The convention
+document.body.appendChild($("h2", { textContent: "4. The convention" }));
 document.body.appendChild($("p", {}, [
-  "Every ExecStart and writeShellScript body uses ''...''. A Nix file with ",
+  "ExecStart and writeShellScript bodies use ''...''. A Nix file with ",
   "\"bash -c '...'\" and inner quotes is a bug waiting to break the parse; ",
   "convert it to an indented string. Rule of thumb: shell in Nix, use an ",
   "indented string.",

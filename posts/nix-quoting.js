@@ -65,13 +65,13 @@ document.body.appendChild($("ul", {}, [
   ]),
 ]));
 document.body.appendChild($("p", {}, [
-  "The corollary bites the other way: inside an indented string ${ always \n",
+  "Inside an indented string ${ always \n",
   "opens interpolation. To hand a literal ${var} to bash, escape the $ by \n",
   "prefixing it with two single quotes: write ''${var} (the manual: \"$ is \n",
   "escaped by prefixing it with two single quotes ('')\" on indented strings, \n",
   "which differs from double-quoted \"\${var}\"; know which one you need). A \n",
-  "$$-sequence stays literal. A provisioner sidesteps the whole class by \n",
-  "using cut -d= -f2- instead of bash parameter expansion.",
+  "$$-sequence stays literal. A provisioner uses cut -d= -f2- instead of bash \n",
+  "parameter expansion.",
 ]));
 
 // 4. The convention

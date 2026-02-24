@@ -1,5 +1,6 @@
 "use strict";
 
+
 const title = document.createElement("title");
 title.textContent = "Keeping a language model out of your prose";
 document.head.appendChild(title);
@@ -47,7 +48,7 @@ document.body.appendChild($("h2", { textContent: "2. The words that give a model
 document.body.appendChild($("p", {}, [
   "Some words mark model prose statistically. ",
   $("a", { href: "https://gist.github.com/swyxio/8ac555e88ad153764051012d2db27ea7", textContent: "swyxio's list of overused words" }),
-  " collects them - delve, tapestry, seamless, unlock, foster - citing two ",
+  " collects them: delve, seamless, unlock. The list cites two ",
   "arXiv papers that measure the shift: ",
   $("a", { href: "https://arxiv.org/abs/2403.07183", textContent: "Liang et al. 2024" }),
   " (vocabulary in AI-assisted peer reviews) and ",
@@ -68,7 +69,7 @@ document.body.appendChild($("p", {}, [
   $("a", { href: "https://github.com/amperser/proselint", textContent: "proselint" }),
   " (weasel words, redundancy, cliches). A list need not be complete: the ",
   "deletion test catches whatever the list misses. A warning is a judgment ",
-  "call - a word that carries a fact stays, the rest go.",
+  "call: a word that carries a fact stays, the rest go.",
 ]));
 
 // 4. Edit, don't compose
@@ -77,7 +78,7 @@ document.body.appendChild($("p", {}, [
   "The reliable workflow keeps the writer's own sentences. The draft is an ",
   "edit of the source notes: cut, link, de-identify; keep the note's ",
   "sentences verbatim. Every sentence must trace to a note fact or a linked ",
-  "source - a sentence that traces to neither was composed and gets deleted. ",
+  "source. A sentence that traces to neither was composed and gets deleted. ",
   "Composition is where the decoration enters; editing leaves no room for ",
   "it.",
 ]));

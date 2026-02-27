@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/verifying-what-you-write.html", textContent: "Verifying what you write about software" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/model-prose.html", textContent: "Keeping a language model out of your prose" }),
   ]),
   $("li", {}, [

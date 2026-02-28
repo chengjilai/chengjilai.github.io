@@ -106,6 +106,8 @@ document.body.appendChild($("p", {}, [
   "in. Annotate the rest with what was verified and when.",
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", { href: "https://github.com/chengjilai/chengjilai.github.io", textContent: "github.com/chengjilai/chengjilai.github.io" }),

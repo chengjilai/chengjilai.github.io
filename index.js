@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/declarative-secrets.html", textContent: "Declarative configuration and secrets pipelines" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/topic-embeddings.html", textContent: "Title embeddings, not whole content, for topic-level duplicates" }),
   ]),
   $("li", {}, [

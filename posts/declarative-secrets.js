@@ -9,9 +9,9 @@ document.body.appendChild($("h1", { textContent: "Declarative configuration and 
 document.body.appendChild($("p", {}, [
   "The repo IS the system: services, configs, secrets, even the AI model \n",
   "the coding agent uses are declared, committed, rebuilt. User-state files \n",
-  "under the home directory are ephemeral copies, not the source of truth: \n",
-  "and a secret pipeline has two ways to silently corrupt a value before \n",
-  "the program ever sees it.",
+  "under the home directory are ephemeral copies, not the source of truth. \n",
+  "A secret pipeline has two ways to silently corrupt a value before the \n",
+  "program ever sees it.",
 ]));
 
 // 1. The rule
@@ -66,9 +66,8 @@ document.body.appendChild($("p", {}, [
   "backend parses name=value and takes everything after the FIRST =, so the \n",
   "password became ",
   $("code", { textContent: "PREFIX=value" }),
-  ". The server rejected every login with error 691 for days. The killer \n",
-  "detail: the log showed the password was the right length. Length is not \n",
-  "content.",
+  ". The server rejected every login with error 691 for days. The log showed \n",
+  "the password was the right length. Length is not content.",
 ]));
 
 // 5. Break mode 2: a trailing newline

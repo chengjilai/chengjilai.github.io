@@ -52,9 +52,9 @@ document.body.appendChild($("pre", {}, [
     "  -> the program reads the file" }),
 ]));
 document.body.appendChild($("p", {}, [
-  "--with-key=host (not tpm2) is deliberate: the host key lives on the USB \n",
-  "root, so the same blobs work on every machine the disk boots. TPM sealing \n",
-  "would bind them to one machine.",
+  "--with-key=host, not tpm2: the host key lives on the USB root, so the \n",
+  "same blobs work on every machine the disk boots. TPM sealing would bind \n",
+  "them to one machine.",
 ]));
 
 // 4. Break mode 1: a template prefix baked in

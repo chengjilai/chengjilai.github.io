@@ -126,6 +126,8 @@ document.body.appendChild($("p", {}, [
   "profile) that has always worked holds the true password; diff against it.",
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", { href: "https://github.com/chengjilai/chengjilai.github.io", textContent: "github.com/chengjilai/chengjilai.github.io" }),

@@ -38,7 +38,7 @@ document.body.appendChild($("pre", {}, [
 document.body.appendChild($("p", {}, [
   "The key comes from a systemd credential (repo-declared) and the model is \n",
   "forced on the command line. Interactive pi and subagent children all \n",
-  "spawn this same wrapped binary, so there is one source and nothing to drift.",
+  "spawn this same wrapped binary, so there is one source.",
 ]));
 
 // 3. The secrets pipeline
@@ -67,7 +67,7 @@ document.body.appendChild($("p", {}, [
   "password became ",
   $("code", { textContent: "PREFIX=value" }),
   ". The server rejected every login with error 691 for days. The log showed \n",
-  "the password was the right length. Length is not content.",
+  "the password was the right length.",
 ]));
 
 // 5. Break mode 2: a trailing newline

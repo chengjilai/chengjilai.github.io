@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/systemd-builtins.html", textContent: "systemd already does what you were about to write" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/declarative-secrets.html", textContent: "Declarative configuration and secrets pipelines" }),
   ]),
   $("li", {}, [

@@ -9,7 +9,7 @@ document.body.appendChild($("h1", { textContent: "systemd already does what you 
 document.body.appendChild($("p", {}, [
   "Four hand-rolled mechanisms turned out to be systemd \n",
   "builtins: a secret path list, a backlight-restore loop, a wait-online \n",
-  "\"disable\", and a udev RUN+= shell. The reflex that would have found each: \n",
+  "\"disable\", and a udev RUN+= shell. The rule that would have found each: \n",
   "ask what the platform already ships before writing a service, script, or \n",
   "loop.",
 ]));

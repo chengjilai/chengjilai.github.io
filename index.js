@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/rotating-credentials.html", textContent: "Rotating credentials in a systemd credential store" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/systemd-builtins.html", textContent: "systemd already does what you were about to write" }),
   ]),
   $("li", {}, [

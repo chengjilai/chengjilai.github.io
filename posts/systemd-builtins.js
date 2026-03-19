@@ -7,7 +7,7 @@ document.head.appendChild(title);
 document.body.appendChild($("h1", { textContent: "systemd already does what you were about to write" }));
 
 document.body.appendChild($("p", {}, [
-  "Four hand-rolled mechanisms turned out to be systemd \n",
+  "Four mechanisms turned out to be systemd \n",
   "builtins: a secret path list, a backlight-restore loop, a wait-online \n",
   "\"disable\", and a udev RUN+= shell. The rule: ask what the platform \n",
   "already ships before writing a service, script, or loop.",
@@ -46,8 +46,8 @@ document.body.appendChild($("p", {}, [
 // 2. Backlight: systemd-backlight instead of a custom oneshot
 document.body.appendChild($("h2", { textContent: "2. Backlight: systemd-backlight instead of a custom oneshot" }));
 document.body.appendChild($("p", {}, [
-  "A GPU quirk resets the panel backlight to ~0% at boot. The hand-rolled \n",
-  "fix was a oneshot service with a retry loop forcing 100%. But ",
+  "A GPU quirk resets the panel backlight to ~0% at boot. The fix was a \n",
+  "oneshot service with a retry loop forcing 100%. But ",
   $("code", { textContent: "systemd-backlight@backlight:<name>" }),
   " is built in, enabled, and already running; it restores the brightness \n",
   "saved at shutdown (/var/lib/systemd/backlight/). The custom service was \n",
@@ -86,7 +86,7 @@ document.body.appendChild($("p", {}, [
   "from hid-multitouch the moment it appears. The natural first attempt, ",
   $("code", { textContent: "RUN+= .../bin/sh -c 'for i in 1 2 3 4 5; do ...'" }),
   ", is wrong twice: RUN+= with a shell forks inside hotplug context, and \n",
-  "the retry loop is hand-rolled timing inside the rule. systemd's \n",
+  "the retry loop lives in the rule. systemd's \n",
   "Restart=on-failure IS the retry loop.",
 ]));
 document.body.appendChild($("p", {}, [

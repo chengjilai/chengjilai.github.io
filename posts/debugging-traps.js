@@ -27,10 +27,10 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "ps -o lstart,args -p <pid>     # when the process actually started\n" +
       "readlink /run/current-system   # the live NixOS generation",
-  }),
+  "shell")}),
 ]));
 document.body.appendChild($("p", {}, [
   "A process born before your change is the whole story. The manuals say the ",
@@ -55,10 +55,10 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", {
-    textContent:
+    innerHTML: highlight(
       "pkill -x <name>     # match the process name exactly\n" +
       "pkill -f '[k]mscon' # bracket pattern: your own cmdline no longer matches",
-  }),
+  "shell")}),
 ]));
 document.body.appendChild($("p", {}, [
   "The bracket trick works because the regex matches \"kmscon\" but your ",

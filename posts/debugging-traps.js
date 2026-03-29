@@ -223,6 +223,8 @@ document.body.appendChild($("p", {}, [
   "era's last error line before deciding what to fix.",
 ]));
 
+appendReferences();
+
 document.body.appendChild($("p", {}, [
   "Source: ",
   $("a", {

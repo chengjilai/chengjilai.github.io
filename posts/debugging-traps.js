@@ -198,7 +198,7 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", { innerHTML: highlight(
-    "msg from oc_a2f58a...: hello\n" +
+    "msg from <chat_id>: hello\n" +
     "PermissionError: [Errno 13] Permission denied: '/home/<user>'\n" +
     "Main process exited, code=exited, status=1/FAILURE", "shell") }),
 ]));
@@ -208,7 +208,7 @@ document.body.appendChild($("p", {}, [
   " as \"basic hardening\". ProtectHome mounts /home as empty for the ",
   "service, and the agent subprocess chdirs into the user's home to reach ",
   "its session files. EACCES on every message; the unit now documents the ",
-  "exact failure. The hardening was never tested because nothing exercised ",
+  "failure. The hardening was never tested because nothing exercised ",
   "the failing path until a message arrived. Security settings must be ",
   "exercised on the REAL path they affect, not just at startup.",
 ]));
@@ -216,7 +216,7 @@ document.body.appendChild($("p", {}, [
   "The journal's ",
   $("code", { textContent: "Scheduled restart job, restart counter is at 14." }),
   " line meant it had been crash-looping for a while, and the cause had ",
-  "CHANGED over time. Earlier in the same session the loops were ",
+  "CHANGED over time. Earlier the loops were ",
   $("code", { textContent: "receive stream ended (receiver exit code 3)" }),
   " (network down); later they became the traceback above (config/code). ",
   "Same symptom, two different eras, two different causes; read each ",

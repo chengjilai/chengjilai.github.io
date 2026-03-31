@@ -61,7 +61,7 @@ document.body.appendChild($("pre", {}, [
   "shell")}),
 ]));
 document.body.appendChild($("p", {}, [
-  "The bracket trick works because the regex matches \"kmscon\" but your ",
+  "The bracket trick works because the regex matches \"kmscon\" but the ",
   "cmdline holds the literal text \"[k]mscon\"; the substring is gone.",
 ]));
 
@@ -172,7 +172,7 @@ document.body.appendChild($("p", {}, [
 // 11. One variable per test
 document.body.appendChild($("h2", { textContent: "11. One variable per test" }));
 document.body.appendChild($("p", {}, [
-  "Change one thing per test boot; a combined fix \"works\" but tells you ",
+  "Change one thing per test boot; a combined fix \"works\" but tells ",
   "nothing about which part mattered. \"Nothing changed\" has a proof: after ",
   $("code", { textContent: "nixos-rebuild switch" }),
   ", an unchanged ",

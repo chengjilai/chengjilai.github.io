@@ -45,10 +45,7 @@ document.body.appendChild($("h2", { textContent: "2. pkill -f matches your own s
 document.body.appendChild($("p", {}, [
   $("code", { textContent: "-f" }),
   " matches against the full command line. The shell you run pkill from has ",
-  "the pattern in its own command line, so pkill matches it too. ",
-  "Demonstrated: ",
-  $("code", { textContent: "pgrep -af pattern" }),
-  " from a shell whose cmdline carries the pattern reported that same shell.",
+  "the pattern in its own command line, so pkill matches it too.",
 ]));
 document.body.appendChild($("p", {}, [
   "Two ways out:",

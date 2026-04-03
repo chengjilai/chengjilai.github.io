@@ -91,7 +91,7 @@ document.body.appendChild($("p", {}, [
   $("a", { href: "https://codeberg.org/guix/guix/src/branch/master/gnu/packages/terminals.scm", textContent: "gnu/packages/terminals.scm" }),
   ", but the file's internals were reorganized, and driver directories move ",
   "between kernel versions too. Advice written against an older tree points ",
-  "at the wrong path. Read the source of the version you actually run.",
+  "at the wrong path. Read the source of the version you run.",
 ]));
 
 // 6. Order is semantics
@@ -133,7 +133,7 @@ document.body.appendChild($("p", {}, [
   " instead of ",
   $("code", { textContent: "value" }),
   "; a template prefix baked into the secret. A trailing newline is the ",
-  "same class of bug. Compare what the tool actually consumes, byte for ",
+  "same class of bug. Compare what the tool consumes, byte for ",
   "byte: ",
   $("code", { textContent: "sudo systemd-creds decrypt <cred> - | xxd" }),
   " against the known-good value. ",

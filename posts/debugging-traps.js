@@ -33,7 +33,7 @@ document.body.appendChild($("pre", {}, [
   "shell")}),
 ]));
 document.body.appendChild($("p", {}, [
-  "A process born before your change is the whole story. The manuals say the ",
+  "A process born before your change explains the symptom. The manuals say the ",
   "same: guix system reconfigure \"does not restart system services that were ",
   "already running\" (guix manual); the new code exists, the old code still ",
   "runs. nixos-rebuild switch activates the new system now; boot defers ",
@@ -190,8 +190,7 @@ document.body.appendChild($("p", {}, [
   ", the log showed a clean start, websocket connected, and yet every ",
   "message died. The flow per message is receive, send the ack, run the ",
   "agent, then send the reply; the ack goes out BEFORE the heavy step, so ",
-  "\"ack, then silence\" pinpoints the crash in the agent step, not the ",
-  "transport, not the bot, not the network.",
+  "\"ack, then silence\" pinpoints the crash in the agent step.",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", { innerHTML: highlight(
@@ -207,7 +206,7 @@ document.body.appendChild($("p", {}, [
   "its session files. EACCES on every message; the unit now documents the ",
   "failure. The hardening was never tested because nothing exercised ",
   "the failing path until a message arrived. Security settings must be ",
-  "exercised on the REAL path they affect, not just at startup.",
+  "exercised on the REAL path they affect, not only at startup.",
 ]));
 document.body.appendChild($("p", {}, [
   "The journal's ",

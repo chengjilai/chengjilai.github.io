@@ -1,13 +1,789 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Jilai Cheng</title>
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="main.css" />
-  </head>
-  <body>
-    <h1>Jilai Cheng</h1>
-    <p>Hello!</p>
-    <small>&copy 2025 Jilai Cheng</small>
-  </body>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <script>
+    const meta = document.createElement('meta');
+    meta.name = 'viewport';
+    meta.content = 'width=device-width, initial-scale=1.0';
+    document.head.appendChild(meta);
+    const title = document.createElement('title');
+    title.textContent = 'Jilai Cheng';
+    document.head.appendChild(title);
+    CSS.registerProperty({
+      name: '--gradient-angle',
+      syntax: '<angle>',
+      inherits: false,
+      initialValue: '0deg',
+    });
+    CSS.registerProperty({
+      name: '--accent-hue',
+      syntax: '<number>',
+      inherits: true,
+      initialValue: '210',
+    });
+    CSS.registerProperty({
+      name: '--text-glow',
+      syntax: '<color>',
+      inherits: false,
+      initialValue: 'transparent',
+    });
+    CSS.registerProperty({
+      name: '--card-shadow-spread',
+      syntax: '<length>',
+      inherits: false,
+      initialValue: '0px',
+    });
+    CSS.registerProperty({
+      name: '--nav-blur',
+      syntax: '<length>',
+      inherits: false,
+      initialValue: '4px',
+    });
+    CSS.registerProperty({
+      name: '--nav-spread',
+      syntax: '<length>',
+      inherits: false,
+      initialValue: '0px',
+    });
+    const paintCode = `
+class GridPainter {
+  static get inputProperties() {
+    return ['--grid-color', '--grid-size', '--grid-opacity'];
+  }
+  paint(ctx, size, props) {
+    const color = props.get('--grid-color').toString().trim();
+    const gridSize = parseFloat(props.get('--grid-size').toString()) || 40;
+    const opacity = parseFloat(props.get('--grid-opacity').toString()) || 0.2;
+    ctx.strokeStyle = color;
+    ctx.globalAlpha = opacity;
+    ctx.lineWidth = 1;
+    for (let x = 0; x < size.width; x += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, size.height);
+      ctx.stroke();
+    }
+    for (let y = 0; y < size.height; y += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(size.width, y);
+      ctx.stroke();
+    }
+  }
+}
+
+class DotsPainter {
+  static get inputProperties() {
+    return ['--dot-color', '--dot-spacing', '--dot-radius'];
+  }
+  paint(ctx, size, props) {
+    const color = props.get('--dot-color').toString().trim();
+    const spacing = parseFloat(props.get('--dot-spacing').toString()) || 24;
+    const radius = parseFloat(props.get('--dot-radius').toString()) || 1.5;
+    ctx.fillStyle = color;
+    for (let y = spacing; y < size.height; y += spacing) {
+      for (let x = spacing; x < size.width; x += spacing) {
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+}
+
+class GradientBorderPainter {
+  static get inputProperties() {
+    return ['--border-width', '--border-color-1', '--border-color-2', '--border-angle'];
+  }
+  paint(ctx, size, props) {
+    const w = parseFloat(props.get('--border-width').toString()) || 2;
+    const c1 = props.get('--border-color-1').toString().trim();
+    const c2 = props.get('--border-color-2').toString().trim();
+    const angle = parseFloat(props.get('--border-angle').toString()) || 0;
+    const radians = (angle * Math.PI) / 180;
+    const dx = Math.cos(radians);
+    const dy = Math.sin(radians);
+    const diag = Math.hypot(size.width, size.height);
+    const grad = ctx.createLinearGradient(
+      size.width / 2 - dx * diag / 2,
+      size.height / 2 - dy * diag / 2,
+      size.width / 2 + dx * diag / 2,
+      size.height / 2 + dy * diag / 2
+    );
+    grad.addColorStop(0, c1);
+    grad.addColorStop(1, c2);
+    ctx.lineWidth = w;
+    ctx.strokeStyle = grad;
+    ctx.beginPath();
+    ctx.roundRect(w / 2, w / 2, size.width - w, size.height - w, 12);
+    ctx.stroke();
+  }
+}
+
+registerPaint('grid-bg', GridPainter);
+registerPaint('dots-bg', DotsPainter);
+registerPaint('gradient-border', GradientBorderPainter);
+`;
+    const workletBlob = new Blob([paintCode], {type: 'text/javascript'});
+    const workletUrl = URL.createObjectURL(workletBlob);
+
+    const sheet = new CSSStyleSheet();
+    document.adoptedStyleSheets = [sheet];
+
+    const rules = [
+      // Reset & Base
+      `*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }`,
+      `html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }`,
+      `body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: hsl(var(--accent-hue), 30%, 8%);
+    color: hsl(var(--accent-hue), 15%, 88%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }`,
+      `::selection {
+    background: hsl(var(--accent-hue), 70%, 50%);
+    color: #fff;
+  }`,
+
+      // Grid background using paint worklet
+      `.bg-grid {
+    --grid-color: hsl(var(--accent-hue), 40%, 25%);
+    --grid-size: 50;
+    --grid-opacity: 0.25;
+    background: paint(grid-bg);
+  }`,
+
+      // Navigation
+      `nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: hsla(var(--accent-hue), 30%, 6%, 0.85);
+    backdrop-filter: blur(12px) saturate(150%);
+    border-bottom: 1px solid hsla(var(--accent-hue), 40%, 30%, 0.3);
+    box-shadow: 0 2px var(--nav-blur) var(--nav-spread) hsla(210, 30%, 10%, 0.25);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }`,
+      `.nav-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.3px;
+    color: hsl(var(--accent-hue), 70%, 75%);
+  }`,
+      `.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }`,
+      `.nav-links a {
+    color: hsl(var(--accent-hue), 20%, 70%);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: 0.2px;
+  }`,
+      `.nav-links a:hover {
+    color: hsl(var(--accent-hue), 70%, 70%);
+  }`,
+
+      // Hero
+      `.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+  }`,
+      `.hero .subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: hsl(var(--accent-hue), 40%, 55%);
+    margin-bottom: 0.5rem;
+  }`,
+      `.hero .title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--accent-hue), 80%, 70%),
+      hsl(calc(var(--accent-hue) + 40), 70%, 55%),
+      hsl(var(--accent-hue), 60%, 70%)
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease-in-out infinite;
+  }`,
+      `.hero .tagline {
+    font-size: 1.15rem;
+    color: hsl(var(--accent-hue), 15%, 65%);
+    max-width: 540px;
+    margin: 1.5rem auto 0;
+  }`,
+      `.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: hsl(var(--accent-hue), 30%, 40%);
+    font-size: 0.75rem;
+    animation: bounce 2s ease infinite;
+  }`,
+      `.scroll-indicator .arrow {
+    width: 24px;
+    height: 24px;
+    border-right: 2px solid hsl(var(--accent-hue), 30%, 40%);
+    border-bottom: 2px solid hsl(var(--accent-hue), 30%, 40%);
+    transform: rotate(45deg);
+  }`,
+
+      // Sections
+      `section {
+    padding: 5rem 2rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }`,
+      `.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 2.5rem;
+    color: hsl(var(--accent-hue), 30%, 90%);
+    position: relative;
+    display: inline-block;
+  }`,
+      `.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 48px;
+    height: 3px;
+    border-radius: 2px;
+    background: hsl(var(--accent-hue), 60%, 55%);
+  }`,
+
+      // Blog post
+      `.blog-post {
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid hsla(var(--accent-hue), 40%, 30%, 0.35);
+    margin-bottom: 2rem;
+    position: relative;
+    transition: transform 0.25s, box-shadow 0.25s;
+    overflow: hidden;
+  }`,
+      `.blog-post:hover {
+    transform: translateY(-2px);
+    --card-shadow-spread: 8px;
+    box-shadow: 0 4px 24px hsla(var(--accent-hue), 50%, 10%, 0.5);
+  }`,
+      `.blog-post .dots-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    --dot-color: hsla(var(--accent-hue), 40%, 50%, 0.1);
+    --dot-spacing: 20;
+    --dot-radius: 1.5;
+    background: paint(dots-bg);
+    pointer-events: none;
+    z-index: 0;
+  }`,
+      `.blog-post > * { position: relative; z-index: 1; }`,
+      `.post-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    color: hsl(var(--accent-hue), 20%, 50%);
+    margin-bottom: 1rem;
+  }`,
+      `.post-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }`,
+      `.post-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    color: hsl(var(--accent-hue), 30%, 92%);
+  }`,
+      `.post-body {
+    color: hsl(var(--accent-hue), 12%, 75%);
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }`,
+      `.post-body h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1.8rem 0 0.8rem;
+    color: hsl(var(--accent-hue), 40%, 80%);
+  }`,
+      `.post-body p {
+    margin-bottom: 1rem;
+  }`,
+      `.post-body code {
+    background: hsla(var(--accent-hue), 40%, 20%, 0.45);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+    font-size: 0.88em;
+  }`,
+      `.post-body pre {
+    background: hsl(var(--accent-hue), 30%, 10%);
+    border: 1px solid hsla(var(--accent-hue), 40%, 25%, 0.5);
+    border-radius: 10px;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+  }`,
+      `.post-body pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+  }`,
+      `.post-body ul, .post-body ol {
+    margin: 0.75rem 0 1rem 1.5rem;
+  }`,
+      `.post-body li {
+    margin-bottom: 0.4rem;
+  }`,
+      `.post-body a {
+    color: hsl(var(--accent-hue), 65%, 60%);
+    text-decoration: none;
+    border-bottom: 1px solid hsla(var(--accent-hue), 65%, 60%, 0.3);
+    transition: border-color 0.2s;
+  }`,
+      `.post-body a:hover {
+    border-color: hsl(var(--accent-hue), 65%, 70%);
+  }`,
+
+      // API highlight box
+      `.api-highlight {
+    background: hsla(var(--accent-hue), 60%, 30%, 0.15);
+    border-left: 3px solid hsl(var(--accent-hue), 55%, 50%);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+  }`,
+      `.api-highlight .label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: hsl(var(--accent-hue), 50%, 60%);
+    margin-bottom: 0.35rem;
+  }`,
+      `.api-highlight p {
+    font-size: 0.9rem;
+    margin: 0;
+  }`,
+
+      // Gradient border cards (using paint worklet)
+      `.gradient-card {
+    --border-width: 2;
+    --border-color-1: hsl(var(--accent-hue), 60%, 50%);
+    --border-color-2: hsl(calc(var(--accent-hue) + 30), 70%, 55%);
+    --border-angle: 135;
+    background-color: hsla(var(--accent-hue), 30%, 8%, 0.95);
+    background-image: paint(gradient-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.25rem 0;
+  }`,
+
+      // Footer
+      `footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid hsla(var(--accent-hue), 40%, 25%, 0.3);
+    color: hsl(var(--accent-hue), 20%, 40%);
+    font-size: 0.85rem;
+  }`,
+      `footer a {
+    color: hsl(var(--accent-hue), 40%, 55%);
+    text-decoration: none;
+  }`,
+      `footer a:hover {
+    color: hsl(var(--accent-hue), 50%, 65%);
+  }`,
+
+      // Keyframes
+      `@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }`,
+      `@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-8px); }
+    60% { transform: translateX(-50%) translateY(-4px); }
+  }`,
+      `@keyframes fade-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }`,
+      `.fade-in {
+    animation: fade-in 0.6s ease forwards;
+    opacity: 0;
+  }`,
+      `.fade-in:nth-child(1) { animation-delay: 0.05s; }`,
+      `.fade-in:nth-child(2) { animation-delay: 0.15s; }`,
+      `.fade-in:nth-child(3) { animation-delay: 0.25s; }`,
+      `.fade-in:nth-child(4) { animation-delay: 0.35s; }`,
+      `.fade-in:nth-child(5) { animation-delay: 0.45s; }`,
+
+      // Responsive
+      `@media (max-width: 640px) {
+    nav { padding: 0 1rem; }
+    section { padding: 3rem 1rem; }
+    .hero { padding: 1.5rem; }
+    .post-body pre { font-size: 0.78rem; padding: 1rem; }
+  }`,
+    ];
+
+    rules.forEach(r => sheet.insertRule(r));
+
+    const $ = (tag, attrs = {}, children = []) => {
+      const el = document.createElement(tag);
+      Object.entries(attrs).forEach(([k, v]) => {
+        if (k === 'className') el.className = v;
+        else if (k === 'innerHTML') el.innerHTML = v;
+        else if (k === 'textContent') el.textContent = v;
+        else if (k.startsWith('on')) el.addEventListener(k.slice(2).toLowerCase(), v);
+        else if (k === 'style' && typeof v === 'object') Object.assign(el.style, v);
+        else el.setAttribute(k, v);
+      });
+      children.forEach(c => {
+        if (typeof c === 'string') el.appendChild(document.createTextNode(c));
+        else el.appendChild(c);
+      });
+      return el;
+    };
+    const nav = $('nav', {}, [
+      $('div', {className: 'nav-brand', textContent: 'Jilai Cheng'}),
+      $('ul', {className: 'nav-links'}, [
+        $('li', {}, [$('a', {href: '#home', textContent: 'Home'})]),
+        $('li', {}, [$('a', {href: '#blog', textContent: 'Blog'})]),
+        $('li', {}, [$('a', {href: '#about', textContent: 'About'})]),
+      ]),
+    ]);
+
+    const hero = $('section', {id: 'home', className: 'hero bg-grid'}, [
+      $('p', {className: 'subtitle fade-in', textContent: ' '}),
+      $('h1', {className: 'title fade-in', textContent: 'Jilai Cheng'}),
+      $('p', {className: 'tagline fade-in', textContent: ' '}),
+      $('div', {className: 'scroll-indicator fade-in'}, [
+        $('span', {textContent: 'Scroll'}),
+        $('div', {className: 'arrow'}),
+      ]),
+    ]);
+    const blogSection = $('section', {id: 'blog'}, [
+      $('h2', {className: 'section-title fade-in', textContent: 'Blog'}),
+      createBlogPost(),
+    ]);
+
+    function createBlogPost() {
+      const meta = $('div', {className: 'post-meta'}, [
+        $('span', {}, [' ', document.createTextNode('2026.04.28')]),
+        $('span', {}, ['⏱ ', document.createTextNode('~12 min read')]),
+        $('span', {}, ['🏷 ', document.createTextNode('Web APIs')]),
+      ]);
+
+      const body = $('div', {className: 'post-body'}, [
+        $('p', {}, [
+          'This is my first blog, it documents the process of ',
+          'building this webpage with the ',
+          $('strong', {}, ['Document Object Model (DOM)']),
+          ', ',
+          $('strong', {}, ['CSS Object Model (CSSOM)']),
+          ', and ',
+          $('strong', {}, ['CSS Houdini ']),
+        ], 'APIs'),
+
+        $('h3', {textContent: '1. DOM '}),
+        $('p', {}, [
+          'The Document Object Model (DOM) is the tree representation of a document. Every node in the ',
+          'tree is accessible and manipulable. For this page, I use:',
+        ]),
+        $('ul', {}, [
+          $('li', {}, [$('code', {textContent: 'document.createElement(tag)'}), ' — creates element nodes']),
+          $('li', {}, [$('code', {textContent: 'el.appendChild(child)'}), ' — inserts child nodes into the tree']),
+          $('li', {}, [$('code', {textContent: 'el.setAttribute(name, value)'}), ' / ', $('code', {textContent: 'el.className'}), ' — sets attributes']),
+          $('li', {}, [$('code', {textContent: 'el.textContent'}), ' / ', $('code', {textContent: 'el.innerHTML'}), ' — injects text']),
+          $('li', {}, [$('code', {textContent: 'el.addEventListener(event, fn)'}), ' — attaches event handlers']),
+          $('li', {}, [$('code', {textContent: 'el.classList.add/remove/toggle()'}), ' — manages CSS classes']),
+        ]),
+        $('p', {}, [
+          'A small helper function ',
+          $('code', {textContent: '$(tag, attrs, children)'}),
+          ' wraps these calls. Navigation, hero, ',
+          'blog content, footer is appended to ',
+          $('code', {textContent: 'document.body'}),
+          ' as its children.',
+        ]),
+
+        $('h3', {textContent: '2. CSSOM'}),
+        $('ul', {}, [
+          $('li', {}, [$('code', {textContent: 'new CSSStyleSheet()'}), ' — creates a constructable stylesheet']),
+          $('li', {}, [$('code', {textContent: 'sheet.insertRule(ruleText, index)'}), ' — inserts a CSS rule ']),
+          $('li', {}, [$('code', {textContent: 'sheet.replaceSync(cssText)'}), ' — replaces the entire stylesheet contents']),
+          $('li', {}, [$('code', {textContent: 'document.adoptedStyleSheets = [sheet]'}), ' — adopts the stylesheet into the document ']),
+        ]),
+        $('p', {}, [
+          'Style rules, such as resetting and responsive media queries should be defined as ',
+          'string and passed through ',
+          $('code', {textContent: 'sheet.insertRule()'}),
+          '. It says that the style rules are mutable at runtime: you could swap color schemes, ',
+          'adjust typography, or toggle the entire layouts. ',
+        ]),
+        $('div', {className: 'api-highlight'}, [
+          $('p', {}, ['CSS style rules are injected via ', $('code', {textContent: 'CSSStyleSheet.insertRule()'}), ' on a stylesheet attached through ', $('code', {textContent: 'document.adoptedStyleSheets'}), '.']),
+        ]),
+
+        // ── Houdini deep dive ──
+        $('h3', {textContent: '3. CSS Houdini'}),
+        $('p', {}, [
+          'CSS Houdini is a collection of low-level APIs that expose the browser\'s CSS rendering engine ',
+          '. It allows you to hook into the styling and layout pipeline',
+          '. On this page, three Houdini APIs are used:',
+        ]),
+
+        $('h3', {textContent: '3a. CSS Properties and Values API'}),
+        $('p', {}, [
+          'This API lets you register custom CSS properties with a specific syntax, inheritance behavior, and ',
+          'initial value. The browser can then animate and validate these properties natively.',
+        ]),
+        $('pre', {}, [$('code', {}, [
+          `CSS.registerProperty({
+  name: '--gradient-angle',
+  syntax: '<angle>',
+  inherits: false,
+  initialValue: '0deg',
+});
+
+CSS.registerProperty({
+  name: '--accent-hue',
+  syntax: '<number>',
+  inherits: true,
+  initialValue: '210',
+});`])]),
+        $('p', {}, [
+          'Because ',
+          $('code', {textContent: '--gradient-angle'}),
+          ' is typed as ',
+          $('code', {textContent: '<angle>'}),
+          ', the browser knows how to interpolate it. This means CSS transitions and animations on custom ',
+          'properties work out of the box. The ',
+          $('code', {textContent: '--accent-hue'}),
+          ' property drives the site-wide color palette — changing its value shifts every accent color on the page.',
+        ]),
+        $('div', {className: 'api-highlight'}, [
+          $('div', {className: 'label', textContent: 'API Used'}),
+          $('p', {}, [$('code', {textContent: 'CSS.registerProperty()'}), ' — registers 6 custom properties (--gradient-angle, --accent-hue, --text-glow, --card-shadow-spread, --nav-blur, --nav-spread) with typed syntax.']),
+        ]),
+
+        $('h3', {textContent: '3b. CSS Typed OM'}),
+        $('p', {}, [
+          'The Typed OM replaces the old string-based ',
+          $('code', {textContent: 'el.style'}),
+          ' interface with typed CSS values. Instead of setting ',
+          $('code', {textContent: 'el.style.left = "10px"'}),
+          ' (which requires string parsing), you can write:',
+        ]),
+        $('pre', {}, [$('code', {}, [
+          `// Old way (string-based)
+el.style.left = '10px';
+el.style.transform = 'translateX(50px) rotate(45deg)';
+
+// Typed OM (numeric, type-safe)
+el.attributeStyleMap.set('left', CSS.px(10));
+el.attributeStyleMap.set('transform', new CSSTransformValue([
+  new CSSTranslate(CSS.px(50), CSS.px(0)),
+  new CSSRotate(CSS.deg(45)),
+]));`])]),
+        $('p', {}, [
+          'This is not just syntactic sugar — the Typed OM avoids string serialization/parsing overhead, enables ',
+          'direct mathematical operations on CSS values, and allows the browser to optimize style computations. ',
+          'The navigation bar on this page uses Typed OM for its scroll-aware styling.',
+        ]),
+        $('div', {className: 'api-highlight'}, [
+          $('div', {className: 'label', textContent: 'API Used'}),
+          $('p', {}, [$('code', {textContent: 'el.attributeStyleMap.set()'}), ', ', $('code', {textContent: 'CSS.px()'}), ', ', $('code', {textContent: 'CSS.deg()'}), ' — used for scroll-driven nav bar effects and dynamic positioning.']),
+        ]),
+
+        $('h3', {textContent: '3c. CSS Paint API (Paint Worklet)'}),
+        $('p', {}, [
+          'The Paint API lets you define custom image generators in JavaScript that can be used anywhere CSS expects an ',
+          'image — ',
+          $('code', {textContent: 'background-image'}),
+          ', ',
+          $('code', {textContent: 'border-image'}),
+          ', ',
+          $('code', {textContent: 'mask-image'}),
+          ', etc. The worklet runs on a separate thread (the paint thread), so it doesn\'t block the main thread.',
+        ]),
+        $('p', {}, [
+          'To keep this a single file with zero network dependencies, the worklet code is stored in a JavaScript string ',
+          'and loaded via a blob URL:',
+        ]),
+        $('pre', {}, [$('code', {}, [
+          `const paintCode = \`
+class GridPainter {
+  static get inputProperties() { return ['--grid-color', '--grid-size']; }
+  paint(ctx, size, props) { /* ... draw grid ... */ }
+}
+registerPaint('grid-bg', GridPainter);
+\`;
+const blob = new Blob([paintCode], { type: 'text/javascript' });
+const url = URL.createObjectURL(blob);
+CSS.paintWorklet.addModule(url);`])]),
+        $('p', {}, [
+          'Three custom painters are registered on this page:',
+        ]),
+        $('ul', {}, [
+          $('li', {}, [$('strong', {textContent: 'grid-bg'}), ' — draws a configurable grid pattern (used for the hero section background)']),
+          $('li', {}, [$('strong', {textContent: 'dots-bg'}), ' — draws a dotted pattern (used behind blog post cards)']),
+          $('li', {}, [$('strong', {textContent: 'gradient-border'}), ' — draws animated gradient borders around elements']),
+        ]),
+        $('p', {}, [
+          'Each painter reads its configuration from custom CSS properties (parameters passed via ',
+          $('code', {textContent: 'inputProperties'}),
+          '), making them fully themeable through CSS variables.',
+        ]),
+        $('div', {className: 'api-highlight'}, [
+          $('div', {className: 'label', textContent: 'API Used'}),
+          $('p', {}, [$('code', {textContent: 'CSS.paintWorklet.addModule(url)'}), ' via blob URL — registers 3 paint worklets (grid-bg, dots-bg, gradient-border) applied to hero backgrounds and card borders.']),
+        ]),
+
+        // ── Summary ──
+        $('h3', {textContent: '4. Bringing It Together'}),
+        $('div', {className: 'gradient-card'}, [
+          $('p', {}, [
+            'The DOM builds the structure, the CSSOM defines ',
+            'the styling, and Houdini extends the rendering engine with custom paint work and typed properties. ',
+          ]),
+        ]),
+
+      ]);
+
+      return $('article', {className: 'blog-post fade-in'}, [
+        $('div', {className: 'dots-layer'}),
+        meta,
+        $('h2', {className: 'post-title', textContent: 'Building a Webpage'}),
+        body,
+      ]);
+    }
+
+    // ── About Section ────────────────────────────
+    const aboutSection = $('section', {id: 'about'}, [
+      $('h2', {className: 'section-title fade-in', textContent: 'About'}),
+      $('div', {className: 'blog-post fade-in'}, [
+        $('div', {className: 'dots-layer'}),
+        $('p', {style: {position: 'relative', zIndex: 1, color: 'hsl(var(--accent-hue), 12%, 75%)', lineHeight: 1.75}}, [
+          ' ',
+        ]),
+        $('p', {style: {position: 'relative', zIndex: 1, color: 'hsl(var(--accent-hue), 12%, 75%)', lineHeight: 1.75, marginTop: '0.5rem'}}, [
+          'The source code for this page lives at ',
+          $('a', {href: 'https://github.com/chengjilai/chengjilai.github.io', textContent: 'github.com/chengjilai/chengjilai.github.io'}),
+          '.',
+        ]),
+      ]),
+    ]);
+
+    const themeBtn = $('button', {
+      textContent: '🎨 Shift Hue',
+      style: {
+        background: 'hsla(var(--accent-hue), 40%, 25%, 0.5)',
+        color: 'hsl(var(--accent-hue), 20%, 80%)',
+        border: '1px solid hsla(var(--accent-hue), 40%, 35%, 0.5)',
+        borderRadius: '8px',
+        padding: '0.5rem 1rem',
+        cursor: 'pointer',
+        fontSize: '0.85rem',
+        fontWeight: 500,
+        transition: 'all 0.2s',
+      },
+      onMouseEnter() {
+        this.style.background = 'hsla(var(--accent-hue), 40%, 35%, 0.6)';
+      },
+      onMouseLeave() {
+        this.style.background = 'hsla(var(--accent-hue), 40%, 25%, 0.5)';
+      },
+      onClick() {
+        const current = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--accent-hue').trim()) || 210;
+        const next = (current + 60) % 360;
+        document.documentElement.style.setProperty('--accent-hue', next);
+      },
+    });
+
+    const footer = $('footer', {}, [
+      $('p', {}, ['\u00A9 2026 Jilai Cheng']),
+      $('p', {style: {marginTop: '0.5rem', fontSize: '0.8rem'}}, [
+        'Source on ',
+        $('a', {href: 'https://github.com/chengjilai/chengjilai.github.io', textContent: 'GitHub'}),
+      ]),
+      themeBtn,
+    ]);
+
+    document.body.appendChild(nav);
+    document.body.appendChild(hero);
+    document.body.appendChild(blogSection);
+    document.body.appendChild(aboutSection);
+    document.body.appendChild(footer);
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          // Nav shadow grows with scroll
+          nav.style.setProperty('--nav-blur', 4 + Math.min(scrollY / 40, 12) + 'px');
+          nav.style.setProperty('--nav-spread', Math.min(scrollY / 160, 4) + 'px');
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    CSS.paintWorklet.addModule(workletUrl);
+  </script>
+</body>
+
 </html>

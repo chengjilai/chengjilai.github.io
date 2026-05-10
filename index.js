@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/self-dating-tokens.html", textContent: "Session cookies carry their own expiry" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/debugging-traps.html", textContent: "Debugging traps that recur" }),
   ]),
   $("li", {}, [

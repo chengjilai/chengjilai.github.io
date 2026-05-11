@@ -19,7 +19,7 @@ document.body.appendChild($("p", {}, [
   "an 8-hex md5 prefix, a unix expiry timestamp, and a token. The server \n",
   "enforces the embedded timestamp, so the cookie is dead after it regardless \n",
   "of what the browser thinks. Two stored copies of the same account carried \n",
-  "expiries two days apart -- they were separate logins, and the browser \n",
+  "expiries two days apart. They were separate logins, and the browser \n",
   "database copy was the fresher one.",
 ]));
 
@@ -31,7 +31,7 @@ document.body.appendChild($("p", {}, [
   "token, and the old refresh token dies (",
   $("a", { href: "https://github.com/pskdje/bilibili-API-collect/blob/main/docs/login/cookie_refresh.md", textContent: "bilibili-API-collect cookie_refresh.md" }),
   "). A login flow that captures only the cookie and drops the refresh token \n",
-  "leaves the session stuck at its embedded deadline -- one streaming plugin \n",
+  "leaves the session stuck at its embedded deadline. One streaming plugin \n",
   "saved refresh_token as the empty string. douyin's session behaves the same \n",
   "way: the sessionid cookie expires in about two months, the longer-lived \n",
   "sid_guard and ttwid last about a year, and the fingerprint chain (ttwid, \n",
@@ -53,7 +53,7 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("h2", { textContent: "4. No permanent web token" }));
 document.body.appendChild($("p", {}, [
   "yt-dlp's douyin extractor refuses to run without cookies, even for \n",
-  "public videos -- \"Fresh cookies are needed\" is the error without them. \n",
+  "public videos. \"Fresh cookies are needed\" is the error without them. \n",
   "A static non-expiring credential exists only on the developer platform \n",
   "(a key pair issued after a KYC registration), and it serves creator \n",
   "APIs, not playback. Web playback has no permanent token by design; the \n",

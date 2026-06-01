@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/bilibili-web-upload.html", textContent: "Bilibili video uploads accept a browser session" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/resolver-night-window.html", textContent: "A resolver that withholds video sites at night" }),
   ]),
   $("li", {}, [

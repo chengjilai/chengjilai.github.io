@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/youtrack-api-token.html", textContent: "YouTrack: the REST API takes the SPA's own token" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/bilibili-web-upload.html", textContent: "Bilibili video uploads accept a browser session" }),
   ]),
   $("li", {}, [

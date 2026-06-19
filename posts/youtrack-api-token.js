@@ -88,7 +88,8 @@ curl -s -X POST 'https://youtrack.jetbrains.com/api/issues/{id}/comments?fields=
 document.body.appendChild($("p", {}, [
   "POST /api/issues?fields=idReadable creates an issue from ",
   $("code", { textContent: "{\"project\":{\"id\":\"...\"},\"summary\":\"...\",\"description\":\"...\"}" }),
-  ". The description is YouTrack markup (h2., *, {code}), not Markdown. Project ids come from GET \n",
+  ". The description is CommonMark: the 2026.x editor renders it with markdown-it, so legacy ",
+  "wiki syntax (h2., {code}) shows literally. Project ids come from GET ",
   "/api/admin/projects?fields=id,shortName.",
 ]));
 document.body.appendChild($("p", {}, [

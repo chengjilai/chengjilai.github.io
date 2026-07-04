@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/hyprland-lua.html", textContent: "Hyprland 0.56: Lua config, dispatch, and screenshots" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/codeberg-burst-pacing.html", textContent: "Codeberg edge drops repeat connections; pacing and the API are stable" }),
   ]),
   $("li", {}, [

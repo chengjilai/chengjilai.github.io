@@ -11,7 +11,7 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "share/hypr/hyprland.lua" }),
   " plus the config deployed with the compositor. hyprctl dispatch wraps ",
   "its argument as Lua; the compositor has no capture built in, so ",
-  "screenshots are grim + slurp, with one shell gotcha.",
+  "screenshots are grim + slurp.",
 ]));
 
 // 1. Inspect windows

@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/pi-rpc.html", textContent: "pi as a programmable agent: RPC mode and declarative subagents" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/hyprland-lua.html", textContent: "Hyprland 0.56: Lua config, dispatch, and screenshots" }),
   ]),
   $("li", {}, [

@@ -8,10 +8,9 @@ document.body.appendChild($("h1", { textContent: "pi as a programmable agent: RP
 
 document.body.appendChild($("p", {}, [
   "pi is a coding agent that runs headless over a JSON protocol, and it \n",
-  "deliberately ships no subagents or plan mode: \"you can ask pi to build \n",
-  "what you want or install a third party pi package\" (README). A subagent \n",
-  "extension can be deployed declaratively, through the OS build, with no \n",
-  "per-user state.",
+  "ships no subagents or plan mode: \"you can ask pi to build what you want \n",
+  "or install a third party pi package\" (README). A subagent extension can \n",
+  "be deployed declaratively, through the OS build, with no per-user state.",
 ]));
 
 // 1. RPC mode is a real protocol
@@ -31,7 +30,7 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "agent_end" }),
   ", ",
   $("code", { textContent: "agent_settled" }),
-  ". Two facts that cost time:",
+  ". Two facts:",
 ]));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
@@ -82,12 +81,12 @@ document.body.appendChild($("ul", {}, [
   ]),
 ]));
 document.body.appendChild($("p", {}, [
-  "The extension did real work: asked to audit a README, the subagent found ",
-  "two genuine inconsistencies with line citations (a wrong \n",
-  "secrets-location claim, a misattributed package) and one false positive \n",
-  "(it checked the wrong machine's home directory). Declarative beats \"install\": ",
-  "put the source in the repo, wire it through the build, leave no per-user ",
-  "state, and agent output is a draft, not a verdict.",
+  "Asked to audit a README, the subagent found two genuine inconsistencies ",
+  "with line citations (a wrong secrets-location claim, a misattributed ",
+  "package) and one false positive (it checked the wrong machine's home ",
+  "directory). Declarative beats \"install\": put the source in the repo, ",
+  "wire it through the build, leave no per-user state, and agent output is ",
+  "a draft, not a verdict.",
 ]));
 
 

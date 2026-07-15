@@ -48,8 +48,8 @@ document.body.appendChild($("p", {}, [
   "Protocols beat scraping: RPC events are the API; stdout text is not.",
 ]));
 
-// 2. The docs ship on the machine
-document.body.appendChild($("h2", { textContent: "2. The docs ship on the machine" }));
+// 2. The docs ship with the package
+document.body.appendChild($("h2", { textContent: "2. The docs ship with the package" }));
 document.body.appendChild($("p", {}, [
   "The npm install carries ",
   $("code", { textContent: "pi-monorepo/docs/" }),
@@ -58,8 +58,8 @@ document.body.appendChild($("p", {}, [
   "plan mode.",
 ]));
 
-// 3. Subagents, declared in the repo
-document.body.appendChild($("h2", { textContent: "3. Subagents, declared in the repo" }));
+// 3. Declarative subagents
+document.body.appendChild($("h2", { textContent: "3. Declarative subagents" }));
 document.body.appendChild($("pre", {}, [
   $("code", { innerHTML: highlight(
     "extension source  ->  /etc/pi/extensions/<name>  ->  wrapper -e flag", "shell") }),

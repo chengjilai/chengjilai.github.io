@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/pi-extension-reload.html", textContent: "pi 0.84.0: sendUserMessage never dispatches extension commands" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/pi-rpc.html", textContent: "pi as a programmable agent: RPC mode and declarative subagents" }),
   ]),
   $("li", {}, [

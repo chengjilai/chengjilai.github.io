@@ -84,9 +84,9 @@ document.body.appendChild($("p", {}, [
   "Asked to audit a README, the subagent found two genuine inconsistencies ",
   "with line citations (a wrong secrets-location claim, a misattributed ",
   "package) and one false positive (it checked the wrong machine's home ",
-  "directory). Declarative beats \"install\": put the source in the repo, ",
-  "wire it through the build, leave no per-user state, and agent output is ",
-  "a draft, not a verdict.",
+  "directory). Declarative beats \"install\": the source lives in a repo, ",
+  "wired through the build, with no per-user state; agent output is a draft, ",
+  "not a verdict.",
 ]));
 
 

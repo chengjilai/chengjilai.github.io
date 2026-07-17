@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/pi-process-diagnosis.html", textContent: "Identifying pi sessions behind the opaque pi process; the subagent O(n^2) hot path" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/pi-extension-reload.html", textContent: "pi 0.84.0: sendUserMessage never dispatches extension commands" }),
   ]),
   $("li", {}, [

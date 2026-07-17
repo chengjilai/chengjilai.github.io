@@ -45,7 +45,7 @@ document.body.appendChild($("ul", {}, [
   ]),
 ]));
 document.body.appendChild($("p", {}, [
-  "Protocols beat scraping: RPC events are the API; stdout text is not.",
+  "RPC events are the API; stdout text is not.",
 ]));
 
 // 2. The docs ship with the package

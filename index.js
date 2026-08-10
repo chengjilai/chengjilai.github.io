@@ -12,106 +12,106 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
-    $("a", { href: "posts/pi-process-diagnosis.html", textContent: "Identifying pi sessions behind the opaque pi process; the subagent O(n^2) hot path" }),
+    $("a", { href: "posts/2026-07-17-pi-process-diagnosis.html", textContent: "Identifying pi sessions behind the opaque pi process; the subagent O(n^2) hot path — 2026-07-17" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/pi-extension-reload.html", textContent: "pi 0.84.0: sendUserMessage never dispatches extension commands" }),
+    $("a", { href: "posts/2026-07-16-pi-extension-reload.html", textContent: "pi 0.84.0: sendUserMessage never dispatches extension commands — 2026-07-16" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/pi-rpc.html", textContent: "pi as a programmable agent: RPC mode and declarative subagents" }),
+    $("a", { href: "posts/2026-07-13-pi-rpc.html", textContent: "pi as a programmable agent: RPC mode and declarative subagents — 2026-07-13" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/hyprland-lua.html", textContent: "Hyprland 0.56: Lua config, dispatch, and screenshots" }),
+    $("a", { href: "posts/2026-07-05-hyprland-lua.html", textContent: "Hyprland 0.56: Lua config, dispatch, and screenshots — 2026-07-05" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/codeberg-burst-pacing.html", textContent: "Codeberg edge drops repeat connections; pacing and the API are stable" }),
+    $("a", { href: "posts/2026-07-02-codeberg-burst-pacing.html", textContent: "Codeberg edge drops repeat connections; pacing and the API are stable — 2026-07-02" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/youtrack-api-token.html", textContent: "YouTrack: the REST API takes the SPA's own token" }),
+    $("a", { href: "posts/2026-06-18-youtrack-api-token.html", textContent: "YouTrack: the REST API takes the SPA's own token — 2026-06-18" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/bilibili-web-upload.html", textContent: "Bilibili video uploads accept a browser session" }),
+    $("a", { href: "posts/2026-06-01-bilibili-web-upload.html", textContent: "Bilibili video uploads accept a browser session — 2026-06-01" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/resolver-night-window.html", textContent: "A resolver that withholds video sites at night" }),
+    $("a", { href: "posts/2026-05-28-resolver-night-window.html", textContent: "A resolver that withholds video sites at night — 2026-05-28" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/self-dating-tokens.html", textContent: "Session cookies carry their own expiry" }),
+    $("a", { href: "posts/2026-05-10-self-dating-tokens.html", textContent: "Session cookies carry their own expiry — 2026-05-10" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/debugging-traps.html", textContent: "Debugging traps that recur" }),
+    $("a", { href: "posts/2026-03-27-debugging-traps.html", textContent: "Debugging traps that recur — 2026-03-27" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/rotating-credentials.html", textContent: "Rotating credentials in a systemd credential store" }),
+    $("a", { href: "posts/2026-03-19-rotating-credentials.html", textContent: "Rotating credentials in a systemd credential store — 2026-03-19" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/systemd-builtins.html", textContent: "systemd already does what you were about to write" }),
+    $("a", { href: "posts/2026-03-16-systemd-builtins.html", textContent: "systemd already does what you were about to write — 2026-03-16" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/declarative-secrets.html", textContent: "Declarative configuration and secrets pipelines" }),
+    $("a", { href: "posts/2026-03-12-declarative-secrets.html", textContent: "Declarative configuration and secrets pipelines — 2026-03-12" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/topic-embeddings.html", textContent: "Title embeddings, not whole content, for topic-level duplicates" }),
+    $("a", { href: "posts/2026-03-05-topic-embeddings.html", textContent: "Title embeddings, not whole content, for topic-level duplicates — 2026-03-05" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/verifying-what-you-write.html", textContent: "Verifying what you write about software" }),
+    $("a", { href: "posts/2026-02-28-verifying-what-you-write.html", textContent: "Verifying what you write about software — 2026-02-28" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/model-prose.html", textContent: "Keeping a language model out of your prose" }),
+    $("a", { href: "posts/2026-02-23-model-prose.html", textContent: "Keeping a language model out of your prose — 2026-02-23" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/hash-seed.html", textContent: "Python set iteration order is seed-dependent" }),
+    $("a", { href: "posts/2026-02-19-hash-seed.html", textContent: "Python set iteration order is seed-dependent — 2026-02-19" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/nix-quoting.html", textContent: "Nix strings inside strings" }),
+    $("a", { href: "posts/2026-02-15-nix-quoting.html", textContent: "Nix strings inside strings — 2026-02-15" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/exact-config-keys.html", textContent: "Exact config key names and silent ignores" }),
+    $("a", { href: "posts/2026-02-04-exact-config-keys.html", textContent: "Exact config key names and silent ignores — 2026-02-04" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/ssh-home-resolution.html", textContent: "ssh resolves ~ from the passwd database, not $HOME" }),
+    $("a", { href: "posts/2026-01-30-ssh-home-resolution.html", textContent: "ssh resolves ~ from the passwd database, not $HOME — 2026-01-30" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/guix-pr.html", textContent: "How to submit a change to Guix (2026)" }),
+    $("a", { href: "posts/2026-01-24-guix-pr.html", textContent: "How to submit a change to Guix (2026) — 2026-01-24" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/kmscon-console.html", textContent: "kmscon as the console" }),
+    $("a", { href: "posts/2026-01-10-kmscon-console.html", textContent: "kmscon as the console — 2026-01-10" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/hda-codec.html", textContent: "HDA codec debugging from userspace" }),
+    $("a", { href: "posts/2025-12-19-hda-codec.html", textContent: "HDA codec debugging from userspace — 2025-12-19" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/mic-hum.html", textContent: "Mic hum: diagnose with a 10-second recording" }),
+    $("a", { href: "posts/2025-12-05-mic-hum.html", textContent: "Mic hum: diagnose with a 10-second recording — 2025-12-05" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/guix-mirrors.html", textContent: "Faster substitutes and package management from China" }),
+    $("a", { href: "posts/2025-11-16-guix-mirrors.html", textContent: "Faster substitutes and package management from China — 2025-11-16" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/guix-firmware.html", textContent: "Guix firmware: why a machine can silently lose its sound card" }),
+    $("a", { href: "posts/2025-11-14-guix-firmware.html", textContent: "Guix firmware: why a machine can silently lose its sound card — 2025-11-14" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/guix-reconfigure.html", textContent: "guix system reconfigure: what it does and does not do" }),
+    $("a", { href: "posts/2025-09-29-guix-reconfigure.html", textContent: "guix system reconfigure: what it does and does not do — 2025-09-29" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/ssh-hosts.html", textContent: "SSH, keys, and hostnames across machines" }),
+    $("a", { href: "posts/2025-09-09-ssh-hosts.html", textContent: "SSH, keys, and hostnames across machines — 2025-09-09" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/wifi-eap.html", textContent: "What happens when a laptop joins a campus/enterprise Wi-Fi" }),
+    $("a", { href: "posts/2025-08-25-wifi-eap.html", textContent: "What happens when a laptop joins a campus/enterprise Wi-Fi — 2025-08-25" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/emacs-system-config.html", textContent: "Shipping your Emacs config as part of the OS" }),
+    $("a", { href: "posts/2025-07-30-emacs-system-config.html", textContent: "Shipping your Emacs config as part of the OS — 2025-07-30" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/emacs-colors.html", textContent: "Emacs face colors on terminals" }),
+    $("a", { href: "posts/2025-07-22-emacs-colors.html", textContent: "Emacs face colors on terminals — 2025-07-22" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/escape-key.html", textContent: "The escape key: five layers" }),
+    $("a", { href: "posts/2025-05-09-escape-key.html", textContent: "The escape key: five layers — 2025-05-09" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/nixos-essentials.html", textContent: "NixOS debugging essentials" }),
+    $("a", { href: "posts/2025-04-28-nixos-essentials.html", textContent: "NixOS debugging essentials — 2025-04-28" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/building-this-page.html", textContent: "Building this page with DOM, CSSOM, and Houdini" }),
+    $("a", { href: "posts/2024-11-22-building-this-page.html", textContent: "Building this page with DOM, CSSOM, and Houdini — 2024-11-22" }),
   ]),
 ]));
 

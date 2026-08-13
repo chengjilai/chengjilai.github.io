@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/2026-08-13-published-date.html", textContent: "The publication date is a declaration — 2026-08-13" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-07-17-pi-process-diagnosis.html", textContent: "Identifying pi sessions behind the opaque pi process; the subagent O(n^2) hot path — 2026-07-17" }),
   ]),
   $("li", {}, [

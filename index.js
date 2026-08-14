@@ -12,6 +12,12 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/2026-08-15-bilibili-preupload-403.html", textContent: "A 403 that was a version field, not a block — 2026-08-15" }),
+  ]),
+  $("li", {}, [
+    $("a", { href: "posts/2026-08-15-generation-identity.html", textContent: "Generations that lie: boot regressions hide under long uptime — 2026-08-15" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-15-mill-11-build-files.html", textContent: "Mill 1.1 build files: what changed — 2026-08-15" }),
   ]),
   $("li", {}, [
@@ -19,6 +25,12 @@ document.body.appendChild($("ul", {}, [
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-08-15-qutebrowser-ipc.html", textContent: "qutebrowser IPC: JSON, not plain text — 2026-08-15" }),
+  ]),
+  $("li", {}, [
+    $("a", { href: "posts/2026-08-15-transcript-semantic-bridge.html", textContent: "Transcripts bridge what titles can't — 2026-08-15" }),
+  ]),
+  $("li", {}, [
+    $("a", { href: "posts/2026-08-15-youtube-combined-format-stub.html", textContent: "The stub that broke bilibili transcoding — 2026-08-15" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-08-14-deepseek-harness.html", textContent: "DeepSeek Harness: Everything is a Plugin — 2026-08-14" }),
@@ -48,7 +60,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-06-18-youtrack-api-token.html", textContent: "YouTrack: the REST API takes the SPA's own token — 2026-06-18" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-06-01-bilibili-web-upload.html", textContent: "Bilibili video uploads accept a browser session — 2026-06-01" }),
+    $("a", { href: "posts/2026-06-01-bilibili-web-upload.html", textContent: "Bilibili video uploads accept a browser session — 2026-06-01, updated 2026-08-14" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-05-28-resolver-night-window.html", textContent: "A resolver that withholds video sites at night — 2026-05-28" }),

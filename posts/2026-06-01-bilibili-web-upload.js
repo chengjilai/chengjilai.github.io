@@ -39,7 +39,9 @@ document.body.appendChild($("h2", { textContent: "3. File staging is session-aut
 document.body.appendChild($("p", {}, [
   "The file upload to bilibili's upos storage: preupload?r=probe returns CDN lines; ",
   "preupload?{line.query}&r=upos&profile=ugcupos/bup&name=...&size=... returns upos_uri, auth, biz_id, ",
-  "chunk_size and endpoint. The preupload now requires a session cookie (403 without).",
+  "chunk_size and endpoint. The preupload needs a session cookie AND current params: the ",
+  "deprecated version/build shape (2.11.0/2110000) gets a generic 403 page, and the cookie ",
+  "chain (SESSDATA + bili_ticket) must be fresh (see the 2026-08-15 post).",
 ]));
 document.body.appendChild($("p", {}, [
   "POST {endpoint}/{path}?uploads returns upload_id. Each chunk is a PUT with uploadId, chunks, total, chunk, ",

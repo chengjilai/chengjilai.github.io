@@ -36,6 +36,7 @@ sheet.replaceSync(`
   }
 
   code { background: #E5E5E5; color: #000000; }
+  samp { color: #CD0000; }
   pre { overflow-x: auto; border: 1px solid #7F7F7F; }
   pre code { background: none; color: inherit; }
 

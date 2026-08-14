@@ -17,8 +17,10 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("h2", { textContent: "2. The trap: the metadata lies" }));
 document.body.appendChild($("p", {}, [
   "The stub declared h264 + aac with full sample tables (92k frames claimed) but carried ~zero real ",
-  "frames — ffprobe reported \"partial file\". A size check against the declared metadata passed. ",
-  "It got uploaded, and bilibili's transcode failed with \"该文件缺少视频轨\" (missing video track).",
+  "frames. ffprobe reported \"partial file\". A size check against the declared metadata passed. ",
+  "It got uploaded, and bilibili's transcode failed with ",
+  $("samp", { textContent: "该文件缺少视频轨" }),
+  " (missing video track).",
 ]));
 
 document.body.appendChild($("h2", { textContent: "3. DASH streams were fine all along" }));
@@ -28,7 +30,7 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: "bv+ba" }),
   " and drop the ",
   $("code", { textContent: "/b" }),
-  " combined fallback — then verify real frames with ",
+  " combined fallback, then verify real frames with ",
   $("code", { textContent: "ffprobe -count_frames" }),
   " before trusting the file.",
 ]));

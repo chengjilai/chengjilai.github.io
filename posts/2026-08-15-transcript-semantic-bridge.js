@@ -15,10 +15,10 @@ document.body.appendChild($("p", {}, [
 
 document.body.appendChild($("h2", { textContent: "2. The same community, zero title overlap" }));
 document.body.appendChild($("p", {}, [
-  "A McCarthy talk scored 0.139 against a corpus containing a Robin Milner talk — same field, no ",
+  "A McCarthy talk scored 0.139 against a corpus containing a Robin Milner talk. Same field, no ",
   "shared title words. With the candidate's TRANSCRIPT in the vector (lambda calculus, formal ",
   "logic, recursion), the same talk scored 0.245: above the threshold, ranked with the desired ",
-  "talks. Both sides grow — each accepted talk's transcript adds its vocabulary to the reference.",
+  "talks. Both sides grow. Each accepted talk's transcript adds its vocabulary to the reference.",
 ]));
 
 document.body.appendChild($("h2", { textContent: "3. Transcripts are nearly free" }));

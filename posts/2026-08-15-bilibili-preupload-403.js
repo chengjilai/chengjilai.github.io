@@ -8,8 +8,10 @@ document.body.appendChild($("h1", { textContent: "A 403 that was a version field
 
 document.body.appendChild($("h2", { textContent: "1. The symptom" }));
 document.body.appendChild($("p", {}, [
-  "Uploads returned HTTP 403 (\"出错啦 / 服务器正在休息\") from every client and every egress — ",
-  "the campus IP, the lab IP, even a WARP tunnel. It looked like a network block. It was not.",
+  "Uploads returned HTTP 403 (",
+  $("samp", { textContent: "出错啦 / 服务器正在休息" }),
+  ") from every client and every egress: the campus IP, the lab IP, even a WARP tunnel. It ",
+  "looked like a network block. It was not.",
 ]));
 
 document.body.appendChild($("h2", { textContent: "2. The probe that split it" }));

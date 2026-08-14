@@ -12,6 +12,12 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/2026-08-15-mill-11-build-files.html", textContent: "Mill 1.1 build files: what changed — 2026-08-15" }),
+  ]),
+  $("li", {}, [
+    $("a", { href: "posts/2026-08-15-mill-clojure.html", textContent: "Self-contained Clojure builds with Mill — 2026-08-15" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-15-qutebrowser-ipc.html", textContent: "qutebrowser IPC: JSON, not plain text — 2026-08-15" }),
   ]),
   $("li", {}, [

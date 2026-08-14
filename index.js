@@ -15,6 +15,9 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-14-deepseek-harness.html", textContent: "DeepSeek Harness: Everything is a Plugin — 2026-08-14" }),
   ]),
   $("li", {}, [
+    $("a", { href: "posts/2026-08-14-git-history-rewrite.html", textContent: "Rebuilding git history from per-file change chains — 2026-08-14" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-13-published-date.html", textContent: "The publication date is a declaration — 2026-08-13" }),
   ]),
   $("li", {}, [

@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/2026-08-15-qutebrowser-ipc.html", textContent: "qutebrowser IPC: JSON, not plain text — 2026-08-15" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-14-deepseek-harness.html", textContent: "DeepSeek Harness: Everything is a Plugin — 2026-08-14" }),
   ]),
   $("li", {}, [
@@ -30,7 +33,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-07-13-pi-rpc.html", textContent: "pi as a programmable agent: RPC mode and declarative subagents — 2026-07-13" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-07-05-hyprland-lua.html", textContent: "Hyprland 0.56: Lua config, dispatch, and screenshots — 2026-07-05" }),
+    $("a", { href: "posts/2026-07-05-hyprland-lua.html", textContent: "Hyprland 0.56: Lua config, dispatch, and screenshots — 2026-07-05, updated 2026-08-14" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-07-02-codeberg-burst-pacing.html", textContent: "Codeberg edge drops repeat connections; pacing and the API are stable — 2026-07-02" }),

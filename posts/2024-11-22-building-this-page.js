@@ -26,7 +26,7 @@ document.body.appendChild($("pre", {}, [
       "\n" +
       "<body>\n" +
       "  <script src=\"../common.js\"></script>\n" +
-      "  <script src=\"building-this-page.js\"></script>\n" +
+      "  <script src=\"2024-11-22-building-this-page.js\"></script>\n" +
       "</body>\n" +
       "</html>",
   "html")}),

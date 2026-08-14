@@ -88,13 +88,16 @@ document.body.appendChild($("p", {}, [
 
 // 5. The separator is a literal argument in single-select mode
 document.body.appendChild($("h2", { textContent: "5. The separator is a literal argument in single-select mode" }));
-document.body.appendChild($("pre", {}, [
-  $("code", { textContent: "./mill run -- x     # the program receives \"--\" and \"x\"\n./mill run x        # the program receives \"x\"" }),
-]));
 document.body.appendChild($("p", {}, [
-  "The first token is the selector; everything after it, including the separator, is the argument list (",
+  "In single-select mode the ",
+  $("code", { textContent: "--" }),
+  " separator is a literal argument: ",
+  $("code", { textContent: "./mill run -- x" }),
+  " passes ",
+  $("code", { textContent: "\"--\"" }),
+  " to the program (",
   $("a", { href: "https://github.com/com-lihaoyi/mill/blob/main/core/api/src/mill/api/internal/ParseArgs.scala", textContent: "ParseArgs.scala" }),
-  "). Only ",
+  " takes the first token as the selector and drops the rest). Only ",
   $("code", { textContent: "+" }),
   " multi-select splits on the separator. Mill's own ",
   $("code", { textContent: "ScalaModule.run" }),

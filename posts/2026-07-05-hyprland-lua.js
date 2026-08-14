@@ -91,6 +91,42 @@ document.body.appendChild($("p", {}, [
   ".",
 ]));
 
+// 4. Synthetic clicks: mouse keycodes
+document.body.appendChild($("h2", { textContent: "4. Synthetic clicks: mouse keycodes" }));
+document.body.appendChild($("p", {}, [
+  "There is no click dispatch. ",
+  $("code", { textContent: "send_key_state" }),
+  " accepts ",
+  $("code", { textContent: "mouse:<code>" }),
+  " keys in the evdev mouse range 272-0x160 (272 = BTN_LEFT) and emits real ",
+  $("code", { textContent: "wl_pointer.button" }),
+  " press/release events (",
+  $("a", { href: "https://github.com/hyprwm/Hyprland/blob/v0.56.1/src/config/shared/actions/ConfigActions.cpp", textContent: "Actions::pass in ConfigActions.cpp" }),
+  "; keyboard keys are key - 8, the xkb offset).",
+]));
+document.body.appendChild($("pre", {}, [
+  $("code", { innerHTML: highlight(
+    "hyprctl dispatch 'hl.dsp.send_key_state({ mods = \"\", key = \"mouse:272\", state = \"down\", window = \"class:org.qutebrowser.qutebrowser\" })'\n" +
+    "hyprctl dispatch 'hl.dsp.send_key_state({ mods = \"\", key = \"mouse:272\", state = \"up\", window = \"class:org.qutebrowser.qutebrowser\" })'", "shell") }),
+]));
+document.body.appendChild($("ul", {}, [
+  $("li", {}, [
+    "The click lands at surface-local (1,1) of the target window, not under \n",
+    "the physical cursor: pass() hardcodes ",
+    $("code", { textContent: "setPointerFocus(surface, {1, 1})" }),
+  ]),
+  $("li", {}, [
+    "The target window needs no keyboard focus and may sit on another \n",
+    "workspace; the selector forces pointer focus onto its surface",
+  ]),
+  $("li", {}, [
+    $("code", { textContent: "hl.dsp.cursor" }),
+    " has only move / move_to_corner: ",
+    $("code", { textContent: "cursor.move({ x = 5, y = 5, relative = true })" }),
+    " warps the pointer, no buttons",
+  ]),
+]));
+
 appendReferences();
 
 document.body.appendChild($("p", {}, [

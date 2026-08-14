@@ -69,7 +69,9 @@ document.body.appendChild($("p", {}, [
   $("code", { textContent: ":mvn/version" }),
   " are skipped; a missing ",
   $("code", { textContent: "org.clojure/clojure" }),
-  " falls back to the bootstrap version.",
+  " falls back to the bootstrap version. A working module: ",
+  $("a", { href: "https://github.com/chengjilai/clojure-mill-example", textContent: "clojure-mill-example" }),
+  ".",
 ]));
 document.body.appendChild($("p", {}, [
   $("code", { textContent: "compile" }),

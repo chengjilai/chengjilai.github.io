@@ -15,6 +15,9 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-15-bilibili-preupload-403.html", textContent: "A 403 that was a version field, not a block — 2026-08-15" }),
   ]),
   $("li", {}, [
+    $("a", { href: "posts/2026-08-15-blank-page-shell-bugs.html", textContent: "Blank pages: the shell, not the script — 2026-08-15" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-15-generation-identity.html", textContent: "Generations that lie: boot regressions hide under long uptime — 2026-08-15" }),
   ]),
   $("li", {}, [

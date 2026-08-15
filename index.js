@@ -45,6 +45,9 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-15-transcript-semantic-bridge.html", textContent: "Transcripts bridge what titles can't — 2026-08-15" }),
   ]),
   $("li", {}, [
+    $("a", { href: "posts/2026-08-15-ty-strict.html", textContent: "ty, the Astral type checker: strict mode without --strict — 2026-08-15" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-15-youtube-combined-format-stub.html", textContent: "The stub that broke bilibili transcoding — 2026-08-15" }),
   ]),
   $("li", {}, [

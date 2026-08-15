@@ -21,6 +21,12 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-15-bun-compile-nix.html", textContent: "bun --compile binaries in Nix: patch only the interpreter — 2026-08-15" }),
   ]),
   $("li", {}, [
+    $("a", { href: "posts/2026-08-15-dsh-pty-bash.html", textContent: "DeepSeek Harness on NixOS: the bash tool that assumed /bin/bash — 2026-08-15" }),
+  ]),
+  $("li", {}, [
+    $("a", { href: "posts/2026-08-15-eyg.html", textContent: "EYG: a typed functional language for makers — 2026-08-15" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-15-generation-identity.html", textContent: "Generations that lie: boot regressions hide under long uptime — 2026-08-15" }),
   ]),
   $("li", {}, [

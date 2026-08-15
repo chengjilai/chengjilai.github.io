@@ -18,7 +18,13 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-15-blank-page-shell-bugs.html", textContent: "Blank pages: the shell, not the script — 2026-08-15" }),
   ]),
   $("li", {}, [
+    $("a", { href: "posts/2026-08-15-bun-compile-nix.html", textContent: "bun --compile binaries in Nix: patch only the interpreter — 2026-08-15" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-15-generation-identity.html", textContent: "Generations that lie: boot regressions hide under long uptime — 2026-08-15" }),
+  ]),
+  $("li", {}, [
+    $("a", { href: "posts/2026-08-15-kotlin-toolchain-external-builds.html", textContent: "kotlin-toolchain: Gradle distribution mirror and the missing power-assert runtime — 2026-08-15" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-08-15-mill-11-build-files.html", textContent: "Mill 1.1 build files: what changed — 2026-08-15" }),

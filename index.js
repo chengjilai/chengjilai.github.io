@@ -12,6 +12,15 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/2026-08-16-builddotnetmodule-aot-nix.html", textContent: "buildDotnetModule: JSON lockfile and the silent AOT skip — 2026-08-16" }),
+  ]),
+  $("li", {}, [
+    $("a", { href: "posts/2026-08-16-dotnet-toolchain-self-satisfaction.html", textContent: "dotnet: no cargo-style toolchain self-satisfaction — 2026-08-16" }),
+  ]),
+  $("li", {}, [
+    $("a", { href: "posts/2026-08-16-tco-tail-jmp-spills.html", textContent: "TCO: the self-tail-call jmp must precede the param spills — 2026-08-16" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-15-bilibili-preupload-403.html", textContent: "A 403 that was a version field, not a block — 2026-08-15" }),
   ]),
   $("li", {}, [

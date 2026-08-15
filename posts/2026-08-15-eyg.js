@@ -8,7 +8,7 @@ document.body.appendChild($("h1", { textContent: "EYG: a typed functional langua
 
 document.body.appendChild($("h2", { textContent: "1. The language" }));
 document.body.appendChild($("p", {}, [
-  "EYG (Eat Your Greens) is a statically typed functional scripting language by Peter Saxton (CrowdHailer, Gleam core team). It is implemented in Gleam, Apache-2.0, at ",
+  "EYG (Eat Your Greens) is a statically typed functional scripting language by Peter Saxton (CrowdHailer, Gleam contributor). It is implemented in Gleam, Apache-2.0, at ",
   $("a", { href: "https://github.com/CrowdHailer/eyg-lang", textContent: "github.com/CrowdHailer/eyg-lang" }),
   "; the site, browser editor, and package hub live at ",
   $("a", { href: "https://eyg.run", textContent: "eyg.run" }),
@@ -18,7 +18,9 @@ document.body.appendChild($("p", {}, [
   "Design: sound type inference with types never required up front; structural typing; effect typing (side effects appear in the inferred type, so a pure eval rejects perform Print(...)); hashed inline dependencies (a dependency is identified by the content hash of its module); sandboxed by default; closure serialization; a minimal AST with a stable JSON IR, with spec/ in the repo as the evaluator test suite.",
 ]));
 document.body.appendChild($("p", {}, [
-  "Target users are makers: glue scripts, personal dashboards, automations. The pitch removes category-2 problems (running the computer: PATH, /var/tmp, cloud credentials) so makers only describe logic. Excel macros are the stated model. The design blog post is \"A programming language for humans\" (2026-06-08, crowdhailer.me); there is a FnConf 2025 talk.",
+  "Target users are makers: glue scripts, personal dashboards, automations. The pitch removes category-2 problems (running the computer: PATH, /var/tmp, cloud credentials) so makers only describe logic. Excel macros are the stated model. The design blog post is \"A programming language for humans\" (2026-06-08, crowdhailer.me); there is a ",
+  $("a", { href: "https://codebeameurope.com/archives/berlin_2025/participants/peter-saxton/", textContent: "Code BEAM Europe 2025 talk" }),
+  " (\"Rapidly Building With Gleam\").",
 ]));
 
 document.body.appendChild($("h2", { textContent: "2. The CLI model" }));

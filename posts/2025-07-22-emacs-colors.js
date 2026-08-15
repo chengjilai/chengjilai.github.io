@@ -42,9 +42,9 @@ document.body.appendChild($("p", {}, [
 ]));
 document.body.appendChild($("p", {}, [
   "kmscon sets COLORTERM, and its default value is truecolor (",
-  $("a", { href: "https://github.com/kmscon/kmscon/blob/master/src/misc/pty.c", textContent: "pty.c" }),
+  $("a", { href: "https://github.com/kmscon/kmscon/blob/main/src/misc/pty.c", textContent: "pty.c" }),
   ", ",
-  $("a", { href: "https://github.com/kmscon/kmscon/blob/master/src/terminal.c", textContent: "terminal.c" }),
+  $("a", { href: "https://github.com/kmscon/kmscon/blob/main/src/terminal.c", textContent: "terminal.c" }),
   ").",
 ]));
 

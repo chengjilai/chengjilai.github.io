@@ -42,7 +42,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-15-generation-identity.html", textContent: "Generations that lie: boot regressions hide under long uptime — 2026-08-15" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-08-15-kotlin-toolchain-external-builds.html", textContent: "kotlin-toolchain: Gradle distribution mirror and the missing power-assert runtime — 2026-08-15" }),
+    $("a", { href: "posts/2026-08-15-kotlin-toolchain-external-builds.html", textContent: "kotlin-toolchain: Gradle distribution mirror and the 2.3.10 power-assert runtime gap — 2026-08-15" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-08-15-mill-11-build-files.html", textContent: "Mill 1.1 build files: what changed — 2026-08-15" }),
@@ -75,7 +75,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-07-17-pi-process-diagnosis.html", textContent: "Identifying pi sessions behind the opaque pi process; the subagent O(n^2) hot path — 2026-07-17" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-07-16-pi-extension-reload.html", textContent: "pi 0.84.0: sendUserMessage never dispatches extension commands — 2026-07-16" }),
+    $("a", { href: "posts/2026-07-16-pi-extension-reload.html", textContent: "pi 0.84.0: sendUserMessage never dispatches extension commands — 2026-07-16, updated 2026-08-16" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-07-13-pi-rpc.html", textContent: "pi as a programmable agent: RPC mode and declarative subagents — 2026-07-13" }),
@@ -87,7 +87,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-07-02-codeberg-burst-pacing.html", textContent: "Codeberg edge drops repeat connections; pacing and the API are stable — 2026-07-02" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-06-18-youtrack-api-token.html", textContent: "YouTrack: the REST API takes the SPA's own token — 2026-06-18" }),
+    $("a", { href: "posts/2026-06-18-youtrack-api-token.html", textContent: "YouTrack: the REST API takes the SPA's own token — 2026-06-18, updated 2026-08-16" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-06-01-bilibili-web-upload.html", textContent: "Bilibili video uploads accept a browser session — 2026-06-01, updated 2026-08-14" }),
@@ -114,7 +114,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-03-05-topic-embeddings.html", textContent: "Title embeddings, not whole content, for topic-level duplicates — 2026-03-05" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-02-28-verifying-what-you-write.html", textContent: "Verifying what you write about software — 2026-02-28" }),
+    $("a", { href: "posts/2026-02-28-verifying-what-you-write.html", textContent: "Verifying what you write about software — 2026-02-28, updated 2026-08-16" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-02-23-model-prose.html", textContent: "Keeping a language model out of your prose — 2026-02-23" }),
@@ -132,10 +132,10 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-01-30-ssh-home-resolution.html", textContent: "ssh resolves ~ from the passwd database, not $HOME — 2026-01-30" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-01-24-guix-pr.html", textContent: "How to submit a change to Guix (2026) — 2026-01-24" }),
+    $("a", { href: "posts/2026-01-24-guix-pr.html", textContent: "How to submit a change to Guix (2026) — 2026-01-24, updated 2026-08-16" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-01-10-kmscon-console.html", textContent: "kmscon as the console — 2026-01-10" }),
+    $("a", { href: "posts/2026-01-10-kmscon-console.html", textContent: "kmscon as the console — 2026-01-10, updated 2026-08-16" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2025-12-19-hda-codec.html", textContent: "HDA codec debugging from userspace — 2025-12-19" }),

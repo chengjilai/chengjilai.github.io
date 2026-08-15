@@ -2,10 +2,10 @@
 
 
 const title = document.createElement("title");
-title.textContent = "kotlin-toolchain: Gradle distribution mirror and the missing power-assert runtime";
+title.textContent = "kotlin-toolchain: Gradle distribution mirror and the 2.3.10 power-assert runtime gap";
 document.head.appendChild(title);
 
-document.body.appendChild($("h1", { textContent: "kotlin-toolchain: Gradle distribution mirror and the missing power-assert runtime" }));
+document.body.appendChild($("h1", { textContent: "kotlin-toolchain: Gradle distribution mirror and the 2.3.10 power-assert runtime gap" }));
 
 // 1. The Tooling API downloads its own distribution
 document.body.appendChild($("h2", { textContent: "1. The Tooling API downloads its own distribution" }));
@@ -43,20 +43,24 @@ document.body.appendChild($("p", {}, [
   ").",
 ]));
 
-// 3. The repository is unbuildable from a clean machine
-document.body.appendChild($("h2", { textContent: "3. The repository is unbuildable from a clean machine" }));
+// 3. The power-assert runtime gap was version-specific
+document.body.appendChild($("h2", { textContent: "3. The power-assert runtime gap was version-specific" }));
 document.body.appendChild($("p", {}, [
-  "The build template pins kotlin 2.3.10 with ",
-  $("code", { textContent: "powerAssert: enabled" }),
-  " (",
+  "The build template (",
   $("a", { href: "https://github.com/JetBrains/kotlin-toolchain/blob/main/sources/common.module-template.yaml", textContent: "common.module-template.yaml" }),
-  "), so resolution demands ",
-  $("code", { textContent: "org.jetbrains.kotlin:kotlin-power-assert-runtime:2.3.10" }),
-  ". That artifact is not on Maven Central: its ",
+  ") now pins kotlin 2.4.0 and puts ",
+  $("code", { textContent: "powerAssert: enabled" }),
+  " under test-settings, so current resolution asks for ",
+  $("code", { textContent: "org.jetbrains.kotlin:kotlin-power-assert-runtime:2.4.0" }),
+  ", which exists. The earlier 2.3.10 template was the broken one: ",
+  $("code", { textContent: "kotlin-power-assert-runtime:2.3.10" }),
+  " is not on Maven Central - its ",
   $("a", { href: "https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-power-assert-runtime/maven-metadata.xml", textContent: "metadata" }),
-  " starts at 2.4.0-Beta2, and the pom 404s on repo1.maven.org and on the JetBrains redirector (307 to artifacts-caching-proxy.aws.intellij.net, then 404). Every external build fails at dependency resolution before compilation; internal CI has the artifact cached. Filed as ",
+  " starts at 2.4.0-Beta2, and the pom 404s on repo1.maven.org and on the JetBrains redirector (307 to artifacts-caching-proxy.aws.intellij.net, then 404). Filed as ",
   $("a", { href: "https://youtrack.jetbrains.com/issues/KTC-5713", textContent: "KTC-5713" }),
-  ".",
+  ". The template moved to 2.4.0 on 2026-06-04 (",
+  $("a", { href: "https://github.com/JetBrains/kotlin-toolchain/commit/d777a07318", textContent: "commit d777a07318" }),
+  ").",
 ]));
 
 // 4. Amper's default repositories
@@ -64,8 +68,10 @@ document.body.appendChild($("h2", { textContent: "4. Amper's default repositorie
 document.body.appendChild($("p", {}, [
   "Amper hardcodes ",
   $("code", { textContent: "https://maven.google.com" }),
-  " as a default resolution repository (frontend/dr ModuleDependencies.kt ",
-  $("code", { textContent: "defaultRepositories" }),
+  " as a default resolution repository (",
+  $("a", { href: "https://github.com/JetBrains/kotlin-toolchain/blob/main/sources/frontend/schema/src/org.jetbrains.amper.frontend.aomBuilder/readRepositories.kt", textContent: "readRepositories.kt" }),
+  " ",
+  $("code", { textContent: "defaultMavenRepositories" }),
   "), so every dependency is checked against Google Maven first. The Maven Central default is repo1.maven.org, overridable via the ",
   $("code", { textContent: "KOTLIN_DEFAULT_MAVEN_CENTRAL_URL" }),
   " environment variable (",

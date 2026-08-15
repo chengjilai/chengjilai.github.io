@@ -28,7 +28,7 @@ document.body.appendChild($("p", {}, [
 // 2. The persisted cookies are not the session
 document.body.appendChild($("h2", { textContent: "2. The persisted cookies are not the session" }));
 document.body.appendChild($("p", {}, [
-  "YouTrack 2026.3 is an SPA that authenticates against hub.jetbrains.com. The session cookie stays \n",
+  "YouTrack (2026.3 at the time of the 2026-08 update) is an SPA that authenticates against hub.jetbrains.com. The session cookie stays \n",
   "in browser memory. The on-disk cookie store holds only hub.jetbrains.com CASTGC entries \n",
   "path-scoped to /oauth2 and /api/rest/oauth2; sent to the YouTrack API they authenticate as the \n",
   "guest user, and /api/users/me returns ",
@@ -95,7 +95,9 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("p", {}, [
   "A comment is created with POST /api/issues/{id}/comments?fields=id,text and a ",
   $("code", { textContent: "{\"text\":\"...\"}" }),
-  " body; editing is a POST to the same URL. Deleting a comment 403s with the SPA token: the \n",
+  " body; editing is a POST to ",
+  $("code", { textContent: "/api/issues/{id}/comments/{commentId}" }),
+  " with the same body shape. Deleting a comment 403s with the SPA token: the \n",
   "permission is not in its scopes.",
 ]));
 document.body.appendChild($("p", {}, [

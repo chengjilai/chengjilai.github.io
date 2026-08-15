@@ -110,7 +110,7 @@ document.body.appendChild($("p", {}, [
   $("a", { href: "https://github.com/JetBrains/kotlin-toolchain/blob/main/docs/src/cli/provisioning.md", textContent: "the provisioning doc" }),
   "), and builds Kotlin and Java only. ",
   $("a", { href: "https://babashka.org/", textContent: "babashka" }),
-  " is the only Clojure runtime without a JVM; it is a subset interpreter, and tools.bbuild is an imperative port without a task graph.",
+  " is a JVM-free Clojure runtime (not the only one: Joker is a Go Clojure interpreter, and ClojureCLR runs on .NET); it is a subset interpreter, and tools.bbuild is an imperative port without a task graph.",
 ]));
 
 

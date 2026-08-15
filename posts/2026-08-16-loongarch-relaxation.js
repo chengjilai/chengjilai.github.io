@@ -27,7 +27,7 @@ document.body.appendChild($("pre", {}, [
   $("code", { textContent: "From:\n  pcalau12i $a0, %pc_hi20(sym) | %got_pc_hi20(sym)\n  addi.w/d $a0, $a0, %pc_lo12(sym) | %got_pc_lo12(sym)\nTo:\n  pcaddi    $a0, (sym - PC) >> 2" }),
 ]));
 document.body.appendChild($("p", {}, [
-  "pcaddi is the PC-relative add: 22-bit signed immediate, 4-aligned, opcode 0x0E at bits 31:25. The two instructions collapse into one when the delta fits and the pair is canonical: pcalau12i's rd must equal the second instruction's rj, which must equal its rd. The opcode shape is the semantic check: PCALA pairs must end in addi.w/d (an address-take), GOT pairs in ld.w/d (a load).",
+  "pcaddi is the PC-relative add: 22-bit signed immediate, 4-aligned, opcode 0x0C at bits 31:25. The two instructions collapse into one when the delta fits and the pair is canonical: pcalau12i's rd must equal the second instruction's rj, which must equal its rd. The opcode shape is the semantic check: PCALA pairs must end in addi.w/d (an address-take), GOT pairs in ld.w/d (a load).",
 ]));
 
 document.body.appendChild($("h2", { textContent: "3. The relocation survives" }));

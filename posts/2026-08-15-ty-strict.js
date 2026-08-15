@@ -163,18 +163,17 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("h2", { textContent: "5. Python 3.14 makes annotations lazy anyway" }));
 document.body.appendChild($("p", {}, [
   "PEP 649 makes annotation evaluation lazy by default on Python 3.14. ",
-  $("code", { textContent: "from __future__ import annotations" },
-  ),
-  " is a no-op there, accepted without a warning.",
+  $("code", { textContent: "from __future__ import annotations" }),
+  " is still accepted there, but it is not a no-op: it keeps the PEP 563 stringized form, so ",
+  $("code", { textContent: "__annotations__" }),
+  " stores strings instead of lazy annotation objects.",
 ]));
 document.body.appendChild($("p", {}, [
   "On 3.11 to 3.13 the same forward references need the future import. A class that annotates with a type alias defined later in the module raises ",
   $("code", { textContent: "NameError" }),
-  " at class definition time. The import can be dropped only when ",
-  $("code", { textContent: "requires-python" }),
-  " is ",
-  $("code", { textContent: ">=3.14" }),
-  ".",
+  " at class definition time. With ",
+  $("code", { textContent: "requires-python >=3.14" }),
+  ", the future import can be dropped for forward references alone; keep it only when PEP 563 stringized annotations are wanted.",
 ]));
 
 appendReferences();

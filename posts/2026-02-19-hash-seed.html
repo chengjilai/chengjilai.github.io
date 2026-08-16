@@ -1,6 +1,18 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python set iteration order is seed-dependent</title>
+<meta name="description" content="Set iteration order derives from element hashes. String hashing is salted per process by PYTHONHASHSEED, so the same set iterates in a different order in every ">
+<link rel="canonical" href="https://chengjilai.github.io/posts/2026-02-19-hash-seed.html">
+<meta property="og:site_name" content="Jilai Cheng">
+<meta property="og:title" content="Python set iteration order is seed-dependent">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chengjilai.github.io/posts/2026-02-19-hash-seed.html">
+<meta property="og:description" content="Set iteration order derives from element hashes. String hashing is salted per process by PYTHONHASHSEED, so the same set iterates in a different order in every ">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Python set iteration order is seed-dependent","datePublished":"2026-02-19","dateModified":"2026-02-19","author":{"@type":"Person","name":"Jilai Cheng"},"url":"https://chengjilai.github.io/posts/2026-02-19-hash-seed.html","mainEntityOfPage":"https://chengjilai.github.io/posts/2026-02-19-hash-seed.html"}</script>
+</head>
 <body>
   <script src="../common.js"></script>
   <script src="2026-02-19-hash-seed.js"></script>

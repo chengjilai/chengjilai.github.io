@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jilai Cheng</title>
+  <link href="https://chengjilai.github.io/" rel="alternate"/>
+  <link href="https://chengjilai.github.io/feed.xml" rel="self"/>
+  <id>https://chengjilai.github.io/</id>
+  <updated>2026-08-16T00:00:00Z</updated>
+  <entry>
+    <title>buildDotnetModule: JSON lockfile and the silent AOT skip</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-16-builddotnetmodule-aot-nix.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-16-builddotnetmodule-aot-nix.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>nixpkgs buildDotnetModule parses nugetDeps by filename suffix: a .nix path is callPackage&apos;d as Nix code, anything else is lib.importJSON (add-nuget-deps/default</summary>
+  </entry>
+  <entry>
+    <title>dotnet: no cargo-style toolchain self-satisfaction</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-16-dotnet-toolchain-self-satisfaction.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-16-dotnet-toolchain-self-satisfaction.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>Go&apos;s GOTOOLCHAIN=auto downloads the go.mod-declared toolchain on demand (go.dev/doc/toolchain). dotnet&apos;s global.json pins the SDK version but only selects among</summary>
+  </entry>
+  <entry>
+    <title>LoongArch linker relaxation: the pcaddi fold</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-16-loongarch-relaxation.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-16-loongarch-relaxation.html</id>
+    <updated>2026-08-16T00:00:00Z</updated>
+    <summary>R_LARCH_RELAX is relocation 100 in the LoongArch ELF ABI: Instruction can be relaxed, paired with a normal relocation at the same address. The assembler emits i</summary>
+  </entry>
+  <entry>
+    <title>TCO: the self-tail-call jmp must precede the param spills</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-16-tco-tail-jmp-spills.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-16-tco-tail-jmp-spills.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>Tail-call optimization in a compiler that spills parameters to stack slots: the self-tail-call jmp target must be BEFORE the parameter re-spill block. The body </summary>
+  </entry>
+  <entry>
+    <title>VLC 3.0.23 ignores --http-user-agent</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-16-vlc-user-agent.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-16-vlc-user-agent.html</id>
+    <updated>2026-08-16T00:00:00Z</updated>
+    <summary>VLC 3.0.23 sends a hardcoded User-Agent on every HTTP request. --http-user-agent on the command line and http-user-agent= in vlcrc are both ignored. A GET to a </summary>
+  </entry>
+  <entry>
+    <title>A 403 that was a version field, not a block</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-bilibili-preupload-403.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-bilibili-preupload-403.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>Uploads returned HTTP 403 (出错啦 / 服务器正在休息) from every client and every egress: the campus IP, the lab IP, even a WARP tunnel. It looked like a network block. It </summary>
+  </entry>
+  <entry>
+    <title>Blank pages: the shell, not the script</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-blank-page-shell-bugs.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-blank-page-shell-bugs.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>A classic script inside &lt;head&gt; executes while the parser is still in the head. document.body is null at that moment; the first document.body.appendChild throws.</summary>
+  </entry>
+  <entry>
+    <title>bun --compile binaries in Nix: patch only the interpreter</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-bun-compile-nix.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-bun-compile-nix.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>bun build --compile packs the JS runtime and the bundle into one ELF. EYG (Eat Your Greens), a statically typed functional scripting language by Peter Saxton, s</summary>
+  </entry>
+  <entry>
+    <title>DeepSeek Harness on NixOS: the bash tool that assumed /bin/bash</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-dsh-pty-bash.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-dsh-pty-bash.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>DeepSeek Harness (dsh) has two model-facing bash tools with different executors. The standard agent preset mounts dsh-tool-bash: each call is a fresh subprocess</summary>
+  </entry>
+  <entry>
+    <title>EYG: a typed functional language for makers</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-eyg.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-eyg.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>EYG (Eat Your Greens) is a statically typed functional scripting language by Peter Saxton (CrowdHailer, Gleam contributor). It is implemented in Gleam, Apache-2</summary>
+  </entry>
+  <entry>
+    <title>Generations that lie: boot regressions hide under long uptime</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-generation-identity.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-generation-identity.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>A one-line change to a boot-time provisioning script broke wifi for 44 generations before anyone noticed. The machine never rebooted. The running system is not </summary>
+  </entry>
+  <entry>
+    <title>kotlin-toolchain: Gradle distribution mirror and the 2.3.10 power-assert runtime gap</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-kotlin-toolchain-external-builds.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-kotlin-toolchain-external-builds.html</id>
+    <updated>2026-08-16T00:00:00Z</updated>
+    <summary>A Gradle Tooling API client downloads the Gradle distribution itself when the connector specifies none. GradleConnector.newConnector().forProjectDirectory(...) </summary>
+  </entry>
+  <entry>
+    <title>Mill 1.1 build files: what changed</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-mill-11-build-files.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-mill-11-build-files.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>Mill 1.1 build files compile with Scala 3: the mill jars are _3 artifacts, type errors print union types (Seq[mill.PathRef | os.Path]), and macro errors read Ta</summary>
+  </entry>
+  <entry>
+    <title>Self-contained Clojure builds with Mill</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-mill-clojure.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-mill-clojure.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>Mill declares its JVM in a .mill-jvm-version file (name:version, e.g. zulu:26), a //| mill-jvm-version build header, or the declarative jvmVersion: key, and pro</summary>
+  </entry>
+  <entry>
+    <title>qutebrowser IPC: JSON, not plain text</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-qutebrowser-ipc.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-qutebrowser-ipc.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>The IPC socket speaks JSON, not plain text. One message is one JSON object: args (each element one command string, colon included), target_arg, version, protoco</summary>
+  </entry>
+  <entry>
+    <title>Transcripts bridge what titles can&apos;t</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-transcript-semantic-bridge.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-transcript-semantic-bridge.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>Scoring candidates by TF-IDF cosine against a corpus of talk titles separated junk from tech, but not desired from boring: a &quot;how to switch to Linux&quot; tutorial s</summary>
+  </entry>
+  <entry>
+    <title>ty, the Astral type checker: strict mode without --strict</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-ty-strict.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-ty-strict.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>ty 0.0.67 has no --strict flag; ty check --strict fails with unexpected argument. Strictness is configured per rule in [tool.ty.rules] with severities ignore, w</summary>
+  </entry>
+  <entry>
+    <title>The stub that broke bilibili transcoding</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-15-youtube-combined-format-stub.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-15-youtube-combined-format-stub.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>yt-dlp -f &quot;bv*+ba/b&quot; silently fell back to the combined muxed format (18) for one video. Through the proxy egress that format arrived as a 1.5 MB header-only st</summary>
+  </entry>
+  <entry>
+    <title>DeepSeek Harness: Everything is a Plugin</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-14-deepseek-harness.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-14-deepseek-harness.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>DeepSeek Harness (dsh) is DeepSeek-AI&apos;s open-source agent harness. License: MIT. Version 0.1.0-rc.6, developer preview; the README warns of compatibility-breaki</summary>
+  </entry>
+  <entry>
+    <title>Rebuilding git history from per-file change chains</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-14-git-history-rewrite.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-14-git-history-rewrite.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>A linear history can be rebuilt commit by commit with git commit-tree. The final tree stays byte-identical: every file&apos;s last version is the original last versi</summary>
+  </entry>
+  <entry>
+    <title>The publication date is a declaration</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-13-published-date.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-13-published-date.html</id>
+    <updated>2026-08-13T00:00:00Z</updated>
+    <summary>File mtime measures disk writes, not publication. A fresh clone stamps every file with the clone time, so a post from a year ago shows today&apos;s mtime. Ordering b</summary>
+  </entry>
+  <entry>
+    <title>Identifying pi sessions behind the opaque pi process; the subagent O(n^2) hot path</title>
+    <link href="https://chengjilai.github.io/posts/2026-07-17-pi-process-diagnosis.html"/>
+    <id>https://chengjilai.github.io/posts/2026-07-17-pi-process-diagnosis.html</id>
+    <updated>2026-07-17T00:00:00Z</updated>
+    <summary>The pi wrapper runs exec -a: every pi process shows cmdline pi (argv: model, session, prompt) is invisible to ps/pgrep. Running several sessions means several i</summary>
+  </entry>
+  <entry>
+    <title>pi 0.84.0: sendUserMessage never dispatches extension commands</title>
+    <link href="https://chengjilai.github.io/posts/2026-07-16-pi-extension-reload.html"/>
+    <id>https://chengjilai.github.io/posts/2026-07-16-pi-extension-reload.html</id>
+    <updated>2026-07-16T00:00:00Z</updated>
+    <summary>docs/extensions.md and the shipped example examples/extensions/reload-runtime.ts document a tool-to-command handoff for reload: the tool calls pi.sendUserMessag</summary>
+  </entry>
+  <entry>
+    <title>pi as a programmable agent: RPC mode and declarative subagents</title>
+    <link href="https://chengjilai.github.io/posts/2026-07-13-pi-rpc.html"/>
+    <id>https://chengjilai.github.io/posts/2026-07-13-pi-rpc.html</id>
+    <updated>2026-07-13T00:00:00Z</updated>
+    <summary>pi is a coding agent that runs headless over a JSON protocol, and it ships no subagents or plan mode: &quot;you can ask pi to build what you want or install a third </summary>
+  </entry>
+  <entry>
+    <title>Hyprland 0.56: Lua config, dispatch, and screenshots</title>
+    <link href="https://chengjilai.github.io/posts/2026-07-05-hyprland-lua.html"/>
+    <id>https://chengjilai.github.io/posts/2026-07-05-hyprland-lua.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>Hyprland 0.56 configures itself from Lua: the shipped share/hypr/hyprland.lua plus the config deployed with the compositor. hyprctl dispatch wraps its argument </summary>
+  </entry>
+  <entry>
+    <title>Codeberg edge drops repeat connections; pacing and the API are stable</title>
+    <link href="https://chengjilai.github.io/posts/2026-07-02-codeberg-burst-pacing.html"/>
+    <id>https://chengjilai.github.io/posts/2026-07-02-codeberg-burst-pacing.html</id>
+    <updated>2026-07-02T00:00:00Z</updated>
+    <summary>The first request to codeberg.org succeeds. Repeats within about 40 seconds time out after the TLS handshake with 0 bytes received.</summary>
+  </entry>
+  <entry>
+    <title>YouTrack: the REST API takes the SPA&apos;s own token</title>
+    <link href="https://chengjilai.github.io/posts/2026-06-18-youtrack-api-token.html"/>
+    <id>https://chengjilai.github.io/posts/2026-06-18-youtrack-api-token.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>JetBrains&apos; kotlin-toolchain routes GitHub issues to YouTrack. Its only issue template is a form whose required checkbox reads &quot;I have read the message and will </summary>
+  </entry>
+  <entry>
+    <title>Bilibili video uploads accept a browser session</title>
+    <link href="https://chengjilai.github.io/posts/2026-06-01-bilibili-web-upload.html"/>
+    <id>https://chengjilai.github.io/posts/2026-06-01-bilibili-web-upload.html</id>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <summary>bilibili has two login classes. Web login issues SESSDATA, a cookie. App login issues access_key, a token. The video-submit endpoint x/vu/client/add rejects coo</summary>
+  </entry>
+  <entry>
+    <title>A resolver that withholds video sites at night</title>
+    <link href="https://chengjilai.github.io/posts/2026-05-28-resolver-night-window.html"/>
+    <id>https://chengjilai.github.io/posts/2026-05-28-resolver-night-window.html</id>
+    <updated>2026-05-28T00:00:00Z</updated>
+    <summary>A campus DNS server answered NXDOMAIN for the seven big video sites at night and resolved them again by morning. Control domains always resolved, and direct TCP</summary>
+  </entry>
+  <entry>
+    <title>Session cookies carry their own expiry</title>
+    <link href="https://chengjilai.github.io/posts/2026-05-10-self-dating-tokens.html"/>
+    <id>https://chengjilai.github.io/posts/2026-05-10-self-dating-tokens.html</id>
+    <updated>2026-05-10T00:00:00Z</updated>
+    <summary>A bilibili login cookie encodes its own deadline. yt-dlp rewrites the cookie file you hand it. The two facts together shape how long a media playback setup stay</summary>
+  </entry>
+  <entry>
+    <title>Debugging traps that recur</title>
+    <link href="https://chengjilai.github.io/posts/2026-03-27-debugging-traps.html"/>
+    <id>https://chengjilai.github.io/posts/2026-03-27-debugging-traps.html</id>
+    <updated>2026-03-27T00:00:00Z</updated>
+    <summary>Every one of these started as &quot;my change did nothing&quot; and ended as a two-line explanation. None is exotic; all of them recur. The theme: verify against the runn</summary>
+  </entry>
+  <entry>
+    <title>Rotating credentials in a systemd credential store</title>
+    <link href="https://chengjilai.github.io/posts/2026-03-19-rotating-credentials.html"/>
+    <id>https://chengjilai.github.io/posts/2026-03-19-rotating-credentials.html</id>
+    <updated>2026-03-19T00:00:00Z</updated>
+    <summary>Static secrets need provisioning once. Tokens that expire or get revoked need a refresh loop: a timer re-exports the current bytes from each live source, diffs </summary>
+  </entry>
+  <entry>
+    <title>systemd already does what you were about to write</title>
+    <link href="https://chengjilai.github.io/posts/2026-03-16-systemd-builtins.html"/>
+    <id>https://chengjilai.github.io/posts/2026-03-16-systemd-builtins.html</id>
+    <updated>2026-03-16T00:00:00Z</updated>
+    <summary>Four mechanisms turned out to be systemd builtins: a secret path list, a backlight-restore loop, a wait-online &quot;disable&quot;, and a udev RUN+= shell. The rule: ask </summary>
+  </entry>
+  <entry>
+    <title>Declarative configuration and secrets pipelines</title>
+    <link href="https://chengjilai.github.io/posts/2026-03-12-declarative-secrets.html"/>
+    <id>https://chengjilai.github.io/posts/2026-03-12-declarative-secrets.html</id>
+    <updated>2026-03-12T00:00:00Z</updated>
+    <summary>The repo IS the system: services, configs, secrets, even the AI model the coding agent uses are declared, committed, rebuilt. User-state files under the home di</summary>
+  </entry>
+  <entry>
+    <title>Title embeddings, not whole content, for topic-level duplicates</title>
+    <link href="https://chengjilai.github.io/posts/2026-03-05-topic-embeddings.html"/>
+    <id>https://chengjilai.github.io/posts/2026-03-05-topic-embeddings.html</id>
+    <updated>2026-03-05T00:00:00Z</updated>
+    <summary>A blog gate: a new topic that duplicates an existing post&apos;s topic must be blocked, and the author updates the existing post instead of creating a new one. The c</summary>
+  </entry>
+  <entry>
+    <title>Verifying what you write about software</title>
+    <link href="https://chengjilai.github.io/posts/2026-02-28-verifying-what-you-write.html"/>
+    <id>https://chengjilai.github.io/posts/2026-02-28-verifying-what-you-write.html</id>
+    <updated>2026-02-28T00:00:00Z</updated>
+    <summary>Before writing about a claim, check it against the source. Memory and &quot;everybody knows&quot; are wrong often enough to make this the default workflow. Each claim bel</summary>
+  </entry>
+  <entry>
+    <title>Keeping a language model out of your prose</title>
+    <link href="https://chengjilai.github.io/posts/2026-02-23-model-prose.html"/>
+    <id>https://chengjilai.github.io/posts/2026-02-23-model-prose.html</id>
+    <updated>2026-02-23T00:00:00Z</updated>
+    <summary>A model composing prose adds words that carry no fact: invented reasons, intensifiers, metaphors. Two checks remove them. The first is a deletion test; the seco</summary>
+  </entry>
+  <entry>
+    <title>Python set iteration order is seed-dependent</title>
+    <link href="https://chengjilai.github.io/posts/2026-02-19-hash-seed.html"/>
+    <id>https://chengjilai.github.io/posts/2026-02-19-hash-seed.html</id>
+    <updated>2026-02-19T00:00:00Z</updated>
+    <summary>Set iteration order derives from element hashes. String hashing is salted per process by PYTHONHASHSEED, so the same set iterates in a different order in every </summary>
+  </entry>
+  <entry>
+    <title>Nix strings inside strings</title>
+    <link href="https://chengjilai.github.io/posts/2026-02-15-nix-quoting.html"/>
+    <id>https://chengjilai.github.io/posts/2026-02-15-nix-quoting.html</id>
+    <updated>2026-02-15T00:00:00Z</updated>
+    <summary>A systemd unit needed to run a bash loop. The natural first attempt put the whole one-liner in a double-quoted Nix string and blew up the parse; the fix is Nix&apos;</summary>
+  </entry>
+  <entry>
+    <title>Exact config key names and silent ignores</title>
+    <link href="https://chengjilai.github.io/posts/2026-02-04-exact-config-keys.html"/>
+    <id>https://chengjilai.github.io/posts/2026-02-04-exact-config-keys.html</id>
+    <updated>2026-02-04T00:00:00Z</updated>
+    <summary>Goal: turn off LLMNR and mDNS advertising on a campus network. One line worked, the other vanished, with no error anywhere. Key names are exact in case and spel</summary>
+  </entry>
+  <entry>
+    <title>ssh resolves ~ from the passwd database, not $HOME</title>
+    <link href="https://chengjilai.github.io/posts/2026-01-30-ssh-home-resolution.html"/>
+    <id>https://chengjilai.github.io/posts/2026-01-30-ssh-home-resolution.html</id>
+    <updated>2026-01-30T00:00:00Z</updated>
+    <summary>A root systemd unit running an ssh reverse tunnel failed in a restart loop with Host key verification failed (exit 255). The unit set environment.HOME=/home/&lt;us</summary>
+  </entry>
+  <entry>
+    <title>How to submit a change to Guix (2026)</title>
+    <link href="https://chengjilai.github.io/posts/2026-01-24-guix-pr.html"/>
+    <id>https://chengjilai.github.io/posts/2026-01-24-guix-pr.html</id>
+    <updated>2026-01-24T00:00:00Z</updated>
+    <summary>Since 2026-01-01 Guix accepts pull requests on codeberg.org/guix/guix; the email route (guix-patches@gnu.org) is retired. The GitHub mirror is read-only; GitHub</summary>
+  </entry>
+  <entry>
+    <title>kmscon as the console</title>
+    <link href="https://chengjilai.github.io/posts/2026-01-10-kmscon-console.html"/>
+    <id>https://chengjilai.github.io/posts/2026-01-10-kmscon-console.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>The kernel console could not render bright backgrounds distinctly on the laptop panel. kmscon, a KMS/DRM terminal emulator, replaced it: 256 colors, pango fonts</summary>
+  </entry>
+  <entry>
+    <title>HDA codec debugging from userspace</title>
+    <link href="https://chengjilai.github.io/posts/2025-12-19-hda-codec.html"/>
+    <id>https://chengjilai.github.io/posts/2025-12-19-hda-codec.html</id>
+    <updated>2025-12-19T00:00:00Z</updated>
+    <summary>A laptop speaker kept playing together with the headphones, and the mixer controls did nothing. Fixing it meant reading the HD-audio codec and driving it with H</summary>
+  </entry>
+  <entry>
+    <title>Mic hum: diagnose with a 10-second recording</title>
+    <link href="https://chengjilai.github.io/posts/2025-12-05-mic-hum.html"/>
+    <id>https://chengjilai.github.io/posts/2025-12-05-mic-hum.html</id>
+    <updated>2025-12-05T00:00:00Z</updated>
+    <summary>A microphone picks up mains hum. The right fix depends on what the noise is: tonal hum at 50 Hz (China mains) with odd harmonics wants an EQ cut; broadband hiss</summary>
+  </entry>
+  <entry>
+    <title>Faster substitutes and package management from China</title>
+    <link href="https://chengjilai.github.io/posts/2025-11-16-guix-mirrors.html"/>
+    <id>https://chengjilai.github.io/posts/2025-11-16-guix-mirrors.html</id>
+    <updated>2025-11-16T00:00:00Z</updated>
+    <summary>Guix queries substitute servers in order and falls back. Put the fast ones first, keep the official ones as fallback, and prefer API clients over git for repo w</summary>
+  </entry>
+  <entry>
+    <title>Guix firmware: why a machine can silently lose its sound card</title>
+    <link href="https://chengjilai.github.io/posts/2025-11-14-guix-firmware.html"/>
+    <id>https://chengjilai.github.io/posts/2025-11-14-guix-firmware.html</id>
+    <updated>2025-11-14T00:00:00Z</updated>
+    <summary>A laptop rebooted into a working system with no sound at all: /proc/asound/cards empty, dmesg showing sof_probe_work failed err: -2 for the Intel audio DSP. The</summary>
+  </entry>
+  <entry>
+    <title>guix system reconfigure: what it does and does not do</title>
+    <link href="https://chengjilai.github.io/posts/2025-09-29-guix-reconfigure.html"/>
+    <id>https://chengjilai.github.io/posts/2025-09-29-guix-reconfigure.html</id>
+    <updated>2025-09-29T00:00:00Z</updated>
+    <summary>guix system reconfigure is transactional but not a restart: it stages the new system and starts what is missing. The manual says what it does not do, plainly, a</summary>
+  </entry>
+  <entry>
+    <title>SSH, keys, and hostnames across machines</title>
+    <link href="https://chengjilai.github.io/posts/2025-09-09-ssh-hosts.html"/>
+    <id>https://chengjilai.github.io/posts/2025-09-09-ssh-hosts.html</id>
+    <updated>2025-09-09T00:00:00Z</updated>
+    <summary>Three systems on two laptops, one jump host, and a network that renames your computers. All of it declared, none of it hand-edited.</summary>
+  </entry>
+  <entry>
+    <title>What happens when a laptop joins a campus/enterprise Wi-Fi</title>
+    <link href="https://chengjilai.github.io/posts/2025-08-25-wifi-eap.html"/>
+    <id>https://chengjilai.github.io/posts/2025-08-25-wifi-eap.html</id>
+    <updated>2025-08-25T00:00:00Z</updated>
+    <summary>A failure that looks like &quot;wifi is broken&quot; lives in one layer of a four-layer stack: the driver owns the radio, wpa_supplicant scans and runs EAP, systemd-netwo</summary>
+  </entry>
+  <entry>
+    <title>Shipping your Emacs config as part of the OS</title>
+    <link href="https://chengjilai.github.io/posts/2025-07-30-emacs-system-config.html"/>
+    <id>https://chengjilai.github.io/posts/2025-07-30-emacs-system-config.html</id>
+    <updated>2025-07-30T00:00:00Z</updated>
+    <summary>An Emacs config that lives in the system repo, pinned per generation, edited like any other system file, with no ~/.emacs.d to maintain.</summary>
+  </entry>
+  <entry>
+    <title>Emacs face colors on terminals</title>
+    <link href="https://chengjilai.github.io/posts/2025-07-22-emacs-colors.html"/>
+    <id>https://chengjilai.github.io/posts/2025-07-22-emacs-colors.html</id>
+    <updated>2026-08-15T00:00:00Z</updated>
+    <summary>Goal: one theme that works on the kernel console, on kmscon, and in a GUI. The terminal advertises its colors in three different ways; Emacs builds a different </summary>
+  </entry>
+  <entry>
+    <title>The escape key: five layers</title>
+    <link href="https://chengjilai.github.io/posts/2025-05-09-escape-key.html"/>
+    <id>https://chengjilai.github.io/posts/2025-05-09-escape-key.html</id>
+    <updated>2025-05-09T00:00:00Z</updated>
+    <summary>Goal: make Escape cancel like C-g, make the Windows key Meta, and leave Alt dead. Each attempt failed for a different reason, and each reason is a documented la</summary>
+  </entry>
+  <entry>
+    <title>NixOS debugging essentials</title>
+    <link href="https://chengjilai.github.io/posts/2025-04-28-nixos-essentials.html"/>
+    <id>https://chengjilai.github.io/posts/2025-04-28-nixos-essentials.html</id>
+    <updated>2025-04-28T00:00:00Z</updated>
+    <summary>The flake layout, what switch does, and how the machine gets its name. All of it is declared, none of it is remembered.</summary>
+  </entry>
+  <entry>
+    <title>Building this page with DOM, CSSOM, and Houdini</title>
+    <link href="https://chengjilai.github.io/posts/2024-11-22-building-this-page.html"/>
+    <id>https://chengjilai.github.io/posts/2024-11-22-building-this-page.html</id>
+    <updated>2026-08-16T00:00:00Z</updated>
+    <summary>Every page has a generated static shell: title, description, canonical, JSON-LD, and two body script tags. common.js builds the DOM and the stylesheet; a per-pa</summary>
+  </entry>
+</feed>

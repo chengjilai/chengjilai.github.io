@@ -1,6 +1,18 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCO: the self-tail-call jmp must precede the param spills</title>
+<meta name="description" content="Tail-call optimization in a compiler that spills parameters to stack slots: the self-tail-call jmp target must be BEFORE the parameter re-spill block. The body ">
+<link rel="canonical" href="https://chengjilai.github.io/posts/2026-08-16-tco-tail-jmp-spills.html">
+<meta property="og:site_name" content="Jilai Cheng">
+<meta property="og:title" content="TCO: the self-tail-call jmp must precede the param spills">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chengjilai.github.io/posts/2026-08-16-tco-tail-jmp-spills.html">
+<meta property="og:description" content="Tail-call optimization in a compiler that spills parameters to stack slots: the self-tail-call jmp target must be BEFORE the parameter re-spill block. The body ">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"TCO: the self-tail-call jmp must precede the param spills","datePublished":"2026-08-16","dateModified":"2026-08-15","author":{"@type":"Person","name":"Jilai Cheng"},"url":"https://chengjilai.github.io/posts/2026-08-16-tco-tail-jmp-spills.html","mainEntityOfPage":"https://chengjilai.github.io/posts/2026-08-16-tco-tail-jmp-spills.html"}</script>
+</head>
 <body>
   <script src="../common.js"></script>
   <script src="2026-08-16-tco-tail-jmp-spills.js"></script>

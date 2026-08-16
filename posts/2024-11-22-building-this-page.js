@@ -11,8 +11,9 @@ document.body.appendChild($("h1", {
 }));
 
 document.body.appendChild($("p", {}, [
-  "Every page on this site is two script tags. common.js creates the head and ",
-  "the stylesheet; a per-page script builds the content. This post documents ",
+  "Every page has a generated static shell: title, description, canonical, ",
+  "JSON-LD, and two body script tags. common.js builds the DOM and the ",
+  "stylesheet; a per-page script builds the content. This post documents ",
   "how it works, with the code that runs.",
 ]));
 
@@ -23,7 +24,15 @@ document.body.appendChild($("pre", {}, [
   $("code", {
     innerHTML: highlight(
       "<!DOCTYPE html>\n" +
-      "\n" +
+      "<html lang=\"en\">\n" +
+      "<head>\n" +
+      "<meta charset=\"utf-8\">\n" +
+      "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+      "<title>Building this page with DOM, CSSOM, and Houdini</title>\n" +
+      "<meta name=\"description\" content=\"...\">\n" +
+      "<link rel=\"canonical\" href=\"...\">\n" +
+      "<script type=\"application/ld+json\">{...}</script>\n" +
+      "</head>\n" +
       "<body>\n" +
       "  <script src=\"../common.js\"></script>\n" +
       "  <script src=\"2024-11-22-building-this-page.js\"></script>\n" +
@@ -32,15 +41,14 @@ document.body.appendChild($("pre", {}, [
   "html")}),
 ]));
 document.body.appendChild($("p", {}, [
-  "The HTML parser creates the missing ",
-  $("code", { textContent: "<html>" }),
-  " and ",
-  $("code", { textContent: "<head>" }),
-  " elements on its own. common.js sets up the head, the stylesheet, and the ",
-  "paint worklet; building-this-page.js appends this post.",
+  "The shell is generated from the post JS by gen-index.js; the metadata is ",
+  "static so crawlers see it before scripts run. common.js then adds the ",
+  "constructable stylesheet and paint worklet; building-this-page.js appends ",
+  "this post.",
 ]));
 document.body.appendChild($("p", {}, [
-  "Without JavaScript there is no page: nothing exists until the scripts run.",
+  "Without JavaScript there is a title and description, but no article: the ",
+  "content exists only after the scripts run.",
 ]));
 
 // 2. DOM

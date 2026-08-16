@@ -53,9 +53,14 @@ document.body.appendChild($("p", {}, [
   "Two wrong relaxed forms failed before the right one. An r0-based load with a PC-relative delta produced the address where the value belonged; tracing showed r4 = 0x40, the address of magic, instead of M[0x40], its value. Folding a GOT pair to the slot's address jumped to the slot itself. Read lld's source before implementing; its comment block carries the exact From/To sequences and the register and range checks.",
 ]));
 
-document.body.appendChild($("h2", { textContent: "7. The gap and the verification loop" }));
+document.body.appendChild($("h2", { textContent: "7. The repo and the verification loop" }));
 document.body.appendChild($("p", {}, [
-  "The from-scratch LoongArch linker niche is empty: two tiny emulators, no unicorn backend, capstone decode-only. Loongson's ISA documents are CC BY-NC-ND 4.0, which covers the documentation text, not the ISA or implementations; lld is Apache-2.0; binutils and QEMU are GPL and were consulted for functional facts only (opcode constants, the 12-byte PLT stub, bit-pattern cross-checks).",
+  "The from-scratch LoongArch linker niche was empty enough for a small implementation. The result is ",
+  $("a", { href: "https://github.com/chengjilai/linker-loongarch", textContent: "linker-loongarch" }),
+  ": a stdlib-only Python toolchain (assembler, linker with the relaxation fixpoint, emulator, disassembler, real ELF64-loongarch .o I/O). It links the GNU as subset the demo uses: PCALA/GOT pairs with R_LARCH_RELAX, B16/B26, ABS_HI20/LO12, R_LARCH_32/64, R_LARCH_ALIGN, NOBITS sections, and RELA addends.",
+]));
+document.body.appendChild($("p", {}, [
+  "The implementation is original. Loongson's ISA documents are CC BY-NC-ND 4.0, which covers the documentation text, not the ISA or implementations; lld is Apache-2.0; binutils and QEMU are GPL and were consulted for functional facts only (opcode constants, the 12-byte PLT stub, bit-pattern cross-checks).",
 ]));
 document.body.appendChild($("p", {}, [
   "No LoongArch toolchain is needed to verify such a linker. Cross-check every encoding against ",
@@ -69,6 +74,19 @@ document.body.appendChild($("p", {}, [
   ", not the full ",
   $("code", { textContent: "R_LARCH_PCALA_HI20" }),
   ".",
+]));
+document.body.appendChild($("p", {}, [
+  "The command line is ",
+  $("code", { textContent: "larch as" }),
+  ", ",
+  $("code", { textContent: "larch ld" }),
+  ", and ",
+  $("code", { textContent: "larch run" }),
+  "; ",
+  $("code", { textContent: "larch ld --run" }),
+  " verifies and emulates in one step. ",
+  $("code", { textContent: "linker_loongarch.py --trace" }),
+  " prints every fold or skip and every R_LARCH_ALIGN decision by pass.",
 ]));
 
 appendReferences();

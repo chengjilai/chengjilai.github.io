@@ -5,160 +5,32 @@
     <lastmod>2026-08-16</lastmod>
   </url>
   <url>
-    <loc>https://chengjilai.github.io/posts/2024-11-22-building-this-page.html</loc>
-    <lastmod>2026-08-14</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-04-28-nixos-essentials.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-05-09-escape-key.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-07-22-emacs-colors.html</loc>
-    <lastmod>2026-08-16</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-07-30-emacs-system-config.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-08-25-wifi-eap.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-09-09-ssh-hosts.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-09-29-guix-reconfigure.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-11-14-guix-firmware.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-11-16-guix-mirrors.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-12-05-mic-hum.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2025-12-19-hda-codec.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-01-10-kmscon-console.html</loc>
-    <lastmod>2026-08-16</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-01-24-guix-pr.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-01-30-ssh-home-resolution.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-02-04-exact-config-keys.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-02-15-nix-quoting.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-02-19-hash-seed.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-02-23-model-prose.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-02-28-verifying-what-you-write.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-03-05-topic-embeddings.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-03-12-declarative-secrets.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-03-16-systemd-builtins.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-03-19-rotating-credentials.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-03-27-debugging-traps.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-05-10-self-dating-tokens.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-05-28-resolver-night-window.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-06-01-bilibili-web-upload.html</loc>
+    <loc>https://chengjilai.github.io/posts/2026-08-16-builddotnetmodule-aot-nix.html</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
   <url>
-    <loc>https://chengjilai.github.io/posts/2026-06-18-youtrack-api-token.html</loc>
-    <lastmod>2026-08-16</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-07-02-codeberg-burst-pacing.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-07-05-hyprland-lua.html</loc>
+    <loc>https://chengjilai.github.io/posts/2026-08-16-dotnet-toolchain-self-satisfaction.html</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
   <url>
-    <loc>https://chengjilai.github.io/posts/2026-07-13-pi-rpc.html</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://chengjilai.github.io/posts/2026-08-16-loongarch-relaxation.html</loc>
+    <lastmod>2026-08-16</lastmod>
   </url>
   <url>
-    <loc>https://chengjilai.github.io/posts/2026-07-16-pi-extension-reload.html</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://chengjilai.github.io/posts/2026-08-16-tco-tail-jmp-spills.html</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
-    <loc>https://chengjilai.github.io/posts/2026-07-17-pi-process-diagnosis.html</loc>
-    <lastmod>2026-08-10</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-08-13-published-date.html</loc>
-    <lastmod>2026-08-13</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-08-14-deepseek-harness.html</loc>
-    <lastmod>2026-08-14</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-08-14-git-history-rewrite.html</loc>
-    <lastmod>2026-08-14</lastmod>
+    <loc>https://chengjilai.github.io/posts/2026-08-16-vlc-user-agent.html</loc>
+    <lastmod>2026-08-16</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-bilibili-preupload-403.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-blank-page-shell-bugs.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-bun-compile-nix.html</loc>
@@ -170,11 +42,11 @@
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-eyg.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-generation-identity.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-kotlin-toolchain-external-builds.html</loc>
@@ -182,46 +54,174 @@
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-mill-11-build-files.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-mill-clojure.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-qutebrowser-ipc.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-transcript-semantic-bridge.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-08-15-ty-strict.html</loc>
-    <lastmod>2026-08-16</lastmod>
-  </url>
-  <url>
-    <loc>https://chengjilai.github.io/posts/2026-08-15-youtube-combined-format-stub.html</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
   <url>
-    <loc>https://chengjilai.github.io/posts/2026-08-16-builddotnetmodule-aot-nix.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <loc>https://chengjilai.github.io/posts/2026-08-15-youtube-combined-format-stub.html</loc>
+    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
-    <loc>https://chengjilai.github.io/posts/2026-08-16-dotnet-toolchain-self-satisfaction.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <loc>https://chengjilai.github.io/posts/2026-08-14-deepseek-harness.html</loc>
+    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
-    <loc>https://chengjilai.github.io/posts/2026-08-16-loongarch-relaxation.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <loc>https://chengjilai.github.io/posts/2026-08-14-git-history-rewrite.html</loc>
+    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
-    <loc>https://chengjilai.github.io/posts/2026-08-16-tco-tail-jmp-spills.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <loc>https://chengjilai.github.io/posts/2026-08-13-published-date.html</loc>
+    <lastmod>2026-08-13</lastmod>
   </url>
   <url>
-    <loc>https://chengjilai.github.io/posts/2026-08-16-vlc-user-agent.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <loc>https://chengjilai.github.io/posts/2026-07-17-pi-process-diagnosis.html</loc>
+    <lastmod>2026-07-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-07-16-pi-extension-reload.html</loc>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-07-13-pi-rpc.html</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-07-05-hyprland-lua.html</loc>
+    <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-07-02-codeberg-burst-pacing.html</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-06-18-youtrack-api-token.html</loc>
+    <lastmod>2026-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-06-01-bilibili-web-upload.html</loc>
+    <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-05-28-resolver-night-window.html</loc>
+    <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-05-10-self-dating-tokens.html</loc>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-03-27-debugging-traps.html</loc>
+    <lastmod>2026-03-27</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-03-19-rotating-credentials.html</loc>
+    <lastmod>2026-03-19</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-03-16-systemd-builtins.html</loc>
+    <lastmod>2026-03-16</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-03-12-declarative-secrets.html</loc>
+    <lastmod>2026-03-12</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-03-05-topic-embeddings.html</loc>
+    <lastmod>2026-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-02-28-verifying-what-you-write.html</loc>
+    <lastmod>2026-02-28</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-02-23-model-prose.html</loc>
+    <lastmod>2026-02-23</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-02-19-hash-seed.html</loc>
+    <lastmod>2026-02-19</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-02-15-nix-quoting.html</loc>
+    <lastmod>2026-02-15</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-02-04-exact-config-keys.html</loc>
+    <lastmod>2026-02-04</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-01-30-ssh-home-resolution.html</loc>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-01-24-guix-pr.html</loc>
+    <lastmod>2026-01-24</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-01-10-kmscon-console.html</loc>
+    <lastmod>2026-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-12-19-hda-codec.html</loc>
+    <lastmod>2025-12-19</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-12-05-mic-hum.html</loc>
+    <lastmod>2025-12-05</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-11-16-guix-mirrors.html</loc>
+    <lastmod>2025-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-11-14-guix-firmware.html</loc>
+    <lastmod>2025-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-09-29-guix-reconfigure.html</loc>
+    <lastmod>2025-09-29</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-09-09-ssh-hosts.html</loc>
+    <lastmod>2025-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-08-25-wifi-eap.html</loc>
+    <lastmod>2025-08-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-07-30-emacs-system-config.html</loc>
+    <lastmod>2025-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-07-22-emacs-colors.html</loc>
+    <lastmod>2026-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-05-09-escape-key.html</loc>
+    <lastmod>2025-05-09</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2025-04-28-nixos-essentials.html</loc>
+    <lastmod>2025-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2024-11-22-building-this-page.html</loc>
+    <lastmod>2026-08-14</lastmod>
   </url>
 </urlset>

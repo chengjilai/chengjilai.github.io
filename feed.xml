@@ -233,7 +233,7 @@
     <title>Rotating credentials in a systemd credential store</title>
     <link href="https://chengjilai.github.io/posts/2026-03-19-rotating-credentials.html"/>
     <id>https://chengjilai.github.io/posts/2026-03-19-rotating-credentials.html</id>
-    <updated>2026-03-19T00:00:00Z</updated>
+    <updated>2026-08-16T00:00:00Z</updated>
     <summary>Static secrets need provisioning once. Tokens that expire or get revoked need a refresh loop: a timer re-exports the current bytes from each live source, diffs </summary>
   </entry>
   <entry>
@@ -247,7 +247,7 @@
     <title>Declarative configuration and secrets pipelines</title>
     <link href="https://chengjilai.github.io/posts/2026-03-12-declarative-secrets.html"/>
     <id>https://chengjilai.github.io/posts/2026-03-12-declarative-secrets.html</id>
-    <updated>2026-03-12T00:00:00Z</updated>
+    <updated>2026-08-16T00:00:00Z</updated>
     <summary>The repo IS the system: services, configs, secrets, even the AI model the coding agent uses are declared, committed, rebuilt. User-state files under the home di</summary>
   </entry>
   <entry>

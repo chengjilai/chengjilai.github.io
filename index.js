@@ -108,13 +108,13 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-03-27-debugging-traps.html", textContent: "Debugging traps that recur — 2026-03-27" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-03-19-rotating-credentials.html", textContent: "Rotating credentials in a systemd credential store — 2026-03-19" }),
+    $("a", { href: "posts/2026-03-19-rotating-credentials.html", textContent: "Rotating credentials in a systemd credential store — 2026-03-19, updated 2026-08-16" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-03-16-systemd-builtins.html", textContent: "systemd already does what you were about to write — 2026-03-16" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-03-12-declarative-secrets.html", textContent: "Declarative configuration and secrets pipelines — 2026-03-12" }),
+    $("a", { href: "posts/2026-03-12-declarative-secrets.html", textContent: "Declarative configuration and secrets pipelines — 2026-03-12, updated 2026-08-16" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-03-05-topic-embeddings.html", textContent: "Title embeddings, not whole content, for topic-level duplicates — 2026-03-05" }),

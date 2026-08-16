@@ -11,7 +11,9 @@ document.body.appendChild($("p", {}, [
   "revoked need a refresh loop: a timer re-exports the current bytes from \n",
   "each live source, diffs against the provisioned copy, and re-encrypts \n",
   "the stored credential only when the bytes changed. A registry drives \n",
-  "the loop, so adding a token is a one-line JSON entry.",
+  "the loop, so adding a token is a one-line JSON entry. The engine is ",
+  $("a", { href: "https://github.com/chengjilai/systemd-credential-sync", textContent: "systemd-credential-sync" }),
+  ".",
 ]));
 
 // 1. The refresh loop

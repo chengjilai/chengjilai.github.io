@@ -41,10 +41,11 @@ document.body.appendChild($("pre", {}, [
   "html")}),
 ]));
 document.body.appendChild($("p", {}, [
-  "The shell is generated from the post JS by gen-index.js; the metadata is ",
-  "static so crawlers see it before scripts run. common.js then adds the ",
-  "constructable stylesheet and paint worklet; building-this-page.js appends ",
-  "this post.",
+  "The shell is generated from the post JS by ",
+  $("a", { href: "https://github.com/chengjilai/blog-harness", textContent: "blog-harness" }),
+  "; the metadata is static so crawlers see it before scripts run. common.js ",
+  "then adds the constructable stylesheet and paint worklet; ",
+  "building-this-page.js appends this post.",
 ]));
 document.body.appendChild($("p", {}, [
   "Without JavaScript there is a title and description, but no article: the ",

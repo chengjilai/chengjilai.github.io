@@ -57,6 +57,11 @@ document.body.appendChild($("p", {}, [
   "same blobs work on every machine the disk boots. TPM sealing would bind \n",
   "them to one machine.",
 ]));
+document.body.appendChild($("p", {}, [
+  "The provisioner and the credential-sync engine are published separately: ",
+  $("a", { href: "https://github.com/chengjilai/systemd-credential-sync", textContent: "systemd-credential-sync" }),
+  ".",
+]));
 
 // 4. Break mode 1: a template prefix baked in
 document.body.appendChild($("h2", { textContent: "4. Break mode 1: a template prefix baked in" }));

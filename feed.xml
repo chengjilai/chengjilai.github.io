@@ -48,6 +48,13 @@
     <summary>VLC 3.0.23 sends a hardcoded User-Agent on every HTTP request. --http-user-agent on the command line and http-user-agent= in vlcrc are both ignored. A GET to a </summary>
   </entry>
   <entry>
+    <title>YouTube timedtext 429 escalates with retries</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-16-youtube-timedtext-429.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-16-youtube-timedtext-429.html</id>
+    <updated>2026-08-16T00:00:00Z</updated>
+    <summary>yt-dlp fetches subtitles from youtube.com/api/timedtext. A 429 on that endpoint returns Google&apos;s &quot;your computer or network may be sending automated queries&quot; HTM</summary>
+  </entry>
+  <entry>
     <title>A 403 that was a version field, not a block</title>
     <link href="https://chengjilai.github.io/posts/2026-08-15-bilibili-preupload-403.html"/>
     <id>https://chengjilai.github.io/posts/2026-08-15-bilibili-preupload-403.html</id>

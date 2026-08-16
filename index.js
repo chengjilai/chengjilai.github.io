@@ -30,6 +30,9 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-16-vlc-user-agent.html", textContent: "VLC 3.0.23 ignores --http-user-agent — 2026-08-16" }),
   ]),
   $("li", {}, [
+    $("a", { href: "posts/2026-08-16-youtube-timedtext-429.html", textContent: "YouTube timedtext 429 escalates with retries — 2026-08-16" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-15-bilibili-preupload-403.html", textContent: "A 403 that was a version field, not a block — 2026-08-15" }),
   ]),
   $("li", {}, [

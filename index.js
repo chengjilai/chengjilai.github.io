@@ -21,6 +21,9 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-16-loongarch-relaxation.html", textContent: "LoongArch linker relaxation: the pcaddi fold — 2026-08-16" }),
   ]),
   $("li", {}, [
+    $("a", { href: "posts/2026-08-16-store-epoch-mtime.html", textContent: "Nix store epoch mtimes defeat mtime-based change detection — 2026-08-16" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-16-tco-tail-jmp-spills.html", textContent: "TCO: the self-tail-call jmp must precede the param spills — 2026-08-16" }),
   ]),
   $("li", {}, [
@@ -174,7 +177,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2025-04-28-nixos-essentials.html", textContent: "NixOS debugging essentials — 2025-04-28" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2024-11-22-building-this-page.html", textContent: "Building this page with DOM, CSSOM, and Houdini — 2024-11-22, updated 2026-08-14" }),
+    $("a", { href: "posts/2024-11-22-building-this-page.html", textContent: "Building this page with DOM, CSSOM, and Houdini — 2024-11-22, updated 2026-08-16" }),
   ]),
 ]));
 

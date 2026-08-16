@@ -69,7 +69,7 @@ document.body.appendChild($("p", {}, [
   "Amper hardcodes ",
   $("code", { textContent: "https://maven.google.com" }),
   " as a default resolution repository (",
-  $("a", { href: "https://github.com/JetBrains/kotlin-toolchain/blob/main/sources/frontend/schema/src/org.jetbrains.amper.frontend.aomBuilder/readRepositories.kt", textContent: "readRepositories.kt" }),
+  $("a", { href: "https://github.com/JetBrains/kotlin-toolchain/blob/main/sources/frontend/schema/src/org/jetbrains/amper/frontend/aomBuilder/readRepositories.kt", textContent: "readRepositories.kt" }),
   " ",
   $("code", { textContent: "defaultMavenRepositories" }),
   "), so every dependency is checked against Google Maven first. The Maven Central default is repo1.maven.org, overridable via the ",

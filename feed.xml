@@ -4,7 +4,14 @@
   <link href="https://chengjilai.github.io/" rel="alternate"/>
   <link href="https://chengjilai.github.io/feed.xml" rel="self"/>
   <id>https://chengjilai.github.io/</id>
-  <updated>2026-08-16T00:00:00Z</updated>
+  <updated>2026-08-17T00:00:00Z</updated>
+  <entry>
+    <title>Nix fixed-output fetches through the HTTP proxy</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-17-nix-fetch-through-proxy.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-17-nix-fetch-through-proxy.html</id>
+    <updated>2026-08-17T00:00:00Z</updated>
+    <summary>A flake&apos;s nix flake check failed downloading two fixed-output sources: musl.libc.org and a repo.or.cz snapshot. The download failed twice: first with a TLS conn</summary>
+  </entry>
   <entry>
     <title>buildDotnetModule: JSON lockfile and the silent AOT skip</title>
     <link href="https://chengjilai.github.io/posts/2026-08-16-builddotnetmodule-aot-nix.html"/>

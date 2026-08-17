@@ -4,6 +4,7 @@
 
 ## Posts
 
+- [Nix fixed-output fetches through the HTTP proxy](https://chengjilai.github.io/posts/2026-08-17-nix-fetch-through-proxy.html): A flake's nix flake check failed downloading two fixed-output sources: musl.libc.org and a repo.or.cz snapshot. The download failed twice: first with a TLS conn
 - [buildDotnetModule: JSON lockfile and the silent AOT skip](https://chengjilai.github.io/posts/2026-08-16-builddotnetmodule-aot-nix.html): nixpkgs buildDotnetModule parses nugetDeps by filename suffix: a .nix path is callPackage'd as Nix code, anything else is lib.importJSON (add-nuget-deps/default
 - [dotnet: no cargo-style toolchain self-satisfaction](https://chengjilai.github.io/posts/2026-08-16-dotnet-toolchain-self-satisfaction.html): Go's GOTOOLCHAIN=auto downloads the go.mod-declared toolchain on demand (go.dev/doc/toolchain). dotnet's global.json pins the SDK version but only selects among
 - [LoongArch linker relaxation: the pcaddi fold](https://chengjilai.github.io/posts/2026-08-16-loongarch-relaxation.html): R_LARCH_RELAX is relocation 100 in the LoongArch ELF ABI: Instruction can be relaxed, paired with a normal relocation at the same address. The assembler emits i

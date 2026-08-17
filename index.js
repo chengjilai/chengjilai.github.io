@@ -15,6 +15,9 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-17-nix-fetch-through-proxy.html", textContent: "Nix fixed-output fetches through the HTTP proxy — 2026-08-17" }),
   ]),
   $("li", {}, [
+    $("a", { href: "posts/2026-08-17-nix-flake-check-test-apps.html", textContent: "nix flake check does not run your test apps — 2026-08-17" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-16-builddotnetmodule-aot-nix.html", textContent: "buildDotnetModule: JSON lockfile and the silent AOT skip — 2026-08-16" }),
   ]),
   $("li", {}, [

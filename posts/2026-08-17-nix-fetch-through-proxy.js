@@ -24,7 +24,7 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("samp", { textContent: "error: hash mismatch in fixed-output derivation '.../cb41cbfe...tar.gz.drv':\n         specified: sha256-MRuqq3TKcfIahtUWdhAcYhqDiGPkAjS8UTMsDE+/jGU=\n         got:       sha256-iORXlqHoBNPneIEnZ6uYH34Y2Q9RannkhrV7GfnrqLI=" }));
 document.body.appendChild($("p", {}, [
   "Two readings: the pinned nixpkgs revision has a stale hash, or the network served something else. ",
-  "A direct download of the same URL through the proxy settled it: its sha256 was exactly the specified hash. ",
+  "A direct download of the same URL through the proxy settled it: its sha256 matched the specified hash. ",
   "The lockfile was correct; the 'got' hash was block-page content.",
 ]));
 

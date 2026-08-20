@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/2026-08-20-scholarly-paper-search-apis.html", textContent: "Scholarly paper search APIs, field-verified — 2026-08-20" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-17-nix-fetch-through-proxy.html", textContent: "Nix fixed-output fetches through the HTTP proxy — 2026-08-17" }),
   ]),
   $("li", {}, [

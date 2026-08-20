@@ -4,7 +4,14 @@
   <link href="https://chengjilai.github.io/" rel="alternate"/>
   <link href="https://chengjilai.github.io/feed.xml" rel="self"/>
   <id>https://chengjilai.github.io/</id>
-  <updated>2026-08-17T00:00:00Z</updated>
+  <updated>2026-08-20T00:00:00Z</updated>
+  <entry>
+    <title>Scholarly paper search APIs, field-verified</title>
+    <link href="https://chengjilai.github.io/posts/2026-08-20-scholarly-paper-search-apis.html"/>
+    <id>https://chengjilai.github.io/posts/2026-08-20-scholarly-paper-search-apis.html</id>
+    <updated>2026-08-20T00:00:00Z</updated>
+    <summary>Twenty-one scholarly search APIs were probed with live requests. Every endpoint and field shape below is the response that came back, not what the documentation</summary>
+  </entry>
   <entry>
     <title>Nix fixed-output fetches through the HTTP proxy</title>
     <link href="https://chengjilai.github.io/posts/2026-08-17-nix-fetch-through-proxy.html"/>

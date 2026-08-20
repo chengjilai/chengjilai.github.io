@@ -4,6 +4,7 @@
 
 ## Posts
 
+- [Scholarly paper search APIs, field-verified](https://chengjilai.github.io/posts/2026-08-20-scholarly-paper-search-apis.html): Twenty-one scholarly search APIs were probed with live requests. Every endpoint and field shape below is the response that came back, not what the documentation
 - [Nix fixed-output fetches through the HTTP proxy](https://chengjilai.github.io/posts/2026-08-17-nix-fetch-through-proxy.html): A flake's nix flake check failed downloading two fixed-output sources: musl.libc.org and a repo.or.cz snapshot. The download failed twice: first with a TLS conn
 - [nix flake check does not run your test apps](https://chengjilai.github.io/posts/2026-08-17-nix-flake-check-test-apps.html): A workspace's test suites were wired as apps.${system}.test flakes and the gate was nix flake check. Every check was green. Running nix run .#test across the sa
 - [buildDotnetModule: JSON lockfile and the silent AOT skip](https://chengjilai.github.io/posts/2026-08-16-builddotnetmodule-aot-nix.html): nixpkgs buildDotnetModule parses nugetDeps by filename suffix: a .nix path is callPackage'd as Nix code, anything else is lib.importJSON (add-nuget-deps/default

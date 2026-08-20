@@ -13,8 +13,8 @@ document.body.appendChild($("p", {}, [
 
 document.body.appendChild($("h2", { textContent: "1. The free, keyless APIs" }));
 document.body.appendChild($("ul", {}, [
-  $("li", {}, [$("code", { textContent: "arXiv" }), ": ", $("code", { textContent: "https://export.arxiv.org/api/query?search_query=all:Q&max_results=N" }), " returns Atom XML."]),
-  $("li", {}, [$("code", { textContent: "Crossref" }), ": ", $("code", { textContent: "https://api.crossref.org/works?query=Q&rows=N&mailto=E" }), " returns JSON; the mailto gets the polite pool. ", $("a", { href: "https://api.crossref.org/", textContent: "docs" })]),
+  $("li", {}, [$("code", { textContent: "arXiv" }), ": ", $("code", { textContent: "https://export.arxiv.org/api/query?search_query=all:Q&max_results=N" }), " returns Atom XML.", $("a", { href: "https://info.arxiv.org/help/api/index.html", textContent: "docs" })]),$("li", {}, [$("code", { textContent: "Crossref" }), ": ", $("code", { textContent: "https://api.crossref.org/works?query=Q&rows=N&mailto=E" }), " returns JSON; the mailto gets the polite pool. "
+, $("a", { href: "https://api.crossref.org/", textContent: "docs" })]),
   $("li", {}, [$("code", { textContent: "OpenAlex" }), ": ", $("code", { textContent: "https://api.openalex.org/works?search=Q&per-page=N&mailto=E" }), " JSON; the abstract arrives as a word to positions inverted index."]),
   $("li", {}, [$("code", { textContent: "Semantic Scholar" }), ": ", $("code", { textContent: "https://api.semanticscholar.org/graph/v1/paper/search?query=Q&limit=N&fields=..." }), " 429s hard from a datacenter IP without a key; a retry sometimes lands. ", $("a", { href: "https://www.semanticscholar.org/product/api", textContent: "docs" })]),
   $("li", {}, [$("code", { textContent: "PubMed" }), ": NCBI E-utilities, esearch.fcgi for PMIDs then esummary.fcgi for metadata."]),
@@ -77,19 +77,6 @@ document.body.appendChild($("ul", {}, [
   $("li", {}, ["OpenCitations, Unpaywall and ORCID answer queries by DOI or identifier only, not by keyword. Unpaywall takes the email address as its auth."]),
 ]));
 
-document.body.appendChild($("h2", { textContent: "5. Two operational facts" }));
-document.body.appendChild($("p", {}, [
-  "Each of these providers talks to its own host, so running all of them concurrently is not rude: every site still sees one request, and the wall clock becomes the slowest provider instead of the serial sum.",
-]));
-document.body.appendChild($("p", {}, [
-  "golangci-lint 2.12.2's staticcheck analysers panic on Go 1.27's standard library while building internal/poll. ",
-  "The workaround is to run the non-staticcheck linters: ",
-  $("code", { textContent: "golangci-lint run --default=none --enable=errcheck,govet,ineffassign,unconvert,misspell" }),
-  ". go vet and gopls are unaffected.",
-]));
-document.body.appendChild($("p", {}, [
-  $("a", { href: "https://info.arxiv.org/help/api/index.html", textContent: "arXiv API docs" }),
-]));
 
 appendReferences();
 

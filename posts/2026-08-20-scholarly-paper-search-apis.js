@@ -1,10 +1,10 @@
 "use strict";
 
 const title = document.createElement("title");
-title.textContent = "Scholarly paper search APIs, field-verified";
+title.textContent = "Scholarly paper search APIs";
 document.head.appendChild(title);
 
-document.body.appendChild($("h1", { textContent: "Scholarly paper search APIs, field-verified" }));
+document.body.appendChild($("h1", { textContent: "Scholarly paper search APIs" }));
 
 document.body.appendChild($("p", {}, [
   "Twenty-one scholarly search APIs were probed with live requests. ",

@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/2026-09-05-absolute-form-double-host.html", textContent: "Absolute-form request lines double the host in a 302 — 2026-09-05" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-20-scholarly-paper-search-apis.html", textContent: "Scholarly paper search APIs — 2026-08-20" }),
   ]),
   $("li", {}, [
@@ -126,7 +129,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-03-16-systemd-builtins.html", textContent: "systemd already does what you were about to write — 2026-03-16" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-03-12-declarative-secrets.html", textContent: "Declarative configuration and secrets pipelines — 2026-03-12, updated 2026-08-16" }),
+    $("a", { href: "posts/2026-03-12-declarative-secrets.html", textContent: "Declarative configuration and secrets pipelines — 2026-03-12, updated 2026-09-05" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-03-05-topic-embeddings.html", textContent: "Title embeddings, not whole content, for topic-level duplicates — 2026-03-05" }),

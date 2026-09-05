@@ -86,8 +86,35 @@ document.body.appendChild($("p", {}, [
   "1 was the real cause.)",
 ]));
 
-// 6. Fixes and hygiene
-document.body.appendChild($("h2", { textContent: "6. Fixes and hygiene" }));
+// 6. Break mode 3: the format belongs to the consumer
+document.body.appendChild($("h2", { textContent: "6. Break mode 3: the format belongs to the consumer" }));
+document.body.appendChild($("p", {}, [
+  "Two consumers read one stored value. One expects the whole file as its \n",
+  "value; the other's backend is the line-based ",
+  $("code", { textContent: "name=value" }),
+  " file and reads the part after the first =. The format is the \n",
+  "consumer's, not the source's.",
+]));
+document.body.appendChild($("p", {}, [
+  "wpa_supplicant's ext_password_file stores ",
+  $("code", { textContent: "name=value" }),
+  " lines; the config reads ",
+  $("code", { textContent: "password=ext:<name>" }),
+  " and gets the value. A derive that wrapped the WHOLE line into \n",
+  "strongSwan's ipsec.secrets entry sent ",
+  $("code", { textContent: "<name>=<value>" }),
+  " as the EAP password; the VPN gateway answered EAP_FAILURE. The bare \n",
+  "value authenticated on the next attempt. The regression test asserted \n",
+  "the derived output verbatim and blessed the bug: flake check stayed \n",
+  "green while the login failed. A test that asserts the output without \n",
+  "the consumer's verdict cannot catch a value error. ipsec.secrets EAP \n",
+  "entries are quoted strings: escape ",
+  $("code", { textContent: '" and \\' }),
+  " inside the value.",
+]));
+
+// 7. Fixes and hygiene
+document.body.appendChild($("h2", { textContent: "7. Fixes and hygiene" }));
 document.body.appendChild($("pre", {}, [
   $("code", { innerHTML: highlight(
     "printf '%s' \"$V\" | sudo systemd-creds encrypt --name=X --with-key=host - /etc/credstore.encrypted/X\n" +
@@ -107,8 +134,8 @@ document.body.appendChild($("ul", {}, [
   ]),
 ]));
 
-// 7. Env-var contracts live in the software's source
-document.body.appendChild($("h2", { textContent: "7. Env-var contracts live in the software's source" }));
+// 8. Env-var contracts live in the software's source
+document.body.appendChild($("h2", { textContent: "8. Env-var contracts live in the software's source" }));
 document.body.appendChild($("p", {}, [
   "pi resolves a provider's key from the environment. The mapping is in the \n",
   "installed package (pi-ai env-api-keys.js): provider id to ",
@@ -119,8 +146,8 @@ document.body.appendChild($("p", {}, [
   "the installed package, don't guess the name.",
 ]));
 
-// 8. Verify the bytes, not the variable
-document.body.appendChild($("h2", { textContent: "8. Verify the bytes, not the variable" }));
+// 9. Verify the bytes, not the variable
+document.body.appendChild($("h2", { textContent: "9. Verify the bytes, not the variable" }));
 document.body.appendChild($("pre", {}, [
   $("code", { innerHTML: highlight(
     "sudo systemd-creds decrypt /etc/credstore.encrypted/X - | xxd", "shell") }),

@@ -13,6 +13,20 @@
     <summary>A 302-to-https device on a campus network built its redirect as https://&lt;Host&gt;&lt;URI&gt;. The URI it received was absolute, so the host came out doubled: https://hos</summary>
   </entry>
   <entry>
+    <title>A full-tunnel VPN and WARP cannot coexist</title>
+    <link href="https://chengjilai.github.io/posts/2026-09-05-full-tunnel-vpn-kills-warp.html"/>
+    <id>https://chengjilai.github.io/posts/2026-09-05-full-tunnel-vpn-kills-warp.html</id>
+    <updated>2026-09-05T00:00:00Z</updated>
+    <summary>WARP&apos;s tunnel transports are QUIC and WireGuard, all UDP. The client has no TCP-transport option. A full-tunnel VPN on the same machine routes those UDP packets</summary>
+  </entry>
+  <entry>
+    <title>Event-driven VPN reconnect with wpa_cli</title>
+    <link href="https://chengjilai.github.io/posts/2026-09-05-wpa-cli-event-vpn-reconnect.html"/>
+    <id>https://chengjilai.github.io/posts/2026-09-05-wpa-cli-event-vpn-reconnect.html</id>
+    <updated>2026-09-05T00:00:00Z</updated>
+    <summary>strongSwan&apos;s auto = start initiates once at daemon start. An SA that dies on a wifi switch is never re-initiated: three hours of working internet with zero IKE </summary>
+  </entry>
+  <entry>
     <title>Scholarly paper search APIs</title>
     <link href="https://chengjilai.github.io/posts/2026-08-20-scholarly-paper-search-apis.html"/>
     <id>https://chengjilai.github.io/posts/2026-08-20-scholarly-paper-search-apis.html</id>

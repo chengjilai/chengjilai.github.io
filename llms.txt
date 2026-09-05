@@ -5,6 +5,8 @@
 ## Posts
 
 - [Absolute-form request lines double the host in a 302](https://chengjilai.github.io/posts/2026-09-05-absolute-form-double-host.html): A 302-to-https device on a campus network built its redirect as https://<Host><URI>. The URI it received was absolute, so the host came out doubled: https://hos
+- [A full-tunnel VPN and WARP cannot coexist](https://chengjilai.github.io/posts/2026-09-05-full-tunnel-vpn-kills-warp.html): WARP's tunnel transports are QUIC and WireGuard, all UDP. The client has no TCP-transport option. A full-tunnel VPN on the same machine routes those UDP packets
+- [Event-driven VPN reconnect with wpa_cli](https://chengjilai.github.io/posts/2026-09-05-wpa-cli-event-vpn-reconnect.html): strongSwan's auto = start initiates once at daemon start. An SA that dies on a wifi switch is never re-initiated: three hours of working internet with zero IKE 
 - [Scholarly paper search APIs](https://chengjilai.github.io/posts/2026-08-20-scholarly-paper-search-apis.html): Twenty-one scholarly search APIs were probed with live requests. Every endpoint and field shape below is the response that came back, not what the documentation
 - [Nix fixed-output fetches through the HTTP proxy](https://chengjilai.github.io/posts/2026-08-17-nix-fetch-through-proxy.html): A flake's nix flake check failed downloading two fixed-output sources: musl.libc.org and a repo.or.cz snapshot. The download failed twice: first with a TLS conn
 - [nix flake check does not run your test apps](https://chengjilai.github.io/posts/2026-08-17-nix-flake-check-test-apps.html): A workspace's test suites were wired as apps.${system}.test flakes and the gate was nix flake check. Every check was green. Running nix run .#test across the sa

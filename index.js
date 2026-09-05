@@ -15,6 +15,12 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-09-05-absolute-form-double-host.html", textContent: "Absolute-form request lines double the host in a 302 — 2026-09-05" }),
   ]),
   $("li", {}, [
+    $("a", { href: "posts/2026-09-05-full-tunnel-vpn-kills-warp.html", textContent: "A full-tunnel VPN and WARP cannot coexist — 2026-09-05" }),
+  ]),
+  $("li", {}, [
+    $("a", { href: "posts/2026-09-05-wpa-cli-event-vpn-reconnect.html", textContent: "Event-driven VPN reconnect with wpa_cli — 2026-09-05" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-08-20-scholarly-paper-search-apis.html", textContent: "Scholarly paper search APIs — 2026-08-20" }),
   ]),
   $("li", {}, [

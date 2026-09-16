@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/2026-09-16-bootc-install-from-nixos.html", textContent: "Installing a bootc OS from a NixOS host — 2026-09-16" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-09-05-absolute-form-double-host.html", textContent: "Absolute-form request lines double the host in a 302 — 2026-09-05" }),
   ]),
   $("li", {}, [

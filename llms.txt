@@ -4,6 +4,7 @@
 
 ## Posts
 
+- [Installing a bootc OS from a NixOS host](https://chengjilai.github.io/posts/2026-09-16-bootc-install-from-nixos.html): bootc systems are delivered as container images: the image holds the kernel and userland, bootc deploys it to a disk, and the installed OS boots without a conta
 - [Absolute-form request lines double the host in a 302](https://chengjilai.github.io/posts/2026-09-05-absolute-form-double-host.html): A 302-to-https device on a campus network built its redirect as https://<Host><URI>. The URI it received was absolute, so the host came out doubled: https://hos
 - [A full-tunnel VPN and WARP cannot coexist](https://chengjilai.github.io/posts/2026-09-05-full-tunnel-vpn-kills-warp.html): WARP's tunnel transports are QUIC and WireGuard, all UDP. The client has no TCP-transport option. A full-tunnel VPN on the same machine routes those UDP packets
 - [Event-driven VPN reconnect with wpa_cli](https://chengjilai.github.io/posts/2026-09-05-wpa-cli-event-vpn-reconnect.html): strongSwan's auto = start initiates once at daemon start. An SA that dies on a wifi switch is never re-initiated: three hours of working internet with zero IKE 

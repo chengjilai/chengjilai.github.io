@@ -4,7 +4,14 @@
   <link href="https://chengjilai.github.io/" rel="alternate"/>
   <link href="https://chengjilai.github.io/feed.xml" rel="self"/>
   <id>https://chengjilai.github.io/</id>
-  <updated>2026-09-05T00:00:00Z</updated>
+  <updated>2026-09-16T00:00:00Z</updated>
+  <entry>
+    <title>Installing a bootc OS from a NixOS host</title>
+    <link href="https://chengjilai.github.io/posts/2026-09-16-bootc-install-from-nixos.html"/>
+    <id>https://chengjilai.github.io/posts/2026-09-16-bootc-install-from-nixos.html</id>
+    <updated>2026-09-16T00:00:00Z</updated>
+    <summary>bootc systems are delivered as container images: the image holds the kernel and userland, bootc deploys it to a disk, and the installed OS boots without a conta</summary>
+  </entry>
   <entry>
     <title>Absolute-form request lines double the host in a 302</title>
     <link href="https://chengjilai.github.io/posts/2026-09-05-absolute-form-double-host.html"/>

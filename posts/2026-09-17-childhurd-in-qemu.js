@@ -19,7 +19,9 @@ document.body.appendChild($("p", {}, [
   "The service builds the image from %hurd-vm-operating-system through a ",
   "transform: secret-service-operating-system, a locked root account, and ",
   "the offloading account. Only hurd-vm-disk-image is exported, so the rest ",
-  "comes from the module's private bindings.",
+  "comes from the module's private bindings. The service is documented in the ",
+  $("a", { href: "https://guix.gnu.org/manual/devel/en/html_node/Virtualization-Services.html", textContent: "Guix manual" }),
+  ".",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", { innerHTML: highlight(

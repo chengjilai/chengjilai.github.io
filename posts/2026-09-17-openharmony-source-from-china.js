@@ -8,7 +8,9 @@ document.head.appendChild(title);
 document.body.appendChild($("h1", { textContent: "Fetching the OpenHarmony source tree from China" }));
 
 document.body.appendChild($("p", {}, [
-  "OpenHarmony lives in gitcode.com/openharmony. The GitHub org is a ",
+  "OpenHarmony lives in ",
+  $("a", { href: "https://gitcode.com/openharmony", textContent: "gitcode.com/openharmony" }),
+  ". The GitHub org is a ",
   "read-only mirror, and a release is one tag on the manifest repo, not a ",
   "tarball.",
 ]));
@@ -45,8 +47,9 @@ document.body.appendChild($("pre", {}, [
     "  --repo-url=https://gitee.com/oschina/repo.git", "shell") }),
 ]));
 document.body.appendChild($("p", {}, [
-  "repo init self-clones the repo tool from gerrit.googlesource.com, which ",
-  "is unreachable; --repo-url supplies a reachable source. The nixpkgs ",
+  "repo init self-clones the repo tool from ",
+  $("code", { textContent: "gerrit.googlesource.com" }),
+  ", which is unreachable; --repo-url supplies a reachable source. The nixpkgs ",
   "git-repo 2.65 has no --depth option. The v7.0 ",
   $("a", { href: "https://gitcode.com/openharmony/manifest", textContent: "manifest" }),
   " resolves to 518 projects, all pinned to the one tag.",

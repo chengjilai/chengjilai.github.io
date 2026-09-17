@@ -17,13 +17,18 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("h2", { textContent: "1. Hosts" }));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
-    "Canonical: gitcode.com/openharmony. github.com/openharmony is a ",
-    "read-only mirror whose manifest repo carries only weekly ",
+    "Canonical: ",
+    $("a", { href: "https://gitcode.com/openharmony", textContent: "gitcode.com/openharmony" }),
+    ". ",
+    $("a", { href: "https://github.com/openharmony", textContent: "github.com/openharmony" }),
+    " is a read-only mirror whose manifest repo carries only weekly ",
     "bak_v0_weekly_* tags, no release tags",
   ]),
   $("li", {}, [
-    "gitee.com/openharmony/<repo>/raw/<branch>/<file> serves raw text; ",
-    "gitcode's /raw/ endpoint returns its SPA shell",
+    $("a", { href: "https://gitee.com/openharmony", textContent: "gitee.com/openharmony" }),
+    "/<repo>/raw/<branch>/<file> serves raw text, e.g. ",
+    $("a", { href: "https://gitee.com/openharmony/docs/raw/master/en/OpenHarmony-Overview.md", textContent: "the docs overview" }),
+    "; gitcode's /raw/ endpoint returns its SPA shell",
   ]),
 ]));
 
@@ -42,8 +47,9 @@ document.body.appendChild($("pre", {}, [
 document.body.appendChild($("p", {}, [
   "repo init self-clones the repo tool from gerrit.googlesource.com, which ",
   "is unreachable; --repo-url supplies a reachable source. The nixpkgs ",
-  "git-repo 2.65 has no --depth option. The v7.0 manifest resolves to 518 ",
-  "projects, all pinned to the one tag.",
+  "git-repo 2.65 has no --depth option. The v7.0 ",
+  $("a", { href: "https://gitcode.com/openharmony/manifest", textContent: "manifest" }),
+  " resolves to 518 projects, all pinned to the one tag.",
 ]));
 
 // 3. The sync

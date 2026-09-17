@@ -38,7 +38,7 @@ document.body.appendChild($("ul", {}, [
     "The SJTU mirrors serve the official ci.guix.gnu.org cache: their narinfos ",
     "carry the berlin.guix.gnu.org signature, and berlin.guix.gnu.org.pub and ",
     "ci.guix.gnu.org.pub hold the same key, so a ci.guix.gnu.org.pub entry ",
-    "already authorizes them",
+    $("a", { href: "https://guix.gnu.org/manual/devel/en/html_node/Substitute-Server-Authorization.html", textContent: "already authorizes them" }),
   ]),
   $("li", {}, [
     "They are the only mirrors with the 64-bit Hurd (x86_64-gnu) nars: the ",

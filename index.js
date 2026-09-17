@@ -174,7 +174,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2025-12-05-mic-hum.html", textContent: "Mic hum: diagnose with a 10-second recording — 2025-12-05" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2025-11-16-guix-mirrors.html", textContent: "Faster substitutes and package management from China — 2025-11-16" }),
+    $("a", { href: "posts/2025-11-16-guix-mirrors.html", textContent: "Faster substitutes and package management from China — 2025-11-16, updated 2026-09-17" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2025-11-14-guix-firmware.html", textContent: "Guix firmware: why a machine can silently lose its sound card — 2025-11-14" }),

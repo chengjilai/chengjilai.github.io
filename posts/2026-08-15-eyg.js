@@ -18,7 +18,7 @@ document.body.appendChild($("p", {}, [
   "Design: sound type inference with types never required up front; structural typing; effect typing (side effects appear in the inferred type, so a pure eval rejects perform Print(...)); hashed inline dependencies (a dependency is identified by the content hash of its module); sandboxed by default; closure serialization; a minimal AST with a stable JSON IR, with spec/ in the repo as the evaluator test suite.",
 ]));
 document.body.appendChild($("p", {}, [
-  "Target users are makers: glue scripts, personal dashboards, automations. The pitch removes category-2 problems (running the computer: PATH, /var/tmp, cloud credentials) so makers only describe logic. Excel macros are the stated model. The design blog post is \"A programming language for humans\" (2026-06-08, crowdhailer.me); there is a ",
+  "Target users are makers: glue scripts, personal dashboards, automations. The pitch removes category-2 problems (running the computer: PATH, /var/tmp, cloud credentials) so makers only describe logic. Excel macros are the stated model. The design blog post is \"A programming language for humans\" (2026-06-08, ", $("a", { href: "https://crowdhailer.me", textContent: "crowdhailer.me" }), "); there is a ",
   $("a", { href: "https://codebeameurope.com/archives/berlin_2025/participants/peter-saxton/", textContent: "Code BEAM Europe 2025 talk" }),
   " (\"Rapidly Building With Gleam\").",
 ]));

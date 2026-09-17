@@ -9,7 +9,9 @@ document.body.appendChild($("h1", { textContent: "Codeberg edge drops repeat con
 // 1. The drop
 document.body.appendChild($("h2", { textContent: "1. The drop" }));
 document.body.appendChild($("p", {}, [
-  "The first request to codeberg.org succeeds. Repeats within about 40 seconds \n",
+  "The first request to ",
+  $("a", { href: "https://codeberg.org", textContent: "codeberg.org" }),
+  " succeeds. Repeats within about 40 seconds \n",
   "time out after the TLS handshake with 0 bytes received.",
 ]));
 document.body.appendChild($("p", {}, [
@@ -25,7 +27,8 @@ document.body.appendChild($("p", {}, [
 // 2. IPv6 delivers nothing
 document.body.appendChild($("h2", { textContent: "2. IPv6 delivers nothing" }));
 document.body.appendChild($("p", {}, [
-  "codeberg.org resolves to A and AAAA. The IPv6 path completes the TLS \n",
+  $("code", { textContent: "codeberg.org" }),
+  " resolves to A and AAAA. The IPv6 path completes the TLS \n",
   "handshake and never delivers a byte; curl needs -4.",
 ]));
 

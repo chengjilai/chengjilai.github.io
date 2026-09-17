@@ -8,8 +8,11 @@ document.head.appendChild(title);
 document.body.appendChild($("h1", { textContent: "How to submit a change to Guix (2026)" }));
 
 document.body.appendChild($("p", {}, [
-  "Since 2026-01-01 Guix accepts pull requests on codeberg.org/guix/guix; the ",
-  "email route (guix-patches@gnu.org) is retired. The GitHub mirror is ",
+  "Since 2026-01-01 Guix accepts pull requests on ",
+  $("a", { href: "https://codeberg.org/guix/guix", textContent: "codeberg.org/guix/guix" }),
+  "; the email route (",
+  $("code", { textContent: "guix-patches@gnu.org" }),
+  ") is retired. The GitHub mirror is ",
   "read-only; GitHub PRs are not the channel.",
 ]));
 

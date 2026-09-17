@@ -17,9 +17,13 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("h2", { textContent: "1. Substitute servers" }));
 document.body.appendChild($("p", {}, [
   "Measured from the campus network on three ~70 MB nars: ",
-  "mirrors.sjtug.sjtu.edu.cn/guix 42 MB/s, its guix-bordeaux sibling 38, ",
-  "mirror.sjtu.edu.cn/guix 37, ci.guix.moe 7.6, bordeaux.guix.gnu.org 5, ",
-  "substitutes.nonguix.org ~3, ci.guix.gnu.org 1.3.",
+  $("code", { textContent: "mirrors.sjtug.sjtu.edu.cn/guix" }), " 42 MB/s, its ",
+  $("code", { textContent: "guix-bordeaux" }), " sibling 38, ",
+  $("a", { href: "https://mirror.sjtu.edu.cn/guix", textContent: "mirror.sjtu.edu.cn/guix" }), " 37, ",
+  $("a", { href: "https://ci.guix.moe", textContent: "ci.guix.moe" }), " 7.6, ",
+  $("a", { href: "https://bordeaux.guix.gnu.org", textContent: "bordeaux.guix.gnu.org" }), " 5, ",
+  $("a", { href: "https://substitutes.nonguix.org", textContent: "substitutes.nonguix.org" }), " ~3, ",
+  $("a", { href: "https://ci.guix.gnu.org", textContent: "ci.guix.gnu.org" }), " 1.3.",
 ]));
 document.body.appendChild($("pre", {}, [
   $("code", { innerHTML: highlight(
@@ -35,25 +39,37 @@ document.body.appendChild($("pre", {}, [
 ]));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
-    "The SJTU mirrors serve the official ci.guix.gnu.org cache: their narinfos ",
-    "carry the berlin.guix.gnu.org signature, and berlin.guix.gnu.org.pub and ",
-    "ci.guix.gnu.org.pub hold the same key, so a ci.guix.gnu.org.pub entry ",
+    "The SJTU mirrors serve the official ",
+    $("a", { href: "https://ci.guix.gnu.org", textContent: "ci.guix.gnu.org" }),
+    " cache: their narinfos carry the ",
+    $("code", { textContent: "berlin.guix.gnu.org" }),
+    " signature, and ",
+    $("code", { textContent: "berlin.guix.gnu.org.pub" }),
+    " and ",
+    $("code", { textContent: "ci.guix.gnu.org.pub" }),
+    " hold the same key, so a ",
+    $("code", { textContent: "ci.guix.gnu.org.pub" }),
+    " entry ",
     $("a", { href: "https://guix.gnu.org/manual/devel/en/html_node/Substitute-Server-Authorization.html", textContent: "already authorizes them" }),
   ]),
   $("li", {}, [
     "They are the only mirrors with the 64-bit Hurd (x86_64-gnu) nars: the ",
-    "hello narinfo is 200 there, 404 on the bordeaux mirrors and ci.guix.moe",
+    "hello narinfo is 200 there, 404 on the bordeaux mirrors and ",
+    $("a", { href: "https://ci.guix.moe", textContent: "ci.guix.moe" }),
   ]),
   $("li", {}, [
-    "nonguix packages exist only on the aemilia-signed servers (ci.guix.moe, ",
-    "substitutes.nonguix.org, nonguix-proxy.ditigal.xyz). Keep them in the ",
-    "list or nonguix substitutes stop",
+    "nonguix packages exist only on the aemilia-signed servers (",
+    $("a", { href: "https://ci.guix.moe", textContent: "ci.guix.moe" }), ", ",
+    $("a", { href: "https://substitutes.nonguix.org", textContent: "substitutes.nonguix.org" }), ", ",
+    $("a", { href: "https://nonguix-proxy.ditigal.xyz", textContent: "nonguix-proxy.ditigal.xyz" }),
+    "). Keep them in the list or nonguix substitutes stop",
   ]),
   $("li", {}, [
     "The proxy is transparent (same nonguix signature, no new key)",
   ]),
   $("li", {}, [
-    "ci.guix.moe re-signs with its own key; authorize it and understand the ",
+    $("a", { href: "https://ci.guix.moe", textContent: "ci.guix.moe" }),
+    " re-signs with its own key; authorize it and understand the ",
     "trust change (a single community operator)",
   ]),
   $("li", {}, [
@@ -63,7 +79,9 @@ document.body.appendChild($("ul", {}, [
   $("li", {}, [
     "A caching proxy in front is a liability: its narinfo path probed six ",
     "upstreams serially at 20 s each, so every cache miss stalled for up to ",
-    "two minutes, and without a ci.guix.gnu.org upstream it could not serve ",
+    "two minutes, and without a ",
+    $("code", { textContent: "ci.guix.gnu.org" }),
+    " upstream it could not serve ",
     "x86_64-gnu nars at all",
   ]),
   $("li", {}, [
@@ -82,8 +100,10 @@ document.body.appendChild($("ul", {}, [
 document.body.appendChild($("h2", { textContent: "2. Channels" }));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
-    "git.guix.gnu.org redirects to Codeberg (stable in China); gitlab.com/nonguix ",
-    "is slow but reachable (give it a long timeout before concluding it is ",
+    $("a", { href: "https://git.guix.gnu.org", textContent: "git.guix.gnu.org" }),
+    " redirects to Codeberg (stable in China); ",
+    $("a", { href: "https://gitlab.com/nonguix", textContent: "gitlab.com/nonguix" }),
+    " is slow but reachable (give it a long timeout before concluding it is ",
     "blocked)",
   ]),
   $("li", {}, [
@@ -96,8 +116,11 @@ document.body.appendChild($("ul", {}, [
 document.body.appendChild($("h2", { textContent: "3. Host APIs instead of git protocol" }));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
-    "git protocol to github.com is unreliable from China; api.github.com is ",
-    "stable. Use gh (github-cli), which is API based",
+    "git protocol to ",
+    $("a", { href: "https://github.com", textContent: "github.com" }),
+    " is unreliable from China; ",
+    $("a", { href: "https://api.github.com", textContent: "api.github.com" }),
+    " is stable. Use gh (github-cli), which is API based",
   ]),
   $("li", {}, [
     "Guix git-fetch falls back to Software Heritage. If SWH lacks a recent ",

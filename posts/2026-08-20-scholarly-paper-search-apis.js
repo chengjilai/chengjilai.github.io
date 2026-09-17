@@ -14,7 +14,7 @@ document.body.appendChild($("p", {}, [
 document.body.appendChild($("h2", { textContent: "1. The free, keyless APIs" }));
 document.body.appendChild($("ul", {}, [
   $("li", {}, [$("code", { textContent: "arXiv" }), ": ", $("code", { textContent: "https://export.arxiv.org/api/query?search_query=all:Q&max_results=N" }), " returns Atom XML.", $("a", { href: "https://info.arxiv.org/help/api/index.html", textContent: "docs" })]),$("li", {}, [$("code", { textContent: "Crossref" }), ": ", $("code", { textContent: "https://api.crossref.org/works?query=Q&rows=N&mailto=E" }), " returns JSON; the mailto gets the polite pool. "
-, $("a", { href: "https://api.crossref.org/", textContent: "docs" })]),
+, $("a", { href: "https://www.crossref.org/documentation/retrieve-metadata/rest-api/", textContent: "docs" })]),
   $("li", {}, [$("code", { textContent: "OpenAlex" }), ": ", $("code", { textContent: "https://api.openalex.org/works?search=Q&per-page=N&mailto=E" }), " JSON; the abstract arrives as a word to positions inverted index."]),
   $("li", {}, [$("code", { textContent: "Semantic Scholar" }), ": ", $("code", { textContent: "https://api.semanticscholar.org/graph/v1/paper/search?query=Q&limit=N&fields=..." }), " 429s hard from a datacenter IP without a key; a retry sometimes lands. ", $("a", { href: "https://www.semanticscholar.org/product/api", textContent: "docs" })]),
   $("li", {}, [$("code", { textContent: "PubMed" }), ": NCBI E-utilities, esearch.fcgi for PMIDs then esummary.fcgi for metadata."]),
@@ -73,7 +73,7 @@ document.body.appendChild($("p", {}, [
 
 document.body.appendChild($("h2", { textContent: "4. Dead or lookup-only" }));
 document.body.appendChild($("ul", {}, [
-  $("li", {}, ["From a China-hosted network: Figshare 403, science.gov and BASE unreachable, RePEc/IDEAS 404."]),
+  $("li", {}, ["From a China-hosted network: Figshare 403, ", $("code", { textContent: "science.gov" }), " and BASE unreachable, RePEc/IDEAS 404."]),
   $("li", {}, ["OpenCitations, Unpaywall and ORCID answer queries by DOI or identifier only, not by keyword. Unpaywall takes the email address as its auth."]),
 ]));
 

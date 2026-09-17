@@ -25,15 +25,15 @@ document.body.appendChild($("p", {}, [
 
 document.body.appendChild($("h2", { textContent: "3. The failure" }));
 document.body.appendChild($("p", {}, [
-  "gitlab.com and gitlab.io were added to the routing policy and the system was switched. ",
+  $("code", { textContent: "gitlab.com" }), " and ", $("code", { textContent: "gitlab.io" }), " were added to the routing policy and the system was switched. ",
   "The running proxy kept the old policy and routed gitlab direct. ",
-  "The local resolver answered about.gitlab.com with a sinkhole IP (69.30.25.21); direct TCP to it blackholes at 10 s. ",
+  "The local resolver answered ", $("code", { textContent: "about.gitlab.com" }), " with a sinkhole IP (", $("code", { textContent: "69.30.25.21" }), "); direct TCP to it blackholes at 10 s. ",
   "The browser reported ERR_TUNNEL_CONNECTION_FAILED.",
 ]));
 
 document.body.appendChild($("h2", { textContent: "4. The diagnosis" }));
 document.body.appendChild($("p", {}, [
-  "A fresh instance of the same script on another port served about.gitlab.com in 0.47 s through the tunnel while the running process timed out. ",
+  "A fresh instance of the same script on another port served ", $("code", { textContent: "about.gitlab.com" }), " in 0.47 s through the tunnel while the running process timed out. ",
   $("code", { textContent: "stat" }),
   " on the deployed file shows the epoch mtime. ",
   "The code was correct; the process state was stale.",

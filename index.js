@@ -30,7 +30,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-09-05-wpa-cli-event-vpn-reconnect.html", textContent: "Event-driven VPN reconnect with wpa_cli — 2026-09-05" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-08-20-scholarly-paper-search-apis.html", textContent: "Scholarly paper search APIs — 2026-08-20" }),
+    $("a", { href: "posts/2026-08-20-scholarly-paper-search-apis.html", textContent: "Scholarly paper search APIs — 2026-08-20, updated 2026-09-17" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-08-17-nix-fetch-through-proxy.html", textContent: "Nix fixed-output fetches through the HTTP proxy — 2026-08-17" }),
@@ -48,7 +48,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-16-loongarch-relaxation.html", textContent: "LoongArch linker relaxation: the pcaddi fold — 2026-08-16" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-08-16-store-epoch-mtime.html", textContent: "Nix store epoch mtimes defeat mtime-based change detection — 2026-08-16" }),
+    $("a", { href: "posts/2026-08-16-store-epoch-mtime.html", textContent: "Nix store epoch mtimes defeat mtime-based change detection — 2026-08-16, updated 2026-09-17" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-08-16-tco-tail-jmp-spills.html", textContent: "TCO: the self-tail-call jmp must precede the param spills — 2026-08-16" }),
@@ -72,19 +72,19 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-08-15-dsh-pty-bash.html", textContent: "DeepSeek Harness on NixOS: the bash tool that assumed /bin/bash — 2026-08-15" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-08-15-eyg.html", textContent: "EYG: a typed functional language for makers — 2026-08-15" }),
+    $("a", { href: "posts/2026-08-15-eyg.html", textContent: "EYG: a typed functional language for makers — 2026-08-15, updated 2026-09-17" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-08-15-generation-identity.html", textContent: "Generations that lie: boot regressions hide under long uptime — 2026-08-15" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-08-15-kotlin-toolchain-external-builds.html", textContent: "kotlin-toolchain: Gradle distribution mirror and the 2.3.10 power-assert runtime gap — 2026-08-15, updated 2026-08-16" }),
+    $("a", { href: "posts/2026-08-15-kotlin-toolchain-external-builds.html", textContent: "kotlin-toolchain: Gradle distribution mirror and the 2.3.10 power-assert runtime gap — 2026-08-15, updated 2026-09-17" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-08-15-mill-11-build-files.html", textContent: "Mill 1.1 build files: what changed — 2026-08-15" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-08-15-mill-clojure.html", textContent: "Self-contained Clojure builds with Mill — 2026-08-15" }),
+    $("a", { href: "posts/2026-08-15-mill-clojure.html", textContent: "Self-contained Clojure builds with Mill — 2026-08-15, updated 2026-09-17" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-08-15-qutebrowser-ipc.html", textContent: "qutebrowser IPC: JSON, not plain text — 2026-08-15" }),
@@ -120,16 +120,16 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-07-05-hyprland-lua.html", textContent: "Hyprland 0.56: Lua config, dispatch, and screenshots — 2026-07-05, updated 2026-08-14" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-07-02-codeberg-burst-pacing.html", textContent: "Codeberg edge drops repeat connections; pacing and the API are stable — 2026-07-02" }),
+    $("a", { href: "posts/2026-07-02-codeberg-burst-pacing.html", textContent: "Codeberg edge drops repeat connections; pacing and the API are stable — 2026-07-02, updated 2026-09-17" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-06-18-youtrack-api-token.html", textContent: "YouTrack: the REST API takes the SPA's own token — 2026-06-18, updated 2026-08-15" }),
+    $("a", { href: "posts/2026-06-18-youtrack-api-token.html", textContent: "YouTrack: the REST API takes the SPA's own token — 2026-06-18, updated 2026-09-17" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-06-01-bilibili-web-upload.html", textContent: "Bilibili video uploads accept a browser session — 2026-06-01, updated 2026-08-14" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-05-28-resolver-night-window.html", textContent: "A resolver that withholds video sites at night — 2026-05-28" }),
+    $("a", { href: "posts/2026-05-28-resolver-night-window.html", textContent: "A resolver that withholds video sites at night — 2026-05-28, updated 2026-09-17" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-05-10-self-dating-tokens.html", textContent: "Session cookies carry their own expiry — 2026-05-10" }),
@@ -168,7 +168,7 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-01-30-ssh-home-resolution.html", textContent: "ssh resolves ~ from the passwd database, not $HOME — 2026-01-30" }),
   ]),
   $("li", {}, [
-    $("a", { href: "posts/2026-01-24-guix-pr.html", textContent: "How to submit a change to Guix (2026) — 2026-01-24" }),
+    $("a", { href: "posts/2026-01-24-guix-pr.html", textContent: "How to submit a change to Guix (2026) — 2026-01-24, updated 2026-09-17" }),
   ]),
   $("li", {}, [
     $("a", { href: "posts/2026-01-10-kmscon-console.html", textContent: "kmscon as the console — 2026-01-10, updated 2026-08-15" }),

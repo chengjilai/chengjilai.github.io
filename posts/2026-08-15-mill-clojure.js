@@ -47,7 +47,7 @@ document.body.appendChild($("p", {}, [
 // 3. Clojure has no Mill integration
 document.body.appendChild($("h2", { textContent: "3. Clojure has no Mill integration" }));
 document.body.appendChild($("p", {}, [
-  "Mill's tracker has no Clojure issue or discussion. No plugin, tutorial or Maven artifact exists; the r/Clojure archive, ClojureVerse, ask.clojure.org and Hacker News carry no Mill-for-Clojure thread. The documented route for a language Mill does not ship is a user-defined module trait: the ",
+  "Mill's tracker has no Clojure issue or discussion. No plugin, tutorial or Maven artifact exists; the r/Clojure archive, ClojureVerse, ", $("a", { href: "https://ask.clojure.org", textContent: "ask.clojure.org" }), " and Hacker News carry no Mill-for-Clojure thread. The documented route for a language Mill does not ship is a user-defined module trait: the ",
   $("a", { href: "https://github.com/com-lihaoyi/mill/blob/main/example/extending/python/1-hello-python/build.mill", textContent: "python walkthrough" }),
   " is the template, and ",
   $("code", { textContent: "pythonlib" }),

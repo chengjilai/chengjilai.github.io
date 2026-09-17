@@ -28,8 +28,12 @@ document.body.appendChild($("p", {}, [
 // 2. The persisted cookies are not the session
 document.body.appendChild($("h2", { textContent: "2. The persisted cookies are not the session" }));
 document.body.appendChild($("p", {}, [
-  "YouTrack (2026.3 at the time of the 2026-08 update) is an SPA that authenticates against hub.jetbrains.com. The session cookie stays \n",
-  "in browser memory. The on-disk cookie store holds only hub.jetbrains.com CASTGC entries \n",
+  "YouTrack (2026.3 at the time of the 2026-08 update) is an SPA that authenticates against ",
+  $("a", { href: "https://hub.jetbrains.com", textContent: "hub.jetbrains.com" }),
+  ". The session cookie stays \n",
+  "in browser memory. The on-disk cookie store holds only ",
+  $("code", { textContent: "hub.jetbrains.com" }),
+  " CASTGC entries \n",
   "path-scoped to /oauth2 and /api/rest/oauth2; sent to the YouTrack API they authenticate as the \n",
   "guest user, and /api/users/me returns ",
   $("code", { textContent: "{\"login\":\"guest\"}" }),

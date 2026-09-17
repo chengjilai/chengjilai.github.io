@@ -16,9 +16,13 @@ document.body.appendChild($("p", {}, [
 // 1. The pattern
 document.body.appendChild($("h2", { textContent: "1. The pattern" }));
 document.body.appendChild($("p", {}, [
-  "At 03:51 the resolver returned NXDOMAIN for bilibili.com, douyin.com, \n",
-  "youku.com, iqiyi.com, v.qq.com, mgtv.com and ixigua.com. baidu.com and \n",
-  "qq.com resolved in the same query set. The block is selective, not an \n",
+  "At 03:51 the resolver returned NXDOMAIN for ",
+  $("code", { textContent: "bilibili.com, douyin.com, youku.com, iqiyi.com, v.qq.com, mgtv.com, ixigua.com" }),
+  ". ",
+  $("code", { textContent: "baidu.com" }),
+  " and ",
+  $("code", { textContent: "qq.com" }),
+  " resolved in the same query set. The block is selective, not an \n",
   "outage. Direct HTTPS to a blocked host's CDN returned 200 at the same \n",
   "hour: the transport path is untouched.",
 ]));

@@ -5,6 +5,7 @@
 ## Posts
 
 - [Childhurd by hand: GNU/Hurd in QEMU](https://chengjilai.github.io/posts/2026-09-17-childhurd-in-qemu.html): The childhurd is the GNU/Hurd system that Guix's hurd-vm-service-type runs. On a host that is not Guix System, the image and the boot can be reproduced by hand.
+- [Fetching the OpenHarmony source tree from China](https://chengjilai.github.io/posts/2026-09-17-openharmony-source-from-china.html): OpenHarmony lives in gitcode.com/openharmony. The GitHub org is a read-only mirror, and a release is one tag on the manifest repo, not a tarball.
 - [Installing a bootc OS from a NixOS host](https://chengjilai.github.io/posts/2026-09-16-bootc-install-from-nixos.html): bootc systems are delivered as container images: the image holds the kernel and userland, bootc deploys it to a disk, and the installed OS boots without a conta
 - [Absolute-form request lines double the host in a 302](https://chengjilai.github.io/posts/2026-09-05-absolute-form-double-host.html): A 302-to-https device on a campus network built its redirect as https://<Host><URI>. The URI it received was absolute, so the host came out doubled: https://hos
 - [A full-tunnel VPN and WARP cannot coexist](https://chengjilai.github.io/posts/2026-09-05-full-tunnel-vpn-kills-warp.html): WARP's tunnel transports are QUIC and WireGuard, all UDP. The client has no TCP-transport option. A full-tunnel VPN on the same machine routes those UDP packets

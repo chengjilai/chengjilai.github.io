@@ -15,6 +15,9 @@ document.body.appendChild($("ul", {}, [
     $("a", { href: "posts/2026-09-17-childhurd-in-qemu.html", textContent: "Childhurd by hand: GNU/Hurd in QEMU — 2026-09-17" }),
   ]),
   $("li", {}, [
+    $("a", { href: "posts/2026-09-17-openharmony-source-from-china.html", textContent: "Fetching the OpenHarmony source tree from China — 2026-09-17" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-09-16-bootc-install-from-nixos.html", textContent: "Installing a bootc OS from a NixOS host — 2026-09-16" }),
   ]),
   $("li", {}, [

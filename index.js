@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/2026-09-17-childhurd-in-qemu.html", textContent: "Childhurd by hand: GNU/Hurd in QEMU — 2026-09-17" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-09-16-bootc-install-from-nixos.html", textContent: "Installing a bootc OS from a NixOS host — 2026-09-16" }),
   ]),
   $("li", {}, [

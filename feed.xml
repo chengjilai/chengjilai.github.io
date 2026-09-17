@@ -6,6 +6,13 @@
   <id>https://chengjilai.github.io/</id>
   <updated>2026-09-17T00:00:00Z</updated>
   <entry>
+    <title>Childhurd by hand: GNU/Hurd in QEMU</title>
+    <link href="https://chengjilai.github.io/posts/2026-09-17-childhurd-in-qemu.html"/>
+    <id>https://chengjilai.github.io/posts/2026-09-17-childhurd-in-qemu.html</id>
+    <updated>2026-09-17T00:00:00Z</updated>
+    <summary>The childhurd is the GNU/Hurd system that Guix&apos;s hurd-vm-service-type runs. On a host that is not Guix System, the image and the boot can be reproduced by hand.</summary>
+  </entry>
+  <entry>
     <title>Installing a bootc OS from a NixOS host</title>
     <link href="https://chengjilai.github.io/posts/2026-09-16-bootc-install-from-nixos.html"/>
     <id>https://chengjilai.github.io/posts/2026-09-16-bootc-install-from-nixos.html</id>

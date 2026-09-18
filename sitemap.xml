@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://chengjilai.github.io/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-18</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/archive.html</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjilai.github.io/posts/2026-09-17-bootc-composefs-sealed.html</loc>
+    <lastmod>2026-09-18</lastmod>
   </url>
   <url>
     <loc>https://chengjilai.github.io/posts/2026-09-17-childhurd-in-qemu.html</loc>

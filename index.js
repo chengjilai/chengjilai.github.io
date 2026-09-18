@@ -12,6 +12,9 @@ document.body.appendChild($("h2", { textContent: "Posts" }));
 
 document.body.appendChild($("ul", {}, [
   $("li", {}, [
+    $("a", { href: "posts/2026-09-17-bootc-composefs-sealed.html", textContent: "bootc, composefs and the sealed images — 2026-09-17, updated 2026-09-18" }),
+  ]),
+  $("li", {}, [
     $("a", { href: "posts/2026-09-17-childhurd-in-qemu.html", textContent: "Childhurd by hand: GNU/Hurd in QEMU — 2026-09-17" }),
   ]),
   $("li", {}, [

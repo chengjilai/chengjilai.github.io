@@ -7,8 +7,8 @@
   <updated>2026-09-18T00:00:00Z</updated>
   <entry>
     <title>bootc, composefs and the sealed images</title>
-    <link href="https://chengjilai.github.io/posts/2026-09-17-bootc-composefs-sealed.html"/>
-    <id>https://chengjilai.github.io/posts/2026-09-17-bootc-composefs-sealed.html</id>
+    <link href="https://chengjilai.github.io/posts/2026-09-18-bootc-composefs-sealed.html"/>
+    <id>https://chengjilai.github.io/posts/2026-09-18-bootc-composefs-sealed.html</id>
     <updated>2026-09-18T00:00:00Z</updated>
     <summary>bootc performs transactional, in-place operating system updates from OCI container images: the image carries the kernel (/usr/lib/modules/$kver/vmlinuz plus ini</summary>
   </entry>
